@@ -1,0 +1,14 @@
+JavaFX Setup Steps 
+Link to instructions: https://openjfx.io/openjfx-docs/#install-javafx
+
+1.Download JavaFX SDK latest release and unzip in a location - https://gluonhq.com/products/javafx/
+2.Go to File > Project Structure > Libraries
+3.Click plus button > Java > Select path to JavaFX SDK lib folder
+4.Confirm add module 
+5.Click Apply then OK
+6.Go to Run > Edit Configurations > Plus button
+7.Set main class to Main
+8.Copy paste the the ff in Vm options (replace the content inside quotes with path to JavaFX SDK lib from Step 3):
+	Windows: --module-path "\path\to\javafx-sdk-15.0.1\lib" --add-modules javafx.controls,javafx.fxml
+	Linux/Mac: --module-path /path/to/javafx-sdk-15.0.1/lib --add-modules javafx.controls,javafx.fxml
+9. Click apply and OK, then the GUI should show.
