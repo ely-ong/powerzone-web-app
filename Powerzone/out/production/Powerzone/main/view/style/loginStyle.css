@@ -1,0 +1,31 @@
+/*sets hex codes for scheme color variables*/
+*{
+    -fx-noColor: #00000000;
+    -fx-red: #ab4642;
+    -fx-darkBlue: #00407C;
+    -fx-yellow: #FFF212;
+}
+
+#anchorpane_graphic{
+    -fx-background-color: #5390CF/*-fx-darkBlue;*/
+}
+
+#tf_username{
+    -fx-border-color: -fx-noColor;
+    -fx-border-width: 3px;
+    -fx-border-radius: 2px;
+}
+
+#pf_password{
+    -fx-border-color: -fx-noColor;
+    -fx-border-width: 3px;
+    -fx-border-radius: 2px;
+}
+
+#label_errorUsername{
+    -fx-color: -fx-noColor;
+}
+
+#label_errorPsword{
+    -fx-color: -fx-noColor;
+}
