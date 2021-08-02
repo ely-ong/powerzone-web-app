@@ -1,35 +1,58 @@
 /*sets hex codes for scheme color variables*/
 *{
-    -fx-noColor: #00000000;
     -fx-red: #ab4642;
-    -fx-darkBlue: #00407C;
-    -fx-yellow: #FFF212;
+    -fx-logoBlue: #00407C;
+    -fx-logoyellow: #FFF212;
+    -fx-paleBlue: #5390CF;
+    -fx-lightBlue: #AEDFFC;
+    -fx-darkBlue: #041f2e;
 }
 
 /*adjusts background color of left graphic in login page*/
-#anchorpane_graphic{
+#vbox_graphic{
+    -fx-background-color: -fx-logoBlue;
+}
+
+/*adjusts background color of login section*/
+#anchorpane_login{
     -fx-background-color: -fx-darkBlue;
 }
 
-/* handles highlight of username textfield*/
-#tf_username{
-    -fx-border-color: -fx-noColor;
+/* sets color of main labels */
+#label_welcome, #label_username, #label_password{
+    -fx-text-fill: white;
+}
+
+/* handles style of username and password fields*/
+#tf_username, #pf_password{
+    -fx-border-color: white;
+    -fx-background-color: -fx-darkBlue;
+    -fx-text-fill: white;
+    -fx-border-width: 0 0 1px 0;
+
+}
+
+/*handles style of error messages*/
+#label_errorUsername, #label_errorPsword{
+    -fx-color: transparent;
+}
+
+/* handles style of login button*/
+#btn_login{
+    -fx-background-color: -fx-lightBlue;
+    -fx-text-fill: -fx-darkBlue;
+    -fx-border-color: transparent;
     -fx-border-width: 3px;
     -fx-border-radius: 2px;
 }
 
-/* handles highlight of password field*/
-#pf_password{
-    -fx-border-color: -fx-noColor;
-    -fx-border-width: 3px;
-    -fx-border-radius: 2px;
+/* changes button opacity upon cursor hover */
+#btn_login:hover{
+    -fx-opacity: 0.8;
 }
 
-/*handles displaying of error messages*/
-#label_errorUsername{
-    -fx-color: -fx-noColor;
+/* changes color upon button press */
+#btn_login:pressed{
+    -fx-background-color: steelblue;
 }
 
-#label_errorPsword{
-    -fx-color: -fx-noColor;
-}
