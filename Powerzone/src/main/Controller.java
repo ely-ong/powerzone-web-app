@@ -19,7 +19,7 @@ public class Controller {
     public Hyperlink hyperlink_forgotPsword; //link for forgot password
     public Hyperlink hyperlink_register; //link for register account
 
-    //test function for login
+    //test function upon clicking login button
     public void testLogin(){
 
         //stores current window in variable
@@ -64,10 +64,10 @@ public class Controller {
      */
     public void removeHighlightUsername(){
         //removes highlight
-        this.tf_username.setStyle("-fx-border-color: -fx-noColor;");
+        this.tf_username.setStyle("-fx-border-color: white;");
 
         //hides error message
-        this.label_errorUsername.setStyle("-fx-text-fill: -fx-noColor;");
+        this.label_errorUsername.setStyle("-fx-text-fill: transparent;");
     }
 
     /**
