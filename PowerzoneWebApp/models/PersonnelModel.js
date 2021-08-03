@@ -29,7 +29,7 @@ var PersonnelSchema = new mongoose.Schema({
 });
 
 /*
-    Exports a mongoose.model object based on `PersonnelSchema`when another script exports from this file
-    This model executes CRUD operations to collection `personnel`
+*    Exports a mongoose.model object based on `PersonnelSchema`when another script exports from this file
+*    This model executes CRUD operations to collection `personnel`
 */
 module.exports = mongoose.model('Personnel', PersonnelSchema);
