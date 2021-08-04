@@ -1,0 +1,222 @@
+/*sets hex codes for scheme color variables*/
+*{
+    --errorRed: #ab4642;
+    --logoBlue: #00407C;
+    --logoyellow: #FFF212;
+    --paleBlue: #5390CF;
+    --lightBlue: #AEDFFC;
+    --darkBlue: #041f2e;
+
+    /*keeps contents aligned*/
+    padding: 0;
+    margin: 0;
+}
+
+/* sets font of texts */
+body, input{
+    font-family: 'Lato', sans-serif;
+}
+
+/*sets color of page background*/
+body{
+    background-color: var(--lightBlue);
+}
+
+/* handles style of whole box of content */
+#row_box{
+   position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    height: 90%;
+    width: 60%;
+    min-height: 500px;
+}
+
+/*adjusts background color of left graphic in login page*/
+#logo_box{
+    position: relative;
+    flex: 0.4;
+    display: flex;
+    background-color: var(--logoBlue);
+    min-width: 300px;
+}
+
+/*centers contents in their respective div*/
+#logo{
+    display: block;
+    height: auto;
+    width: 200px;
+    margin: auto;
+}
+
+/* sets fixed width for whole login form */
+form{
+    width:500px;
+}
+
+/*handles style of login section*/
+#login_box{
+    flex: 0.6;
+    background-color: var(--darkBlue);
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    min-width: 500px;
+}
+
+/* handles style of login form contents */
+#login_contents{
+    position: relative;
+    display: flex;
+    height: 90%;
+    width: 90%;
+    margin: auto;
+    align-items: center;
+    text-align: center;
+    background-color: transparent;
+}
+
+/* handles styles of main labels */
+#label_welcome, #label_username, #label_password, #or{
+    text-align: center;
+    color: white;
+}
+
+#label_welcome{
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    font-size: 48px;
+    letter-spacing: 1px;
+    transform: translateY(-130px);
+}
+
+#label_username, #label_password{
+    position: absolute;
+    left: 10%;
+    font-size: 22px;
+    letter-spacing: 0.5px;
+}
+
+#label_username{
+    top: 26.5%;
+}
+
+#label_password{
+    top: 44%;
+}
+
+
+/* handles styles of username and password fields*/
+#input_username, #input_password{
+    display: flex;
+    margin: auto;
+    border-color: white;
+    background-color: var(--darkBlue);
+    color: white;
+    border-width: 0 0 1px 0;
+    width: 80%;
+    font-size: 16px;
+}
+
+#input_username{
+    transform: translateY(60%);
+}
+
+#input_password{
+    transform: translateY(300%);
+}
+
+/* removes highlight when typing in input field */
+input:focus{
+    outline-width: 0;
+}
+
+/*handles styles of error messages*/
+#errorUsername, #errorPsword{
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 10%;
+    font-size: 14px;
+    color: transparent;
+}
+
+#errorUsername{
+    transform: translateY(10%);
+}
+
+#errorPsword{
+    transform: translateY(300%);
+}
+
+/* handles style of login button*/
+#btn_login{
+    margin: auto;
+    height: 40px;
+    width: 100px;
+    background-color: var(--lightBlue);
+    color: var(--darkBlue); /* font color*/
+    border-color: transparent;
+    border-width: 3px;
+    border-radius: 2px;
+    transform: translateY(220%);
+    font-size: 18px;
+}
+
+/* changes login button opacity upon cursor hover */
+#btn_login:hover{
+    opacity: 0.8;
+}
+
+/* changes color and places outline upon login button press */
+#btn_login:active{
+    background-color: steelblue;
+    outline: 1px solid white;
+    outline-offset: 2px;
+}
+
+/* handles style of forgot password hyperlink*/
+#link_forgotPsword{
+    display: block;
+    transform: translateY(600%);
+    color: var(--paleBlue);
+    text-decoration: none;
+}
+
+#link_forgotPsword:hover{
+    text-decoration: underline;
+}
+
+/* keeps the same font color even if forgot password link has been visited */
+#link_forgotPsword:visited{
+    color: var(--paleBlue);
+}
+
+/* handles style of the word 'OR'*/
+#or{
+    display: block;
+    transform: translateY(670%);
+}
+
+/* handles style of signup hyperlink*/
+#link_signup{
+    display: block;
+    transform: translateY(670%);
+    font-size: 18px;
+    color: palegoldenrod;
+    text-decoration: none;
+}
+
+#link_signup:hover{
+    text-decoration: underline;
+}
+
+/* keeps the same font color even if signup link has been visited */
+#link_signup:visited{
+    color: palegoldenrod;
+}
