@@ -20,7 +20,10 @@ const app = express();
 app.get('/favicon.ico', controller.getFavicon);
 
 // execute function getIndex() when a client sends an HTTP GET request for `/`
-app.get('/', controller.getIndex);
+app.get('/', loginController.getLogIn);
+
+app.post('/login', loginController.postLogIn);
+
 
 // execute function getSignUp() when a client sends an HTTP GET request for `/signup`
 app.get('/signup', signupController.getSignUp);

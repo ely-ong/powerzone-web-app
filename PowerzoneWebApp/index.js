@@ -22,11 +22,13 @@ const routes = require('./routes/routes.js');
 // import module `database` from `./model/db.js`
 const db = require('./models/db.js');
 
+const express = require(`express`);
+
 const app = express();
 
 dotenv.config();
 port = process.env.PORT || 3000;
-hostname = process.env.HOSTNAME || "0.0.0.0";
+hostname = process.env.HOSTNAME;
 
 // set `hbs` as view engine
 app.set('view engine', 'hbs');
@@ -47,13 +49,18 @@ app.use('/', routes);
 // if the route is not defined in the server, render `../views/error.hbs`
 // always define this as the last middleware
 app.use(function (req, res) {
-    res.render('error');
+    res.render('forgot');
 });
 
 // connects to the database
 db.connect();
 
 // binds the server to port 9090
-app.listen(port, function () {
-    console.log('app listening at port ' + port);
-});
+// app.listen(port, function () {
+//     console.log('app listening at port ' + port);
+// });
+
+app.listen(port, hostname, function(){
+	console.log(`Server running at: `);
+	console.log(`http://` + hostname + ':' + port);
+})

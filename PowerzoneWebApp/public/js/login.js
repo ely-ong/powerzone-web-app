@@ -7,7 +7,7 @@ $(document).ready(function() {
         $('#input_username').css('border-color', 'var(--errorRed)');
 
         //displays error message
-        $('#errorUsername').text('Username not found.');
+        $('#errorUsername').text('Username must be at least 6 characters.');
         $('#errorUsername').css('color', 'var(--errorRed)');
     }
 
@@ -18,7 +18,8 @@ $(document).ready(function() {
         $('#input_username').css('border-color', 'white');
 
         //removes error message
-        $('#errorUsername').css('color', 'transparent');
+        // $('#errorUsername').css('color', 'transparent');
+        $('#errorUsername').text('');
     }
 
     /** adjusts style to highlight password field and display error message */
@@ -28,7 +29,7 @@ $(document).ready(function() {
         $('#input_password').css('border-color', 'var(--errorRed)');
 
         //displays error message
-        $('#errorPsword').text('Invalid password.');
+        $('#errorPsword').text('Password must be at least 6 characters.');
         $('#errorPsword').css('color', 'var(--errorRed)');
     }
 
@@ -39,8 +40,30 @@ $(document).ready(function() {
         $('#input_password').css('border-color', 'white');
 
         //removes error message
-        $('#errorPsword').css('color', 'transparent');
+        // $('#errorPsword').css('color', 'transparent');
+        $('#errorPsword').text('');
     }
 
+    $('#input_username').keyup(function () {
+        var username_length = $('#input_username').val().length;
+        
+        if(username_length < 6){
+            invalid_username();
+        }
+        else{
+            valid_username();
+        }
+    });
 
+    $('#input_password').keyup(function () {
+        var password_length = $('#input_password').val().length;
+        
+        if(password_length < 6){
+            invalid_password();
+        }
+        else{
+            valid_password();
+        }
+    });
+      
 })

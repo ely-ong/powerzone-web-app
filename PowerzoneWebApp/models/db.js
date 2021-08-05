@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
 
-const Personnel = require('./PersonnelModel.js');
+const user = require('./PersonnelModel.js');
 
-const url = 'mongodb+srv://PowerzoneAdmin:SnowYukiNalu@powerzonedb.zucj5.mongodb.net/myFirstDatabase?retryWrites=true&w=majority';
+const url = 'mongodb+srv://PowerzoneAdmin:SnowYukiNalu@powerzonedb.zucj5.mongodb.net/Database?retryWrites=true&w=majority';
 
 const options = {
     useUnifiedTopology: true,
@@ -22,7 +22,10 @@ const database = {
 
     insertOne: function(model, doc, callback) {
         model.create(doc, function(error, result) {
-            if(error) return callback(false);
+            if(error){ 
+                console.log(error);
+                return callback(false);
+            }
             console.log('Added ' + result);
             return callback(true);
         });

@@ -148,6 +148,7 @@ input:focus{
 
 #errorUsername{
     transform: translateY(10%);
+    color: var(--errorRed);
 }
 
 #errorPsword{

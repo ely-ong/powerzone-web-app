@@ -19,28 +19,23 @@ const signupController = {
 
     postSignUp: function (req, res) {
 
-        var firstName = req.body.firstName;
-        var lastName = req.body.lastName;
-        var idNumber = req.body.idNumber;
-        var role = req.body.role;
-        var pass = req.body.pass;
+        var username = req.body.username;
+        var pass = req.body.password;
 
-        bcrypt.hash(pw, saltRounds, function(err, hash) {
+        // bcrypt.hash(pw, saltRounds, function(err, hash) {
 
             var user = {
-                firstName: firstName,
-                lastName: lastName,
-                idNumber: idNumber,
-                role: role,
-                isApproved: false
+                username: username,
+                pass: pass
             }
 
             db.insertOne(User, user, function(flag) {
                 if(flag) {
-                    res.redirect('/success?firstName=' + firstName +'&lastName=' + lastName + '&idNumber=' + idNumber);
+                    console.log('HERE');
+                    res.redirect('success');
                 }
             });
-        });
+        // });
     }
 }
 
