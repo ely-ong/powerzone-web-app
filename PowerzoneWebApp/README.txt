@@ -6,7 +6,7 @@ were pushed since the last time you updated your copy of the project)
 
 2. Open the *updated* project folder in your command prompt and IF it is your first time, paste this command line into your command prompt:
 			
-	npm i express body-parser mongodb hbs routes session bcrypt mongoose express-session
+	npm i supervisor express body-parser mongodb hbs routes session bcrypt mongoose express-session
 
 3. Once the packages are done installing, run the web app using supervisor by typing this in the command prompt:
 
