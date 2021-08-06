@@ -6,6 +6,7 @@
     --paleBlue: #5390CF;
     --lightBlue: #AEDFFC;
     --darkBlue: #041f2e;
+    --gray: #808080;
 
     /*keeps contents aligned*/
     padding: 0;
@@ -160,7 +161,7 @@ input:focus{
     margin: auto;
     height: 40px;
     width: 100px;
-    background-color: var(--lightBlue);
+    background-color: var(--gray);
     color: var(--darkBlue); /* font color*/
     border-color: transparent;
     border-width: 3px;
@@ -170,7 +171,7 @@ input:focus{
 }
 
 /* changes login button opacity upon cursor hover */
-#btn_login:hover{
+.on_hover:hover{
     opacity: 0.8;
 }
 

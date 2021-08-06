@@ -23,15 +23,15 @@
                     <h2 id="label_welcome">Welcome</h2>
                     <div id="username_box">
                         <h5 id="label_username">Username</h5>
-                        <input id="input_username" type="text" name="username" autocomplete="off" ><br>
+                        <input id="input_username" type="text" name="username" autocomplete="off" required><br>
                         <p id="errorUsername">{{error}}</p>
                     </div>
                     <div id="password_box">
                         <h5 id="label_password">Password</h5>
-                        <input id="input_password" type="password" name="password" ><br>
+                        <input id="input_password" type="password" name="password" required><br>
                         <p id="errorPsword"></p>
                     </div>
-                    <input id="btn_login" type="submit" value="Login">
+                    <input id="btn_login" type="submit" value="Login" disabled>
                     <a href="/" id="link_forgotPsword">Forgot Password?</a>
                     <p id="or"> OR </p>
                     <a href="/signup" id="link_signup">Sign Up</a>

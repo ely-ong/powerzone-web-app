@@ -46,23 +46,51 @@ $(document).ready(function() {
 
     $('#input_username').keyup(function () {
         var username_length = $('#input_username').val().length;
+        var password_length = $('#input_password').val().length;
         
         if(username_length < 6){
             invalid_username();
+            $('#btn_login').prop('disabled', true);
+            $('#btn_login').css('background-color', '#808080');
+            $('#btn_login').removeClass('on_hover');
         }
         else{
             valid_username();
+            if (password_length >= 6) {
+                $('#btn_login').prop('disabled', false);
+                $('#btn_login').css('background-color', '#AEDFFC');
+                $('#btn_login').addClass('on_hover');
+            }
+            else {
+                $('#btn_login').prop('disabled', true);
+                $('#btn_login').css('background-color', '#808080');
+                $('#btn_login').removeClass('on_hover');
+            }
         }
     });
 
     $('#input_password').keyup(function () {
         var password_length = $('#input_password').val().length;
+        var username_length = $('#input_username').val().length;
         
         if(password_length < 6){
             invalid_password();
+            $('#btn_login').prop('disabled', true);
+            $('#btn_login').css('background-color', '#808080');
+            $('#btn_login').removeClass('on_hover');
         }
         else{
             valid_password();
+            if (username_length >= 6) {
+                $('#btn_login').prop('disabled', false);
+                $('#btn_login').css('background-color', '#AEDFFC');
+                $('#btn_login').addClass('on_hover');
+            }
+            else {
+                $('#btn_login').prop('disabled', true);
+                $('#btn_login').css('background-color', '#808080');
+                $('#btn_login').removeClass('on_hover');
+            }
         }
     });
       
