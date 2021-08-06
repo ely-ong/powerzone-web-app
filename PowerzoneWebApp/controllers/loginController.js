@@ -30,7 +30,7 @@ const loginController = {
 
             // User not in database
             else {
-                var details = {error: `User does not exist!`}
+                var details = {error: `Incorrect username or password.`}
                 res.render('login', details);
             }
         });
