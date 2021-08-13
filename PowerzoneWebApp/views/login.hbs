@@ -17,28 +17,33 @@
             <img id="logo" src="../images/POWERZONE_LOGO.png">
           </div>
           <div id="login_box">
-              <div id="login_contents">
-                
+              <ul id="login_contents" style="list-style: none">
                 <form method="post" action="/login">
-                    <h2 id="label_welcome">Welcome</h2>
-                    <div id="username_box">
-                        <h5 id="label_username">Username</h5>
+                    <li><h2 class="label" id="label_welcome">Welcome</h2></li>
+                    <li>
+                      <div class="box" id="username_box">
+                        <h5 class="label" id="label_username">Username</h5>
                         <input id="input_username" type="text" name="username" autocomplete="off" required><br>
-                        <p id="errorUsername">{{error}}</p>
+                        <p class="error" id="errorUsername">{{error}}</p>
                     </div>
-                    <div id="password_box">
-                        <h5 id="label_password">Password</h5>
+                    </li>
+                    <li>
+                      <div class="box" id="password_box">
+                        <h5 class="label" id="label_password">Password</h5>
                         <input id="input_password" type="password" name="password" required><br>
-                        <p id="errorPsword"></p>
+                        <p class="error" id="errorPsword"></p>
                     </div>
+                    </li>
+                    <li>
                     <input id="btn_login" type="submit" value="Login" disabled>
-                    <a href="/" id="link_forgotPsword">Forgot Password?</a>
-                    <p id="or"> OR </p>
-                    <a href="/signup" id="link_signup">Sign Up</a>
+                    </li>
+                    <li><a href="/" id="link_forgotPsword">Forgot Password?</a></li>
+                    <li><p class="label" id="or"> OR </p></li>
+                    <li><a href="/signup" id="link_signup">Sign Up</a></li>
                 </form>
+              </ul>
               </div>
           </div>
       </div>
   </body>
 </html>
-
