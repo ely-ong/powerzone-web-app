@@ -23,9 +23,9 @@ body{
     background-color: var(--lightBlue);
 }
 
-/* handles style of whole box of content */
+/* handles style of entire box of content */
 #row_box{
-   position: absolute;
+    position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -44,7 +44,7 @@ body{
     min-width: 300px;
 }
 
-/*centers contents in their respective div*/
+/* handles style of logo image */
 #logo{
     display: block;
     height: auto;
@@ -57,7 +57,7 @@ form{
     width:500px;
 }
 
-/*handles style of login section*/
+/* handles style of login section */
 #login_box{
     flex: 0.6;
     background-color: var(--darkBlue);
@@ -70,67 +70,67 @@ form{
 
 /* handles style of login form contents */
 #login_contents{
-    position: relative;
-    display: flex;
+    position: block;
+    display: flex; 
+    padding: 10px;
     height: 90%;
-    width: 90%;
-    margin: auto;
+    width: 100%;
+    justify-content: center;
     align-items: center;
     text-align: center;
     background-color: transparent;
 }
 
+/* handles styles of username and password div containers */
+.box{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+}
+
+#username_box{
+    transform: translateY(-150%);
+}
+
+#password_box{
+    transform: translateY(5%);
+}
+
 /* handles styles of main labels */
-#label_welcome, #label_username, #label_password, #or{
+.label{
     text-align: center;
     color: white;
 }
 
 #label_welcome{
-    position: absolute;
+    position: block;
     display: flex;
     align-items: center;
     justify-content: center;
     width: 100%;
     font-size: 48px;
     letter-spacing: 1px;
-    transform: translateY(-130px);
+    transform: translateY(-220%);
 }
 
 #label_username, #label_password{
-    position: absolute;
-    left: 10%;
-    font-size: 22px;
+    left: 20%;
+    font-size: 20px;
     letter-spacing: 0.5px;
+    text-align: left;
 }
-
-#label_username{
-    top: 26.5%;
-}
-
-#label_password{
-    top: 44%;
-}
-
 
 /* handles styles of username and password fields*/
 #input_username, #input_password{
-    display: flex;
     margin: auto;
     border-color: white;
     background-color: var(--darkBlue);
     color: white;
     border-width: 0 0 1px 0;
-    width: 80%;
+    width: 100%;
     font-size: 16px;
-}
-
-#input_username{
-    transform: translateY(60%);
-}
-
-#input_password{
-    transform: translateY(300%);
+    transform: translateY(70%);
 }
 
 /* removes highlight when typing in input field */
@@ -139,21 +139,17 @@ input:focus{
 }
 
 /*handles styles of error messages*/
-#errorUsername, #errorPsword{
-    display: flex;
-    justify-content: flex-end;
-    margin-right: 10%;
+.error{
+    position: absolute;
+    transform: translateY(100%); 
     font-size: 14px;
+     bottom: -35%; 
+    right: 0;
     color: transparent;
 }
 
 #errorUsername{
-    transform: translateY(10%);
     color: var(--errorRed);
-}
-
-#errorPsword{
-    transform: translateY(300%);
 }
 
 /* handles style of login button*/
