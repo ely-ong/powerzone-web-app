@@ -1,0 +1,163 @@
+/*sets hex codes for scheme color variables*/
+*{
+    --errorRed: #ab4642;
+    --logoBlue: #00407C;
+    --logoyellow: #FFF212;
+    --hoverBlue: #002f5a;
+    --paleBlue: #5390CF;
+    --lightBlue: #AEDFFC;
+    --darkBlue: #041f2e;
+    --gray: #808080;
+
+    /*keeps contents aligned*/
+    padding: 0;
+    margin: 0;
+}
+
+/* sets font of texts */
+body{
+    font-family: 'Lato', sans-serif;
+    height: 100%;
+}
+
+/* handles style of navigation bar */
+.navBar{
+    position: fixed;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    min-width: 100vw;
+    height: 8%;
+    min-height: 0.1vh;
+    top: 0;
+    background-color: #00407C;
+    z-index: 2;
+}
+
+/* handles style of box containing logo and Powerzone text */
+.logos_box{
+    position: absolute;
+    display: flex;
+    height: 50%;
+    min-width: 320px;
+    max-width: 400px;
+    min-height: 15px;
+    max-height: 50px;
+    transform: translateY(50%);
+    overflow: hidden;
+    z-index: 2;
+}
+
+/* handles style of logo */
+.logo{
+    display: block;
+    height: auto;
+    height: 100%;
+    min-height: 25px;
+    max-height: 30px;
+    max-width: 40px;
+    margin-left: 70%;
+    object-fit: cover;
+    overflow: hidden;
+    z-index: 2;
+} 
+
+/* handles style of Powerzone text */
+.logo_text{
+    display: block;
+    height: 100%;
+    min-height: 24px;
+    max-height: 25px;
+    width: auto;
+    margin-left: 15%;
+    object-fit: cover;
+    overflow: hidden;
+    z-index: 2;
+}
+
+/* handles style of box containing menu button */
+.icon_box{
+    position: absolute;
+    display: flex;
+    height: 50%;
+    min-width: 320px;
+    max-width: 400px;
+    min-height: 7.9vh;
+    right: 0;
+    overflow: hidden;
+    z-index: 2;
+}
+
+/* handles style of menu icon */
+.menu_icon{
+    height: 10%;
+    width: 35px;
+    object-fit: contain;
+    z-index: 2;
+}
+
+/* handles style of menu button */
+.btn_menu{
+    position: absolute;
+    height: fit-content;
+    min-height: 100%;
+    width: fit-content;
+    padding-top: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    right: 2%;
+    background-color: var(--logoBlue);
+    border-color: transparent;
+    overflow: hidden;
+    z-index: 2;
+}
+
+.btn_menu:hover{
+    background-color: var(--hoverBlue);
+}
+
+/* handles style of box containing entire menu section */
+.menu_box{
+    float: left;
+    overflow: hidden;
+}
+
+/* handles style of dropdown box */
+.dropdown {
+    display: none;
+    position: absolute;
+    background-color: var(--hoverBlue);
+    width: 200px;
+    box-shadow: 0px 8px 16px 0px rgba(255, 255, 255, 0.027);
+    z-index: 2;
+    top: 100%; 
+    right: 0;
+  }
+  
+/* handles style of dropdown options */  
+.dropdown a {
+    float: none;
+    color: white;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+    font-size: 18px;
+    background-color: var(--logoBlue);
+    width: 100%;
+    margin: 0px;
+    padding: 20px;
+}
+  
+.dropdown a:hover{
+      background-color:var(--hoverBlue);
+      color: white;
+      
+}
+
+.menu_box:hover .dropdown {
+    display: block;
+}
+
+ 
+  
+
