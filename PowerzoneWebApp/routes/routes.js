@@ -14,6 +14,17 @@ const successController = require('../controllers/successController.js');
 // import module `loginController` from `../controllers/signupController.js`
 const loginController = require('../controllers/loginController.js');
 
+const logoutController = require('../controllers/logoutController.js');
+
+const reportController = require('../controllers/reportController.js');
+
+const productsController = require('../controllers/productsController.js');
+
+const deliveriesController = require('../controllers/deliveriesController.js');
+
+const homeController = require('../controllers/homeController.js');
+
+
 const app = express();
 
 // execute function getFavicon() when a client sends an HTTP GET request for `/favicon.ico`
@@ -33,6 +44,16 @@ app.post('/signup', signupController.postSignUp);
 
 // execute function getSuccess() when a client sends an HTTP GET request for `/success`
 app.get('/success', successController.getSuccess);
+
+app.get('/logout', logoutController.getLogOut);
+
+app.get('/report', reportController.getReport);
+
+app.get('/products', productsController.getProducts);
+
+app.get('/deliveries', deliveriesController.getDeliveries);
+
+app.get('/home', homeController.getHome);
 
 // exports the object `app` (defined above) when another script exports from this file
 module.exports = app;

@@ -25,7 +25,7 @@ const loginController = {
                 //         res.render('login');
                 //     }
                 // });
-                res.render('loginSuccess');
+                res.render('home');
             }
 
             // User not in database
