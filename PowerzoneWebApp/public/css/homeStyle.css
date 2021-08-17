@@ -93,7 +93,6 @@ body{
 }
 
 .link_page:hover{
-    opacity: 0.8;
     background-color: var(--paleBlue);
     border-radius: 30px;
 }
@@ -102,6 +101,34 @@ body{
     background-color: steelblue;
     border-radius: 30px;
     box-shadow: 0 0 0 5px white;
+}
+
+/* handles style of page link icons */
+.link_icons{
+    display: block;
+}
+
+#truck{
+    height: 200px;
+    width: 200px;
+    padding-top: 5%;
+    padding-left: 10%;
+}
+
+#product_boxes{
+    height: 180px;
+    width: auto;
+    padding-top: 8.5%;
+    padding-bottom: 4%;
+    padding-left: 5%;
+}
+
+#report{
+    height: 150px;
+    width: auto;
+    padding-top: 15%;
+    padding-left: 20%;
+    padding-bottom: 10%;
 }
 
 /* handles style of page link boxes */
@@ -118,6 +145,5 @@ body{
     display: block;
     color: white;
     font-weight: 600;
-    padding-top: 85%;
     letter-spacing: 0.5px;
 }
