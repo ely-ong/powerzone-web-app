@@ -29,15 +29,13 @@ body{
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 0 0 40px 0;
     width: 95%;
     height: fit-content;
     left: 0;
     right: 0;
     margin-left: auto;
     margin-right: auto;
-    top: 40%;
-
+    top: 25%;
 }
 
 #product_box > div{
@@ -48,15 +46,16 @@ body{
 /* handles style of add products container */
 #add_box{
     margin-right: -85vw;
-    margin-bottom: 5%;
+    margin-bottom: 1%;
 }
 
 /* handles style of add products link */
 #link_add{
+    font-size: 14px;
     font-weight: 600;
     background-color: palegoldenrod;
     color: var(--darkBlue);
-    padding: 15px 25px;
+    padding: 10px 20px;
     border-radius: 2px;
     text-decoration: none;
 }
@@ -69,12 +68,13 @@ body{
     box-shadow: 0 0 0 3px white;
 }
 
-/* handles style of "Products Inventory" label */
+/* handles style of "Product Inventory" label */
 #label_product{
     font-weight: 900;
     color: white;
-    font-size: 48px;
+    font-size: 36px;
     text-align: center;
+    margin-left: 3%;
     margin-bottom: 2%;
 }
 
@@ -89,27 +89,34 @@ body{
     background-color: var(--logoBlue);
 }  
 
-/* handles style of table rows */
-.table_rows{
-    background-color: white;
-}
-
-.table_head, td {
-    font-size: 18px;
-    text-align: left;
-    padding: 15px 20px 15px 20px;
-    border-bottom: 1px solid #ddd;
-}
-
+/* handles style of table head texts */
 .table_head{
     color: white;
     letter-spacing: 0.5px;
 }
 
+/* handles style of table rows */
+.table_rows{
+    background-color: white;
+}
+
+/* handles style of table rows content*/
+.table_head, .product_item {
+    font-size: 16px;
+    text-align: left;
+    padding: 10px 35px 10px 35px;
+    border-bottom: 1px solid #ddd;
+}
+
+/* handles style of icons td */
+.icons_item{
+    padding: 0 15px 0 15px;
+}
+
 /* handles style of link icons */
 .link_icons{
-    height: 40px;
-    width: 40px;
+    height: 30px;
+    width: 30px;
 }
 
 .link_icons:hover{
