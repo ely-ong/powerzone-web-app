@@ -4,3 +4,4 @@ This folder contains the hbs partials to be used by other hbs files.
 
 ### Folder contents:
 - [navBar.hbs] Partial hbs code for navigation bar
+- [notifBar.hbs] Partial hbs code for notifications bar
