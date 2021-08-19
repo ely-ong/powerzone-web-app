@@ -3,6 +3,8 @@
 This folder contains image files.
 
 ### Folder contents:
+- [delete.png] Png file of delete product icon
+- [edit.png] Png file of edit product icon
 - [menu_icon.png] Png file of menu icon
 - [padlock.png] Png file of padlock
 - [POWERZONE_LOGO.png] Png file of Powerzone logo
