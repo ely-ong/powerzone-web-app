@@ -1,0 +1,75 @@
+*{
+    --errorRed: #ab4642;
+    --logoBlue: #00407C;
+    --logoyellow: #FFF212;
+    --hoverBlue: #002f5a;
+    --paleBlue: #5390CF;
+    --lightBlue: #AEDFFC;
+    --darkBlue: #041f2e;
+    --gray: #808080;
+
+    /*keeps contents aligned*/
+    padding: 0;
+    margin: 0;
+}
+
+/* sets font of texts */
+body{
+    font-family: 'Lato', sans-serif;
+    height: 100%;
+    z-index: 1;
+}
+
+/* handles style of notification bar */
+.notifBar{
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    height: 20%;
+    width: 100%;
+    min-width: 100vw;
+    top: 10%;
+    padding: 0 15px 30px 15px;
+    background-color: var(--darkBlue);
+    border-bottom: 1px solid white;
+    overflow: auto;
+}
+
+/* handles style of no notifs label */
+.label_noNotif{
+    /* change display to none for hiding text, 
+    and block to reveal text */
+    display: block; 
+    padding-top: 3%;
+    margin: auto;
+    text-align: center;
+    color: white;
+    font-weight: 900;
+    font-size: 36px;
+    text-align: center;
+    letter-spacing: 0.5px;
+    opacity: 0.4;
+}
+
+/* handles style of notif box */
+.notif_box{
+    /* change display to flex to show notif */
+    display: none;
+    margin-right: 20px;
+    height: 150px;
+    width: 250px;
+    border-radius: 20px;
+    background-color: #ab4642;
+    overflow-wrap: break-word;
+}
+
+/* handles style of notif text */
+.notif_txt{
+    display: inline-block;
+    margin: 7%;
+    color: white;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    max-width: 85%;
+}
+

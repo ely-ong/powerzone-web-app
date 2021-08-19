@@ -69,6 +69,7 @@ body{
     background-color: var(--lightBlue);
     color: var(--darkBlue);
     padding: 15px 25px;
+    border-radius: 2px;
     text-decoration: none;
 }
 
@@ -78,6 +79,5 @@ body{
 
 #link_backHome:active{
     background-color: steelblue;
-    outline: 1px solid white;
-    outline-offset: 2px;
+    box-shadow: 0 0 0 1px white;
 }

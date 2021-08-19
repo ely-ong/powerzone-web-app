@@ -1,0 +1,123 @@
+/*sets hex codes for scheme color variables*/
+*{
+    --errorRed: #ab4642;
+    --logoBlue: #00407C;
+    --logoyellow: #FFF212;
+    --hoverBlue: #002f5a;
+    --paleBlue: #5390CF;
+    --lightBlue: #AEDFFC;
+    --darkBlue: #041f2e;
+    --gray: #808080;
+
+    /*keeps contents aligned*/
+    padding: 0;
+    margin: 0;
+}
+
+/* sets font of texts */
+body{
+    font-family: 'Lato', sans-serif;
+    height: 100%;
+    background-color: var(--darkBlue);
+    z-index: 1;
+}
+
+/* handles style of contents box */
+#product_box{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0 0 40px 0;
+    width: 95%;
+    height: fit-content;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    top: 40%;
+
+}
+
+#product_box > div{
+    flex: 1;
+    display: flex;
+}
+
+/* handles style of add products container */
+#add_box{
+    margin-right: -85vw;
+    margin-bottom: 5%;
+}
+
+/* handles style of add products link */
+#link_add{
+    font-weight: 600;
+    background-color: palegoldenrod;
+    color: var(--darkBlue);
+    padding: 15px 25px;
+    border-radius: 2px;
+    text-decoration: none;
+}
+
+#link_add:hover{
+    background-color: var(--logoyellow);
+}
+
+#link_add:active{
+    box-shadow: 0 0 0 3px white;
+}
+
+/* handles style of "Products Inventory" label */
+#label_product{
+    font-weight: 900;
+    color: white;
+    font-size: 48px;
+    text-align: center;
+    margin-bottom: 2%;
+}
+
+/* handles style of products table */
+#products_table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+
+/* handles style of table header */
+#table_header{
+    background-color: var(--logoBlue);
+}  
+
+/* handles style of table rows */
+.table_rows{
+    background-color: white;
+}
+
+.table_head, td {
+    font-size: 18px;
+    text-align: left;
+    padding: 15px 20px 15px 20px;
+    border-bottom: 1px solid #ddd;
+}
+
+.table_head{
+    color: white;
+    letter-spacing: 0.5px;
+}
+
+/* handles style of link icons */
+.link_icons{
+    height: 40px;
+    width: 40px;
+}
+
+.link_icons:hover{
+    opacity: 0.8;
+}
+
+.link_icons:active{
+    border-radius: 100%;
+    box-shadow: 0 0 0 1px var(--darkBlue);
+}
+
