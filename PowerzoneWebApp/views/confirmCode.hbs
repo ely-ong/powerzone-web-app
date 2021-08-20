@@ -18,13 +18,13 @@
     <div id="confirmCode_box">
         <h1 id="label_confirm">Enter Confirmation Code</h1>
         <div id="confirmForm_box">
-            <form id="form_confirm" method="post" action="/confirmDelete">
+            <form id="form_confirm" method="post" action="#">
                 <div class="code_box">
                     <input class="confirmInput" id="input_confirmCode" type="password" name="confirm_code" autocomplete="off" required><br>
                     <p class="error" id="errorConfirmCode">{{error}}</p>
                 </div>
                 <div id="btnConfirm_box">
-                    <button id="btn_confirm" type="submit" value = "{{u.id}}" name="product_id_holder">Confirm</button>
+                    <input id="btn_confirm" type="submit" value="Confirm">
                 </div>
             </form>
         </div>
