@@ -3,6 +3,8 @@
 This folder contains css files.
 
 ### Folder contents:
+- [addProductStyle.css] Css file for styling of add product page
+- [editProductStyle.css] Css file for styling of edit product page
 - [homeStyle.css] Css file for styling of home page
 - [loginStyle.css] Css file for styling of login page
 - [navBarStyle.css] Css file for styling of nav bar partial
