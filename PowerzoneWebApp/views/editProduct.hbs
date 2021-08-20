@@ -5,8 +5,60 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit Product</title>
+    <link href="../css/navBarStyle.css" rel="stylesheet" type="text/css" >
+    <link href="../css/editProductStyle.css" rel="stylesheet" type="text/css" >
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js" type="text/javascript"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+    </style>
 </head>
 <body>
-    <h1>This is the edit product page.</h1>
+    {{> navBar}}
+    
+    <div id="editProduct_box">
+        <h1 id="label_editProduct">Edit Product</h1>
+        <div id="editForm_box">
+            <form id="form_edit" method="post" action="#">
+                <div class="editDetail_box" id="editDate_box">
+                    <h5 class="label" id="label_editDate">Date of Purchase</h5>
+                    <input class="editInput" id="input_editDate" type="date" name="date_purchase" autocomplete="off" required><br>
+                    <p class="error" id="errorEditDate">{{error}}</p>
+                </div>
+                <div class="editDetail_box" id="editAmntLiter_box">
+                    <h5 class="label" id="label_editAmntLiter">Amount in Liters</h5>
+                    <input class="editInput" id="input_editAmntLiter" type="number" name="amnt_liter" autocomplete="off" required><br>
+                    <p class="error" id="errorEditAmntLiter">{{error}}</p>
+                </div>
+                <div class="editDetail_box" id="editType_box">
+                    <h5 class="label" id="label_editType">Product Type</h5>
+                    <input class="editInput" id="input_editType" type="text" name="product_type" autocomplete="off" required><br>
+                    <p class="error" id="errorEditType">{{error}}</p>
+                </div>
+                <div class="editDetail_box" id="editPriceLiter_box">
+                    <h5 class="label" id="label_editPriceLiter">Price/Liter</h5>
+                    <input class="editInput" id="input_editPriceLiter" type="number" name="price_liter" autocomplete="off" required><br>
+                    <p class="error" id="errorEditPriceLiter">{{error}}</p>
+                </div>
+                <div class="editDetail_box" id="editWithdraw_box">
+                    <h5 class="label" id="label_editWithdraw">Withdrawal Amount</h5>
+                    <input class="editInput" id="input_editWithdraw" type="number" name="withdraw_amnt" autocomplete="off" required><br>
+                    <p class="error" id="errorEditWithdraw">{{error}}</p>
+                </div>
+                <div class="editDetail_box" id="editBalance_box">
+                    <h5 class="label" id="label_editBalance">Inventory Balance</h5>
+                    <input class="editInput" id="input_editBalance" type="number" name="inventory_balance" autocomplete="off" required><br>
+                    <p class="error" id="errorEditBalance">{{error}}</p>
+                </div>
+                <div class="editDetail_box" id="editLocation_box">
+                    <h5 class="label" id="label_editLocation">Stock Location</h5>
+                    <input class="editInput" id="input_editLocation" type="text" name="stock_location" autocomplete="off" required><br>
+                    <p class="error" id="errorEditLocation">{{error}}</p>
+                </div>
+                <div id="btnEdit_box">
+                    <input id="btn_edit" type="submit" value="Save Changes" disabled>
+                </div>
+            </form>
+        </div>
+    </div>
 </body>
 </html>
