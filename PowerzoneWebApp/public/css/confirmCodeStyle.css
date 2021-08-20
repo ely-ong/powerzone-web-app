@@ -112,13 +112,13 @@ input:focus{
     margin-right: auto;
     font-size: 16px;
     color: var(--darkBlue);
-    background-color: var(--gray);
+    background-color: var(--lightBlue);
     border-color: transparent;
     border-width: 3px;
     border-radius: 2px;
 }
 
-.on_hover:hover{
+#btn_confirm:hover{
     opacity: 0.8;
 }
 

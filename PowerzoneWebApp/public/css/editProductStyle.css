@@ -118,17 +118,17 @@ input:focus{
     margin-right: auto;
     font-size: 16px;
     color: var(--darkBlue);
-    background-color: var(--gray);
+    background-color: var(--lightBlue);
     border-color: transparent;
     border-width: 3px;
     border-radius: 2px;
 }
 
-.on_hover:hover{
+#btn_add:hover{
     opacity: 0.8;
 }
 
-/* changes color and places outline upon login button press */
+/* changes color and places outline upon save changes button press */
 #btn_edit:active{
     background-color: steelblue;
     outline: 1px solid white;
