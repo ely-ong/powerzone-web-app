@@ -1,5 +1,7 @@
 var mongoose = require('mongoose');
 
+require('@mongoosejs/double');
+
 // defines the schema for collection `personnel`
 var ProductSchema = new mongoose.Schema({
     date: {
@@ -11,7 +13,7 @@ var ProductSchema = new mongoose.Schema({
         required: true
     },
     quantity: {
-        type: String,
+        type: mongoose.Schema.Types.Double,
         required: true
     },
     location: {
@@ -19,7 +21,7 @@ var ProductSchema = new mongoose.Schema({
         required: true
     },
     price: {
-        type: Number,
+        type: mongoose.Schema.Types.Double,
         required: true
     },
     product: {

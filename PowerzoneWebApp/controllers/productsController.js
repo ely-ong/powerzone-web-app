@@ -14,41 +14,6 @@ const productsController = {
     	var premium97Total = 0;
     	var keroseneTotal = 0;
 
-    	//Obtain total balance for Diesel
-    	db.findMany(Product, {product: 'Diesel'}, {quantity: 1}, function(result) {	
-    		for(var i = 0; i < result.length; i++){
-    			dieselTotal += parseFloat(result[i].quantity);
-    		}
-    	});
-
-    	//Obtain total balance for Gasoline
-    	db.findMany(Product, {product: 'Gasoline'}, {quantity: 1}, function(result) {	
-    		for(var i = 0; i < result.length; i++){		
-    			gasolineTotal += parseFloat(result[i].quantity);	
-    		}
-    	});
-
-    	//Obtain total balance for Premium Gasoline 95
-    	db.findMany(Product, {product: 'Premium Gasoline 95'}, {quantity: 1}, function(result) {
-    		for(var i = 0; i < result.length; i++){		
-    			premium95Total += parseFloat(result[i].quantity);		
-    		}
-    	});
-
-    	//Obtain total balance for Premium Gasoline 97
-    	db.findMany(Product, {product: 'Premium Gasoline 97'}, {quantity: 1}, function(result) {	
-    		for(var i = 0; i < result.length; i++){
-    			premium97Total += parseFloat(result[i].quantity);	
-    		}
-    	});
-
-    	//Obtain total balance for keroseneTotal
-    	db.findMany(Product, {product: 'Kerosene'}, {quantity: 1}, function(result) {
-    		for(var i = 0; i < result.length; i++){
-    			keroseneTotal += parseFloat(result[i].quantity);
-    		}
-    	});
-
     	db.findMany(Product, {}, '', function (result) {
 		    if(result) {
 		    	productsArray = result;
@@ -74,18 +39,23 @@ const productsController = {
 		    		productsArray[i].withdrawal = withdrawalAmount.toFixed(2);
 
 		    		if(productsArray[i].product == 'Diesel'){
+                        dieselTotal += parseFloat(result[i].quantity);
 		    			productsArray[i].balance = dieselTotal.toFixed(2);
 		    		}
 		    		else if(productsArray[i].product == 'Gasoline'){
+                        gasolineTotal += parseFloat(result[i].quantity);
 		    			productsArray[i].balance = gasolineTotal.toFixed(2);
 		    		}
 		    		else if(productsArray[i].product == 'Premium Gasoline 95'){
-		    			productsArray[i].balance = premium95Total.toFixed(2);
+		    			premium95Total += parseFloat(result[i].quantity);
+                        productsArray[i].balance = premium95Total.toFixed(2);
 		    		}
 		    		else if(productsArray[i].product == 'Premium Gasoline 97'){
+                        premium97Total += parseFloat(result[i].quantity);   
 		    			productsArray[i].balance = premium97Total.toFixed(2);
 		    		}
 		    		else if(productsArray[i].product == 'Kerosene'){
+                        keroseneTotal += parseFloat(result[i].quantity);
 		    			productsArray[i].balance = keroseneTotal.toFixed(2);
 		    		}
 		    	}
