@@ -21,37 +21,27 @@
             <form id="form_edit" method="post" action="#">
                 <div class="editDetail_box" id="editDate_box">
                     <h5 class="label" id="label_editDate">Date of Purchase</h5>
-                    <input class="editInput" id="input_editDate" type="date" name="date_purchase" autocomplete="off" required><br>
+                    <input class="editInput" id="input_editDate" type="date" name="date_purchase" placeholder="date" autocomplete="off" required><br>
                     <p class="error" id="errorEditDate">{{error}}</p>
                 </div>
-                <div class="editDetail_box" id="editAmntLiter_box">
-                    <h5 class="label" id="label_editAmntLiter">Amount in Liters</h5>
-                    <input class="editInput" id="input_editAmntLiter" type="number" name="amnt_liter" autocomplete="off" required><br>
-                    <p class="error" id="errorEditAmntLiter">{{error}}</p>
+                <div class="editDetail_box" id="editQuantity_box">
+                    <h5 class="label" id="label_editQuantity">Quantity</h5>
+                    <input class="editInput" id="input_editQuantity" type="number" name="quantity" placeholder="quantity" autocomplete="off" required><br>
+                    <p class="error" id="errorEditQuantity">{{error}}</p>
                 </div>
-                <div class="editDetail_box" id="editType_box">
-                    <h5 class="label" id="label_editType">Product Type</h5>
-                    <input class="editInput" id="input_editType" type="text" name="product_type" autocomplete="off" required><br>
-                    <p class="error" id="errorEditType">{{error}}</p>
+                <div class="editDetail_box" id="editProductType_box">
+                    <h5 class="label" id="label_editProductType">Product</h5>
+                    <input class="editInput" id="input_editProductType" type="text" name="product" placeholder="product" autocomplete="off" required><br>
+                    <p class="error" id="errorEditProductType">{{error}}</p>
                 </div>
                 <div class="editDetail_box" id="editPriceLiter_box">
                     <h5 class="label" id="label_editPriceLiter">Price/Liter</h5>
-                    <input class="editInput" id="input_editPriceLiter" type="number" name="price_liter" autocomplete="off" required><br>
+                    <input class="editInput" id="input_editPriceLiter" type="number" name="price_liter" placeholder="price/liter" autocomplete="off" required><br>
                     <p class="error" id="errorEditPriceLiter">{{error}}</p>
-                </div>
-                <div class="editDetail_box" id="editWithdraw_box">
-                    <h5 class="label" id="label_editWithdraw">Withdrawal Amount</h5>
-                    <input class="editInput" id="input_editWithdraw" type="number" name="withdraw_amnt" autocomplete="off" required><br>
-                    <p class="error" id="errorEditWithdraw">{{error}}</p>
-                </div>
-                <div class="editDetail_box" id="editBalance_box">
-                    <h5 class="label" id="label_editBalance">Inventory Balance</h5>
-                    <input class="editInput" id="input_editBalance" type="number" name="inventory_balance" autocomplete="off" required><br>
-                    <p class="error" id="errorEditBalance">{{error}}</p>
                 </div>
                 <div class="editDetail_box" id="editLocation_box">
                     <h5 class="label" id="label_editLocation">Stock Location</h5>
-                    <input class="editInput" id="input_editLocation" type="text" name="stock_location" autocomplete="off" required><br>
+                    <input class="editInput" id="input_editLocation" type="text" name="stock_location" placeholder="stock location" autocomplete="off" required><br>
                     <p class="error" id="errorEditLocation">{{error}}</p>
                 </div>
                 <div id="btnEdit_box">
