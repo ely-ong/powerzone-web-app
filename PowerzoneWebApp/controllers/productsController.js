@@ -5,6 +5,7 @@ const Product = require('../models/ProductModel.js');
 const productsController = {
 
     getProducts: function (req, res) {
+
     	var productsArray;
     	var tempDate = new Date();
     	var newDate;
@@ -23,11 +24,12 @@ const productsController = {
 		    		tempDate = productsArray[i].date;
 		    		var year = tempDate.getYear() + 1900;
 		    		var month = tempDate.getMonth() + 1;
+		    		var day = tempDate.getDate();
+
 		    		//Reformatting Month 
 		    		if(month < 10)
 		    			month = "0" + month;
-
-		    		var day = tempDate.getDate() - 1;
+		    		
 		    		//Reformatting Day 
 		    		if(day < 10)
 		    			day = "0" + day;

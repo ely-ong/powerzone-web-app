@@ -2,6 +2,10 @@ const db = require('../models/db.js');
 
 const Product = require('../models/ProductModel.js');
 
+const mongoose = require('mongoose');
+
+const uniqid = require('uniqid');
+
 const addProductController = {
 
     getAddProduct: function (req, res) {
@@ -9,6 +13,8 @@ const addProductController = {
     },
 
     postProduct: function(req, res) {
+
+        var productId = uniqid('product-');
     	var date = req.body.date_purchase;
     	var supp = req.body.supplier;
     	var qty = req.body.quantity;
@@ -22,7 +28,8 @@ const addProductController = {
             supplier: supp,
             price: price,
             location: location,
-            date: date
+            date: date,
+            productId: productId
         }
 
         db.insertOne(Product, addedProduct, function(flag) {

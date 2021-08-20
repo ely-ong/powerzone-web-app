@@ -28,6 +28,8 @@ const addProductController = require('../controllers/addProductController.js');
 
 const editProductController = require('../controllers/editProductController.js');
 
+const deleteProductController = require('../controllers/deleteProductController.js')
+
 
 
 const app = express();
@@ -64,6 +66,8 @@ app.get('/addProduct', addProductController.getAddProduct);
 app.post('/postProduct', addProductController.postProduct);
 
 app.get('/editProduct', editProductController.getEditProduct);
+app.get('/deleteProduct', deleteProductController.getDeleteProduct);
+app.post('/confirmDelete', deleteProductController.confirmDelete);
 
 
 

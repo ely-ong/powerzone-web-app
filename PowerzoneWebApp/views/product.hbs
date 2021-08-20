@@ -66,11 +66,13 @@
                 <td class="product_item">{{this.location}}</td>
                 <td>
                     {{!-- icon for edit product link --}}
-                    <a href="/editProduct"><img src="../images/edit.png"  class="link_icons" id="edit_icon"></a>
+                    <a href="/editProduct"><img src="../images/edit.png"  class="link_icons" id="edit_icon" name = "edit_button" value = "{{this.productId}}"></a>
                 </td>
                 <td>
-                     {{!-- icon for delete product link --}}
-                    <a href="#"><img src="../images/delete.png"  class="link_icons" id="delete_icon"></a>
+                    {{!-- icon for delete product link --}}
+                    <form id="delete_form" method="get" action="/deleteProduct">
+                        <button style = "border: 0px; background-color: transparent;" type="submit" value = "{{this.productId}}" name = "delete_button"><a href="/deleteProduct"><img src="../images/delete.png"  class="link_icons" id="delete_icon"></a></button>
+                    </form>
                 </td>
             </tr>
             {{/each}}

@@ -27,6 +27,10 @@ var ProductSchema = new mongoose.Schema({
     product: {
         type: String,
         required: true
+    },
+    productId: {
+        type: String,
+        required: true
     }
 });
 
