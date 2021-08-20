@@ -1,0 +1,146 @@
+/*sets hex codes for scheme color variables*/
+*{
+    --errorRed: #ab4642;
+    --logoBlue: #00407C;
+    --logoyellow: #FFF212;
+    --hoverBlue: #002f5a;
+    --paleBlue: #5390CF;
+    --lightBlue: #AEDFFC;
+    --darkBlue: #041f2e;
+    --gray: #808080;
+
+    /*keeps contents aligned*/
+    padding: 0;
+    margin: 0;
+}
+
+body{
+    height: 100%;
+    background-color: var(--darkBlue);
+    z-index: 1;
+}
+
+/* sets font of texts */
+body, input{
+    font-family: 'Lato', sans-serif;
+}
+
+/* handles style of entire box of content */
+#confirmCode_box{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0px;
+    width: 50%;
+    height: fit-content;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    top: 15%;
+    bottom: 15%;
+}
+
+#confirmCode_box > div{
+    flex: 1;
+    display: flex;    
+}
+
+
+/* handles style of "Enter Verification Code" label */
+#label_confirm{
+    display: block;
+    font-weight: 900;
+    color: white;
+    font-size: 36px;
+    text-align: center;
+    margin-top: 3%;
+    margin-left: 3%;
+    margin-bottom: 3%;
+    letter-spacing: 0.5px;
+}
+
+/* handles style of form div */
+#confirmForm_box{
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: fit-content;
+    margin-bottom: 10%;
+    padding-top: 5%;
+    padding-bottom: 5%;
+    background-color: #002b53;
+}
+
+/* handles style of form */
+#form_confirm{
+    height: 90%;
+    width: 80%;
+}
+
+/* handles style of div containing input fields and error messages */
+.code_box{
+    display: block;
+    margin-bottom: 15px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+}
+
+/* handles style of input field */
+.confirmInput{
+    margin-top: 10px;
+    width: 100%;
+    font-size: 24px;
+    text-align: center;
+}
+
+/* removes highlight when typing in input field */
+input:focus{
+    outline-width: 0;
+}
+
+/* handles style of confirm button */
+#btn_confirm{
+    display: block;
+    height: 40px;
+    width: 150px;
+    margin-top: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 16px;
+    color: var(--darkBlue);
+    background-color: var(--gray);
+    border-color: transparent;
+    border-width: 3px;
+    border-radius: 2px;
+}
+
+.on_hover:hover{
+    opacity: 0.8;
+}
+
+/* changes color and places outline upon confirm button press */
+#btn_confirm:active{
+    background-color: steelblue;
+    outline: 1px solid white;
+    outline-offset: 2px;
+}
+
+/* handles style of error messages*/
+.error{
+    display: absolute;
+    font-size: 14px;
+    text-align: right;
+    right: 0;
+    margin-bottom: 5px;
+    color: transparent;
+}
+
+/* class to be edited for field error highlight, if needed*/
+.highlight_error{
+    border-color: var(--errorRed);
+    border-width: 2px;
+}
