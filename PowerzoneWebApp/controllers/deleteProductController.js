@@ -19,15 +19,16 @@ const deleteProductController = {
 
     confirmDelete: function (req, res) {
 
-        console.log(req.body.confirm_code);
+        var prodId = req.body.product_id_holder;
+        console.log("ID " + prodId);
 
         if(req.body.confirm_code == "password"){
             
-            db.deleteOne(Product, );
+            db.deleteOne(Product, {productId: prodId});
+            
         }
-        else{
-            res.redirect('/products');
-        }
+        
+        res.redirect('/products');
     }
 }
 
