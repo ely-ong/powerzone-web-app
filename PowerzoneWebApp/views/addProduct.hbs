@@ -18,15 +18,20 @@
     <div id="addProduct_box">
         <h1 id="label_addProduct">Add Product</h1>
         <div id="addForm_box">
-            <form id="form_add" method="post" action="#">
+            <form id="form_add" method="post" action="/postProduct">
                 <div class="addDetail_box" id="addDate_box">
                     <h5 class="label" id="label_addDate">Date of Purchase</h5>
                     <input class="addInput" id="input_addDate" type="date" name="date_purchase" autocomplete="off" required><br>
                     <p class="error" id="errorAddDate">{{error}}</p>
                 </div>
+                <div class="addDetail_box" id="addSupplier_box">
+                    <h5 class="label" id="label_addSupplier">Supplier</h5>
+                    <input class="addInput" id="input_addSupplier" type="text" name="supplier" autocomplete="off" required><br>
+                    <p class="error" id="errorAddSupplier">{{error}}</p>
+                </div>
                 <div class="addDetail_box" id="addQuantity_box">
                     <h5 class="label" id="label_addQuantity">Quantity</h5>
-                    <input class="addInput" id="input_addQuantity" type="number" name="quantity" autocomplete="off" required><br>
+                    <input class="addInput" id="input_addQuantity" type="number" step = "0.01" min = "0" name="quantity" autocomplete="off" required><br>
                     <p class="error" id="errorAddQuantity">{{error}}</p>
                 </div>
                 <div class="addDetail_box" id="addProductType_box">
@@ -36,7 +41,7 @@
                 </div>
                 <div class="addDetail_box" id="addPriceLiter_box">
                     <h5 class="label" id="label_addPriceLiter">Price/Liter</h5>
-                    <input class="addInput" id="input_addPriceLiter" type="number" name="price_liter" autocomplete="off" required><br>
+                    <input class="addInput" id="input_addPriceLiter" type="number" step = "0.01" min = "0" name="price_liter" autocomplete="off" required><br>
                     <p class="error" id="errorAddPriceLiter">{{error}}</p>
                 </div>
                 <div class="addDetail_box" id="addLocation_box">
@@ -45,7 +50,7 @@
                     <p class="error" id="errorAddLocation">{{error}}</p>
                 </div>
                 <div id="btnAdd_box">
-                    <input id="btn_add" type="submit" value="Add to Inventory" disabled>
+                    <input id="btn_add" type="submit" value="Add to Inventory">
                 </div>
             </form>
         </div>

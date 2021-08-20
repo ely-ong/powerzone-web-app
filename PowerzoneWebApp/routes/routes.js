@@ -61,8 +61,11 @@ app.get('/deliveries', deliveriesController.getDeliveries);
 app.get('/home', homeController.getHome);
 
 app.get('/addProduct', addProductController.getAddProduct);
+app.post('/postProduct', addProductController.postProduct);
 
 app.get('/editProduct', editProductController.getEditProduct);
+
+
 
 // exports the object `app` (defined above) when another script exports from this file
 module.exports = app;

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link href="../css/navBarStyle.css" rel="stylesheet" type="text/css" >
+    <link href="../css/homeStyle.css" rel="stylesheet" type="text/css" >
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js" type="text/javascript"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+    </style>
+</head>
+<body>
+{{> navBar}}
+    
+    <div id="home_box">
+        <div>
+            <h1 id="label_welcomeHome">Welcome</h1>
+        </div>
+        <div>
+            <p id="msg_clickPage">Click to proceed to a page</p>
+        </div>
+        <div id="pageIcons_box">
+            <a class="link_page" href="/deliveries" id="link_deliveries">
+                <div class="page_option">
+                    <img class="link_icons" id="truck" src="../images/truck.png">
+                    <p class="page_label">Deliveries</p>
+                </div>
+            </a>
+            <a class="link_page" href="/products" id="link_product">
+                <div class="page_option">
+                    <img class="link_icons" id="product_boxes" src="../images/product_boxes.png">
+                    <p class="page_label">Product Inventory</p>
+                </div>
+            </a>
+            <a class="link_page" href="/report" id="link_report">
+                <div class="page_option">
+                    <img class="link_icons" id="report" src="../images/report.png">
+                    <p class="page_label">Generate Report</p>
+                </div>
+            </a>
+        </div>
+    </div>
+    
+</body>
+</html>
