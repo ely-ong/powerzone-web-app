@@ -18,17 +18,18 @@
 {{> notifBar}}
 <div id="product_box">
     <div id="add_box">
-        <a href="#" id="link_add">+ Add Product</a>
+        <a href="/addProduct" id="link_add">+ Add Product</a>
     </div>
     <h1 id="label_product">Product Inventory</h1>
     <div id="table_box">
         <table id="products_table">
             <tr id="table_header">
                 <th class="table_head">Date of Purchase</th>
-                <th class="table_head">Amount in Liters</th>
-                <th class="table_head">Product Type</th>
+                <th class="table_head">Supplier</th>
+                <th class="table_head">Quantity</th>
+                <th class="table_head">Product</th>
                 <th class="table_head">Price/Liter</th>
-                <th class="table_head">Withdrawal Amount</th>
+                <th class="table_head">Amount</th>
                 <th class="table_head">Inventory Balance</th>
                 <th class="table_head">Stock Location</th>
 
@@ -36,7 +37,7 @@
                 <th></th>
                 <th></th>
             </tr>
-            <tr class="table_rows">
+            <!-- <tr class="table_rows">
                 <td class="product_item">Date</td>
                 <td class="product_item">999 L</td>
                 <td class="product_item">Type</td>
@@ -52,10 +53,27 @@
                      {{!-- icon for delete product link --}}
                     <a href="#"><img src="../images/delete.png"  class="link_icons" id="delete_icon"></a>
                 </td>
-            </tr>
+            </tr> -->
+            {{#each productsArray}}
             <tr class="table_rows">
-                <td class="product_item">Next Row</td>
+                <td class="product_item">{{this.dateString}}</td>
+                <td class="product_item">{{this.supplier}}</td>
+                <td class="product_item">{{this.quantity}} L</td>
+                <td class="product_item">{{this.product}}</td>
+                <td class="product_item">P{{this.price}}</td>
+                <td class="product_item">P{{this.withdrawal}}</td>
+                <td class="product_item">{{this.balance}} L</td>
+                <td class="product_item">{{this.location}}</td>
+                <td>
+                    {{!-- icon for edit product link --}}
+                    <a href="/editProduct"><img src="../images/edit.png"  class="link_icons" id="edit_icon"></a>
+                </td>
+                <td>
+                     {{!-- icon for delete product link --}}
+                    <a href="#"><img src="../images/delete.png"  class="link_icons" id="delete_icon"></a>
+                </td>
             </tr>
+            {{/each}}
         </table>
     </div>
 </div>

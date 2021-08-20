@@ -24,6 +24,11 @@ const deliveriesController = require('../controllers/deliveriesController.js');
 
 const homeController = require('../controllers/homeController.js');
 
+const addProductController = require('../controllers/addProductController.js');
+
+const editProductController = require('../controllers/editProductController.js');
+
+
 
 const app = express();
 
@@ -54,6 +59,10 @@ app.get('/products', productsController.getProducts);
 app.get('/deliveries', deliveriesController.getDeliveries);
 
 app.get('/home', homeController.getHome);
+
+app.get('/addProduct', addProductController.getAddProduct);
+
+app.get('/editProduct', editProductController.getEditProduct);
 
 // exports the object `app` (defined above) when another script exports from this file
 module.exports = app;
