@@ -15,36 +15,27 @@
   <body>
       <div id="row_box">
         <div id="logo_box">
-            <img id="logo" src="../images/POWERZONE_LOGO.png">
-          </div>
-          <div id="login_box">
-              <ul id="login_contents" style="list-style: none">
-                <form method="post" action="/login">
-                    <li><h2 class="label" id="label_welcome">Welcome</h2></li>
-                    <li>
-                      <div class="box" id="username_box">
-                        <h5 class="label" id="label_username">Username</h5>
-                        <input id="input_username" type="text" name="username" autocomplete="off" required><br>
-                        <p class="error" id="errorUsername">{{error}}</p>
-                    </div>
-                    </li>
-                    <li>
-                      <div class="box" id="password_box">
-                        <h5 class="label" id="label_password">Password</h5>
-                        <input id="input_password" type="password" name="password" required><br>
-                        <p class="error" id="errorPsword"></p>
-                    </div>
-                    </li>
-                    <li>
-                    <input id="btn_login" type="submit" value="Log In" disabled>
-                    </li>
-                    <li><a href="/forgot" id="link_forgotPsword">Forgot Password?</a></li>
-                    <li><p class="label" id="or"> OR </p></li>
-                    <li><a href="/signup" id="link_signup">Sign Up</a></li>
-                </form>
-              </ul>
+          <img id="logo" src="../images/POWERZONE_LOGO.png">
+        </div>
+        <div id="login_box">
+          <form id="form_login" method="post" action="/login">
+            <h2 class="label" id="label_welcome">Welcome</h2>
+              <div class="box" id="username_box">
+                <h5 class="label" id="label_username">Username</h5>
+                <input class="input_login" id="input_username" type="text" name="username" autocomplete="off" required><br>
+                <p class="error" id="errorUsername">{{error}}</p>
               </div>
-          </div>
+              <div class="box" id="password_box">
+                <h5 class="label" id="label_password">Password</h5>
+                <input class="input_login" id="input_password" type="password" name="password" required><br>
+                <p class="error" id="errorPsword"></p>
+              </div>
+                   {{!-- <a href="/forgot" id="link_forgotPsword">Forgot Password?</a>
+                    <p class="label" id="or"> OR </p>
+                    <a href="/signup" id="link_signup">Sign Up</a> --}}
+              <input id="btn_login" type="submit" value="Log In" disabled>
+          </form>
+        </div>
       </div>
   </body>
 </html>
