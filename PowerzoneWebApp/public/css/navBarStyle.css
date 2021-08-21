@@ -27,8 +27,8 @@ body{
     flex-direction: row;
     width: 100%;
     min-width: 100vw;
-    height: 8%;
-    min-height: 0.1vh;
+    height: 50px;
+    min-height: 50px;
     top: 0;
     background-color: #00407C;
     z-index: 2;
@@ -77,7 +77,6 @@ body{
 
 /* handles style of box containing menu button */
 .icon_box{
-    position: absolute;
     display: flex;
     height: 50%;
     min-width: 320px;
@@ -120,6 +119,7 @@ body{
 .menu_box{
     float: left;
     overflow: hidden;
+    margin-left: 100%;
 }
 
 /* handles style of dropdown box */
@@ -149,8 +149,8 @@ body{
 }
   
 .dropdown a:hover{
-      background-color:var(--hoverBlue);
-      color: white;
+    background-color:var(--hoverBlue);
+    color: white;
       
 }
 
