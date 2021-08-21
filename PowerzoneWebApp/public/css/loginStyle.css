@@ -25,14 +25,14 @@ body{
 
 /* handles style of entire box of content */
 #row_box{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
     display: flex;
-    height: 90%;
-    width: 60%;
-    min-height: 500px;
+    flex-direction: row;
+    width: fit-content;
+    height: 70%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 6%;
+    overflow: auto;
 }
 
 /*adjusts background color of left graphic in login page*/
@@ -42,6 +42,7 @@ body{
     display: flex;
     background-color: var(--logoBlue);
     min-width: 300px;
+    height: auto;
 }
 
 /* handles style of logo image */
@@ -55,26 +56,25 @@ body{
 /* sets fixed width for whole login form */
 form{
     width:500px;
+    height: 100%;
 }
 
 /* handles style of login section */
 #login_box{
-    flex: 0.6;
-    background-color: var(--darkBlue);
-    position: relative;
-    display: flex;
     align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
     height: 100%;
-    min-width: 500px;
+    padding-bottom: 5%;
+    background-color: var(--darkBlue);
 }
 
 /* handles style of login form contents */
 #login_contents{
-    position: block;
-    display: flex; 
-    padding: 10px;
-    height: 90%;
-    width: 100%;
+    position: absolute;
+    display: flex;
+    height: 100%;
     justify-content: center;
     align-items: center;
     text-align: center;
@@ -84,34 +84,25 @@ form{
 /* handles styles of username and password div containers */
 .box{
     display: block;
+    margin-top: 10%;
     margin-left: auto;
     margin-right: auto;
     width: 80%;
 }
 
-#username_box{
-    transform: translateY(-150%);
-}
-
-#password_box{
-    transform: translateY(5%);
-}
-
 /* handles styles of main labels */
 .label{
-    text-align: center;
     color: white;
 }
 
 #label_welcome{
-    position: block;
     display: flex;
     align-items: center;
     justify-content: center;
     width: 100%;
+    padding-top: 8%;
     font-size: 48px;
     letter-spacing: 1px;
-    transform: translateY(-220%);
 }
 
 #label_username, #label_password{
@@ -122,29 +113,29 @@ form{
 }
 
 /* handles styles of username and password fields*/
-#input_username, #input_password{
+.input_login{
     margin: auto;
     border-color: white;
-    background-color: var(--darkBlue);
+    background-color: transparent;
     color: white;
     border-width: 0 0 1px 0;
     width: 100%;
     font-size: 16px;
-    transform: translateY(70%);
+    margin-top: 10px;
 }
 
 /* removes highlight when typing in input field */
-input:focus{
+.input_login:focus{
     outline-width: 0;
 }
 
 /*handles styles of error messages*/
 .error{
-    position: absolute;
-    transform: translateY(100%); 
+    display: block;
     font-size: 14px;
-     bottom: -35%; 
-    right: 0;
+    margin-top: 2px;
+    text-align: right;
+    height: 14px;
     color: transparent;
 }
 
@@ -154,15 +145,15 @@ input:focus{
 
 /* handles style of login button*/
 #btn_login{
-    margin: auto;
     height: 40px;
     width: 100px;
+    margin-top: 12%;
+    margin-bottom: 3%;
     background-color: var(--gray);
-    color: var(--darkBlue); /* font color*/
+    color: var(--darkBlue);
     border-color: transparent;
     border-width: 3px;
     border-radius: 2px;
-    transform: translateY(220%);
     font-size: 18px;
 }
 
