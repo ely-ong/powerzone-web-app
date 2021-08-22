@@ -18,34 +18,39 @@
     <div id="editProduct_box">
         <h1 id="label_editProduct">Edit Product</h1>
         <div id="editForm_box">
-            <form id="form_edit" method="post" action="#">
+            <form id="form_edit" method="get" action="/updateProduct">
                 <div class="editDetail_box" id="editDate_box">
                     <h5 class="label" id="label_editDate">Date of Purchase</h5>
-                    <input class="editInput" id="input_editDate" type="date" name="date_purchase" placeholder="date" autocomplete="off" required><br>
+                    <input class="editInput" id="input_editDate" type="date" onfocus="(this.type='date')" onblur="(this.type='text" name="date_purchase" value="{{result.dateString}}" autocomplete="off" required><br>
                     <p class="error" id="errorEditDate">{{error}}</p>
+                </div>
+                <div class="editDetail_box" id="editSupplier_box">
+                    <h5 class="label" id="label_editSupplier">Supplier</h5>
+                    <input class="editInput" id="input_editSupplier" type="text" name="supplier" value="{{result.supplier}}" autocomplete="off" required><br>
+                    <p class="error" id="errorEditSupplier">{{error}}</p>
                 </div>
                 <div class="editDetail_box" id="editQuantity_box">
                     <h5 class="label" id="label_editQuantity">Quantity</h5>
-                    <input class="editInput" id="input_editQuantity" type="number" name="quantity" placeholder="quantity" autocomplete="off" required><br>
+                    <input class="editInput" id="input_editQuantity" type="number" step = "0.01" min = "0" name="quantity" value="{{result.quantity}}" autocomplete="off" required><br>
                     <p class="error" id="errorEditQuantity">{{error}}</p>
                 </div>
                 <div class="editDetail_box" id="editProductType_box">
                     <h5 class="label" id="label_editProductType">Product</h5>
-                    <input class="editInput" id="input_editProductType" type="text" name="product" placeholder="product" autocomplete="off" required><br>
+                    <input class="editInput" id="input_editProductType" type="text" name="product" value="{{result.product}}" autocomplete="off" required><br>
                     <p class="error" id="errorEditProductType">{{error}}</p>
                 </div>
                 <div class="editDetail_box" id="editPriceLiter_box">
                     <h5 class="label" id="label_editPriceLiter">Price/Liter</h5>
-                    <input class="editInput" id="input_editPriceLiter" type="number" name="price_liter" placeholder="price/liter" autocomplete="off" required><br>
+                    <input class="editInput" id="input_editPriceLiter" type="number" step = "0.01" min = "0" name="price_liter" value="{{result.price}}" autocomplete="off" required><br>
                     <p class="error" id="errorEditPriceLiter">{{error}}</p>
                 </div>
                 <div class="editDetail_box" id="editLocation_box">
                     <h5 class="label" id="label_editLocation">Stock Location</h5>
-                    <input class="editInput" id="input_editLocation" type="text" name="stock_location" placeholder="stock location" autocomplete="off" required><br>
+                    <input class="editInput" id="input_editLocation" type="text" name="stock_location" value="{{result.location}}" autocomplete="off" required><br>
                     <p class="error" id="errorEditLocation">{{error}}</p>
                 </div>
                 <div id="btnEdit_box">
-                    <input id="btn_edit" type="submit" value="Save Changes">
+                     <button id="btn_edit" type="submit" value = "{{result.productId}}" name="product_id_holder">Submit Changes</button>
                 </div>
             </form>
         </div>

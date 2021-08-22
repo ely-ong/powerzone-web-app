@@ -24,7 +24,7 @@
     <div id="table_box">
         <table id="products_table">
             <tr id="table_header">
-                <th class="table_head">Date of Purchase</th>
+                <th class="table_head">Date of Purchase (YYYY-MM-DD)</th>
                 <th class="table_head">Supplier</th>
                 <th class="table_head">Quantity</th>
                 <th class="table_head">Product</th>
@@ -66,12 +66,18 @@
                 <td class="product_item">{{this.location}}</td>
                 <td>
                     {{!-- icon for edit product link --}}
-                    <a href="/editProduct"><img src="../images/edit.png"  class="link_icons" id="edit_icon" name = "edit_button" value = "{{this.productId}}"></a>
+                    <form id="edit_form" method="get" action="/editProduct">
+                        <button style = "border: 0px; background-color: transparent;" type="submit" value = "{{this.productId}}" name = "edit_button">
+                           <img src="../images/edit.png"  class="link_icons" id="edit_icon">
+                        </button>
+                    </form>
                 </td>
                 <td>
                     {{!-- icon for delete product link --}}
                     <form id="delete_form" method="get" action="/deleteProduct">
-                        <button style = "border: 0px; background-color: transparent;" type="submit" value = "{{this.productId}}" name = "delete_button"><a href="/deleteProduct"><img src="../images/delete.png"  class="link_icons" id="delete_icon"></a></button>
+                        <button style = "border: 0px; background-color: transparent;" type="submit" value = "{{this.productId}}" name = "delete_button">
+                            <img src="../images/delete.png"  class="link_icons" id="delete_icon">
+                        </button>
                     </form>
                 </td>
             </tr>

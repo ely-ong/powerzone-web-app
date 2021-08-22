@@ -8,6 +8,10 @@ var ProductSchema = new mongoose.Schema({
         type: Date,
         required: true
     },
+    dateString: {
+        type: String,
+        required: true
+    },
     supplier:{
         type: String,
         required: true

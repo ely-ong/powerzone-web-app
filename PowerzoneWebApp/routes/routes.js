@@ -1,36 +1,17 @@
-
-// import module `express`
+//import required modules
 const express = require('express');
-
-// import module `controller` from `../controllers/controller.js`
 const controller = require('../controllers/controller.js');
-
-// import module `signupController` from `../controllers/signupController.js`
 const signupController = require('../controllers/signupController.js');
-
-// import module `successController` from `../controllers/successController.js`
 const successController = require('../controllers/successController.js');
-
-// import module `loginController` from `../controllers/signupController.js`
 const loginController = require('../controllers/loginController.js');
-
 const logoutController = require('../controllers/logoutController.js');
-
 const reportController = require('../controllers/reportController.js');
-
 const productsController = require('../controllers/productsController.js');
-
 const deliveriesController = require('../controllers/deliveriesController.js');
-
 const homeController = require('../controllers/homeController.js');
-
 const addProductController = require('../controllers/addProductController.js');
-
 const editProductController = require('../controllers/editProductController.js');
-
 const deleteProductController = require('../controllers/deleteProductController.js')
-
-
 
 const app = express();
 
@@ -66,6 +47,7 @@ app.get('/addProduct', addProductController.getAddProduct);
 app.post('/postProduct', addProductController.postProduct);
 
 app.get('/editProduct', editProductController.getEditProduct);
+app.get('/updateProduct', editProductController.updateProduct);
 app.get('/deleteProduct', deleteProductController.getDeleteProduct);
 app.post('/confirmDelete', deleteProductController.confirmDelete);
 

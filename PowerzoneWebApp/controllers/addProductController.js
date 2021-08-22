@@ -22,6 +22,11 @@ const addProductController = {
     	var price = req.body.price_liter;
     	var location = req.body.stock_location;
 
+        var dateArray = date.split('-');
+        console.log(dateArray); 
+
+        var newDate = dateArray[1] + '/' + dateArray[2] + '/' + dateArray[0];
+        console.log(newDate); 
     	var addedProduct = {
             product: name,
             quantity: qty,
@@ -29,6 +34,7 @@ const addProductController = {
             price: price,
             location: location,
             date: date,
+            dateString: newDate,
             productId: productId
         }
 

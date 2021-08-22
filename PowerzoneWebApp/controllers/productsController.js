@@ -21,22 +21,6 @@ const productsController = {
 
 		    	//Perform necessary data manipulation
 		    	for(var i = 0; i < productsArray.length; i++){
-		    		tempDate = productsArray[i].date;
-		    		var year = tempDate.getYear() + 1900;
-		    		var month = tempDate.getMonth() + 1;
-		    		var day = tempDate.getDate();
-
-		    		//Reformatting Month 
-		    		if(month < 10)
-		    			month = "0" + month;
-		    		
-		    		//Reformatting Day 
-		    		if(day < 10)
-		    			day = "0" + day;
-
-		    		newDate = day + "/" + month + "/" + year;
-		    		productsArray[i].dateString = newDate;
-
 		    		var withdrawalAmount = productsArray[i].quantity * productsArray[i].price;
 		    		productsArray[i].withdrawal = withdrawalAmount.toFixed(2);
 
