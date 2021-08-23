@@ -8,8 +8,7 @@ const deleteProductController = {
 
     getDeleteProduct: function (req, res) {
 
-        if(req.session.role == "Administrator" || 
-            req.session.role == "Depot Supervisor") {
+        if(req.session.role == "Administrator") {
             db.deleteOne(Product, {productId: req.query.productId});
         }
         res.redirect('/products');

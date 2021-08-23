@@ -5,7 +5,7 @@ $(document).ready(function() {
         var productId = $(this).val();
 
         $.get('/getAccountRole', function(result) {
-            if(result == "Administrator" || result == "Depot Supervisor") {
+            if(result == "Administrator") {
                 if(confirm("Are you sure you want to delete this product?")){
                     productRow.remove();
                     $.get(`/deleteProduct`, {productId: productId}, function(result){
@@ -27,8 +27,31 @@ $(document).ready(function() {
 
         $.get('/getAccountRole', function(result) {
             console.log(result);
-            if(result == "Administrator" || result == "Depot Supervisor") {
+            if(result == "Administrator") {
                 window.open("/addProduct", "_self");
+            }
+            else if (result == null){
+                alert('Error with session kindly log in once again.');
+            }
+            else{
+                alert(`Account is unauthorized to perform this action.`);
+            }
+        })
+    });
+
+    $('.edit_product').click(function(){
+        var productId = $(this).val();
+        $.get('/getAccountRole', function(result) {
+            if(result == "Administrator") {
+                if(confirm("Are you sure you want to edit this product?")){
+                    $.get(`/getEditProduct`, {productId: productId}, function(result){
+                        window.open("/editProduct" + "?date=" + result.dateString + 
+                            "&supplier=" + result.supplier + "&quantity=" + result.quantity + 
+                            "&product=" + result.product + "&price=" + result.price + 
+                            "&location=" + result.location + "&prodId=" + result.productId, "_self");
+                        console.log("TEST");
+                    });
+                }
             }
             else if (result == null){
                 alert('Error with session kindly log in once again.');

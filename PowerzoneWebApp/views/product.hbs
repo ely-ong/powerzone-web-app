@@ -67,11 +67,11 @@
                 <td class="product_item">{{this.location}}</td>
                 <td>
                     {{!-- icon for edit product link --}}
-                    <form id="edit_form" method="get" action="/editProduct">
-                        <button style = "border: 0px; background-color: transparent;" type="submit" value = "{{this.productId}}" name = "edit_button" style = "cursor: pointer;">
+                    <!-- <form id="edit_form" method="get" action="/editProduct"> -->
+                        <button style = "border: 0px; background-color: transparent;" type="submit" value = "{{this.productId}}" name = "edit_button" class = "edit_product" style = "cursor: pointer;">
                            <img src="../images/edit.png"  class="link_icons" id="edit_icon" value = "{{this.productId}}" style="cursor: pointer;">
                         </button>
-                    </form>
+                    <!-- </form> -->
                 </td>
                 <td>
                     {{!-- icon for delete product link --}}

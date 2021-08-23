@@ -4,9 +4,13 @@ const Product = require('../models/ProductModel.js');
 
 const editProductController = {
 
+    editProduct: function (req, res) {
+        res.render('editProduct');
+    },
+
     getEditProduct: function (req, res) {
 
-    	var uniqueId = req.query.edit_button;
+    	var uniqueId = req.query.productId;
     	console.log("uniqid = " + uniqueId);
 
     	db.findOne(Product, {productId: uniqueId}, '', function (result) {
@@ -14,10 +18,9 @@ const editProductController = {
 
             	var dateArray = result.dateString.split('/');
             	result.dateString = dateArray[2] + '-' + dateArray[0] + '-' + dateArray[1];
-                
-                res.render('editProduct', {result: result});
+                console.log(result);
+                res.send(result);
             }
-
             // User not in database
             else {
             	res.render('error');
