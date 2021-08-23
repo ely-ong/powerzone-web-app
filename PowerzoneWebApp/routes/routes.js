@@ -42,6 +42,7 @@ app.get('/products', productsController.getProducts);
 app.get('/deliveries', deliveriesController.getDeliveries);
 
 app.get('/home', homeController.getHome);
+app.get('/getAccountRole', homeController.getAccountRole);
 
 app.get('/addProduct', addProductController.getAddProduct);
 app.post('/postProduct', addProductController.postProduct);
@@ -49,7 +50,7 @@ app.post('/postProduct', addProductController.postProduct);
 app.get('/editProduct', editProductController.getEditProduct);
 app.get('/updateProduct', editProductController.updateProduct);
 app.get('/deleteProduct', deleteProductController.getDeleteProduct);
-app.post('/confirmDelete', deleteProductController.confirmDelete);
+// app.post('/confirmDelete', deleteProductController.confirmDelete);
 
 
 

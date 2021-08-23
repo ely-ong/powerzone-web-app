@@ -8,26 +8,10 @@ const deleteProductController = {
 
     getDeleteProduct: function (req, res) {
 
-        var id = req.query.delete_button;
-
-        console.log(id);
-
-        res.render('confirmCode', {u: {
-            id: id
-        }});
-    },
-
-    confirmDelete: function (req, res) {
-
-        var prodId = req.body.product_id_holder;
-        console.log("ID " + prodId);
-
-        if(req.body.confirm_code == "password"){
-            
-            db.deleteOne(Product, {productId: prodId});
-            
+        if(req.session.role == "Administrator" || 
+            req.session.role == "Depot Supervisor") {
+            db.deleteOne(Product, {productId: req.query.productId});
         }
-        
         res.redirect('/products');
     }
 }
