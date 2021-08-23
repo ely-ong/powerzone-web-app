@@ -25,6 +25,9 @@ const loginController = {
                 //         res.render('login');
                 //     }
                 // });
+                req.session.username = result.username;
+                req.session.role = result.role;
+            
                 res.render('home');
             }
 

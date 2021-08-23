@@ -5,7 +5,12 @@ const User = require('../models/PersonnelModel.js');
 const logoutController = {
 
     getLogOut: function (req, res) {
-        res.render('login');
+        req.session.destroy(function(err){
+			if(err) throw err;
+			else console.log('Logout Successful.');
+
+			res.render('login');
+		});
     },
 }
 
