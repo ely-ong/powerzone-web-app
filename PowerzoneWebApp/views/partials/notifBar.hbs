@@ -13,11 +13,11 @@
 </head>
 <body>
     <div class="notifBar">
-        {{!-- label for no notifs --}}
-        <p class="label_noNotif">No recent notifications</p>
+        {{!-- label for no notifs; change display to none for hiding text, and absolute to reveal text --}}
+        <p class="label_noNotif" style="display: absolute;">No recent notifications</p>
 
-        {{!-- box for one notif --}}
-        <div class="notif_box">
+        {{!-- box for one notif; change display to inline-block to show notif --}}
+        <div class="notif_box" style="display: none;">
             <p class="notif_txt">Notif here</p>
         </div>
     </div>
