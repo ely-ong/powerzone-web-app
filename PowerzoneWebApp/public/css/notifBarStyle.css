@@ -23,12 +23,13 @@ body{
 
 /* handles style of notification bar */
 .notifBar{
-    position: absolute;
     display: inline-block;
     flex-direction: row;
     white-space: nowrap;
     width: 100%;
+    height: fit-content;
     top: 8%;
+    margin-top: 60px;
     background-color: var(--darkBlue);
     border-bottom: 1px solid white;
     overflow-x: auto;
@@ -38,7 +39,7 @@ body{
 .label_noNotif{
     /* change display to none for hiding text, 
     and absolute to reveal text */
-    display: absolute; 
+    /* display: absolute;  */
     margin: auto;
     padding-top: 2%;
     padding-bottom: 2%;
@@ -55,7 +56,7 @@ body{
 /* handles style of notif box */
 .notif_box{
     /* change display to inline-block to show notif */
-    display: none;
+    /* display: none; */
     margin: 10px;
     height: auto;
     width: 250px;
