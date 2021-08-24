@@ -22,7 +22,7 @@
             <form id="form_edit" method="get" action="/updateProduct">
                 <div class="editDetail_box" id="editDate_box">
                     <h5 class="label" id="label_editDate">Date of Purchase</h5>
-                    <input class="editInput" id="input_editDate" type="date" onfocus="(this.type='date')" onblur="(this.type='text" name="date_purchase" value="{{result.dateString}}" autocomplete="off" required><br>
+                    <input class="editInput" id="input_editDate" type="date" onfocus="(this.type='date')" onblur="(this.type='text')" name="date_purchase" value="{{result.dateString}}" autocomplete="off" required><br>
                     <p class="error" id="errorEditDate">{{error}}</p>
                 </div>
                 <div class="editDetail_box" id="editSupplier_box">
@@ -37,7 +37,15 @@
                 </div>
                 <div class="editDetail_box" id="editProductType_box">
                     <h5 class="label" id="label_editProductType">Product</h5>
-                    <input class="editInput" id="input_editProductType" type="text" name="product" value="{{result.product}}" autocomplete="off" required><br>
+                    <!-- <input class="editInput" id="input_editProductType" type="text" name="product" value="{{result.product}}" autocomplete="off" required><br> -->
+                    <select class="editInput" id="select_editProductType" name="product" required>
+                        <option value="" disabled selected hidden>{{result.product}}</option>
+                        <option id="edit_option_diesel">Diesel</option> 
+                        <option id="edit_option_gasoline">Gasoline</option> 
+                        <option id="edit_option_premium_gasoline_95">Premium Gasoline 95</option> 
+                        <option id="edit_option_premium_gasoline_97">Premium Gasoline 97</option> 
+                        <option id="edit_option_kerosene">Kerosene</option> 
+                    </select>
                     <p class="error" id="errorEditProductType">{{error}}</p>
                 </div>
                 <div class="editDetail_box" id="editPriceLiter_box">
@@ -51,7 +59,7 @@
                     <p class="error" id="errorEditLocation">{{error}}</p>
                 </div>
                 <div id="btnEdit_box">
-                     <button id="btn_edit" type="submit" value = "{{result.productId}}" name="product_id_holder">Submit Changes</button>
+                    <button id="btn_edit" type="submit" value = "{{result.productId}}" name="product_id_holder">Submit Changes</button>
                 </div>
             </form>
         </div>

@@ -36,7 +36,15 @@
                 </div>
                 <div class="addDetail_box" id="addProductType_box">
                     <h5 class="label" id="label_addProductType">Product</h5>
-                    <input class="addInput" id="input_addProductType" type="text" name="product" autocomplete="off" required><br>
+                    <!-- <input class="addInput" id="input_addProductType" type="text" name="product" autocomplete="off" required><br> -->
+                    <select class="addInput" id="select_addProductType" name="product" required>
+                        <option value="" disabled selected hidden>Select product</option>
+                        <option id="add_option_diesel">Diesel</option> 
+                        <option id="add_option_gasoline">Gasoline</option> 
+                        <option id="add_option_premium_gasoline_95">Premium Gasoline 95</option> 
+                        <option id="add_option_premium_gasoline_97">Premium Gasoline 97</option> 
+                        <option id="add_option_kerosene">Kerosene</option> 
+                    </select>
                     <p class="error" id="errorAddProductType">{{error}}</p>
                 </div>
                 <div class="addDetail_box" id="addPriceLiter_box">
