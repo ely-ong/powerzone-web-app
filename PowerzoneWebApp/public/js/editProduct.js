@@ -10,6 +10,8 @@ $(document).ready(function() {
         var parameterName = urlVariables[i].split('=');
         parameters[i] = parameterName[1];
         console.log(parameters[i]);
+
+        parameters[i] = decodeURI(parameters[i]);
     }
 
     $('#input_editDate').val(parameters[0]);
