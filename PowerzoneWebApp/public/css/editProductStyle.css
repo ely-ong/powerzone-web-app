@@ -21,7 +21,7 @@ body{
 }
 
 /* sets font of texts */
-body, input{
+body, .editInput, #btn_edit{
     font-family: 'Lato', sans-serif;
 }
 
@@ -94,6 +94,15 @@ and error messages */
     letter-spacing: 0.5px;
     margin-bottom: 1px;
     color: white;
+}
+
+/* sets font colors of dropdown options */
+#select_editProductType:invalid {
+    color: var(--gray);
+}
+
+#select_editProductType option {
+    color: black;
 }
 
 /* handles style of input fields */
