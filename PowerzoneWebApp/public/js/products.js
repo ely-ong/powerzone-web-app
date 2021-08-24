@@ -45,10 +45,11 @@ $(document).ready(function() {
             if(result == "Administrator") {
                 if(confirm("Are you sure you want to edit this product?")){
                     $.get(`/getEditProduct`, {productId: productId}, function(result){
-                        window.open("/editProduct" + "?date=" + result.dateString + 
-                            "&supplier=" + result.supplier + "&quantity=" + result.quantity + 
-                            "&product=" + result.product + "&price=" + result.price + 
-                            "&location=" + result.location + "&prodId=" + result.productId, "_self");
+                        window.open("/editProduct" + "?prodId=" + result.productId + 
+                            "&date=" + result.dateString + "&quantity=" + result.quantity +
+                            "&product=" + result.product + "&price=" + result.price +
+                            "&supplier=" + result.supplier + "&location=" + result.location, 
+                            "_self");
                         console.log("TEST");
                     });
                 }
