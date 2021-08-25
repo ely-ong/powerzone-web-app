@@ -5,6 +5,8 @@ const User = require('../models/PersonnelModel.js');
 const loginController = {
 
     getLogIn: function (req, res) {
+        if(req.session.role)
+            res.render('home');
         res.render('login');
     },
 

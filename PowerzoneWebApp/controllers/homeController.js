@@ -5,6 +5,13 @@ const User = require('../models/PersonnelModel.js');
 const homeController = {
 
     getHome: function (req, res) {
+        if(req.session.role != "Administrator" && req.session.role != "Depot Supervisor" 
+            && req.session.role != "Depot Cashier" && req.session.role != "User") {
+
+            var details = {error: `User is not logged in. Please log in first.`}
+
+            res.render('login', details);
+        }
         res.render('home');
     },
 
