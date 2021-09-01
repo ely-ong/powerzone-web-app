@@ -4,9 +4,11 @@ This folder contains the hbs files to be rendered when requested from the server
 
 ### Folder contents:
 - [partials] This folder contains partial hbs code used by other hbs files.
+- [addAccount.hbs] Page displayed after the user has clicked on the add account button in the accounts page
 - [addProduct.hbs] Page displayed after the user has clicked on the add product link in the products page
 - [confirmCode.hbs] Page displayed after the user has clicked on the delete link in the products page  
 - [deliveries.hbs] Page displayed after the user has clicked on the deliveries link in the home page 
+- [editAccount.hbs] Page displayed after the user has clicked on the edit account link in the accounts page 
 - [editProduct.hbs] Page displayed after the user has clicked on the edit product link in the products page 
 - [forgot.hbs] Test page displayed after the user has clicked on the forgot password link 
 - [home.hbs] Home page displayed after user has logged in 
