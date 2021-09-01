@@ -21,12 +21,12 @@ body{
 }
 
 /* sets font of texts */
-body, .editInput, .editBtns{
+body, .addAccntInput, .addBtns {
     font-family: 'Lato', sans-serif;
 }
 
-/* handles style of "Edit Product" label */
-#label_editProduct{
+/* handles style of "Add Account" label */
+#label_addAccnt{
     display: block;
     font-weight: 900;
     color: white;
@@ -38,7 +38,7 @@ body, .editInput, .editBtns{
 }
 
 /* handles style of entire box of content */
-#editProduct_box{
+#addAccnt_box{
     position: absolute;
     display: flex;
     flex-direction: column;
@@ -55,13 +55,13 @@ body, .editInput, .editBtns{
     bottom: 15%;
 }
 
-#editProduct_box > div{
+#addAccnt_box > div{
     flex: 1;
     display: flex;    
 }
 
 /* handles style of form div */
-#editForm_box{
+#addAccntForm_box{
     align-items: center;
     justify-content: center;
     width: 100%;
@@ -73,14 +73,14 @@ body, .editInput, .editBtns{
 }
 
 /* handles style of form */
-#form_edit{
+#form_addAccnt{
     height: 90%;
     width: 80%;
 }
 
 /* handles style of div containing labels, input fields, 
 and error messages */
-.editDetail_box{
+.addAccntDetail_box{
     display: block;
     margin-bottom: 15px;
     margin-left: auto;
@@ -97,16 +97,16 @@ and error messages */
 }
 
 /* sets font colors of dropdown options */
-#select_editProductType:invalid {
+#select_addAccntRole:invalid {
     color: var(--gray);
 }
 
-#select_editProductType option {
+#select_addAccntRole option {
     color: black;
 }
 
 /* handles style of input fields */
-.editInput{
+.addAccntInput{
     margin-top: 10px;
     width: 100%;
     font-size: 16px;
@@ -119,7 +119,14 @@ input:focus{
     outline-width: 0;
 }
 
-.editBtns{
+
+/* handles style of buttons div; allows buttons to be arranged in a row */
+#btnAddAccnt_box{
+    display: flex;
+}
+
+/* handles style of all buttons */
+.addBtns{
     display: block;
     height: 40px;
     width: 150px;
@@ -132,38 +139,35 @@ input:focus{
     border-radius: 2px;
 }
 
-#btnEdit_box{
-    display: flex;
-}
-
-/* handles style of save changes button */
-#btn_edit{
+/* handles style of add account button */
+#btn_addAccnt{
     color: var(--darkBlue);
     background-color: var(--lightBlue);
 }
 
-#btn_edit:hover{
+#btn_addAccnt:hover{
     opacity: 0.8;
 }
 
-/* changes color and places outline upon save changes button press */
-#btn_edit:active{
+/* changes color and places outline upon add account button press */
+#btn_addAccnt:active{
     background-color: steelblue;
     outline: 1px solid white;
     outline-offset: 2px;
 }
 
-#btn_editCancel{
+/* handles style of cancel button */
+#btn_addAccntCancel{
     color: white;
     background-color: var(--errorRed);
 }
 
-#btn_editCancel:hover{
+#btn_addAccntCancel:hover{
     opacity: 0.8;
 }
 
-/* changes color and places outline upon add to inventory button press */
-#btn_editCancel:active{
+/* changes color and places outline upon cancel button press */
+#btn_addAccntCancel:active{
     background-color: maroon;
     outline: 1px solid white;
     outline-offset: 2px;
@@ -179,7 +183,7 @@ input:focus{
     color: transparent;
 }
 
-/* class to be edited for field error highlight, if needed*/
+/* class to be added for field error highlight, if needed*/
 .highlight_error{
     border-color: var(--errorRed);
     border-width: 2px;
