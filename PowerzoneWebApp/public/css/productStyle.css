@@ -104,6 +104,9 @@ body{
 .table_head{
     color: white;
     letter-spacing: 0.5px;
+    position: sticky;
+    top: 0;
+    background: var(--logoBlue);
 }
 
 /* handles style of table rows */
@@ -116,6 +119,11 @@ body{
     font-size: 16px;
     text-align: left;
     padding: 10px 35px 10px 35px;
+}
+
+/* aligns numerical values to the right*/
+.numbers{
+    text-align: right;
 }
 
 /* handles style of icons td */
@@ -137,4 +145,3 @@ body{
     border-radius: 100%;
     box-shadow: 0 0 0 1px var(--darkBlue);
 }
-
