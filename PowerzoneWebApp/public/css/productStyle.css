@@ -104,9 +104,33 @@ body{
 .table_head{
     color: white;
     letter-spacing: 0.5px;
+    position: -webkit-sticky; /* for Safari */
     position: sticky;
     top: 0;
     background: var(--logoBlue);
+}
+
+/* handles style of column heads to show clickability */
+.sortable{
+    cursor: pointer;
+}
+
+.sortable:hover{
+    background: var(--hoverBlue);
+}
+
+.sortable:active{
+    background: var(--paleBlue);
+}
+
+/* classes to be added or removed in order to display 
+    ascending or descending arrow next to the column labels*/
+.up_arrow::after{
+    content: "\25b4";
+}
+
+.down_arrow::after{
+    content: "\25be";
 }
 
 /* handles style of table rows */
@@ -117,7 +141,7 @@ body{
 /* handles style of table rows content*/
 .table_head, td{
     font-size: 16px;
-    text-align: left;
+    text-align: center;
     padding: 10px 35px 10px 35px;
 }
 
