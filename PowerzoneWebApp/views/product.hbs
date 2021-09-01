@@ -22,47 +22,50 @@
     <h1 id="label_product" style = "z-index: -1;">Product Inventory</h1>
     <div id="table_box">
         <table id="products_table">
-            <tr id="table_header">
-                <th class="table_head">Date of Purchase (MM-DD-YYYY)</th>
-                <th class="table_head">Supplier</th>
-                <th class="table_head numbers">Quantity</th>
-                <th class="table_head">Product</th>
-                <th class="table_head numbers">Buying Price/Liter</th>
-                <th class="table_head numbers">Amount</th>
-                {{!-- <th class="table_head">Inventory Balance</th> --}}
-                <th class="table_head">Stock Location</th>
-
-                <th class="table_head">Edit</th>
-                <th class="table_head">Delete</th>
-            </tr>
-            
+            <thead>
+                <tr id="table_header">
+                      <th class="table_head sortable">Date of Purchase (MM-DD-YYYY)</th>
+                        <th class="table_head sortable">Supplier</th>
+                        <th class="table_head sortable">Quantity</th>
+                        <th class="table_head sortable">Product</th>
+                        <th class="table_head sortable">Buying Price/Liter</th>
+                        <th class="table_head sortable">Amount</th>
+                        <th class="table_head sortable">Stock Location</th>
+        
+                        <!-- extra header tags to match length of succeeding rows -->
+                        <th  class="table_head">Edit</th>
+                        <th  class="table_head">Delete</th>
+                </tr>
+            </thead>
             {{#each productsArray}}
-            <tr class="table_rows">
-                <td class="product_item">{{this.dateString}}</td>
-                <td class="product_item">{{this.supplier}}</td>
-                <td class="product_item numbers">{{this.quantity}} L</td>
-                <td class="product_item">{{this.product}}</td>
-                <td class="product_item numbers">P{{this.price}}</td>
-                <td class="product_item numbers">P{{this.withdrawal}}</td>
-                {{!-- <td class="product_item">{{this.balance}} L</td> --}}
-                <td class="product_item">{{this.location}}</td>
-                <td>
-                    {{!-- icon for edit product link --}}
-                    <!-- <form id="edit_form" method="get" action="/editProduct"> -->
-                        <button style = "border: 0px; background-color: transparent;" type="submit" value = "{{this.productId}}" name = "edit_button" class = "edit_product" style = "cursor: pointer;">
-                           <img src="../images/edit.png"  class="link_icons" id="edit_icon" value = "{{this.productId}}" style="cursor: pointer;">
-                        </button>
-                    <!-- </form> -->
-                </td>
-                <td>
-                    {{!-- icon for delete product link --}}
-                    <!-- <form id="delete_form" method="get" action="/deleteProduct"> -->
-                        <button style = "border: 0px; background-color: transparent;" type="submit" value = "{{this.productId}}" name = "delete_button" class = "delete_product" style = "cursor: pointer;">
-                            <img src="../images/delete.png"  class="link_icons" id="delete_icon" value = "{{this.productId}}" style="cursor: pointer;">
-                        </button>
-                    <!-- </form> -->
-                </td>
-            </tr>
+            <tbody>
+                <tr class="table_rows">
+                    <td class="product_item">{{this.dateString}}</td>
+                    <td class="product_item">{{this.supplier}}</td>
+                    <td class="product_item numbers">{{this.quantity}} L</td>
+                    <td class="product_item">{{this.product}}</td>
+                    <td class="product_item numbers">P{{this.price}}</td>
+                    <td class="product_item numbers">P{{this.withdrawal}}</td>
+                    {{!-- <td class="product_item">{{this.balance}} L</td> --}}
+                    <td class="product_item">{{this.location}}</td>
+                    <td>
+                        {{!-- icon for edit product link --}}
+                        <!-- <form id="edit_form" method="get" action="/editProduct"> -->
+                            <button style = "border: 0px; background-color: transparent;" type="submit" value = "{{this.productId}}" name = "edit_button" class = "edit_product" style = "cursor: pointer;">
+                            <img src="../images/edit.png"  class="link_icons" id="edit_icon" value = "{{this.productId}}" style="cursor: pointer;">
+                            </button>
+                        <!-- </form> -->
+                    </td>
+                    <td>
+                        {{!-- icon for delete product link --}}
+                        <!-- <form id="delete_form" method="get" action="/deleteProduct"> -->
+                            <button style = "border: 0px; background-color: transparent;" type="submit" value = "{{this.productId}}" name = "delete_button" class = "delete_product" style = "cursor: pointer;">
+                                <img src="../images/delete.png"  class="link_icons" id="delete_icon" value = "{{this.productId}}" style="cursor: pointer;">
+                            </button>
+                        <!-- </form> -->
+                    </td>
+                </tr>
+            </tbody>
             {{/each}}
         </table>
     </div>
