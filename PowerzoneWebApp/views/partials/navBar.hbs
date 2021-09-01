@@ -12,6 +12,7 @@
     </style>
 </head>
 <body>
+
     <div class="navBar">
         <a href="/home">
         <div class="logos_box">
@@ -23,10 +24,17 @@
             <div class="icon_box">
                 <button class="btn_menu"><img class="menu_icon" src="../images/menu_icon.png"></button>
             </div>
+            {{#if }}
+            <div class="dropdown">
+                <a href="#" class="link_accnts">Accounts</a>
+                <a href="/logout" class="link_logout" style="color: var(--logoyellow)"><b>Log Out</b></a>  
+            </div>
+            {{else}}
             <div class="dropdown">
                 <a href="#" class="link_editAccnt">Edit Account</a>
                 <a href="/logout" class="link_logout" style="color: var(--logoyellow)"><b>Log Out</b></a>  
             </div>
+            {{/if}}
         </div>
     </div>
 </body>
