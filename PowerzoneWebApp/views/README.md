@@ -4,6 +4,8 @@ This folder contains the hbs files to be rendered when requested from the server
 
 ### Folder contents:
 - [partials] This folder contains partial hbs code used by other hbs files.
+- [accounts.hbs] Page displayed after the user has clicked on the accounts option in the navBar dropdown
+- [addAccntFail.hbs] Page displayed after the user has failed to add an account 
 - [addAccount.hbs] Page displayed after the user has clicked on the add account button in the accounts page
 - [addProduct.hbs] Page displayed after the user has clicked on the add product link in the products page
 - [confirmCode.hbs] Page displayed after the user has clicked on the delete link in the products page  

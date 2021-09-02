@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Account Fail</title>
+    <link href="../css/navBarStyle.css" rel="stylesheet" type="text/css" >
+    <link href="../css/addAccntFailStyle.css" rel="stylesheet" type="text/css" >
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js" type="text/javascript"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+    </style>
+</head>
+<body>
+{{> navBar}}
+
+    <div id="addAccntFail_box">
+        <div>
+            <h1 id="label_accnt_failed">Add Account Failed</h1>
+        </div>
+        <div>
+            <img id="user_failed" src="../images/accnt_failAdded.png">
+        </div>
+        <div id="links_box" style="flex-direction: row;">
+            <a href="#" class="links_addAccntFail" id="link_retry">Retry</a>
+            <a href="#" class="links_addAccntFail" id="link_backAccnt">Back to Accounts</a>
+        </div>
+    </div>
+    
+</body>
+</html>
