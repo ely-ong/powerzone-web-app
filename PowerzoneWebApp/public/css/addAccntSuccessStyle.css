@@ -1,0 +1,95 @@
+/*sets hex codes for scheme color variables*/
+*{
+    --errorRed: #ab4642;
+    --logoBlue: #00407C;
+    --logoyellow: #FFF212;
+    --hoverBlue: #002f5a;
+    --paleBlue: #5390CF;
+    --lightBlue: #AEDFFC;
+    --darkBlue: #041f2e;
+    --gray: #808080;
+
+    /*keeps contents aligned*/
+    padding: 0;
+    margin: 0;
+}
+
+/* sets font of texts */
+body{
+    font-family: 'Lato', sans-serif;
+    height: 100%;
+    background-color: var(--darkBlue);
+    z-index: 1;
+}
+
+#addAccntSuccess_box{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0px;
+    width: 70%;
+    height: 80%;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    top: 15%;
+}
+
+#addAccntSuccess_box > div{
+    /*flex: 1; */
+    display: flex;
+    /* flex-direction: column; */
+    margin-bottom: 5%;
+}
+
+#label_accnt_added{
+    color: white;
+    font-weight: 900;
+    font-size: 48px;
+    text-align: center;
+}
+
+/* handles style of add account success icon */
+#user_added{
+    width: 250px;
+    height: 250px;
+}
+
+.links_addAccnt{
+    padding: 15px 25px;
+    border-radius: 2px;
+    color: var(--darkBlue);
+    text-decoration: none;
+    margin-right: 50px;
+    margin-left: 50px;
+}
+
+.links_addAccnt:hover{
+    opacity: 0.8;
+}
+
+/* handles styles of add account success links */
+#link_toLogin{
+    background-color: palegoldenrod;
+}
+
+#link_toLogin:hover{
+    opacity: 0.8;
+}
+
+#link_toLogin:active{
+    background-color: var(--logoyellow);
+    box-shadow: 0 0 0 2px white;
+}
+
+#link_backAccnt{
+    background-color: var(--lightBlue);
+}
+
+#link_backAccnt:active{
+    background-color: steelblue;
+    box-shadow: 0 0 0 2px white;
+}

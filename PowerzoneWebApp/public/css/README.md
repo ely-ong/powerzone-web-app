@@ -3,6 +3,9 @@
 This folder contains the hbs files to be rendered when requested from the server.
 
 ### Folder contents:
+- [accountStyle.css] Css file for styling of accounts page
+- [addAccntFailStyle.css] Css file for styling of add account fail page
+- [addAccntSuccessStyle.css] Css file for styling of add account success page
 - [addAccountStyle.css] Css file for styling of add account page
 - [addProductStyle.css] Css file for styling of add product page
 - [confirmCodeStyle.css] Css file for styling of confirm password page
