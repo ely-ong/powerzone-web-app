@@ -14,7 +14,7 @@ $(document).ready(function() {
     $('#input_editQuantity').val(parameters[3]);
     $('#select_editProductType').val(parameters[4].split('%20').join(' '));
     $('#input_editPriceLiter').val(parameters[5]);
-    $('#input_editSupplier').val(parameters[6].split('%20').join(' '));
+    $('#select_editSupplier').val(parameters[6].split('%20').join(' '));
     $('#input_editLocation').val(parameters[7].split('%20').join(' '));
     
     $(document).ready(function() {

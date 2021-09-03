@@ -5,7 +5,7 @@ const Product = require('../models/ProductModel.js');
 const editProductController = {
 
     editProduct: function (req, res) {
-        if(req.session.role != "Administrator" || req.session.role != "Depot General Manager"){
+        if(req.session.role != "Administrator" && req.session.role != "Depot General Manager"){
             if(req.session.role == "Depot Supervisor" || 
                 req.session.role == "Depot Cashier" ||
                 req.session.role == "Regular User") {

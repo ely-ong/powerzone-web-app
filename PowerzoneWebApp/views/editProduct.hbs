@@ -47,7 +47,7 @@
                 <div class="editDetail_box" id="editProductType_box">
                     <h5 class="label" id="label_editProductType">Product</h5>
                     <!-- <input class="editInput" id="input_editProductType" type="text" name="product" value="{{result.product}}" autocomplete="off" required><br> -->
-                    <select "editInput editSelect" id="select_editProductType" name="product" required>
+                    <select class = "editInput editSelect" id="select_editProductType" name="product" required>
                         <option value="{{result.product}}" disabled selected hidden>{{result.product}}</option>
                         <option id="edit_option_diesel">Diesel</option> 
                         <option id="edit_option_gasoline">Gasoline</option> 
@@ -69,7 +69,7 @@
                 </div>
                 <div id="btnEdit_box">
                     <button class="editBtns" id="btn_edit" type="submit" value = "{{result.productId}}" name="product_id_holder">Submit Changes</button>
-                    <input class="editBtns" id="btn_editCancel" type="button" value="Cancel">
+                    <a href = "/products" style = "text-decoration: none; color: white;"><button class="editBtns" id="btn_editCancel" type="button" value="Cancel">Cancel</button></a>
                 </div>
             </form>
         </div>
