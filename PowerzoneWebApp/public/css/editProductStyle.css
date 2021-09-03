@@ -97,11 +97,11 @@ and error messages */
 }
 
 /* sets font colors of dropdown options */
-#select_editProductType:invalid {
+.editSelect:invalid {
     color: var(--gray);
 }
 
-#select_editProductType option {
+.editSelect option {
     color: black;
 }
 

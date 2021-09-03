@@ -97,11 +97,11 @@ and error messages */
 }
 
 /* sets font colors of dropdown options */
-#select_addProductType:invalid {
+.addSelect:invalid {
     color: var(--gray);
 }
 
-#select_addProductType option {
+.addSelect option {
     color: black;
 }
 
