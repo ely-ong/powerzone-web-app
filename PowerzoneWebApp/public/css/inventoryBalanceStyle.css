@@ -1,0 +1,46 @@
+*{
+    --errorRed: #ab4642;
+    --logoBlue: #00407C;
+    --logoyellow: #FFF212;
+    --hoverBlue: #002f5a;
+    --paleBlue: #5390CF;
+    --lightBlue: #AEDFFC;
+    --darkBlue: #041f2e;
+    --gray: #808080;
+}
+
+body{
+    font-family: 'Lato', sans-serif;
+    margin: auto;
+}
+#ib_div{
+    display: flex;
+    justify-content: center;
+}
+
+#ib_table{
+    margin-top: 20px;
+    margin-right: 10px;
+    letter-spacing: 0.5px;
+}
+
+.ib_header{
+    background-color: var(--logoBlue);
+    color: white;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.ib_data{
+    background-color: white;
+    color: black;
+    font-weight: bold;
+    font-size: x-large;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    text-align: center;
+}
