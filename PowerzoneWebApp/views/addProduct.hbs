@@ -27,7 +27,16 @@
                 </div>
                 <div class="addDetail_box" id="addSupplier_box">
                     <h5 class="label" id="label_addSupplier">Supplier</h5>
-                    <input class="addInput" id="input_addSupplier" type="text" name="supplier" autocomplete="off" required><br>
+                    {{!-- <input class="addInput" id="input_addSupplier" type="text" name="supplier" autocomplete="off" required><br> --}}
+                    <select class="addInput addSelect" id="select_addSupplier" name="supplier" required>
+                        <option value="" disabled selected hidden>Select supplier</option>
+                        <option id="add_option_chevron">Chevron Philippines</option> 
+                        <option id="add_option_filoil">Filoil Logistics</option> 
+                        <option id="add_option_jetti">Jetti Petroleum Philippines</option> 
+                        <option id="add_option_kwik">Kwik Trip Fuels</option> 
+                        <option id="add_option_mdy">MDY Trading</option> 
+                        <option id="add_option_unioil">Unioil Petroleum Philippines</option> 
+                    </select>
                     <p class="error" id="errorAddSupplier">{{error}}</p>
                 </div>
                 <div class="addDetail_box" id="addQuantity_box">
@@ -38,7 +47,7 @@
                 <div class="addDetail_box" id="addProductType_box">
                     <h5 class="label" id="label_addProductType">Product</h5>
                     <!-- <input class="addInput" id="input_addProductType" type="text" name="product" autocomplete="off" required><br> -->
-                    <select class="addInput" id="select_addProductType" name="product" required>
+                    <select class="addInput addSelect" id="select_addProductType" name="product" required>
                         <option value="" disabled selected hidden>Select product</option>
                         <option id="add_option_diesel">Diesel</option> 
                         <option id="add_option_gasoline">Gasoline</option> 

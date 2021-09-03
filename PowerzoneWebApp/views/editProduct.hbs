@@ -27,7 +27,16 @@
                 </div>
                 <div class="editDetail_box" id="editSupplier_box">
                     <h5 class="label" id="label_editSupplier">Supplier</h5>
-                    <input class="editInput" id="input_editSupplier" type="text" name="supplier" value="{{result.supplier}}" autocomplete="off" required><br>
+                    {{!-- <input class="editInput" id="input_editSupplier" type="text" name="supplier" value="{{result.supplier}}" autocomplete="off" required><br> --}}
+                    <select class="editInput editSelect" id="select_editSupplier" name="supplier" required>
+                        <option value="" disabled selected hidden>{{result.supplier}}</option>
+                        <option id="edit_option_chevron">Chevron Philippines</option> 
+                        <option id="edit_option_filoil">Filoil Logistics</option> 
+                        <option id="edit_option_jetti">Jetti Petroleum Philippines</option> 
+                        <option id="edit_option_kwik">Kwik Trip Fuels</option> 
+                        <option id="edit_option_mdy">MDY Trading</option> 
+                        <option id="edit_option_unioil">Unioil Petroleum Philippines</option> 
+                    </select>
                     <p class="error" id="errorEditSupplier">{{error}}</p>
                 </div>
                 <div class="editDetail_box" id="editQuantity_box">
@@ -38,7 +47,7 @@
                 <div class="editDetail_box" id="editProductType_box">
                     <h5 class="label" id="label_editProductType">Product</h5>
                     <!-- <input class="editInput" id="input_editProductType" type="text" name="product" value="{{result.product}}" autocomplete="off" required><br> -->
-                    <select class="editInput" id="select_editProductType" name="product" required>
+                    <select "editInput editSelect" id="select_editProductType" name="product" required>
                         <option value="{{result.product}}" disabled selected hidden>{{result.product}}</option>
                         <option id="edit_option_diesel">Diesel</option> 
                         <option id="edit_option_gasoline">Gasoline</option> 
