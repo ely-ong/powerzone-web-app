@@ -29,8 +29,11 @@ const loginController = {
                 // });
                 req.session.username = result.username;
                 req.session.role = result.role;
+                req.session.userId = result.userId;
             
-                res.render('home');
+                var role = {role: req.session.role}
+
+                res.render('home', role);
             }
 
             // User not in database

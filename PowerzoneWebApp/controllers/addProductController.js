@@ -9,10 +9,10 @@ const uniqid = require('uniqid');
 const addProductController = {
 
     getAddProduct: function (req, res) {
-        if(req.session.role != "Administrator"){
+        if(req.session.role != "Administrator" || req.session.role != "Depot General Manager"){
             if(req.session.role == "Depot Supervisor" || 
                 req.session.role == "Depot Cashier" ||
-                req.session.role == "User") {
+                req.session.role == "Regular User") {
 
                     var details = {error: `User is unauthorized to access the page. Please log in with an authorized account.`}
                     req.session.destroy(function(err){

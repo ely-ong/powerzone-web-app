@@ -7,7 +7,7 @@ const productsController = {
     getProducts: function (req, res) {
 
     	if(req.session.role != "Administrator" && req.session.role != "Depot Supervisor" 
-    		&& req.session.role != "Depot Cashier" && req.session.role != "User") {
+    		&& req.session.role != "Depot Cashier" && req.session.role != "Regular User" && req.session.role != "Depot General Manager") {
 
 	        var details = {error: `User is not logged in. Please log in first.`}
 

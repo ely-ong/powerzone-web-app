@@ -18,7 +18,7 @@
     <div id="addAccnt_box">
         <h1 id="label_addAccnt">Add Account</h1>
         <div id="addAccntForm_box">
-            <form id="form_addAccnt" method="post" action="#">
+            <form id="form_addAccnt" method="post" action="/postAddAccount">
                 <div class="addAccntDetail_box" id="addAccntUsername_box">
                     <h5 class="label" id="label_addAccntUsername">Username</h5>
                     <input class="addAccntInput" id="input_addAccntUsername" type="text" name="username" autocomplete="off" required><br>
@@ -46,8 +46,8 @@
                     <p class="error" id="errorAddAccntConfirm">{{error}}</p>
                 </div>
                 <div id="btnAddAccnt_box">
-                    <input class="addBtns" id="btn_addAccnt" type="submit" value="Add Account">
-                    <input class="addBtns" id="btn_addAccntCancel" type="button" value="Cancel">
+                    <button class="addBtns" id="btn_addAccnt" type="submit" value="Add Account">Add Account</button>
+                    <a href = "/displayAccounts" style = "text-decoration: none; color: white;"><button class="addBtns" id="btn_addAccntCancel" type="button" value="Cancel">Cancel</button></a>
                 </div>
             </form>
         </div>
