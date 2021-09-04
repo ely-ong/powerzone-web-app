@@ -108,6 +108,25 @@ body{
     position: sticky;
     top: 0;
     background: var(--logoBlue);
+    padding: 0;
+}
+
+.filter_button{
+    display: block;
+    width: 100%;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    font-family: 'Lato', sans-serif;
+    height: 100%;
+    background: var(--logoBlue);
+    font-weight: bold;
+    color: white;
+    padding: 15px 35px 15px 35px;
+}
+
+.filter_button:hover{
+    background: var(--hoverBlue);
 }
 
 /* handles style of column heads to show clickability */
@@ -142,6 +161,9 @@ body{
 .table_head, td{
     font-size: 16px;
     text-align: left;
+}
+
+td{
     padding: 10px 35px 10px 50px;
 }
 

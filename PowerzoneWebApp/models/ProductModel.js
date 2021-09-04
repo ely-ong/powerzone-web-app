@@ -35,6 +35,10 @@ var ProductSchema = new mongoose.Schema({
     productId: {
         type: String,
         required: true
+    },
+    withdrawalAmount: {
+        type: mongoose.Schema.Types.Double,
+        required: true
     }
 });
 

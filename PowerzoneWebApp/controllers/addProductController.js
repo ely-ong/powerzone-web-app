@@ -38,9 +38,11 @@ const addProductController = {
     	var name = req.body.product;
     	var price = req.body.price_liter;
     	var location = req.body.stock_location;
+        var withdrawalAmount = parseFloat(qty) * parseFloat(price);
 
         var dateArray = date.split('-');
-        console.log(dateArray); 
+        console.log(dateArray);
+        console.log(withdrawalAmount); 
 
         var newDate = dateArray[1] + '/' + dateArray[2] + '/' + dateArray[0];
         console.log(newDate); 
@@ -52,7 +54,8 @@ const addProductController = {
             location: location,
             date: date,
             dateString: newDate,
-            productId: productId
+            productId: productId,
+            withdrawalAmount: withdrawalAmount
         }
 
         db.insertOne(Product, addedProduct, function(flag) {

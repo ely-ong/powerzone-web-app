@@ -55,6 +55,12 @@ const database = {
         });
     },
 
+    findManyAndSort: function(model, query, sort_criteria, callback) {
+        model.find(query).sort(sort_criteria).exec((error, result) => {
+            if(error) return callback(false);
+            return callback(result);
+        });
+    },
 
     updateOne: function(model, filter, update, callback) {
         model.updateOne(filter, update, function(error, result) {

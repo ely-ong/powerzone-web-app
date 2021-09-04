@@ -42,6 +42,13 @@ app.get('/logout', logoutController.getLogOut);
 app.get('/report', reportController.getReport);
 
 app.get('/products', productsController.getProducts);
+app.get('/sortByDate', productsController.sortByDate);
+app.get('/sortBySupplier', productsController.sortBySupplier);
+app.get('/sortByQuantity', productsController.sortByQuantity);
+app.get('/sortByProduct', productsController.sortByProduct);
+app.get('/sortByPrice', productsController.sortByPrice);
+app.get('/sortByAmount', productsController.sortByAmount);
+app.get('/sortByLocation', productsController.sortByLocation);
 
 app.get('/deliveries', deliveriesController.getDeliveries);
 
