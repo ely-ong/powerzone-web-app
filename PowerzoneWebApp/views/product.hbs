@@ -26,17 +26,17 @@
         <table id="products_table">
             <thead>
                 <tr id="table_header">
-                      <th class="table_head sortable">Date of Purchase (MM-DD-YYYY)</th>
+                      <th class="table_head sortable">Date of Purchase<br>(MM-DD-YYYY)</th>
                         <th class="table_head sortable">Supplier</th>
-                        <th class="table_head sortable">Quantity</th>
+                        <th class="table_head numbers sortable">Quantity</th>
                         <th class="table_head sortable">Product</th>
-                        <th class="table_head sortable">Buying Price/Liter</th>
-                        <th class="table_head sortable">Amount</th>
+                        <th class="table_head numbers sortable">Buying Price/Liter</th>
+                        <th class="table_head numbers sortable">Amount</th>
                         <th class="table_head sortable">Stock Location</th>
         
                         <!-- extra header tags to match length of succeeding rows -->
-                        <th  class="table_head">Edit</th>
-                        <th  class="table_head">Delete</th>
+                        <th class="table_head">Edit</th>
+                        <th class="table_head">Delete</th>
                 </tr>
             </thead>
             {{#each u.productsArray}}
