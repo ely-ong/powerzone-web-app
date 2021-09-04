@@ -185,8 +185,8 @@ body{
 /* handles style of table rows content*/
 .accntTable_head, td{
     font-size: 16px;
-    text-align: center;
-    padding: 10px 35px 10px 35px;
+    text-align: left;
+    padding: 10px 35px 10px 50px;
 }
 
 /* handles style of icons td */
