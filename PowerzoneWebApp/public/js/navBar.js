@@ -7,5 +7,9 @@ $(document).ready(function() {
         if(result == "Depot Supervisor" || result == "Depot Cashier" || result == "Regular User"){
            $('#dropdown_accounts').hide();
         }
+
+        if(result == "Administrator"){
+        	$('#dropdown_edit').hide();
+        }
     })  
 })

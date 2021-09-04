@@ -1,6 +1,6 @@
 const db = require('../models/db.js');
 
-const Product = require('../models/ProductModel.js');
+const User = require('../models/PersonnelModel.js');
 
 const navBarController = {
 
@@ -11,7 +11,20 @@ const navBarController = {
 
     getEditAccount: function(req, res){
 
-    	res.render('editAccount');
+    	var userId = req.session.userId;
+
+    	db.findOne(User, {userId: userId}, '', function (result) {
+            if(result) {
+
+                console.log("username" + result.username);
+                console.log("role" + result.role);
+                res.render('editAccount', {result: {
+                    username: result.username,
+                    role: result.role,
+                    userId: result.userId
+                }});
+            }
+        });
     }
 }
 

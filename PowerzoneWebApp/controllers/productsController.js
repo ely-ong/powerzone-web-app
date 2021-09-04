@@ -33,28 +33,36 @@ const productsController = {
 		    		productsArray[i].withdrawal = withdrawalAmount.toFixed(2);
 
 		    		if(productsArray[i].product == 'Diesel'){
-                        dieselTotal += parseFloat(result[i].quantity);
-		    			productsArray[i].balance = dieselTotal.toFixed(2);
+		    			dieselTotal += parseFloat(result[i].quantity);
 		    		}
 		    		else if(productsArray[i].product == 'Gasoline'){
-                        gasolineTotal += parseFloat(result[i].quantity);
-		    			productsArray[i].balance = gasolineTotal.toFixed(2);
+		    			gasolineTotal += parseFloat(result[i].quantity);
 		    		}
 		    		else if(productsArray[i].product == 'Premium Gasoline 95'){
-		    			premium95Total += parseFloat(result[i].quantity);
-                        productsArray[i].balance = premium95Total.toFixed(2);
+                        premium95Total += parseFloat(result[i].quantity);
 		    		}
 		    		else if(productsArray[i].product == 'Premium Gasoline 97'){
-                        premium97Total += parseFloat(result[i].quantity);   
-		    			productsArray[i].balance = premium97Total.toFixed(2);
+		    			premium97Total += parseFloat(result[i].quantity);
 		    		}
 		    		else if(productsArray[i].product == 'Kerosene'){
-                        keroseneTotal += parseFloat(result[i].quantity);
-		    			productsArray[i].balance = keroseneTotal.toFixed(2);
+		    			keroseneTotal += parseFloat(result[i].quantity);
 		    		}
 		    	}
 
-		        res.render('product', {productsArray});
+		    	var totals = {
+		    		dieselTotal: dieselTotal.toFixed(2),
+		        	gasolineTotal: gasolineTotal.toFixed(2),
+		        	premium95Total: premium95Total.toFixed(2),
+		        	premium97Total: premium97Total.toFixed(2),
+		        	keroseneTotal: keroseneTotal.toFixed(2)
+		    	}
+
+		    	console.log(totals)
+
+		        res.render('product', {u: {
+		        	productsArray: productsArray,
+		        	totals: totals
+		        }});
 		    }
 		});
     },
