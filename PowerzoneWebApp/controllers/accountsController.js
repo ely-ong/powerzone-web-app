@@ -32,6 +32,20 @@ const navBarController = {
 		    }
 		});
     },
+
+    getSearchAccounts: function(req,res){
+        var searchText = req.query.search_accnt;
+
+        console.log(searchText);
+
+        db.findMany(User, {username: {$regex: ".*" + searchText + ".*", $options: 'i'}}, '', function(result){
+              if(result) {
+                var personsArray = result;
+
+                res.render('accounts', {personsArray});
+            }  
+        })
+    },
 }
 
 

@@ -61,6 +61,7 @@ app.get('/getAccounts', navBarController.getAccounts);
 app.get('/getEditAccount', navBarController.getEditAccount);
 
 app.get('/displayAccounts', accountsController.displayAccounts);
+app.get('/searchAccounts', accountsController.getSearchAccounts);
 
 app.get('/getAddAccount', addAccountController.getAddAccount);
 app.post('/postAddAccount', addAccountController.postAddAccount);
