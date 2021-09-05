@@ -11,6 +11,7 @@ function displaySorted(res, sortCriteria, dateSort, supplierSort, quantitySort, 
 	var premium95Total = 0;
 	var premium97Total = 0;
 	var keroseneTotal = 0;
+    var one = 1.0;
 
 	db.findManyAndSort(Product, {}, sortCriteria, function (result) {
 	    if(result) {
@@ -18,7 +19,12 @@ function displaySorted(res, sortCriteria, dateSort, supplierSort, quantitySort, 
 
 	    	//Perform necessary data manipulation
 	    	for(var i = 0; i < productsArray.length; i++){
-	    		var withdrawalAmount = productsArray[i].quantity * productsArray[i].price;
+	    		var withdrawalAmount = productsArray[i].quantity * productsArray[i].price * one;
+                var tempQty = productsArray[i].quantity * one;
+                var tempPrice = productsArray[i].price * one;
+
+                productsArray[i].quantity = tempQty.toFixed(2);
+                productsArray[i].price = tempPrice.toFixed(2);
 	    		productsArray[i].withdrawal = withdrawalAmount.toFixed(2);
 
 	    		if(productsArray[i].product == 'Diesel'){
@@ -36,6 +42,8 @@ function displaySorted(res, sortCriteria, dateSort, supplierSort, quantitySort, 
 	    		else if(productsArray[i].product == 'Kerosene'){
 	    			keroseneTotal += parseFloat(result[i].quantity);
 	    		}
+
+               
 	    	}
 
 	    	var totals = {
@@ -86,6 +94,7 @@ const productsController = {
     	var premium95Total = 0;
     	var premium97Total = 0;
     	var keroseneTotal = 0;
+        var one = 1.0;
 
     	db.findMany(Product, {}, '', function (result) {
 		    if(result) {
@@ -93,7 +102,13 @@ const productsController = {
 
 		    	//Perform necessary data manipulation
 		    	for(var i = 0; i < productsArray.length; i++){
-		    		var withdrawalAmount = productsArray[i].quantity * productsArray[i].price;
+                    
+		    		var withdrawalAmount = productsArray[i].quantity * productsArray[i].price * one;
+                    var tempQty = productsArray[i].quantity * one;
+                    var tempPrice = productsArray[i].price * one;
+                    
+                    productsArray[i].quantity = tempQty.toFixed(2);
+                    productsArray[i].price = tempPrice.toFixed(2);
 		    		productsArray[i].withdrawal = withdrawalAmount.toFixed(2);
 
 		    		if(productsArray[i].product == 'Diesel'){

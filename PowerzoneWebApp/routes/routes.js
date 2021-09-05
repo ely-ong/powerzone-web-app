@@ -74,7 +74,7 @@ app.get('/getAddAccount', addAccountController.getAddAccount);
 app.post('/postAddAccount', addAccountController.postAddAccount);
 
 app.get('/loadEditAccount', editAccountController.getEditAccount);
-app.post('/submitEditAccount', editAccountController.submitEditAccount);
+app.get('/submitEditAccount', editAccountController.submitEditAccount);
 app.get('/deleteAccount', editAccountController.deleteAccount);
 
 // exports the object `app` (defined above) when another script exports from this file

@@ -145,7 +145,7 @@ input:focus{
     background-color: var(--lightBlue);
 }
 
-#btn_editAccnt:hover{
+.on_hover:hover{
     opacity: 0.8;
 }
 

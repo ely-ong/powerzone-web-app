@@ -29,18 +29,47 @@ const editAccountController = {
 
     submitEditAccount: function(req, res){
 
-        var uniqueId = req.body.submit_button;
-        var username = req.body.username;
-        var role = req.body.role;
-        var password = req.body.password;
+        var uniqueId = req.query.submit_button;
+        var username = req.query.username;
+        var role = req.query.role;
+        var password = req.query.password;
 
-        db.updateOne(User, {userId: uniqueId}, {$set: {
-            username: username,
-            pass: password,
-            role: role
-        }}, function(result){
-            res.redirect('/displayAccounts');
-        });
+        if(password.length == 0){
+            db.findOne(User, {userId: uniqueId}, '', function (result) {
+                if(result) {
+                    password = result.pass;
+
+                    db.updateOne(User, {userId: uniqueId}, {$set: {
+                        username: username,
+                        pass: password,
+                        role: role
+                    }}, function(result2){
+                        if(req.session.role == "Administrator" || req.session.role == "Depot General Manager"){
+                            res.redirect('/displayAccounts');
+                        }
+                        else{
+                            res.redirect('/home');
+                        }
+                    });
+                }
+            });
+        }
+        else{
+            db.updateOne(User, {userId: uniqueId}, {$set: {
+                username: username,
+                pass: password,
+                role: role
+            }}, function(result2){
+                if(req.session.role == "Administrator" || req.session.role == "Depot General Manager"){
+                    res.redirect('/displayAccounts');
+                }
+                else{
+                    res.redirect('/home');
+                }
+            });
+        }
+
+        
     },
 
     deleteAccount: function(req, res){

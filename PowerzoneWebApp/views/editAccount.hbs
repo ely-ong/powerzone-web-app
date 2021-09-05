@@ -19,7 +19,7 @@
     <div id="editAccnt_box">
         <h1 id="label_editAccnt">Edit Account</h1>
         <div id="editAccntForm_box">
-            <form id="form_editAccnt" method="post" action="/submitEditAccount">
+            <form id="form_editAccnt" method="get" action="/submitEditAccount">
                 <div class="editAccntDetail_box" id="editAccntUsername_box">
                     <h5 class="label" id="label_editAccntUsername">Username</h5>
                     <input class="editAccntInput" id="input_editAccntUsername" type="text" name="username" value="{{{result.username}}}" autocomplete="off" required><br>
@@ -27,8 +27,8 @@
                 </div>
                 <div class="editAccntDetail_box" id="editAccntRole_box">
                     <h5 class="label" id="label_editAccntRole">Role</h5>
-                    <select class="editAccntInput" id="select_editAccntRole" name="role" required>
-                        <option value="{{{result.role}}}" disabled selected hidden>{{{result.role}}}</option>
+                    <select class="editAccntInput" id="select_editAccntRole" name="role" value="{{{result.role}}}" required>
+                        <option name = "role" value="{{{result.role}}}" selected hidden>{{{result.role}}}</option>
                         <option id="editAccnt_option_genManager">Depot General Manager</option> 
                         <option id="editAccnt_option_supervisor">Depot Supervisor</option> 
                         <option id="editAccnt_option_cashier">Depot Cashier</option> 
@@ -38,16 +38,16 @@
                 </div>
                 <div class="editAccntDetail_box" id="editAccntPsword_box">
                     <h5 class="label" id="label_editAccntPsword">New Password</h5>
-                    <input class="editAccntInput" id="input_editAccntPsword" type="password" name="password" autocomplete="off" required><br>
+                    <input class="editAccntInput" id="input_editAccntPsword" type="password" name="password" autocomplete="off"><br>
                     <p class="error" id="errorAddAccntPsword">{{error}}</p>
                 </div>
                 <div class="editAccntDetail_box" id="editAccntConfirm_box">
                     <h5 class="label" id="label_editAccntConfirm">Confirm Password</h5>
-                    <input class="editAccntInput" id="input_editAccntConfirm" type="password" name="confirm_password" value="" autocomplete="off" required><br>
+                    <input class="editAccntInput" id="input_editAccntConfirm" type="password" name="confirm_password" value="" autocomplete="off"><br>
                     <p class="error" id="errorAddAccntConfirm">{{error}}</p>
                 </div>
                 <div id="btnEditAccnt_box">
-                    <button class="editBtns" name = "submit_button" id="btn_editAccnt" type="submit" value="{{result.userId}}">Submit Changes</button>
+                    <button class="editBtns on_hover" name = "submit_button" id="btn_editAccnt" type="submit" value="{{result.userId}}">Submit Changes</button>
                     <a href = "/displayAccounts" style = "text-decoration: none; color: white;"><button class="editBtns" id="btn_editAccntCancel" type="button" value="Cancel">Cancel</button></a>
                 </div>
             </form>
