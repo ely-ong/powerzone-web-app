@@ -29,37 +29,37 @@
                 <tr id="table_header">
                        <th class="table_head sortable">
                             <form method="get" action="/sortByDate">
-                                <button class="filter_button" type="submit" value="{{u.sortCriteria.dateSort}}" name="filter_date">Date of Purchase<br>(MM-DD-YYYY)</button>
+                                <button class="filter_button" type="submit" value="{{u.sortCriteria.dateSort}}" name="filter_date" id="filter_date">Date of Purchase<br>(MM-DD-YYYY)</button>
                             </form>
                         </th>
                         <th class="table_head sortable">
                             <form method="get" action="/sortBySupplier">
-                                <button class="filter_button" type="submit" value="{{u.sortCriteria.supplierSort}}" name="filter_supplier">Supplier</button>
+                                <button class="filter_button" type="submit" value="{{u.sortCriteria.supplierSort}}" name="filter_supplier" id="filter_supplier">Supplier</button>
                             </form>
                         </th>
                         <th class="table_head numbers sortable">
                             <form method="get" action="/sortByQuantity">
-                                <button class="filter_button" type="submit" value="{{u.sortCriteria.quantitySort}}" name="filter_quantity">Quantity</button>
+                                <button class="filter_button" type="submit" value="{{u.sortCriteria.quantitySort}}" name="filter_quantity" id="filter_quantity">Quantity</button>
                             </form>
                         </th>
                         <th class="table_head sortable">
                             <form method="get" action="/sortByProduct">
-                                <button class="filter_button" type="submit" value="{{u.sortCriteria.productSort}}" name="filter_product">Product</button>
+                                <button class="filter_button" type="submit" value="{{u.sortCriteria.productSort}}" name="filter_product" id="filter_product">Product</button>
                             </form>
                         </th>
                         <th class="table_head numbers sortable">
                             <form method="get" action="/sortByPrice">
-                                <button class="filter_button" type="submit" value="{{u.sortCriteria.buyPriceSort}}" name="filter_price">Buying Price/Liter</button>
+                                <button class="filter_button" type="submit" value="{{u.sortCriteria.buyPriceSort}}" name="filter_price" id="filter_price">Buying Price/Liter</button>
                             </form>
                         </th>
                         <th class="table_head numbers sortable">
                             <form method="get" action="/sortByAmount">
-                                <button class="filter_button" type="submit" value="{{u.sortCriteria.amountSort}}" name="filter_amount">Amount</button>
+                                <button class="filter_button" type="submit" value="{{u.sortCriteria.amountSort}}" name="filter_amount" id="filter_amount">Amount</button>
                             </form>
                         </th>
                         <th class="table_head sortable">
                             <form method="get" action="/sortByLocation">
-                                <button class="filter_button" type="submit" value="{{u.sortCriteria.locationSort}}" name="filter_location">Stock Location</button>
+                                <button class="filter_button" type="submit" value="{{u.sortCriteria.locationSort}}" name="filter_location" id="filter_location">Stock Location</button>
                             </form>
                         </th>
         
@@ -73,9 +73,9 @@
                 <tr class="table_rows">
                     <td class="product_item">{{this.dateString}}</td>
                     <td class="product_item">{{this.supplier}}</td>
-                    <td class="product_item numbers">{{this.quantity}} L</td>
+                    <td class="product_item numbers">{{this.formattedQuantity}} L</td>
                     <td class="product_item">{{this.product}}</td>
-                    <td class="product_item numbers">P{{this.price}}</td>
+                    <td class="product_item numbers">P{{this.formattedPrice}}</td>
                     <td class="product_item numbers">P{{this.withdrawal}}</td>
                     {{!-- <td class="product_item">{{this.balance}} L</td> --}}
                     <td class="product_item">{{this.location}}</td>

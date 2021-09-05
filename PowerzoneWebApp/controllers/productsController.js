@@ -20,12 +20,10 @@ function displaySorted(res, sortCriteria, dateSort, supplierSort, quantitySort, 
 	    	//Perform necessary data manipulation
 	    	for(var i = 0; i < productsArray.length; i++){
 	    		var withdrawalAmount = productsArray[i].quantity * productsArray[i].price * one;
-                var tempQty = productsArray[i].quantity * one;
-                var tempPrice = productsArray[i].price * one;
-
-                productsArray[i].quantity = tempQty.toFixed(2);
-                productsArray[i].price = tempPrice.toFixed(2);
-	    		productsArray[i].withdrawal = withdrawalAmount.toFixed(2);
+                    
+                productsArray[i].formattedQuantity = productsArray[i].quantity.toFixed(2);
+                productsArray[i].formattedPrice = productsArray[i].price.toFixed(2);
+                productsArray[i].withdrawal = withdrawalAmount.toFixed(2);
 
 	    		if(productsArray[i].product == 'Diesel'){
 	    			dieselTotal += parseFloat(result[i].quantity);
@@ -104,11 +102,9 @@ const productsController = {
 		    	for(var i = 0; i < productsArray.length; i++){
                     
 		    		var withdrawalAmount = productsArray[i].quantity * productsArray[i].price * one;
-                    var tempQty = productsArray[i].quantity * one;
-                    var tempPrice = productsArray[i].price * one;
                     
-                    productsArray[i].quantity = tempQty.toFixed(2);
-                    productsArray[i].price = tempPrice.toFixed(2);
+                    productsArray[i].formattedQuantity = productsArray[i].quantity.toFixed(2);
+                    productsArray[i].formattedPrice = productsArray[i].price.toFixed(2);
 		    		productsArray[i].withdrawal = withdrawalAmount.toFixed(2);
 
 		    		if(productsArray[i].product == 'Diesel'){
@@ -161,13 +157,13 @@ const productsController = {
     	var sortCriteria = req.query.filter_date;
     	var sortStatus;
     	
-    	if(sortCriteria == "ascending"){
+    	if(sortCriteria == "ascending" || sortCriteria == "ascending_"){
     		sortCriteria = {date: 'asc'};
     		sortStatus = "descending"
     	}
     	else if(sortCriteria == "descending"){
     		sortCriteria = {date: 'desc'};
-    		sortStatus = "ascending"
+    		sortStatus = "ascending_"
     	}
 
 		displaySorted(res, sortCriteria, sortStatus, "ascending", "ascending", "ascending", "ascending", "ascending", "ascending");
@@ -177,13 +173,13 @@ const productsController = {
     	var sortCriteria = req.query.filter_supplier;
     	var sortStatus;
     	
-    	if(sortCriteria == "ascending"){
+    	if(sortCriteria == "ascending" || sortCriteria == "ascending_"){
     		sortCriteria = {supplier: 'asc'};
     		sortStatus = "descending"
     	}
     	else if(sortCriteria == "descending"){
     		sortCriteria = {supplier: 'desc'};
-    		sortStatus = "ascending"
+    		sortStatus = "ascending_"
     	}
 
     	displaySorted(res, sortCriteria, "ascending", sortStatus, "ascending", "ascending", "ascending", "ascending", "ascending");
@@ -193,13 +189,13 @@ const productsController = {
     	var sortCriteria = req.query.filter_quantity;
     	var sortStatus;
     	
-    	if(sortCriteria == "ascending"){
+    	if(sortCriteria == "ascending" || sortCriteria == "ascending_"){
     		sortCriteria = {quantity: 'asc'};
     		sortStatus = "descending"
     	}
     	else if(sortCriteria == "descending"){
     		sortCriteria = {quantity: 'desc'};
-    		sortStatus = "ascending"
+    		sortStatus = "ascending_"
     	}
 
     	displaySorted(res, sortCriteria, "ascending", "ascending", sortStatus, "ascending", "ascending", "ascending", "ascending");
@@ -209,13 +205,13 @@ const productsController = {
     	var sortCriteria = req.query.filter_product;
     	var sortStatus;
     	
-    	if(sortCriteria == "ascending"){
+    	if(sortCriteria == "ascending" || sortCriteria == "ascending_"){
     		sortCriteria = {product: 'asc'};
     		sortStatus = "descending"
     	}
     	else if(sortCriteria == "descending"){
     		sortCriteria = {product: 'desc'};
-    		sortStatus = "ascending"
+    		sortStatus = "ascending_"
     	}
 
     	displaySorted(res, sortCriteria, "ascending", "ascending", "ascending", sortStatus, "ascending", "ascending", "ascending");
@@ -225,13 +221,13 @@ const productsController = {
     	var sortCriteria = req.query.filter_price;
     	var sortStatus;
     	
-    	if(sortCriteria == "ascending"){
+    	if(sortCriteria == "ascending" || sortCriteria == "ascending_"){
     		sortCriteria = {price: 'asc'};
     		sortStatus = "descending"
     	}
     	else if(sortCriteria == "descending"){
     		sortCriteria = {price: 'desc'};
-    		sortStatus = "ascending"
+    		sortStatus = "ascending_"
     	}
 
     	displaySorted(res, sortCriteria, "ascending", "ascending", "ascending", "ascending", sortStatus, "ascending", "ascending");
@@ -241,13 +237,13 @@ const productsController = {
     	var sortCriteria = req.query.filter_amount;
     	var sortStatus;
     	
-    	if(sortCriteria == "ascending"){
+    	if(sortCriteria == "ascending" || sortCriteria == "ascending_"){
     		sortCriteria = {withdrawalAmount: 'asc'};
     		sortStatus = "descending"
     	}
     	else if(sortCriteria == "descending"){
     		sortCriteria = {withdrawalAmount: 'desc'};
-    		sortStatus = "ascending"
+    		sortStatus = "ascending_"
     	}
 
     	displaySorted(res, sortCriteria, "ascending", "ascending", "ascending", "ascending", "ascending", sortStatus, "ascending");
@@ -257,13 +253,13 @@ const productsController = {
     	var sortCriteria = req.query.filter_location;
     	var sortStatus;
     	
-    	if(sortCriteria == "ascending"){
+    	if(sortCriteria == "ascending" || sortCriteria == "ascending_"){
     		sortCriteria = {location: 'asc'};
     		sortStatus = "descending"
     	}
     	else if(sortCriteria == "descending"){
     		sortCriteria = {location: 'desc'};
-    		sortStatus = "ascending"
+    		sortStatus = "ascending_"
     	}
 
     	displaySorted(res, sortCriteria, "ascending", "ascending", "ascending", "ascending", "ascending", "ascending", sortStatus);
