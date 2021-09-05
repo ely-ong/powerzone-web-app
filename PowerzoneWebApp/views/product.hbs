@@ -39,7 +39,7 @@
                         </th>
                         <th class="table_head numbers sortable">
                             <form method="get" action="/sortByQuantity">
-                                <button class="filter_button" type="submit" value="{{u.sortCriteria.quantitySort}}" name="filter_quantity" id="filter_quantity">Quantity</button>
+                                <button class="filter_button numbers" type="submit" value="{{u.sortCriteria.quantitySort}}" name="filter_quantity" id="filter_quantity">Quantity</button>
                             </form>
                         </th>
                         <th class="table_head sortable">
@@ -49,12 +49,12 @@
                         </th>
                         <th class="table_head numbers sortable">
                             <form method="get" action="/sortByPrice">
-                                <button class="filter_button" type="submit" value="{{u.sortCriteria.buyPriceSort}}" name="filter_price" id="filter_price">Buying Price/Liter</button>
+                                <button class="filter_button numbers" type="submit" value="{{u.sortCriteria.buyPriceSort}}" name="filter_price" id="filter_price">Buying Price/Liter</button>
                             </form>
                         </th>
                         <th class="table_head numbers sortable">
                             <form method="get" action="/sortByAmount">
-                                <button class="filter_button" type="submit" value="{{u.sortCriteria.amountSort}}" name="filter_amount" id="filter_amount">Amount</button>
+                                <button class="filter_button numbers" type="submit" value="{{u.sortCriteria.amountSort}}" name="filter_amount" id="filter_amount">Amount</button>
                             </form>
                         </th>
                         <th class="table_head sortable">
@@ -64,8 +64,8 @@
                         </th>
         
                         <!-- extra header tags to match length of succeeding rows -->
-                        <th class="table_head" style="text-align: center">Edit</th>
-                        <th class="table_head" style="text-align: center">Delete</th>
+                        <th class="table_head non_sortable">Edit</th>
+                        <th class="table_head non_sortable">Delete</th>
                 </tr>
             </thead>
             {{#each u.productsArray}}
