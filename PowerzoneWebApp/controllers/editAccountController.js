@@ -42,10 +42,15 @@ const editAccountController = {
         var username = req.query.username;
         var role = req.query.role;
         var password = req.query.password;
+        var changedDepotManager = false;
 
         console.log('TEST' + req.query.role);
         if(req.query.role == undefined){
             role = req.session.role;
+        }else{
+            if(req.session.role == "Depot General Manager" && (req.session.role != req.query.role)){
+                changedDepotManager = true;
+            }
         }
 
         if(password.length == 0){
@@ -58,8 +63,16 @@ const editAccountController = {
                         pass: password,
                         role: role
                     }}, function(result2){
-                        if(req.session.role == "Administrator" || req.session.role == "Depot General Manager"){
+                        if(req.session.role == "Administrator"){
                             res.redirect('/displayAccounts');
+                        }
+                        else if(req.session.role == "Depot General Manager"){
+                            if(changedDepotManager){
+                                res.redirect('/logout');
+                            }
+                            else{
+                                res.redirect('/displayAccounts');
+                            }
                         }
                         else{
                             res.redirect('/home');
@@ -74,8 +87,16 @@ const editAccountController = {
                 pass: password,
                 role: role
             }}, function(result2){
-                if(req.session.role == "Administrator" || req.session.role == "Depot General Manager"){
+                if(req.session.role == "Administrator"){
                     res.redirect('/displayAccounts');
+                }
+                else if(req.session.role == "Depot General Manager"){
+                    if(changedDepotManager){
+                        res.redirect('/logout');
+                    }
+                    else{
+                        res.redirect('/displayAccounts');
+                    }
                 }
                 else{
                     res.redirect('/home');
