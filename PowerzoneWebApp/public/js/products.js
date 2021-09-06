@@ -27,7 +27,7 @@ $(document).ready(function() {
 
         $.get('/getAccountRole', function(result) {
             console.log(result);
-            if(result == "Administrator") {
+            if(result == "Administrator" || result == "Depot General Manager") {
                 window.open("/addProduct", "_self");
             }
             else if (result == null){

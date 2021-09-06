@@ -12,6 +12,13 @@ const navBarController = {
     getEditAccount: function(req, res){
 
     	var userId = req.session.userId;
+        var isAllowed = false;
+
+        if(req.session.role == "Administrator" || req.session.role == "Depot General Manager"){
+            isAllowed = true;
+        }
+
+        console.log("isallowed = " + isAllowed);
 
     	db.findOne(User, {userId: userId}, '', function (result) {
             if(result) {
@@ -21,7 +28,8 @@ const navBarController = {
                 res.render('editAccount', {result: {
                     username: result.username,
                     role: result.role,
-                    userId: result.userId
+                    userId: result.userId,
+                    isAllowed: isAllowed
                 }});
             }
         });

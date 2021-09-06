@@ -25,6 +25,7 @@
                     <input class="editAccntInput" id="input_editAccntUsername" type="text" name="username" value="{{{result.username}}}" autocomplete="off" required><br>
                     <p class="error" id="errorAddAccntUsername">{{error}}</p>
                 </div>
+                {{#if result.isAllowed}}
                 <div class="editAccntDetail_box" id="editAccntRole_box">
                     <h5 class="label" id="label_editAccntRole">Role</h5>
                     <select class="editAccntInput" id="select_editAccntRole" name="role" value="{{{result.role}}}" required>
@@ -36,6 +37,7 @@
                     </select>
                     <p class="error" id="errorAddAccntRole">{{error}}</p>
                 </div>
+                {{/if}}
                 <div class="editAccntDetail_box" id="editAccntPsword_box">
                     <h5 class="label" id="label_editAccntPsword">New Password</h5>
                     <input class="editAccntInput" id="input_editAccntPsword" type="password" name="password" autocomplete="off"><br>
@@ -48,7 +50,7 @@
                 </div>
                 <div id="btnEditAccnt_box">
                     <button class="editBtns on_hover" name = "submit_button" id="btn_editAccnt" type="submit" value="{{result.userId}}">Submit Changes</button>
-                    <a href = "/displayAccounts" style = "text-decoration: none; color: white;"><button class="editBtns" id="btn_editAccntCancel" type="button" value="Cancel">Cancel</button></a>
+                    <a href = "/editAccountCancel" style = "text-decoration: none; color: white;"><button class="editBtns" id="btn_editAccntCancel" type="button" value="Cancel">Cancel</button></a>
                 </div>
             </form>
         </div>

@@ -7,17 +7,26 @@ const editAccountController = {
     getEditAccount: function(req, res){
 
         var uniqueId = req.query.edit_button;
+        var isAllowed = false;
         console.log("UNIQUEID" + uniqueId);
+
+        if(req.session.role == "Administrator" || req.session.role == "Depot General Manager"){
+            isAllowed = true;
+        }
+
+        console.log("isallowed = " + isAllowed);
 
         db.findOne(User, {userId: uniqueId}, '', function (result) {
             if(result) {
 
                 console.log("username" + result.username);
                 console.log("role" + result.role);
+                
                 res.render('editAccount', {result: {
                     username: result.username,
                     role: result.role,
-                    userId: result.userId
+                    userId: result.userId,
+                    isAllowed: isAllowed
                 }});
             }
             // User not in database
@@ -33,6 +42,11 @@ const editAccountController = {
         var username = req.query.username;
         var role = req.query.role;
         var password = req.query.password;
+
+        console.log('TEST' + req.query.role);
+        if(req.query.role == undefined){
+            role = req.session.role;
+        }
 
         if(password.length == 0){
             db.findOne(User, {userId: uniqueId}, '', function (result) {
@@ -81,6 +95,16 @@ const editAccountController = {
         if(req.session.userId == uniqueId){
             
             res.send(true);
+        }
+    },
+
+    cancel: function(req, res){
+
+        if(req.session.role == "Administrator" || req.session.role == "Depot General Manager"){
+            res.redirect('/displayAccounts');
+        }
+        else{
+            res.redirect('/home');
         }
     }
 }

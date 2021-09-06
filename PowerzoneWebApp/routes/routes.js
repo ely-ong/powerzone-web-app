@@ -77,5 +77,7 @@ app.get('/loadEditAccount', editAccountController.getEditAccount);
 app.get('/submitEditAccount', editAccountController.submitEditAccount);
 app.get('/deleteAccount', editAccountController.deleteAccount);
 
+app.get('/editAccountCancel', editAccountController.cancel);
+
 // exports the object `app` (defined above) when another script exports from this file
 module.exports = app;
