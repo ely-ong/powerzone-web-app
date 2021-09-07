@@ -39,7 +39,7 @@
                         </th>
                         <th class="table_head numbers sortable">
                             <form method="get" action="/sortByQuantity">
-                                <button class="filter_button numbers" type="submit" value="{{u.sortCriteria.quantitySort}}" name="filter_quantity" id="filter_quantity">Quantity</button>
+                                <button class="filter_button numbers wide_column" type="submit" value="{{u.sortCriteria.quantitySort}}" name="filter_quantity" id="filter_quantity">Quantity</button>
                             </form>
                         </th>
                         <th class="table_head sortable">
@@ -54,7 +54,7 @@
                         </th>
                         <th class="table_head numbers sortable">
                             <form method="get" action="/sortByAmount">
-                                <button class="filter_button numbers" type="submit" value="{{u.sortCriteria.amountSort}}" name="filter_amount" id="filter_amount">Amount</button>
+                                <button class="filter_button numbers wide_column" type="submit" value="{{u.sortCriteria.amountSort}}" name="filter_amount" id="filter_amount">Amount</button>
                             </form>
                         </th>
                         <th class="table_head sortable">
@@ -63,7 +63,6 @@
                             </form>
                         </th>
         
-                        <!-- extra header tags to match length of succeeding rows -->
                         <th class="table_head non_sortable">Edit</th>
                         <th class="table_head non_sortable">Delete</th>
                 </tr>
@@ -73,11 +72,10 @@
                 <tr class="table_rows">
                     <td class="product_item">{{this.dateString}}</td>
                     <td class="product_item">{{this.supplier}}</td>
-                    <td class="product_item numbers">{{this.formattedQuantity}} L</td>
-                    <td class="product_item">{{this.product}}</td>
-                    <td class="product_item numbers">P{{this.formattedPrice}}</td>
-                    <td class="product_item numbers">P{{this.withdrawal}}</td>
-                    {{!-- <td class="product_item">{{this.balance}} L</td> --}}
+                    <td class="product_item numbers wide_column">{{this.formattedQuantity}} L</td>
+                    <td class="product_item product_fixed_width">{{this.product}}</td>
+                    <td class="product_item numbers narrow_column">P{{this.formattedPrice}}</td>
+                    <td class="product_item numbers wide_column">P{{this.withdrawal}}</td>
                     <td class="product_item">{{this.location}}</td>
                     <td>
                         {{!-- icon for edit product link --}}
