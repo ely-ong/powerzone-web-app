@@ -167,6 +167,23 @@ body{
     padding: 10px 40px 10px 50px;
 }
 
+/* sets fixed minimum width and no wrapping for quantity and amount columns */
+.wide_column{
+    min-width: 100px;
+    white-space: nowrap;
+}
+
+/* sets fixed width and no wrapping for price column */
+.narrow_column{
+    width: 60px;
+    white-space: nowrap;
+}
+
+/* sets fixed width for product column */
+.product_fixed_width{
+    width: 150px;
+}
+
 /* aligns numerical values to the right*/
 .numbers{
     text-align: right;
