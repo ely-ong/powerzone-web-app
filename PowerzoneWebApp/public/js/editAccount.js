@@ -213,6 +213,28 @@ $(document).ready(function() {
                 invalid_username();
             }
         }
+        
+        if(confirm_length == 0 && password_length == 0){
+            $.get('/checkUsername', {username: username}, function (result) {
+                $.get('/getAccountUsername', function(session_username) {
+                    if(result.username == username){
+                        if(result.username != session_username){
+                            disable_submit();
+                        }
+                        else{
+                            enable_submit();
+                            valid_password();
+                            valid_confirm();
+                        }
+                    }
+                    else{
+                        enable_submit();
+                        valid_password();
+                        valid_confirm();
+                    }
+                })
+            });
+        }
     });
 
     $('#input_editAccntConfirm').keyup(function () {
@@ -262,6 +284,28 @@ $(document).ready(function() {
                 disable_submit();
                 invalid_password();
             }
+        }
+
+        if(confirm_length == 0 && password_length == 0){
+            $.get('/checkUsername', {username: username}, function (result) {
+                $.get('/getAccountUsername', function(session_username) {
+                    if(result.username == username){
+                        if(result.username != session_username){
+                            disable_submit();
+                        }
+                        else{
+                            enable_submit();
+                            valid_password();
+                            valid_confirm();
+                        }
+                    }
+                    else{
+                        enable_submit();
+                        valid_password();
+                        valid_confirm();
+                    }
+                })
+            });
         }
     });
 
