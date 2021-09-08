@@ -11,6 +11,17 @@ $(document).ready(function() {
         $('#errorAddAccntUsername').css('color', 'var(--errorRed)');
     }
 
+    /** adjusts style to highlight username field and display error message */
+    function existing_username(){
+
+        //highlights username field line with red
+        $('#input_addAccntUsername').css('border-color', 'var(--errorRed)');
+
+        //displays error message
+        $('#errorAddAccntUsername').text('Username already taken');
+        $('#errorAddAccntUsername').css('color', 'var(--errorRed)');
+    }
+
     /** adjusts style to remove highlight of username field and remove error message */
     function valid_username(){
 
@@ -79,7 +90,7 @@ $(document).ready(function() {
     	var password = $('#input_addAccntPsword').val();
         var confirm = $('#input_addAccntConfirm').val();
 
-        if(password.localeCompare(confirm) == 0){
+        if(password == confirm){
         	return true;
         }
         else{
@@ -99,45 +110,50 @@ $(document).ready(function() {
         $('#btn_addAccnt').addClass('on_hover');
     }
 
-
     $('#input_addAccntUsername').keyup(function () {
         var username_length = $('#input_addAccntUsername').val().length;
+        var username = $('#input_addAccntUsername').val();
         var password_length = $('#input_addAccntPsword').val().length;
         var confirm_length = $('#input_addAccntConfirm').val().length;
         
+        //  disables button if username length is less than 6
         if(username_length < 6){
             invalid_username();
             disable_submit();
         }
+        //  performs additional checks if requried username length is satisfied
         else{
-            valid_username();
-
-            if (password_length >= 6 || password_length == 0) {
-            	valid_password();
-            	if(confirm_length >= 6 || password_length == 0){
-            		valid_confirm();
-            		if(same_confirm() == true){
-            			enable_submit();
-            		}
-            		else{
-            			disable_submit();
-            			different_password();
-            		}
-            	}
-            	else{
-            		disable_submit();
-                	invalid_confirm();
-            	}
-            }
-            else {
-                disable_submit();
-                invalid_password();
-            }
+            $.get('/checkUsername', {username: username}, function (result) {
+                if(result.username == username){
+                    existing_username();
+                    disable_submit();
+                }
+                else{
+                    valid_username();
+                    if (password_length >= 6){
+                        if(confirm_length >= 6){
+                            if(same_confirm() == true){
+                                enable_submit();
+                            }
+                            else{
+                                disable_submit();
+                            }
+                        }
+                        else{
+                            disable_submit();
+                        }
+                    }
+                    else {
+                        disable_submit();
+                    }
+                }
+            });         
         }
     });
 
     $('#input_addAccntPsword').keyup(function () {
         var username_length = $('#input_addAccntUsername').val().length;
+        var username = $('#input_addAccntUsername').val();
         var password_length = $('#input_addAccntPsword').val().length;
         var confirm_length = $('#input_addAccntConfirm').val().length;
         
@@ -147,68 +163,71 @@ $(document).ready(function() {
         }
         else{
             valid_password();
-            if (username_length >= 6) {
-            	valid_username();
-            	if(confirm_length >= 6 || password_length == 0){
-            		valid_confirm();
-            		if(same_confirm() == true){
-            			enable_submit();
-            		}
-            		else{
-            			disable_submit();
-            			different_password();
-            		}
-            	}
-            	else{
-            		disable_submit();
-                	invalid_confirm();
-            	}
-            }
-            else {
-                disable_submit();
-                invalid_username();
-            }
+        	if(confirm_length >= 1){
+        		if(same_confirm() == true){
+                    valid_confirm();
+                    if(username_length >= 6){
+                        $.get('/checkUsername', {username: username}, function (result) {
+                            if(result.username == username){
+                                disable_submit();
+                            }
+                            else{
+                                enable_submit();
+                            }
+                        });  
+                        
+                    }
+        			else{
+                        disable_submit();
+                    }
+        		}
+        		else{
+        			disable_submit();
+                    different_password();
+        		}
+        	}
+        	else{
+        		disable_submit();
+        	}
         }
     });
 
     $('#input_addAccntConfirm').keyup(function () {
         var username_length = $('#input_addAccntUsername').val().length;
+        var username = $('#input_addAccntUsername').val();
         var password_length = $('#input_addAccntPsword').val().length;
         var confirm_length = $('#input_addAccntConfirm').val().length;
         
-        if(confirm_length < 6 || password_length == 0){
+        if(confirm_length < 6 || confirm_length == 0){
             invalid_confirm();
             disable_submit();
         }
         else{
             valid_confirm();
-
-            if (password_length >= 6 || password_length == 0) {
-            	valid_password();
-            	if(username_length >= 6){
-            		valid_username();
-            		if(same_confirm() == true){
-            			enable_submit();
-            		}
-            		else{
-            			disable_submit();
-            			different_password();
-            		}
-            	}
-            	else{
-            		disable_submit();
-                	invalid_username();
-            	}
-            }
-            else {
-                disable_submit();
-                invalid_password();
-            }
+    		if(same_confirm() == true){
+    			if(username_length >= 6){
+                    $.get('/checkUsername', {username: username}, function (result) {
+                        if(result.username == username){
+                            disable_submit();
+                        }
+                        else{
+                            enable_submit();
+                        }
+                    });  
+                    
+                }
+                else{
+                    disable_submit();
+                }
+    		}
+    		else{
+    			disable_submit();
+    			different_password();
+    		}
         }
     });
-
-    if (window.history.replaceState) {
-      window.history.replaceState(null, null, "http://localhost:3000/");
-    }
       
+    $('#btn_addAccntCancel').click(function(){
+        window.history.back();
+    });
 })

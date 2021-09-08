@@ -33,6 +33,7 @@ app.get('/signup', signupController.getSignUp);
 
 // execute function postSignUp() when a client sends an HTTP POST request for `/signup`
 app.post('/signup', signupController.postSignUp);
+app.get('/checkUsername', signupController.checkUsername);
 
 // execute function getSuccess() when a client sends an HTTP GET request for `/success`
 app.get('/success', successController.getSuccess);

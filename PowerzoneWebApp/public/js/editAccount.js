@@ -210,9 +210,5 @@ $(document).ready(function() {
     $('#btn_editAccntCancel').click(function(){
         window.history.back();
     });
-
-    if (window.history.replaceState) {
-      window.history.replaceState(null, null, "http://localhost:3000/");
-    }
       
 })

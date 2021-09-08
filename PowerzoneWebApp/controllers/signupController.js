@@ -36,6 +36,17 @@ const signupController = {
                 }
             });
         // });
+    },
+
+    checkUsername: function(req, res){
+        var username = req.query.username;
+        db.findOne(User, {username: username}, '', function(result){
+                if(result != null){
+                    res.send(result);
+                }
+                else
+                    res.send(null);
+            });
     }
 }
 
