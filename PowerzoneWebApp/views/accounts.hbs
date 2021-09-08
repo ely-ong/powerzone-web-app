@@ -60,7 +60,7 @@
                 </thead>
                
                 <tbody>
-                    {{#each personsArray}}
+                    {{#each (reverseArray personsArray)}}
                     <tr class="accntTable_rows">
                         <td class="accnt_item">{{this.username}}</td>
                         <td class="accnt_item" id = "{{this.role}}">{{this.role}}</td>
