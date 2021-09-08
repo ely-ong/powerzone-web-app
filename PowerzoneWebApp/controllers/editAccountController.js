@@ -48,7 +48,7 @@ const editAccountController = {
         if(req.query.role == undefined){
             role = req.session.role;
         }else{
-            if(req.session.role == "Depot General Manager" && (req.session.role != req.query.role)){
+            if(req.session.role == "Depot General Manager" && (req.session.username == req.query.username && req.session.role != req.query.role)){
                 changedDepotManager = true;
             }
         }
