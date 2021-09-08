@@ -132,6 +132,9 @@ $(document).ready(function() {
                             existing_username();
                             disable_submit();
                         }
+                        else{
+                            enable_submit();
+                        }
                     }
                     else{
                         if(password_length >= 6 || password_length == 0) {
@@ -185,6 +188,9 @@ $(document).ready(function() {
                                     if(result.username != session_username){
                                         disable_submit();
                                     }
+                                    else{
+                                        enable_submit();
+                                    }
                                 }
                                 else{
                                     enable_submit();
@@ -231,6 +237,9 @@ $(document).ready(function() {
                                 if(result.username == username){
                                     if(result.username != session_username){
                                         disable_submit();
+                                    }
+                                    else{
+                                        enable_submit();
                                     }
                                 }
                                 else{
