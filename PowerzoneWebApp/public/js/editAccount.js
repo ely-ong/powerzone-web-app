@@ -11,6 +11,17 @@ $(document).ready(function() {
         $('#errorAddAccntUsername').css('color', 'var(--errorRed)');
     }
 
+    /** adjusts style to highlight username field and display error message */
+    function existing_username(){
+
+        //highlights username field line with red
+        $('#input_addAccntUsername').css('border-color', 'var(--errorRed)');
+
+        //displays error message
+        $('#errorAddAccntUsername').text('Username already taken');
+        $('#errorAddAccntUsername').css('color', 'var(--errorRed)');
+    }
+
     /** adjusts style to remove highlight of username field and remove error message */
     function valid_username(){
 
@@ -102,6 +113,7 @@ $(document).ready(function() {
 
     $('#input_editAccntUsername').keyup(function () {
         var username_length = $('#input_editAccntUsername').val().length;
+        var username = $('#input_editAccntUsername').val();
         var password_length = $('#input_editAccntPsword').val().length;
         var confirm_length = $('#input_editAccntConfirm').val().length;
         
@@ -112,32 +124,48 @@ $(document).ready(function() {
         else{
             valid_username();
 
-            if (password_length >= 6 || password_length == 0) {
-            	valid_password();
-            	if(confirm_length >= 6 || password_length == 0){
-            		valid_confirm();
-            		if(same_confirm() == true){
-            			enable_submit();
-            		}
-            		else{
-            			disable_submit();
-            			different_password();
-            		}
-            	}
-            	else{
-            		disable_submit();
-                	invalid_confirm();
-            	}
-            }
-            else {
-                disable_submit();
-                invalid_password();
-            }
+            $.get('/checkUsername', {username: username}, function (result) {
+                $.get('/getAccountUsername', function(session_username) {
+                    console.log()
+                    if(result.username == username){
+                        if(result.username != session_username){
+                            existing_username();
+                            disable_submit();
+                        }
+                    }
+                    else{
+                        if(password_length >= 6 || password_length == 0) {
+                            valid_password();
+                            if(confirm_length >= 6 || password_length == 0){
+                                valid_confirm();
+                                if(same_confirm() == true){
+                                    enable_submit();
+                                }
+                                else{
+                                    disable_submit();
+                                    different_password();
+                                }
+                            }
+                            else{
+                                disable_submit();
+                                invalid_confirm();
+                            }
+                        }
+                        else {
+                            disable_submit();
+                            invalid_password();
+                        }
+                    }
+                })
+            });
+
+            
         }
     });
 
     $('#input_editAccntPsword').keyup(function () {
         var username_length = $('#input_editAccntUsername').val().length;
+        var username = $('#input_editAccntUsername').val();
         var password_length = $('#input_editAccntPsword').val().length;
         var confirm_length = $('#input_editAccntConfirm').val().length;
         
@@ -148,11 +176,21 @@ $(document).ready(function() {
         else{
             valid_password();
             if (username_length >= 6) {
-            	valid_username();
             	if(confirm_length >= 6 || password_length == 0){
             		valid_confirm();
             		if(same_confirm() == true){
-            			enable_submit();
+            			$.get('/checkUsername', {username: username}, function (result) {
+                            $.get('/getAccountUsername', function(session_username) {
+                                if(result.username == username){
+                                    if(result.username != session_username){
+                                        disable_submit();
+                                    }
+                                }
+                                else{
+                                    enable_submit();
+                                }
+                            })
+                        });
             		}
             		else{
             			disable_submit();
@@ -173,10 +211,11 @@ $(document).ready(function() {
 
     $('#input_editAccntConfirm').keyup(function () {
         var username_length = $('#input_editAccntUsername').val().length;
+        var username = $('#input_editAccntUsername').val();
         var password_length = $('#input_editAccntPsword').val().length;
         var confirm_length = $('#input_editAccntConfirm').val().length;
         
-        if(confirm_length < 6 || password_length == 0){
+        if(confirm_length < 6){
             invalid_confirm();
             disable_submit();
         }
@@ -186,9 +225,19 @@ $(document).ready(function() {
             if (password_length >= 6 || password_length == 0) {
             	valid_password();
             	if(username_length >= 6){
-            		valid_username();
             		if(same_confirm() == true){
-            			enable_submit();
+                        $.get('/checkUsername', {username: username}, function (result) {
+                            $.get('/getAccountUsername', function(session_username) {
+                                if(result.username == username){
+                                    if(result.username != session_username){
+                                        disable_submit();
+                                    }
+                                }
+                                else{
+                                    enable_submit();
+                                }
+                            })
+                        });
             		}
             		else{
             			disable_submit();

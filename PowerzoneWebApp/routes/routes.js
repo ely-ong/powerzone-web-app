@@ -55,6 +55,7 @@ app.get('/deliveries', deliveriesController.getDeliveries);
 
 app.get('/home', homeController.getHome);
 app.get('/getAccountRole', homeController.getAccountRole);
+app.get('/getAccountUsername', homeController.getAccountUsername);
 
 app.get('/addProduct', addProductController.getAddProduct);
 app.post('/postProduct', addProductController.postProduct);

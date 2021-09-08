@@ -22,6 +22,15 @@ const homeController = {
     		res.send(null)
     		console.log("Session error");
     	}
+    },
+
+    getAccountUsername: function(req, res) {
+        if(req.session.username)
+            res.send(req.session.username);
+        else{
+            res.send(null)
+            console.log("Session error");
+        }
     }
 }
 
