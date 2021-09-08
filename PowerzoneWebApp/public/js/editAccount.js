@@ -1,5 +1,7 @@
 $(document).ready(function() {
 
+    var og_username = $('#input_editAccntUsername').val();
+
     /** adjusts style to highlight username field and display error message */
     function invalid_username(){
 
@@ -125,10 +127,10 @@ $(document).ready(function() {
             valid_username();
 
             $.get('/checkUsername', {username: username}, function (result) {
-                $.get('/getAccountUsername', function(session_username) {
-                    console.log()
+                $.get('/getEditUsername', {og_username: og_username}, function(account_username) {
+                    // console.log("user " + username + " og " + og_username + " session " + account_username)
                     if(result.username == username){
-                        if(result.username != session_username){
+                        if(result.username != account_username){
                             existing_username();
                             disable_submit();
                         }
@@ -183,9 +185,9 @@ $(document).ready(function() {
             		valid_confirm();
             		if(same_confirm() == true){
             			$.get('/checkUsername', {username: username}, function (result) {
-                            $.get('/getAccountUsername', function(session_username) {
+                            $.get('/getEditUsername', {og_username: og_username}, function(account_username) {
                                 if(result.username == username){
-                                    if(result.username != session_username){
+                                    if(result.username != account_username){
                                         disable_submit();
                                     }
                                     else{
@@ -213,12 +215,12 @@ $(document).ready(function() {
                 invalid_username();
             }
         }
-        
+
         if(confirm_length == 0 && password_length == 0){
             $.get('/checkUsername', {username: username}, function (result) {
-                $.get('/getAccountUsername', function(session_username) {
+                $.get('/getEditUsername', {og_username: og_username}, function(account_username) {
                     if(result.username == username){
-                        if(result.username != session_username){
+                        if(result.username != account_username){
                             disable_submit();
                         }
                         else{
@@ -255,9 +257,9 @@ $(document).ready(function() {
             	if(username_length >= 6){
             		if(same_confirm() == true){
                         $.get('/checkUsername', {username: username}, function (result) {
-                            $.get('/getAccountUsername', function(session_username) {
+                            $.get('/getEditUsername', {og_username: og_username}, function(account_username) {
                                 if(result.username == username){
-                                    if(result.username != session_username){
+                                    if(result.username != account_username){
                                         disable_submit();
                                     }
                                     else{
@@ -288,9 +290,9 @@ $(document).ready(function() {
 
         if(confirm_length == 0 && password_length == 0){
             $.get('/checkUsername', {username: username}, function (result) {
-                $.get('/getAccountUsername', function(session_username) {
+                $.get('/getEditUsername', {og_username: og_username}, function(account_username) {
                     if(result.username == username){
-                        if(result.username != session_username){
+                        if(result.username != account_username){
                             disable_submit();
                         }
                         else{

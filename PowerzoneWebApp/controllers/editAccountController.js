@@ -127,6 +127,20 @@ const editAccountController = {
         else{
             res.redirect('/home');
         }
+    },
+
+    getEditUsername: function(req, res){
+
+        var og_username = req.query.og_username;
+
+        db.findOne(User, {username: og_username}, '', function (result) {
+            if(result) {            
+                res.send(result.username);
+            }
+            else {
+                res.send(null);
+            }
+        });
     }
 }
 

@@ -78,6 +78,8 @@ app.post('/postAddAccount', addAccountController.postAddAccount);
 app.get('/loadEditAccount', editAccountController.getEditAccount);
 app.get('/submitEditAccount', editAccountController.submitEditAccount);
 app.get('/deleteAccount', editAccountController.deleteAccount);
+app.get('/getEditUsername', editAccountController.getEditUsername);
+
 
 app.get('/editAccountCancel', editAccountController.cancel);
 
