@@ -45,6 +45,8 @@ app.use(function (req, res) {
 // connects to the database
 db.connect();
 
+hbs.registerHelper('reverseArray', (array) => array.reverse());
+
 app.listen(port, hostname, function(){
 	console.log(`Server running at: `);
 	console.log(`http://` + hostname + ':' + port);

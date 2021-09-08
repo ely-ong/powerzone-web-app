@@ -67,7 +67,7 @@
                         <th class="table_head non_sortable">Delete</th>
                 </tr>
             </thead>
-            {{#each u.productsArray}}
+            {{#each (reverseArray u.productsArray)}}
             <tbody>
                 <tr class="table_rows">
                     <td class="product_item">{{this.dateString}}</td>
