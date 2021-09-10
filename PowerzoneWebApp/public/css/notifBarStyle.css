@@ -21,11 +21,26 @@ body{
     z-index: 1;
 }
 
+/* class to be added for hiding elements */
+.hide{
+    display: none;
+}
+
+/* class to be added for displaying no notifs message */
+.show_message{
+    display: absolute;
+}
+
+/* class to be added for displaying notifs */
+.show_notifs{
+    display: inline-block;
+}
+
 /* handles style of notification bar */
 .notifBar{
-    display: inline-block;
+    display: flex;
     flex-direction: row;
-    white-space: nowrap;
+    flex-wrap: nowrap;
     width: 100%;
     height: fit-content;
     top: 8%;
@@ -57,11 +72,13 @@ body{
 .notif_box{
     /* change display to inline-block to show notif */
     /* display: none; */
+    flex: 0 0 auto;
     margin: 10px;
     height: auto;
     width: 250px;
     border-radius: 20px;
     background-color: #ab4642;
+    text-align: center;
     overflow-wrap: break-word;
 }
 
