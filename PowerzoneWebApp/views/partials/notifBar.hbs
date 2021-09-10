@@ -13,12 +13,12 @@
 </head>
 <body>
     <div class="notifBar">
-        {{!-- label for no notifs; change display to none for hiding text, and absolute to reveal text --}}
-        <p class="label_noNotif" style="display: absolute;">No recent notifications</p>
+        {{!-- label for no notifs; replace class show_message with hide to hide text --}}
+        <p class="label_noNotif show_message">No recent notifications</p>
 
-        {{!-- box for one notif; change display to inline-block to show notif --}}
-        <div class="notif_box" style="display: none;">
-            <p class="notif_txt">Notif here</p>
+        {{!-- box for one notif; replace class hide with show_notifs to show notif --}}
+        <div class="notif_box hide">
+            <p class="notif_txt">{{product}} has reached its critical level.</p>
         </div>
     </div>
 </body>
