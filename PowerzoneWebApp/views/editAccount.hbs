@@ -37,6 +37,18 @@
                     </select>
                     <p class="error" id="errorAddAccntRole">{{error}}</p>
                 </div>
+                {{else}}
+                <div class="editAccntDetail_box" id="editAccntRole_box">
+                    <h5 class="label" id="label_editAccntRole">Role</h5>
+                    <select class="editAccntInput" id="select_editAccntRole" name="role" value="{{{result.role}}}" disabled>
+                        <option name = "role" value="{{{result.role}}}" selected hidden>{{{result.role}}}</option>
+                        <option id="editAccnt_option_genManager">Depot General Manager</option> 
+                        <option id="editAccnt_option_supervisor">Depot Supervisor</option> 
+                        <option id="editAccnt_option_cashier">Depot Cashier</option> 
+                        <option id="editAccnt_option_regUser">Regular User</option> 
+                    </select>
+                    <p class="error" id="errorAddAccntRole">{{error}}</p>
+                </div>
                 {{/if}}
                 <div class="editAccntDetail_box" id="editAccntPsword_box">
                     <h5 class="label" id="label_editAccntPsword">New Password</h5>
