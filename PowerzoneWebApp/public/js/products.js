@@ -1,11 +1,13 @@
 $(document).ready(function() {
 
+    // function to delete product upon clicking its delete button
     $('.delete_product').click(function(){
         var productRow = $(this).parent().parent();
         var productId = $(this).val();
 
+        // checks if the current logged in account is authorized to delete the product
         $.get('/getAccountRole', function(result) {
-            if(result == "Administrator") {
+            if(result == "Administrator" || result == "Depot General Manager") {
                 if(confirm("Are you sure you want to delete this product?")){
                     productRow.remove();
                     $.get(`/deleteProduct`, {productId: productId}, function(result){
@@ -22,9 +24,10 @@ $(document).ready(function() {
         })
     });
 
+    // opens add product page upon clicking add product button
     $('#link_add').click(function(){
-        console.log("TEST CLICK");
 
+        // checks if currently logged in user is authorized to add new products
         $.get('/getAccountRole', function(result) {
             console.log(result);
             if(result == "Administrator" || result == "Depot General Manager") {
@@ -39,10 +42,12 @@ $(document).ready(function() {
         })
     });
 
+    // opens edit product page upon clicking edit product button of a certain product
     $('.edit_product').click(function(){
         var productId = $(this).val();
         $.get('/getAccountRole', function(result) {
-            if(result == "Administrator") {
+            // checks if user is authorized to edit products
+            if(result == "Administrator" || result == "Depot General Manager") {
                 if(confirm("Are you sure you want to edit this product?")){
                     $.get(`/getEditProduct`, {productId: productId}, function(result){
                         window.open("/editProduct" + "?prodId=" + result.productId + 
@@ -63,6 +68,7 @@ $(document).ready(function() {
         })
     });
 
+    // variable instantiation
     var dateFilter = $('#filter_date').val();
     var supplierFilter = $('#filter_supplier').val();
     var quantityFilter = $('#filter_quantity').val();
@@ -71,6 +77,7 @@ $(document).ready(function() {
     var amountFilter = $('#filter_amount').val();
     var locationFilter = $('#filter_location').val();
 
+    // checks if each filter is ascending or descending and updates the logo to reflect the status of the filter
     if(dateFilter != "ascending" || supplierFilter != "ascending" || quantityFilter != "ascending" || productFilter != "ascending" ||
             buyPriceFilter != "ascending" || amountFilter != "ascending" || locationFilter != "ascending"){
         if(dateFilter == "descending"){
