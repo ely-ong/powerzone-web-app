@@ -12,6 +12,7 @@ This folder contains the hbs files to be rendered when requested from the server
 - [editAccountStyle.css] Css file for styling of edit account page
 - [editProductStyle.css] Css file for styling of edit product page
 - [homeStyle.css] Css file for styling of home page
+- [inventoryBalanceStyle.css] Css file for styling of inventory balance partial
 - [loginStyle.css] Css file for styling of login page
 - [navBarStyle.css] Css file for styling of nav bar partial
 - [noAccessStyle.css] Css file for styling of restricted access page

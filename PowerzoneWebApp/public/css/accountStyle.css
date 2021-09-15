@@ -75,7 +75,7 @@ body{
 }
 
 #btn_searchAccnt:hover{
-    opacity: 0.8;
+    opacity: .8;
 }
 
 /* changes color and places outline upon add to inventory button press */
@@ -147,7 +147,7 @@ body{
 /* handles style of table head texts */
 .accntTable_head{
     color: white;
-    letter-spacing: 0.5px;
+    letter-spacing: .5px;
     position: sticky;
     top: 0;
     background: var(--logoBlue);
@@ -183,7 +183,9 @@ body{
 }
 
 /* handles style of table rows content*/
-.accntTable_head, td{
+.accntTable_head, 
+.filter_button, 
+td{
     font-size: 16px;
     text-align: left;
     padding: 10px 35px 10px 50px;
@@ -202,7 +204,7 @@ body{
 }
 
 .link_icons:hover{
-    opacity: 0.8;
+    opacity: .8;
 }
 
 .link_icons:active{

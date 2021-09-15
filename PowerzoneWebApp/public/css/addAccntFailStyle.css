@@ -29,7 +29,7 @@ body{
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 0px;
+    padding: 0;
     width: 70%;
     height: 80%;
     left: 0;
@@ -70,7 +70,7 @@ body{
 }
 
 .links_addAccntFail:hover{
-    opacity: 0.8;
+    opacity: .8;
 }
 
 #link_retry{

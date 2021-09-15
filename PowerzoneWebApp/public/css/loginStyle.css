@@ -14,7 +14,8 @@
 }
 
 /* sets font of texts */
-body, input{
+body, 
+input{
     font-family: 'Lato', sans-serif;
 }
 
@@ -38,7 +39,7 @@ body{
 /*adjusts background color of left graphic in login page*/
 #logo_box{
     position: relative;
-    flex: 0.4;
+    flex: .4;
     display: flex;
     background-color: var(--logoBlue);
     min-width: 300px;
@@ -55,7 +56,7 @@ body{
 
 /* sets fixed width for whole login form */
 form{
-    width:500px;
+    width: 500px;
     height: 100%;
 }
 
@@ -105,10 +106,11 @@ form{
     letter-spacing: 1px;
 }
 
-#label_username, #label_password{
+#label_username, 
+#label_password{
     left: 20%;
     font-size: 20px;
-    letter-spacing: 0.5px;
+    letter-spacing: .5px;
     text-align: left;
 }
 
@@ -159,7 +161,7 @@ form{
 
 /* changes login button opacity upon cursor hover */
 .on_hover:hover{
-    opacity: 0.8;
+    opacity: .8;
 }
 
 /* changes color and places outline upon login button press */

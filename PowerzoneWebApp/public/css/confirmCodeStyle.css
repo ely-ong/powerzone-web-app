@@ -32,7 +32,7 @@ body, input{
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 0px;
+    padding: 0;
     width: 50%;
     height: fit-content;
     left: 0;
@@ -59,7 +59,7 @@ body, input{
     margin-top: 3%;
     margin-left: 3%;
     margin-bottom: 3%;
-    letter-spacing: 0.5px;
+    letter-spacing: .5px;
 }
 
 /* handles style of form div */
@@ -119,7 +119,7 @@ input:focus{
 }
 
 #btn_confirm:hover{
-    opacity: 0.8;
+    opacity: .8;
 }
 
 /* changes color and places outline upon confirm button press */

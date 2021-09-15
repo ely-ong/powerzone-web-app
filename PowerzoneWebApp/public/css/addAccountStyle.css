@@ -21,7 +21,9 @@ body{
 }
 
 /* sets font of texts */
-body, .addAccntInput, .addBtns {
+body, 
+.addAccntInput, 
+.addBtns {
     font-family: 'Lato', sans-serif;
 }
 
@@ -44,7 +46,7 @@ body, .addAccntInput, .addBtns {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 0px;
+    padding: 0;
     width: 50%;
     height: fit-content;
     left: 0;
@@ -91,7 +93,7 @@ and error messages */
 /* handles style of labels */
 .label{
     font-size: 16px;
-    letter-spacing: 0.5px;
+    letter-spacing: .5px;
     margin-bottom: 1px;
     color: white;
 }
@@ -148,7 +150,7 @@ input:focus{
 }
 
 #btn_addAccnt:hover{
-    opacity: 0.8;
+    opacity: .8;
 }
 
 /* changes color and places outline upon add account button press */
@@ -165,7 +167,7 @@ input:focus{
 }
 
 #btn_addAccntCancel:hover{
-    opacity: 0.8;
+    opacity: .8;
 }
 
 /* changes color and places outline upon cancel button press */

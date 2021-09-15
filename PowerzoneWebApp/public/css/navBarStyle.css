@@ -128,7 +128,7 @@ body{
     position: absolute;
     background-color: var(--hoverBlue);
     width: 200px;
-    box-shadow: 0px 8px 16px 0px rgba(255, 255, 255, 0.027);
+    box-shadow: 0px 8px 16px 0px #FFFFFF07;
     z-index: 2;
     top: 100%; 
     right: 0;

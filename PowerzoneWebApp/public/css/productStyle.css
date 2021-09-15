@@ -103,7 +103,7 @@ body{
 /* handles style of table head texts */
 .table_head{
     color: white;
-    letter-spacing: 0.5px;
+    letter-spacing: .5px;
     position: -webkit-sticky; /* for Safari */
     position: sticky;
     top: 0;
@@ -158,12 +158,17 @@ body{
 }
 
 /* handles style of table rows content*/
-.table_head, .non_sortable, .filter_button, td{
+.table_head, 
+.non_sortable, 
+.filter_button, 
+td{
     font-size: 16px;
     text-align: left;
 }
 
-.filter_button, .non_sortable, td{
+.filter_button, 
+.non_sortable, 
+td{
     padding: 10px 40px 10px 50px;
 }
 
@@ -201,7 +206,7 @@ body{
 }
 
 .link_icons:hover{
-    opacity: 0.8;
+    opacity: .8;
 }
 
 .link_icons:active{
