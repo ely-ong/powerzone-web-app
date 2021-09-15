@@ -13,6 +13,7 @@ This folder contains image files.
 - [POWERZONE_LOGO.png] Png file of Powerzone logo
 - [POWERZONE_TEXT3.png] Png file of Powerzone text
 - [product_boxes.png] Png file of product boxes
+- [redirect.png] Png file of redirect icon
 - [report.png] Png file of report clipboard
 - [search_black.png] Png file of search icon
 - [truck.png] Png file of gas truck
