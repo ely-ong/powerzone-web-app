@@ -7,6 +7,7 @@ This folder contains image files.
 - [accnt_failAdded.png] Png file of add account fail icon
 - [delete.png] Png file of delete product icon
 - [edit.png] Png file of edit product icon
+- [fuel_peso.png] Png file of fuel with peso sign
 - [menu_icon.png] Png file of menu icon
 - [padlock.png] Png file of padlock
 - [POWERZONE_LOGO.png] Png file of Powerzone logo
