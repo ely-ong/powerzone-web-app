@@ -1,3 +1,4 @@
+// import module mongoose
 var mongoose = require('mongoose');
 
 // defines the schema for collection `personnel`

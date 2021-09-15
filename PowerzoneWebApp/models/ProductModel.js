@@ -1,5 +1,7 @@
+// import module mongoose
 var mongoose = require('mongoose');
 
+// import module @mongoosejs/double
 require('@mongoosejs/double');
 
 // defines the schema for collection `personnel`

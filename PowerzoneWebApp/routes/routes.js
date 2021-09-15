@@ -1,4 +1,4 @@
-//import required modules
+// import all required controller modules
 const express = require('express');
 const controller = require('../controllers/controller.js');
 const signupController = require('../controllers/signupController.js');
@@ -22,26 +22,25 @@ const app = express();
 // execute function getFavicon() when a client sends an HTTP GET request for `/favicon.ico`
 app.get('/favicon.ico', controller.getFavicon);
 
-// execute function getIndex() when a client sends an HTTP GET request for `/`
+// routes for login controller functions
 app.get('/', loginController.getLogIn);
-
 app.post('/login', loginController.postLogIn);
 
-
-// execute function getSignUp() when a client sends an HTTP GET request for `/signup`
+// routes for signup controller functions
 app.get('/signup', signupController.getSignUp);
-
-// execute function postSignUp() when a client sends an HTTP POST request for `/signup`
 app.post('/signup', signupController.postSignUp);
 app.get('/checkUsername', signupController.checkUsername);
 
-// execute function getSuccess() when a client sends an HTTP GET request for `/success`
+// routes for success controller functions
 app.get('/success', successController.getSuccess);
 
+// routes for logout controller functions
 app.get('/logout', logoutController.getLogOut);
 
+// routes for report controller functions
 app.get('/report', reportController.getReport);
 
+// routes for products controller functions
 app.get('/products', productsController.getProducts);
 app.get('/sortByDate', productsController.sortByDate);
 app.get('/sortBySupplier', productsController.sortBySupplier);
@@ -51,36 +50,43 @@ app.get('/sortByPrice', productsController.sortByPrice);
 app.get('/sortByAmount', productsController.sortByAmount);
 app.get('/sortByLocation', productsController.sortByLocation);
 
+// routes for deliveries controller functions
 app.get('/deliveries', deliveriesController.getDeliveries);
 
+// routes for home controller functions
 app.get('/home', homeController.getHome);
 app.get('/getAccountRole', homeController.getAccountRole);
 app.get('/getAccountUsername', homeController.getAccountUsername);
 
+// routes for add product controller functions
 app.get('/addProduct', addProductController.getAddProduct);
 app.post('/postProduct', addProductController.postProduct);
 
+// routes for edit product controller functions
 app.get('/getEditProduct', editProductController.getEditProduct);
 app.get('/editProduct', editProductController.editProduct);
 app.get('/updateProduct', editProductController.updateProduct);
-app.get('/deleteProduct', deleteProductController.getDeleteProduct);
-// app.post('/confirmDelete', deleteProductController.confirmDelete);
 
+// routes for delete product controller functions
+app.get('/deleteProduct', deleteProductController.getDeleteProduct);
+
+// routes for navigation bar controller functions
 app.get('/getAccounts', navBarController.getAccounts);
 app.get('/getEditAccount', navBarController.getEditAccount);
 
+// routes for accounts controller functions
 app.get('/displayAccounts', accountsController.displayAccounts);
 app.get('/searchAccounts', accountsController.getSearchAccounts);
 
+// routes for add account controller functions
 app.get('/getAddAccount', addAccountController.getAddAccount);
 app.post('/postAddAccount', addAccountController.postAddAccount);
 
+// routes for edit account controller functions
 app.get('/loadEditAccount', editAccountController.getEditAccount);
 app.get('/submitEditAccount', editAccountController.submitEditAccount);
 app.get('/deleteAccount', editAccountController.deleteAccount);
 app.get('/getEditUsername', editAccountController.getEditUsername);
-
-
 app.get('/editAccountCancel', editAccountController.cancel);
 
 // exports the object `app` (defined above) when another script exports from this file
