@@ -23,13 +23,13 @@ body{
 }
 
 /* handles style of contents box */
-#accnt_box{
+#transact_box{
     display: block;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 55%;
-    min-width: 700px;
+    width: 90%;
+    min-width: 1000px;
     height: fit-content;
     margin-top: 7%;
     margin-left: auto;
@@ -38,16 +38,16 @@ body{
 
 }
 
-#accnt_box > div{
+#transact_box > div{
     flex: 1;
     display: flex;
 }
 
-#searchAccnt_box{
+#searchTransact_box{
     float: left;
 }
 
-#input_searchAccnt{
+#input_searchTransact{
     padding: 10px;
     width: 140px;
     font-family: 'Lato', sans-serif;
@@ -60,7 +60,7 @@ body{
     width: 20px;
 }
 
-#btn_searchAccnt{
+#btn_searchTransact{
     float: right;
     /* width: 11%; */
     padding: 10px 10px 6px 10px;
@@ -74,19 +74,19 @@ body{
     background: var(--lightBlue);
 }
 
-#btn_searchAccnt:hover{
+#btn_searchTransact:hover{
     opacity: .8;
 }
 
 /* changes color and places outline upon search button press */
-#btn_searchAccnt:active{
+#btn_searchTransact:active{
     background-color: steelblue;
     outline: 1px solid white;
     outline-offset: 2px;
 }
 
-/* handles style of add account button */
-#link_addAccnt{
+/* handles style of add transaction link */
+#link_addTransact{
     display: block;
     font-family: 'Lato', sans-serif;
     font-size: 14px;
@@ -96,21 +96,20 @@ body{
     padding: 10px 20px;
     border-color: transparent;
     border-radius: 2px;
-    margin-bottom: 4%;
+    margin-bottom: 2%;
     float: right;
-    cursor: pointer;
 }
 
-#link_addAccnt:hover{
+#link_addTransact:hover{
     background-color: var(--logoyellow);
 }
 
-#link_addAccnt:active{
+#link_addTransact:active{
     box-shadow: 0 0 0 3px white;
 }
 
-/* handles style of "Accounts" label */
-#label_accnt{
+/* handles style of "Product Inventory" label */
+#label_transact{
     position: absolute;
     font-weight: 900;
     color: white;
@@ -119,38 +118,57 @@ body{
     left: 3%;
     right: 0;
     margin-bottom: 2%;
-    z-index: -1;
 }
 
-#accntTable_box{
+#transactTable_box{
     max-width: 100%;
     max-height: 500px;
     width: 100%;
     overflow: auto;
 }
 
-/* handles style of products table */
-#accnt_table {
+/* handles style of transactions table */
+#transact_table {
     border-collapse: collapse;
     width: 100%;
 }
 
-#accnt_table tr:nth-child(even){
+#transact_table tr:nth-child(even){
     background-color: #F3F3F3;
 }
 
 /* handles style of table header */
-#accntTable_header{
+#transactTable_header{
     background-color: var(--logoBlue);
 }  
 
 /* handles style of table head texts */
-.accntTable_head{
+.transactTable_head{
     color: white;
     letter-spacing: .5px;
+    position: -webkit-sticky; /* for Safari */
     position: sticky;
     top: 0;
     background: var(--logoBlue);
+    padding: 0;
+}
+
+.filter_button{
+    display: block;
+    width: 100%;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    font-family: 'Lato', sans-serif;
+    height: 100%;
+    background: var(--logoBlue);
+    font-weight: bold;
+    color: white;
+    padding: 15px 35px 15px 35px;
+}
+
+.filter_button:hover{
+    background: var(--hoverBlue);
 }
 
 /* handles style of column heads to show clickability */
@@ -176,18 +194,46 @@ body{
     content: "\25be";
 }
 
-
 /* handles style of table rows */
-.accntTable_rows{
+.transactTable_rows{
     background-color: white;
 }
 
 /* handles style of table rows content*/
-.accntTable_head, 
+.transactTable_head, 
+.non_sortable, 
+.filter_button, 
 td{
     font-size: 16px;
     text-align: left;
-    padding: 10px 35px 10px 50px;
+}
+
+.filter_button, 
+.non_sortable, 
+td{
+    padding: 10px 40px 10px 50px;
+}
+
+/* sets fixed minimum width and no wrapping for quantity and amount columns */
+.wide_column{
+    min-width: 100px;
+    white-space: nowrap;
+}
+
+/* sets fixed width and no wrapping for price column */
+.narrow_column{
+    width: 60px;
+    white-space: nowrap;
+}
+
+/* sets fixed width for transaction column */
+.transact_fixed_width{
+    width: 150px;
+}
+
+/* aligns numerical values to the right*/
+.numbers{
+    text-align: right;
 }
 
 /* handles style of icons td */
@@ -210,4 +256,3 @@ td{
     border-radius: 100%;
     box-shadow: 0 0 0 1px var(--darkBlue);
 }
-
