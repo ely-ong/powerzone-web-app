@@ -184,7 +184,6 @@ body{
 
 /* handles style of table rows content*/
 .accntTable_head, 
-.filter_button, 
 td{
     font-size: 16px;
     text-align: left;
