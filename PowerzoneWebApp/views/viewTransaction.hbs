@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Transaction</title>
+    <link href="../css/navBarStyle.css" rel="stylesheet" type="text/css" >
+    <link href="../css/viewTransactionStyle.css" rel="stylesheet" type="text/css" >
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js" type="text/javascript"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+    </style>
+</head>
+<body>
+    {{> navBar}}
+    
+    <h1 id="label_transaction">Transaction</h1>
+        
+    <div id="main_box">
+
+        <table id="productTable">
+            <thead>
+                <tr id="productTable_header">
+                    <th class="productTable_head">Product</th>
+                    <th class="productTable_head">Quantity</th>
+                    <th class="productTable_head">Unit Price</th>
+                    <th class="productTable_head">Amount</th>
+                </tr>
+            </thead>
+            <!--insert array {{#each }}-->
+            <tbody>
+                <tr class="productTable_rows">
+                    <td class="productTable_data" id="product_name">Premium Gasoline 95</td>
+                    <td class="productTable_data" id="product_qty">4,020 L</td>
+                    <td class="productTable_data" id="product_unitPrice">Php 30.50</td>
+                    <td class="productTable_data" id="product_amount">Php 300,100.50</td>
+                </tr>
+            </tbody>
+            <!--insert end of array {{/each}}-->
+        </table>
+
+        <div class="attribute_box">
+            <h5 class="label">Status</h5>
+            <p class="main_text">Complete</p>
+        </div> 
+
+        <div class="attribute_box">
+            <h5 class="label">Date</h5>
+            <p class="main_text">09/12/2021</p>
+        </div> 
+
+        <div class="attribute_box">
+            <h5 class="label">Delivery Receipt Number</h5>
+            <p class="main_text">0115248</p>
+        </div> 
+
+        <div class="attribute_box">
+            <h5 class="label">Sales Invoice Number</h5>
+            <p class="main_text">225544889660</p>
+        </div> 
+
+        <div class="attribute_box">
+            <h5 class="label">Truck's Plate Number</h5>
+            <p class="main_text">YFP 1023</p>
+        </div> 
+
+        <div class="attribute_box">
+            <h5 class="label">Customer's Name</h5>
+            <p class="main_text">Petron</p>
+        </div> 
+
+        <div class="attribute_box">
+            <h5 class="label">Address</h5>
+            <p class="main_text">Manila, Philippines</p>
+        </div> 
+
+        <div class="attribute_box">
+            <h5 class="label">Account Number</h5>
+            <p class="main_text">0000254123336</p>
+        </div> 
+
+        <div class="attribute_box">
+            <h5 class="label">Tin Number</h5>
+            <p class="main_text">3658880</p>
+        </div> 
+
+       <!-- <div class="attribute_box">
+            <h5 class="label">Product Name</h5>
+            <p class="main_text">Diesel</p>
+        </div> 
+
+        <div class="attribute_box">
+            <h5 class="label">Quantity of Product in Liters</h5>
+            <p class="main_text">10 L</p>
+        </div> 
+
+        <div class="attribute_box">
+            <h5 class="label">Unit Price in Php (Selling Price)</h5>
+            <p class="main_text">Php 30.05</p>
+        </div> 
+
+        <div class="attribute_box">
+            <h5 class="label">Amount of Product in Php</h5>
+            <p class="main_text">Php 300.5</p>
+        </div> 
+
+        <div class="attribute_box">
+            <h5 class="label">Total Amount</h5>
+            <p class="main_text">Php 3004.05</p>
+        </div> -->
+
+        <div class="attribute_box">
+            <h5 class="label">Prepared By</h5>
+            <p class="main_text"></p>
+        </div> 
+
+        <div class="attribute_box">
+            <h5 class="label">Loaded By</h5>
+            <p class="main_text"></p>
+        </div> 
+
+        <div class="attribute_box">
+            <h5 class="label">Driver</h5>
+            <p class="main_text"></p>
+        </div> 
+
+        <div class="attribute_box">
+            <h5 class="label">Guard</h5>
+            <p class="main_text"></p>
+        </div> 
+
+        <div class="attribute_box">
+            <h5 class="label">Customer Representative</h5>
+            <p class="main_text"></p>
+        </div> 
+
+        <div class="attribute_box">
+            <h5 class="label">Delivery Approved By</h5>
+            <p class="main_text"></p>
+        </div> 
+
+        <div class="attribute_box">
+            <h5 class="label">Delivery Checked By</h5>
+            <p class="main_text"></p>
+        </div>
+
+
+    </div>
+</body>
+</html>
