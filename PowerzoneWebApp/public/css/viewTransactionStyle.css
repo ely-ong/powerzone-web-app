@@ -84,7 +84,7 @@ body{
     letter-spacing: .5px;
     position: -webkit-sticky; /* for Safari */
     position: sticky;
-    background: gray;
+    background: var(--logoBlue);
     padding: 10px;
 }
 
