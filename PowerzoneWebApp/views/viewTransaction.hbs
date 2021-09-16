@@ -28,6 +28,7 @@
                     <th class="productTable_head">Amount</th>
                 </tr>
             </thead>
+
             <!--insert array {{#each }}-->
             <tbody>
                 <tr class="productTable_rows">
@@ -36,8 +37,16 @@
                     <td class="productTable_data" id="product_unitPrice">Php 30.50</td>
                     <td class="productTable_data" id="product_amount">Php 300,100.50</td>
                 </tr>
+
+                <!--Last row, contains the total amount-->
+                <tr class="productTable_rows">
+                    <td class="productTable_data" id="productTotal_label">Total Amount</td>
+                    <td class="productTable_data"></td>
+                    <td class="productTable_data"></td>
+                    <td class="productTable_data" id="productTotal_amount">Php 501,123.50</td>
+                </tr>
+                <!--insert end of array {{/each}}-->
             </tbody>
-            <!--insert end of array {{/each}}-->
         </table>
 
         <div class="attribute_box">
@@ -143,9 +152,12 @@
         <div class="attribute_box">
             <h5 class="label">Delivery Checked By</h5>
             <p class="main_text"></p>
-        </div>
+        </div> 
+
+
 
 
     </div>
 </body>
+</html>
 </html>

@@ -80,7 +80,7 @@ body{
 .productTable_head{
     color: white;
     text-align: left;
-    font-size: 18px;
+    font-size: 16px;
     letter-spacing: .5px;
     position: -webkit-sticky; /* for Safari */
     position: sticky;
@@ -89,9 +89,13 @@ body{
 }
 
 .productTable_data{
-    font-size: 16px;
+    font-size: 14px;
     padding-top: 5px;
     padding-bottom: 5px;
     padding-left: 10px;
     padding-right: 10px;
+}
+
+#productTotal_amount, #productTotal_label{
+    font-weight: bold;
 }
