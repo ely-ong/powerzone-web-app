@@ -18,7 +18,6 @@
     <h1 id="label_transaction">Transaction</h1>
         
     <div id="main_box">
-
         <table id="productTable">
             <thead>
                 <tr id="productTable_header">
@@ -28,135 +27,132 @@
                     <th class="productTable_head">Amount</th>
                 </tr>
             </thead>
-
-            <!--insert array {{#each }}-->
-            <tbody>
-                <tr class="productTable_rows">
-                    <td class="productTable_data" id="product_name">Premium Gasoline 95</td>
-                    <td class="productTable_data" id="product_qty">4,020 L</td>
-                    <td class="productTable_data" id="product_unitPrice">Php 30.50</td>
-                    <td class="productTable_data" id="product_amount">Php 300,100.50</td>
-                </tr>
-
-                <!--Last row, contains the total amount-->
-                <tr class="productTable_rows">
-                    <td class="productTable_data" id="productTotal_label">Total Amount</td>
-                    <td class="productTable_data"></td>
-                    <td class="productTable_data"></td>
-                    <td class="productTable_data" id="productTotal_amount">Php 501,123.50</td>
-                </tr>
-                <!--insert end of array {{/each}}-->
-            </tbody>
+            
+                <tbody>
+                    {{#if transaction.hasProductObject.hasDiesel}}
+                    <tr class="productTable_rows">
+                        <td class="productTable_data" id="product_name">{{transaction.dieselObject.product}}</td>
+                        <td class="productTable_data" id="product_qty">{{transaction.dieselObject.quantity}} L</td>
+                        <td class="productTable_data" id="product_unitPrice">Php {{transaction.dieselObject.unitPrice}}</td>
+                        <td class="productTable_data" id="product_amount">Php {{transaction.dieselObject.totalPrice}}</td>
+                    </tr>
+                    {{/if}}
+                    {{#if transaction.hasProductObject.hasGasoline}}
+                    <tr class="productTable_rows">
+                        <td class="productTable_data" id="product_name">{{transaction.gasolineObject.product}}</td>
+                        <td class="productTable_data" id="product_qty">{{transaction.gasolineObject.quantity}} L</td>
+                        <td class="productTable_data" id="product_unitPrice">Php {{transaction.gasolineObject.unitPrice}}</td>
+                        <td class="productTable_data" id="product_amount">Php {{transaction.gasolineObject.totalPrice}}</td>
+                    </tr>
+                    {{/if}}
+                    {{#if transaction.hasProductObject.hasPremium95}}
+                    <tr class="productTable_rows">
+                        <td class="productTable_data" id="product_name">{{transaction.premium95Object.product}}</td>
+                        <td class="productTable_data" id="product_qty">{{transaction.premium95Object.quantity}} L</td>
+                        <td class="productTable_data" id="product_unitPrice">Php {{transaction.premium95Object.unitPrice}}</td>
+                        <td class="productTable_data" id="product_amount">Php {{transaction.premium95Object.totalPrice}}</td>
+                    </tr>
+                    {{/if}}
+                    {{#if transaction.hasProductObject.hasPremium97}}
+                    <tr class="productTable_rows">
+                        <td class="productTable_data" id="product_name">{{transaction.premium97Object.product}}</td>
+                        <td class="productTable_data" id="product_qty">{{transaction.premium97Object.quantity}} L</td>
+                        <td class="productTable_data" id="product_unitPrice">Php {{transaction.premium97Object.unitPrice}}</td>
+                        <td class="productTable_data" id="product_amount">Php {{transaction.premium97Object.totalPrice}}</td>
+                    </tr>
+                    {{/if}}
+                    {{#if transaction.hasProductObject.hasKerosene}}
+                    <tr class="productTable_rows">
+                        <td class="productTable_data" id="product_name">{{transaction.keroseneObject.product}}</td>
+                        <td class="productTable_data" id="product_qty">{{transaction.keroseneObject.quantity}} L</td>
+                        <td class="productTable_data" id="product_unitPrice">Php {{transaction.keroseneObject.unitPrice}}</td>
+                        <td class="productTable_data" id="product_amount">Php {{transaction.keroseneObject.totalPrice}}</td>
+                    </tr>
+                    {{/if}}
+                    <tr class="productTable_rows">
+                        <td class="productTable_data" id="productTotal_label">Total Amount</td>
+                        <td class="productTable_data"></td>
+                        <td class="productTable_data"></td>
+                        <td class="productTable_data" id="productTotal_amount">Php {{transaction.totalAmount}}</td>
+                    </tr>
+                </tbody>
+            
         </table>
 
         <div class="attribute_box">
             <h5 class="label">Status</h5>
-            <p class="main_text">Complete</p>
+            <p class="main_text">{{transaction.status}}</p>
         </div> 
 
         <div class="attribute_box">
             <h5 class="label">Date</h5>
-            <p class="main_text">09/12/2021</p>
+            <p class="main_text">{{transaction.dateString}}</p>
         </div> 
 
         <div class="attribute_box">
             <h5 class="label">Delivery Receipt Number</h5>
-            <p class="main_text">0115248</p>
+            <p class="main_text">{{transaction.deliveryNumber}}</p>
         </div> 
 
         <div class="attribute_box">
             <h5 class="label">Sales Invoice Number</h5>
-            <p class="main_text">225544889660</p>
+            <p class="main_text">{{transaction.invoiceNumber}}</p>
         </div> 
 
         <div class="attribute_box">
             <h5 class="label">Truck's Plate Number</h5>
-            <p class="main_text">YFP 1023</p>
+            <p class="main_text">{{transaction.truckPlateNumber}}</p>
         </div> 
 
         <div class="attribute_box">
             <h5 class="label">Customer's Name</h5>
-            <p class="main_text">Petron</p>
+            <p class="main_text">{{transaction.customerName}}</p>
         </div> 
 
         <div class="attribute_box">
             <h5 class="label">Address</h5>
-            <p class="main_text">Manila, Philippines</p>
-        </div> 
-
-        <div class="attribute_box">
-            <h5 class="label">Account Number</h5>
-            <p class="main_text">0000254123336</p>
-        </div> 
+            <p class="main_text">{{transaction.address}}</p>
+        </div>
 
         <div class="attribute_box">
             <h5 class="label">Tin Number</h5>
-            <p class="main_text">3658880</p>
+            <p class="main_text">{{transaction.tinNumber}}</p>
         </div> 
-
-       <!-- <div class="attribute_box">
-            <h5 class="label">Product Name</h5>
-            <p class="main_text">Diesel</p>
-        </div> 
-
-        <div class="attribute_box">
-            <h5 class="label">Quantity of Product in Liters</h5>
-            <p class="main_text">10 L</p>
-        </div> 
-
-        <div class="attribute_box">
-            <h5 class="label">Unit Price in Php (Selling Price)</h5>
-            <p class="main_text">Php 30.05</p>
-        </div> 
-
-        <div class="attribute_box">
-            <h5 class="label">Amount of Product in Php</h5>
-            <p class="main_text">Php 300.5</p>
-        </div> 
-
-        <div class="attribute_box">
-            <h5 class="label">Total Amount</h5>
-            <p class="main_text">Php 3004.05</p>
-        </div> -->
 
         <div class="attribute_box">
             <h5 class="label">Prepared By</h5>
-            <p class="main_text"></p>
+            <p class="main_text">{{transaction.signatories.prepared}}</p>
         </div> 
 
         <div class="attribute_box">
             <h5 class="label">Loaded By</h5>
-            <p class="main_text"></p>
+            <p class="main_text">{{transaction.signatories.loaded}}</p>
         </div> 
 
         <div class="attribute_box">
             <h5 class="label">Driver</h5>
-            <p class="main_text"></p>
+            <p class="main_text">{{transaction.signatories.driver}}</p>
         </div> 
 
         <div class="attribute_box">
             <h5 class="label">Guard</h5>
-            <p class="main_text"></p>
+            <p class="main_text">{{transaction.signatories.guard}}</p>
         </div> 
 
         <div class="attribute_box">
             <h5 class="label">Customer Representative</h5>
-            <p class="main_text"></p>
+            <p class="main_text">{{transaction.signatories.customerRep}}</p>
         </div> 
 
         <div class="attribute_box">
             <h5 class="label">Delivery Approved By</h5>
-            <p class="main_text"></p>
+            <p class="main_text">{{transaction.signatories.deliveryApproved}}</p>
         </div> 
 
         <div class="attribute_box">
             <h5 class="label">Delivery Checked By</h5>
-            <p class="main_text"></p>
+            <p class="main_text">{{transaction.signatories.deliveryChecked}}</p>
         </div> 
-
-
-
-
     </div>
 </body>
 </html>

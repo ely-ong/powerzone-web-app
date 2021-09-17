@@ -20,40 +20,40 @@
 <div id="transact_box">
     <button id = "link_addTransact" type = "submit">+ Add Transaction</button>
     <h1 id="label_transact" style = "z-index: -1;">Transactions</h1>
-    {{!-- search elements (low priority)
+    <!-- {{!-- search elements (low priority)
     <div id="searchTransact_box">
         <form action="#">
-            <input id="input_searchTransact" type="text" placeholder="Filter transactiona by date" name="search_transact">
+            <input id="input_searchTransact" type="text" placeholder="Filter transactions by date" name="search_transact">
             <button id="btn_searchTransact" type="submit"><img class="search_icon" src="../images/search_black.png"></button>
         </form>
-    </div> --}}
+    </div> --}} -->
     <div id="transactTable_box">
         <table id="transact_table">
             <thead>
                 <tr id="transactTable_header">
                     <th class="transactTable_head sortable">
                         <form method="get" action="/sortBy">
-                            <button class="filter_button" type="submit" value="{{u.sortCriteria.}}" name="filter_status" id="filter_status">Status</button>
+                            <button class="filter_button" type="submit" value="" name="filter_status" id="filter_status">Status</button>
                         </form>
                     </th>
                     <th class="transactTable_head sortable">
                         <form method="get" action="/sortBy">
-                            <button class="filter_button" type="submit" value="{{u.sortCriteria.}}" name="filter_date" id="filter_date">Date<br>(MM-DD-YYYY)</button>
+                            <button class="filter_button" type="submit" value="" name="filter_date" id="filter_date">Date<br>(MM-DD-YYYY)</button>
                         </form>
                     </th>
                     <th class="transactTable_head sortable">
                         <form method="get" action="/sortBy">
-                            <button class="filter_button" type="submit" value="{{u.sortCriteria.}}" name="filter_deliveryNo" id="filter_deliveryNo">Delivery Receipt No.</button>
+                            <button class="filter_button" type="submit" value="" name="filter_deliveryNo" id="filter_deliveryNo">Delivery Receipt No.</button>
                         </form>
                     </th>
                     <th class="transactTable_head sortable">
                         <form method="get" action="/sortBy">
-                            <button class="filter_button" type="submit" value="{{u.sortCriteria.}}" name="filter_salesNo" id="filter_salesNo">Sales Invoice No.</button>
+                            <button class="filter_button" type="submit" value="" name="filter_salesNo" id="filter_salesNo">Sales Invoice No.</button>
                         </form>
                     </th>
                     <th class="transactTable_head sortable">
                         <form method="get" action="/sortBy">
-                            <button class="filter_button" type="submit" value="{{u.sortCriteria.}}" name="filter_customerName" id="filter_customerName">Customer Name</button>
+                            <button class="filter_button" type="submit" value="" name="filter_customerName" id="filter_customerName">Customer Name</button>
                         </form>
                     </th>
 
@@ -62,28 +62,31 @@
                     <th class="transactTable_head non_sortable">Cancel</th>
                 </tr>
             </thead>
-            {{#each (reverseArray u.)}}
+            
+            {{#each (reverseArray u.transactionsArray)}}
             <tbody>
                 <tr class="transactTable_rows">
-                    <td class="transact_item">{{this.}}</td>
-                    <td class="transact_item">{{this.}}</td>
-                    <td class="transact_item">{{this.}}</td>
-                    <td class="transact_item">{{this.}}</td>
-                    <td class="transact_item">{{this.}}</td>
+                    <td class="transact_item">{{this.status}}</td>
+                    <td class="transact_item">{{this.dateString}}</td>
+                    <td class="transact_item">{{this.deliveryNumber}}</td>
+                    <td class="transact_item">{{this.invoiceNumber}}</td>
+                    <td class="transact_item">{{this.customerName}}</td>
                     <td>
                         {{!-- button for more info --}}
-                         <button style = "border: 0px; background-color: transparent;" type="submit" value = "{{this.}}" name = "redirect_button" class = "btn_transact">
-                           <img src="../images/redirect.png"  class="link_icons" id="redirect_icon" value = "{{this.}}">
+                        <form method="get" action="/viewTransaction">
+                            <button style = "border: 0px; background-color: transparent;" type="submit" value = "{{this.transactionId}}" name = "redirect_button" class = "btn_transact">
+                               <img src="../images/redirect.png"  class="link_icons" id="redirect_icon" value = "{{this.transactionId}}">
+                            </button>
+                        </form>
+                    </td>
+                    <td>
+                        <button style = "border: 0px; background-color: transparent;" type="submit" value = "{{this.transactionId}}" name = "edit_button" class = "edit_transact">
+                        <img src="../images/edit.png"  class="link_icons" id="edit_icon" value = "{{this.transactionId}}">
                         </button>
                     </td>
                     <td>
-                        <button style = "border: 0px; background-color: transparent;" type="submit" value = "{{this.productId}}" name = "edit_button" class = "edit_transact">
-                        <img src="../images/edit.png"  class="link_icons" id="edit_icon" value = "{{this.productId}}">
-                        </button>
-                    </td>
-                    <td>
-                        <button style = "border: 0px; background-color: transparent;" type="submit" value = "{{this.productId}}" name = "cancel_button" class = "cancel_transact">
-                            <img src="../images/delete.png"  class="link_icons" id="cancel_icon" value = "{{this.productId}}">
+                        <button style = "border: 0px; background-color: transparent;" type="submit" value = "{{this.transactionId}}" name = "cancel_button" class = "cancel_transact">
+                            <img src="../images/delete.png"  class="link_icons" id="cancel_icon" value = "{{this.transactionId}}">
                         </button>
                     </td>
                 </tr>

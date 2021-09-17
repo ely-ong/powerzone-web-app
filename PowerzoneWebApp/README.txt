@@ -21,7 +21,7 @@ Running node-supervisor with
   --exec 'node'
 
 Starting child process with 'node index.js'
-Watching directory 'C:\Users\lande\Desktop\CSSWENG MP' for changes.
+Watching directory 'C:\Users\*YOUR USERNAME*\Desktop\CSSWENG MP' for changes.
 Press rs for restarting the process.
 Server running at:
 http://localhost:3000
@@ -29,7 +29,3 @@ Connected to: mongodb+srv://PowerzoneAdmin:SnowYukiNalu@powerzonedb.zucj5.mongod
 
 
    Copy "http://localhost:3000" into your web browser, and the log-in page should show up :)
-
-5. If there are any problems with running the app let us know nalang :) - Lander and Jacob
-
-P.S. Jacob gave you guys an invite to access the online database, pa accept nalang daw :D

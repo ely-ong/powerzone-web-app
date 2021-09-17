@@ -11,11 +11,12 @@ const deliveriesController = require('../controllers/deliveriesController.js');
 const homeController = require('../controllers/homeController.js');
 const addProductController = require('../controllers/addProductController.js');
 const editProductController = require('../controllers/editProductController.js');
-const deleteProductController = require('../controllers/deleteProductController.js')
-const navBarController = require('../controllers/navBarController.js')
-const accountsController = require('../controllers/accountsController.js')
-const addAccountController = require('../controllers/addAccountController.js')
-const editAccountController = require('../controllers/editAccountController.js')
+const deleteProductController = require('../controllers/deleteProductController.js');
+const navBarController = require('../controllers/navBarController.js');
+const accountsController = require('../controllers/accountsController.js');
+const addAccountController = require('../controllers/addAccountController.js');
+const editAccountController = require('../controllers/editAccountController.js');
+const transactionsController = require('../controllers/transactionsController.js');
 
 const app = express();
 
@@ -88,6 +89,11 @@ app.get('/submitEditAccount', editAccountController.submitEditAccount);
 app.get('/deleteAccount', editAccountController.deleteAccount);
 app.get('/getEditUsername', editAccountController.getEditUsername);
 app.get('/editAccountCancel', editAccountController.cancel);
+
+// routes for transactions controller function
+app.get('/transactions', transactionsController.getTransactions);
+app.get('/findTransaction', transactionsController.findTransaction);
+app.get('/viewTransaction', transactionsController.viewTransaction);
 
 // exports the object `app` (defined above) when another script exports from this file
 module.exports = app;
