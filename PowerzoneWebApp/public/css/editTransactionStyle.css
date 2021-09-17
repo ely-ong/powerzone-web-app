@@ -121,6 +121,56 @@ input:focus{
     outline-width: 0;
 }
 
+/* handles style of check items div */
+.edit_check_items_box{
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 15px;
+}
+
+/* handles style of a single check item div */
+.edit_product_check_item{
+    margin-right: 20px;
+    margin-top: 0;
+    margin-bottom: 5px;
+}
+
+/* handles style of a single check item labels */
+.edit_product_check_label{
+    font-size: 16px;
+    color: white;
+    margin-left: 5px;
+}
+
+/* handles style of checkboxes */
+.edit_product_checkbox{
+    -webkit-appearance: none;
+    background-color: white;
+    padding: 8px;
+    border-radius: 2px;
+    display: inline-block;
+}
+
+.edit_product_checkbox:hover{
+    cursor: pointer;
+}
+
+.edit_product_checkbox:active,
+.edit_product_checkbox:checked:active{
+    box-shadow: 0 1px 2px #00000080, inset 0 1px 3px #0000001a;
+    cursor: pointer;
+}
+
+.edit_product_checkbox:checked{
+    background-color: var(--logoyellow);
+    color: #99a1a7;
+}
+
+/* hides product detail fields by default */
+.editProductDetails_box{
+    display: none;
+}
+
 
 /* handles style of buttons div; allows buttons to be arranged in a row */
 #btnEditTransact_box{

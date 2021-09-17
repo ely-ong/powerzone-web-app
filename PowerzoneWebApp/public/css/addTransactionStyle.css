@@ -121,6 +121,89 @@ input:focus{
     outline-width: 0;
 }
 
+/* handles style of check items div */
+.add_check_items_box{
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 15px;
+}
+
+/* handles style of a single check item div */
+.add_product_check_item{
+    margin-right: 20px;
+    margin-top: 0;
+    margin-bottom: 5px;
+}
+
+/* handles style of a single check item labels */
+.add_product_check_label{
+    font-size: 16px;
+    color: white;
+    margin-left: 5px;
+}
+
+/* handles style of checkboxes */
+.add_product_checkbox{
+    -webkit-appearance: none;
+    background-color: white;
+    padding: 8px;
+    border-radius: 2px;
+    display: inline-block;
+}
+
+.add_product_checkbox:hover{
+    cursor: pointer;
+}
+
+.add_product_checkbox:active,
+.add_product_checkbox:checked:active{
+    box-shadow: 0 1px 2px #00000080, inset 0 1px 3px #0000001a;
+    cursor: pointer;
+}
+
+.add_product_checkbox:checked{
+    background-color: var(--logoyellow);
+    color: #99a1a7;
+}
+
+/* hides product detail fields by default */
+.addProductDetails_box{
+    display: none;
+}
+
+/* .add_check:after{
+    content: '';
+    position: absolute;
+    display: none;
+}
+
+.add_product_checkbox:checked ~ .add_check:after{
+    display: block;
+}
+
+.add_product_checkbox .add_check:after{
+    left: 9px;
+    top: 5px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+} 
+
+ .add_product_checkbox:after{
+    display: inline-block;
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    height: 10px;
+    width: 5px;
+    border-bottom: 7px solid var(--darkBlue);
+    border-right: 7px solid var(--darkBlue);
+} */
+
 /* handles style of buttons div; allows buttons to be arranged in a row */
 #btnAddTransact_box{
     display: inline-flex;
