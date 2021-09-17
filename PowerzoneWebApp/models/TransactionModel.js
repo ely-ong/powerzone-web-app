@@ -77,31 +77,11 @@ var TransactionSchema = new mongoose.Schema({
     totalAmount: {
         type: mongoose.Schema.Types.Double,
         required: true
+    },
+    remarks: {
+        type: String,
+        required: false
     }
-    // product: {
-    //     type: String,
-    //     required: true
-    // },
-    // quantity: {
-    //     type: mongoose.Schema.Types.Double,
-    //     required: true
-    // },
-    // unitPrice: {
-    //     type: mongoose.Schema.Types.Double,
-    //     required: true
-    // },
-    // amountPerProduct: {
-    //     type: mongoose.Schema.Types.Double,
-    //     required: true
-    // },
-    // totalAmount: {
-    //     type: mongoose.Schema.Types.Double,
-    //     required: true
-    // },
-    // signatoryFields: {
-    //     type: Object,
-    //     required: true
-    // }
 });
 
 /*

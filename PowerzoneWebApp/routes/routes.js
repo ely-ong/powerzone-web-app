@@ -94,6 +94,8 @@ app.get('/editAccountCancel', editAccountController.cancel);
 app.get('/transactions', transactionsController.getTransactions);
 app.get('/findTransaction', transactionsController.findTransaction);
 app.get('/viewTransaction', transactionsController.viewTransaction);
+app.get('/addTransaction', transactionsController.addTransaction);
+app.post('/postTransaction', transactionsController.postTransaction);
 
 // exports the object `app` (defined above) when another script exports from this file
 module.exports = app;
