@@ -19,11 +19,11 @@
     <div id="editTransact_box">
         <h1 id="label_editTransact">Edit Transaction</h1>
         <div id="editTransactForm_box">
-            <form id="form_editTransact" method="post" action="/">
+            <form id="form_editTransact" method="post" action="/postSubmitEditTransaction">
                 <div class="editTransactDetail_box" id="editTransactStatus_box">
                     <h5 class="label" id="label_editTransactStatus">Status</h5>
-                    <select class="editTransactInput editSelect" id="select_editTransactStatus" name="status" value="{{{result.}}}" required>
-                        <option value="{{{result.}}}" selected hidden>{{{result.}}}</option>
+                    <select class="editTransactInput editSelect" id="select_editTransactStatus" name="status" value="{{{transaction.status}}}" required>
+                        <option value="{{transaction.status}}" selected hidden>{{transaction.status}}</option>
                         <option id="editTransact_option_delivered_complete">Delivered Completely</option> 
                         <option id="editTransact_option_delivered_partially">Delivered Partially</option> 
                         <option id="editTransact_option_pending">Pending</option> 
@@ -33,42 +33,42 @@
                 </div>
                 <div class="editTransactDetail_box" id="editTransactDate_box">
                     <h5 class="label" id="label_editTransactDate">Date</h5>
-                    <input class="editTransactInput" id="input_editTransactDate" type="date" name="date" value="{{{result.}}}" autocomplete="off" required><br>
+                    <input class="editTransactInput" id="input_editTransactDate" type="date" name="date" value="{{{transaction.inputFieldDateString}}}" autocomplete="off" required><br>
                     <p class="error" id="errorEditTransactDate">{{error}}</p>
                 </div>
                 <div class="editTransactDetail_box" id="editTransactDeliveryNo_box">
                     <h5 class="label" id="label_editTransactDeliveryNo">Delivery Receipt No.</h5>
-                    <input class="editTransactInput" id="input_editTransactDeliveryNo" type="number" min = "0" name="delivery_receipt_no" value="{{{result.}}}" autocomplete="off" required><br>
+                    <input class="editTransactInput" id="input_editTransactDeliveryNo" type="number" min = "0" name="delivery_receipt_no" value="{{{transaction.deliveryNumber}}}" autocomplete="off" required><br>
                     <p class="error" id="errorEditTransactDeliveryNo">{{error}}</p>
                 </div>
                 <div class="editTransactDetail_box" id="editTransactSalesNo_box">
                     <h5 class="label" id="label_editTransactSalesNo">Sales Invoice No.</h5>
-                    <input class="editTransactInput" id="input_editTransactSalesNo" type="number" min = "0" name="sales_invoice_no" value="{{{result.}}}" autocomplete="off" required><br>
+                    <input class="editTransactInput" id="input_editTransactSalesNo" type="number" min = "0" name="sales_invoice_no" value="{{{transaction.invoiceNumber}}}" autocomplete="off" required><br>
                     <p class="error" id="errorEditTransactSalesNo">{{error}}</p>
                 </div>
                 <div class="editTransactDetail_box" id="editTransactTruckPlateNo_box">
                     <h5 class="label" id="label_editTransactTruckPlateNo">Truck Plate No.</h5>
-                    <input class="editTransactInput" id="input_editTransactTruckPlateNo" type="text" name="truck_plate_no" value="{{{result.}}}" autocomplete="off" required><br>
+                    <input class="editTransactInput" id="input_editTransactTruckPlateNo" type="text" name="truck_plate_no" value="{{{transaction.truckPlateNumber}}}" autocomplete="off" required><br>
                     <p class="error" id="errorEditTransactTruckPlateNo">{{error}}</p>
                 </div>
                 <div class="editTransactDetail_box" id="editTransactCustomerName_box">
                     <h5 class="label" id="label_editTransactCustomerName">Customer Name</h5>
-                    <input class="editTransactInput" id="input_editTransactCustomerName" type="text" name="customer_name" value="{{{result.}}}" autocomplete="off" required><br>
+                    <input class="editTransactInput" id="input_editTransactCustomerName" type="text" name="customer_name" value="{{{transaction.customerName}}}" autocomplete="off" required><br>
                     <p class="error" id="errorEditTransactCustomerName">{{error}}</p>
                 </div>
                 <div class="editTransactDetail_box" id="editTransactAddress_box">
                     <h5 class="label" id="label_editTransactAddress">Address</h5>
-                    <input class="editTransactInput" id="input_editTransactAddress" type="text" name="editress" value="{{{result.}}}" autocomplete="off" required><br>
+                    <input class="editTransactInput" id="input_editTransactAddress" type="text" name="edit_address" value="{{{transaction.address}}}" autocomplete="off" required><br>
                     <p class="error" id="errorEditTransactAddress">{{error}}</p>
                 </div>
                 {{!-- <div class="editTransactDetail_box" id="editTransactAccntNo_box">
                     <h5 class="label" id="label_editTransactAccntNo">Account No.</h5>
-                    <input class="editTransactInput" id="input_editTransactAccntNo" type="number" min = "0" name="account_no" value="{{{result.}}}" autocomplete="off" required><br>
+                    <input class="editTransactInput" id="input_editTransactAccntNo" type="number" min = "0" name="account_no" value="{{{transaction.tinNumber}}}" autocomplete="off" required><br>
                     <p class="error" id="errorEditTransactAccntNo">{{error}}</p>
                 </div> --}}
                 <div class="editTransactDetail_box" id="editTransactTinNo_box">
                     <h5 class="label" id="label_editTransactTinNo">Tin No.</h5>
-                    <input class="editTransactInput" id="input_editTransactTinNo" type="text" name="tin_no" value="{{{result.}}}" autocomplete="off" required><br>
+                    <input class="editTransactInput" id="input_editTransactTinNo" type="text" name="tin_no" value="{{{transaction.tinNumber}}}" autocomplete="off" required><br>
                     <p class="error" id="errorEditTransactTinNo">{{error}}</p>
                 </div>
                 
@@ -77,23 +77,23 @@
                     <h5 class="label" id="label_editTransactProduct">Product(s)</h5>
                     <div class="edit_check_items_box">
                         <div class="edit_product_check_item">
-                            <input class="edit_product_checkbox" type="checkbox" id="edit_checkbox_diesel" value="Diesel">
+                            <input class="edit_product_checkbox" type="checkbox" id="edit_checkbox_diesel" name="edit_checkbox_diesel" {{#if transaction.hasProductObject.hasDiesel}} checked {{/if}}>
                             <label class="edit_product_check_label" for="edit_checkbox_diesel">Diesel</label>
                         </div>
                         <div class="edit_product_check_item">
-                            <input class="edit_product_checkbox" type="checkbox" id="edit_checkbox_gasoline" value="Gasoline">
+                            <input class="edit_product_checkbox" type="checkbox" id="edit_checkbox_gasoline" name="edit_checkbox_gasoline" {{#if transaction.hasProductObject.hasGasoline}} checked {{/if}}>
                             <label class="edit_product_check_label" for="edit_checkbox_gasoline">Gasoline</label>
                         </div>
                         <div class="edit_product_check_item">
-                            <input class="edit_product_checkbox" type="checkbox" id="edit_checkbox_premium95" value="Premium Gasoline 95">
+                            <input class="edit_product_checkbox" type="checkbox" id="edit_checkbox_premium95" name="edit_checkbox_premium95" {{#if transaction.hasProductObject.hasPremium95}} checked {{/if}}>
                             <label class="edit_product_check_label" for="edit_checkbox_premium95">Premium Gasoline 95</label>
                         </div>
                         <div class="edit_product_check_item">
-                            <input class="edit_product_checkbox" type="checkbox" id="edit_checkbox_premium97" value="Premium Gasoline 97">
+                            <input class="edit_product_checkbox" type="checkbox" id="edit_checkbox_premium97" name="edit_checkbox_premium97" {{#if transaction.hasProductObject.hasPremium97}} checked {{/if}}>
                             <label class="edit_product_check_label" for="edit_checkbox_premium97">Premium Gasoline 97</label>
                         </div>
                         <div class="edit_product_check_item">
-                            <input class="edit_product_checkbox" type="checkbox" id="edit_checkbox_kerosene" value="Kerosene">
+                            <input class="edit_product_checkbox" type="checkbox" id="edit_checkbox_kerosene" name="edit_checkbox_kerosene" {{#if transaction.hasProductObject.hasKerosene}} checked {{/if}}>
                             <label class="edit_product_check_label" for="edit_checkbox_kerosene">Kerosene</label>
                         </div>
                     </div>
@@ -104,139 +104,140 @@
                 <div class="editProductDetails_box" id="editDieselDetails_box">
                     <div class="editDetail_box" id="editTransactQuantity_box">
                         <h5 class="label" id="label_editTransactQuantity">Quantity of Diesel in Liters</h5>
-                        <input class="editTransactInput" id="input_editTransactQuantity" type="number" step = "0.01" min = "0" name="quantity" autocomplete="off" required><br>
+                        <input class="editTransactInput" id="input_editTransactQuantityDiesel" type="number" step = "0.01" min = "0" name="diesel_quantity" autocomplete="off" value="{{transaction.dieselObject.quantity}}"><br>
                         <p class="error" id="errorEditTransactQuantity">{{error}}</p>
                     </div>
                     <div class="editDetail_box" id="editTransactSellingPrice_box">
                         <h5 class="label" id="label_editTransactSellingPrice">Selling Price of Diesel</h5>
-                        <input class="editTransactInput" id="input_editTransactSellingPrice" type="number" step = "0.01" min = "0" name="selling_price" autocomplete="off"><br>
+                        <input class="editTransactInput" id="input_editTransactSellingPriceDiesel" type="number" step = "0.01" min = "0" name="diesel_selling_price" autocomplete="off" value="{{transaction.dieselObject.sellingPrice}}"><br>
                         <p class="error" id="errorEditTransactSellingPrice">{{error}}</p>
                     </div>
-                    <div class="editDetail_box" id="editTransactAmnt_box">
+                    <!-- <div class="editDetail_box" id="editTransactAmnt_box">
                         <h5 class="label" id="label_editTransactAmnt">Amount/Diesel</h5>
                         <input class="editTransactInput" id="input_editTransactAmnt" type="number" step = "0.01" min = "0" name="amount_per_product" autocomplete="off"><br>
                         <p class="error" id="errorEditTransactAmnt">{{error}}</p>
-                    </div>
+                    </div> -->
                 </div>
                 <div class="editProductDetails_box" id="editGasolineDetails_box">
                     <div class="editDetail_box" id="editTransactQuantity_box">
                         <h5 class="label" id="label_editTransactQuantity">Quantity of Gasoline in Liters</h5>
-                        <input class="editTransactInput" id="input_editTransactQuantity" type="number" step = "0.01" min = "0" name="quantity" autocomplete="off" required><br>
+                        <input class="editTransactInput" id="input_editTransactQuantityGasoline" type="number" step = "0.01" min = "0" name="gasoline_quantity" autocomplete="off" value="{{transaction.gasolineObject.quantity}}"><br>
                         <p class="error" id="errorEditTransactQuantity">{{error}}</p>
                     </div>
                     <div class="editDetail_box" id="editTransactSellingPrice_box">
                         <h5 class="label" id="label_editTransactSellingPrice">Selling Price of Gasoline</h5>
-                        <input class="editTransactInput" id="input_editTransactSellingPrice" type="number" step = "0.01" min = "0" name="selling_price" autocomplete="off"><br>
+                        <input class="editTransactInput" id="input_editTransactSellingPriceGasoline" type="number" step = "0.01" min = "0" name="gasoline_selling_price" autocomplete="off" value="{{transaction.gasolineObject.sellingPrice}}"><br>
                         <p class="error" id="errorEditTransactSellingPrice">{{error}}</p>
                     </div>
-                    <div class="editDetail_box" id="editTransactAmnt_box">
+                    <!-- <div class="editDetail_box" id="editTransactAmnt_box">
                         <h5 class="label" id="label_editTransactAmnt">Amount/Gasoline</h5>
                         <input class="editTransactInput" id="input_editTransactAmnt" type="number" step = "0.01" min = "0" name="amount_per_product" autocomplete="off"><br>
                         <p class="error" id="errorEditTransactAmnt">{{error}}</p>
-                    </div>
+                    </div> -->
                 </div>
                 <div class="editProductDetails_box" id="editPremium95Details_box">
                     <div class="editDetail_box" id="editTransactQuantity_box">
                         <h5 class="label" id="label_editTransactQuantity">Quantity of Premium Gasoline 95 in Liters</h5>
-                        <input class="editTransactInput" id="input_editTransactQuantity" type="number" step = "0.01" min = "0" name="quantity" autocomplete="off" required><br>
+                        <input class="editTransactInput" id="input_editTransactQuantityPremium95" type="number" step = "0.01" min = "0" name="premium95_quantity" autocomplete="off" value="{{transaction.premium95Object.quantity}}"><br>
                         <p class="error" id="errorEditTransactQuantity">{{error}}</p>
                     </div>
                     <div class="editDetail_box" id="editTransactSellingPrice_box">
                         <h5 class="label" id="label_editTransactSellingPrice">Selling Price of Premium Gasoline 95</h5>
-                        <input class="editTransactInput" id="input_editTransactSellingPrice" type="number" step = "0.01" min = "0" name="selling_price" autocomplete="off"><br>
+                        <input class="editTransactInput" id="input_editTransactSellingPricePremium95" type="number" step = "0.01" min = "0" name="premium95_selling_price" autocomplete="off" value="{{transaction.premium95Object.sellingPrice}}"><br>
                         <p class="error" id="errorEditTransactSellingPrice">{{error}}</p>
                     </div>
-                    <div class="editDetail_box" id="editTransactAmnt_box">
+                    <!-- <div class="editDetail_box" id="editTransactAmnt_box">
                         <h5 class="label" id="label_editTransactAmnt">Amount/Premium Gasoline 95</h5>
                         <input class="editTransactInput" id="input_editTransactAmnt" type="number" step = "0.01" min = "0" name="amount_per_product" autocomplete="off"><br>
                         <p class="error" id="errorEditTransactAmnt">{{error}}</p>
-                    </div>
+                    </div> -->
                 </div>
                 <div class="editProductDetails_box" id="editPremium97Details_box">
                     <div class="editDetail_box" id="editTransactQuantity_box">
                         <h5 class="label" id="label_editTransactQuantity">Quantity of Premium Gasoline 97 in Liters</h5>
-                        <input class="editTransactInput" id="input_editTransactQuantity" type="number" step = "0.01" min = "0" name="quantity" autocomplete="off" required><br>
+                        <input class="editTransactInput" id="input_editTransactQuantityPremium97" type="number" step = "0.01" min = "0" name="premium97_quantity" autocomplete="off" value="{{transaction.premium97Object.quantity}}"><br>
                         <p class="error" id="errorEditTransactQuantity">{{error}}</p>
                     </div>
                     <div class="editDetail_box" id="editTransactSellingPrice_box">
                         <h5 class="label" id="label_editTransactSellingPrice">Selling Price of Premium Gasoline 97</h5>
-                        <input class="editTransactInput" id="input_editTransactSellingPrice" type="number" step = "0.01" min = "0" name="selling_price" autocomplete="off"><br>
+                        <input class="editTransactInput" id="input_editTransactSellingPricePremium97" type="number" step = "0.01" min = "0" name="premium97_selling_price" autocomplete="off" value="{{transaction.premium97Object.sellingPrice}}"><br>
                         <p class="error" id="errorEditTransactSellingPrice">{{error}}</p>
                     </div>
-                    <div class="editDetail_box" id="editTransactAmnt_box">
+                    <!-- <div class="editDetail_box" id="editTransactAmnt_box">
                         <h5 class="label" id="label_editTransactAmnt">Amount/Premium Gasoline 97</h5>
                         <input class="editTransactInput" id="input_editTransactAmnt" type="number" step = "0.01" min = "0" name="amount_per_product" autocomplete="off"><br>
                         <p class="error" id="errorEditTransactAmnt">{{error}}</p>
-                    </div>
+                    </div> -->
                 </div>
                 <div class="editProductDetails_box" id="editKeroseneDetails_box">
                     <div class="editDetail_box" id="editTransactQuantity_box">
                         <h5 class="label" id="label_editTransactQuantity">Quantity of Kerosene in Liters</h5>
-                        <input class="editTransactInput" id="input_editTransactQuantity" type="number" step = "0.01" min = "0" name="quantity" autocomplete="off" required><br>
+                        <input class="editTransactInput" id="input_editTransactQuantityKerosene" type="number" step = "0.01" min = "0" name="kerosene_quantity" autocomplete="off" value="{{transaction.keroseneObject.quantity}}"><br>
                         <p class="error" id="errorEditTransactQuantity">{{error}}</p>
                     </div>
                     <div class="editDetail_box" id="editTransactSellingPrice_box">
                         <h5 class="label" id="label_editTransactSellingPrice">Selling Price of Kerosene</h5>
-                        <input class="editTransactInput" id="input_editTransactSellingPrice" type="number" step = "0.01" min = "0" name="selling_price" autocomplete="off"><br>
+                        <input class="editTransactInput" id="input_editTransactSellingPriceKerosene" type="number" step = "0.01" min = "0" name="kerosene_selling_price" autocomplete="off" value="{{transaction.keroseneObject.sellingPrice}}"><br>
                         <p class="error" id="errorEditTransactSellingPrice">{{error}}</p>
                     </div>
-                    <div class="editDetail_box" id="editTransactAmnt_box">
+                    <!-- <div class="editDetail_box" id="editTransactAmnt_box">
                         <h5 class="label" id="label_editTransactAmnt">Amount/Kerosene</h5>
                         <input class="editTransactInput" id="input_editTransactAmnt" type="number" step = "0.01" min = "0" name="amount_per_product" autocomplete="off"><br>
                         <p class="error" id="errorEditTransactAmnt">{{error}}</p>
-                    </div>
+                    </div> -->
                 </div>
                 {{!-- end of product detail fields --}}
 
-                <div class="editDetail_box" id="editTransactTotalAmnt_box">
+                <!-- <div class="editDetail_box" id="editTransactTotalAmnt_box">
                     <h5 class="label" id="label_editTransactTotalAmnt">Total Amount</h5>
-                    <input class="editTransactInput" id="input_editTransactTotalAmnt" type="number" step = "0.01" min = "0" name="total_amount" value="{{{result.}}}" autocomplete="off"><br>
+                    <input class="editTransactInput" id="input_editTransactTotalAmnt" type="number" step = "0.01" min = "0" name="total_amount" value="{{{transaction}}}" autocomplete="off"><br>
                     <p class="error" id="errorEditTransactTotalAmnt">{{error}}</p>
-                </div>
+                </div> -->
                 <div class="editTransactDetail_box" id="editTransactPrepared_box">
                     <h5 class="label" id="label_editTransactPrepared">Prepared By</h5>
-                    <input class="editTransactInput" id="input_editTransactPrepared" type="text" name="prepared_by" value="{{{result.}}}" autocomplete="off"><br>
+                    <input class="editTransactInput" id="input_editTransactPrepared" type="text" name="prepared_by" value="{{{transaction.signatories.prepared}}}" autocomplete="off" required><br>
                     <p class="error" id="errorEditTransactPrepared">{{error}}</p>
                 </div>
                 <div class="editTransactDetail_box" id="editTransactLoaded_box">
                     <h5 class="label" id="label_editTransactLoaded">Loaded By</h5>
-                    <input class="editTransactInput" id="input_editTransactLoaded" type="text" name="loaded_by"value="{{{result.}}}"  autocomplete="off"><br>
+                    <input class="editTransactInput" id="input_editTransactLoaded" type="text" name="loaded_by"value="{{{transaction.signatories.loaded}}}"  autocomplete="off" required><br>
                     <p class="error" id="errorEditTransactLoaded">{{error}}</p>
                 </div>
                 <div class="editTransactDetail_box" id="editTransactDriver_box">
                     <h5 class="label" id="label_editTransactDriver">Driver</h5>
-                    <input class="editTransactInput" id="input_editTransactDriver" type="text" name="driver" value="{{{result.}}}" autocomplete="off"><br>
+                    <input class="editTransactInput" id="input_editTransactDriver" type="text" name="driver" value="{{{transaction.signatories.driver}}}" autocomplete="off" required><br>
                     <p class="error" id="errorEditTransactDriver">{{error}}</p>
                 </div>
                 <div class="editTransactDetail_box" id="editTransactGuard_box">
-                    <h5 class="label" id="label_editTransactGuard">Guard</h5>
-                    <input class="editTransactInput" id="input_editTransactGuard" type="text" name="guard" value="{{{result.}}}" autocomplete="off"><br>
+                    <h5 class="label" id="label_editTransactGuard" required>Guard</h5>
+                    <input class="editTransactInput" id="input_editTransactGuard" type="text" name="guard" value="{{{transaction.signatories.guard}}}" autocomplete="off"><br>
                     <p class="error" id="errorEditTransactGuard">{{error}}</p>
                 </div>
                 <div class="editTransactDetail_box" id="editTransactCustomerRep_box">
                     <h5 class="label" id="label_editTransactCustomerRep">Customer Representative</h5>
-                    <input class="editTransactInput" id="input_editTransactCustomerRep" type="text" name="customer_representative" value="{{{result.}}}" autocomplete="off"><br>
+                    <input class="editTransactInput" id="input_editTransactCustomerRep" type="text" name="customer_representative" value="{{{transaction.signatories.customerRep}}}" autocomplete="off" required><br>
                     <p class="error" id="errorEditTransactCustomerRep">{{error}}</p>
                 </div>
                 <div class="editTransactDetail_box" id="editTransactApproved_box">
                     <h5 class="label" id="label_editTransactApproved">Delivery Approved By</h5>
-                    <input class="editTransactInput" id="input_editTransactApproved" type="text" name="delivery_approved_by" value="{{{result.}}}" autocomplete="off"><br>
+                    <input class="editTransactInput" id="input_editTransactApproved" type="text" name="delivery_approved_by" value="{{{transaction.signatories.deliveryApproved}}}" autocomplete="off" required><br>
                     <p class="error" id="errorEditTransactApproved">{{error}}</p>
                 </div>
                 <div class="editTransactDetail_box" id="editTransactChecked_box">
                     <h5 class="label" id="label_editTransactChecked">Delivery Checked By</h5>
-                    <input class="editTransactInput" id="input_editTransactChecked" type="text" name="delivery_checked_by" value="{{{result.}}}" autocomplete="off"><br>
+                    <input class="editTransactInput" id="input_editTransactChecked" type="text" name="delivery_checked_by" value="{{{transaction.signatories.deliveryChecked}}}" autocomplete="off" required><br>
                     <p class="error" id="errorEditTransactChecked">{{error}}</p>
                 </div>
                 <div class="editTransactDetail_box" id="editTransactRemarks_box">
                     <h5 class="label" id="label_editTransactRemarks">Remarks</h5>
-                    <input class="editTransactInput" id="input_editTransactRemarks" type="text" name="remarks" value="{{{result.}}}" autocomplete="off"><br>
+                    <input class="editTransactInput" id="input_editTransactRemarks" type="text" name="remarks" value="{{{transaction.remarks}}}" autocomplete="off"><br>
                     <p class="error" id="errorEditTransactRemarks">{{error}}</p>
                 </div>
 
                 <div id="btnEditTransact_box">
-                    <button class="editBtns" name = "submit_button" id="btn_editTransact" type="submit" value="{{result.}}">Submit Changes</button>
-                    <a href = "/products" style = "text-decoration: none; color: white;">
+                    <button class="editBtns" name = "submit_button" id="btn_editTransact" type="submit" value="{{transaction.transactionId}}">Submit Changes</button>
+                    <p class="error" id="errorBottom"> </p>
+                    <a href = "/transactions" style = "text-decoration: none; color: white;">
                         <button class="editBtns" id="btn_editTransactCancel" type="button" value="Cancel">Cancel</button>
                     </a>
                 </div>
