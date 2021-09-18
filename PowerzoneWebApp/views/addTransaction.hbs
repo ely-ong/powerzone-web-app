@@ -77,23 +77,23 @@
                     <h5 class="label" id="label_addTransactProduct">Product(s)</h5>
                     <div class="add_check_items_box">
                         <div class="add_product_check_item">
-                            <input class="add_product_checkbox" type="checkbox" id="add_checkbox_diesel" value="true" name="add_checkbox_diesel">
+                            <input class="add_product_checkbox" type="checkbox" id="add_checkbox_diesel"  name="add_checkbox_diesel">
                             <label class="add_product_check_label" for="add_checkbox_diesel">Diesel</label>
                         </div>
                         <div class="add_product_check_item">
-                            <input class="add_product_checkbox" type="checkbox" id="add_checkbox_gasoline" value="true" name="add_checkbox_gasoline">
+                            <input class="add_product_checkbox" type="checkbox" id="add_checkbox_gasoline"  name="add_checkbox_gasoline">
                             <label class="add_product_check_label" for="add_checkbox_gasoline">Gasoline</label>
                         </div>
                         <div class="add_product_check_item">
-                            <input class="add_product_checkbox" type="checkbox" id="add_checkbox_premium95" value="true" name="add_checkbox_premium95">
+                            <input class="add_product_checkbox" type="checkbox" id="add_checkbox_premium95"  name="add_checkbox_premium95">
                             <label class="add_product_check_label" for="add_checkbox_premium95">Premium Gasoline 95</label>
                         </div>
                         <div class="add_product_check_item">
-                            <input class="add_product_checkbox" type="checkbox" id="add_checkbox_premium97" value="true" name="add_checkbox_premium97">
+                            <input class="add_product_checkbox" type="checkbox" id="add_checkbox_premium97"  name="add_checkbox_premium97">
                             <label class="add_product_check_label" for="add_checkbox_premium97">Premium Gasoline 97</label>
                         </div>
                         <div class="add_product_check_item">
-                            <input class="add_product_checkbox" type="checkbox" id="add_checkbox_kerosene" value="true" name="add_checkbox_kerosene">
+                            <input class="add_product_checkbox" type="checkbox" id="add_checkbox_kerosene"  name="add_checkbox_kerosene">
                             <label class="add_product_check_label" for="add_checkbox_kerosene">Kerosene</label>
                         </div>
                     </div>
@@ -235,11 +235,16 @@
                 </div>
 
                 <div id="btnAddTransact_box">
-                    <input class="addBtns" id="btn_addTransact" type="submit" value="Add Transaction">
+                    <div>
+                        <input class="addBtns" id="btn_addTransact" type="submit" value="Add Transaction" disabled>
+                        
+                    </div>
+                    <p class="error" id="errorBottom"> </p>
                      <a href = "/transactions" style = "text-decoration: none; color: white;">
                         <button class="addBtns" id="btn_addTransactCancel" type="button" value="Cancel">Cancel</button>
                      </a>
                 </div>
+                
             </form>
         </div>
     </div>

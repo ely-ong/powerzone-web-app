@@ -240,6 +240,10 @@ input:focus{
     outline-offset: 2px;
 }
 
+#btn_addTransact:disabled{
+    opacity: .3;
+}
+
 /* handles style of cancel button */
 #btn_addTransactCancel{
     color: white;

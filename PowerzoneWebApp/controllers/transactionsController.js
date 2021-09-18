@@ -145,6 +145,11 @@ const transactionsController = {
         };
         var remarks = req.body.remarks;
         var transactionId = uniqid('transaction-');
+        var dieselObject = null;
+        var gasolineObject = null;
+        var premium95Object = null; 
+        var premium97Object = null;
+        var keroseneObject = null;
 
         // Date Manipulation
         var dateArray = date.split('-');
@@ -157,12 +162,12 @@ const transactionsController = {
         console.log("KEROSENE CHECK: " + keroseneCheck);
 
         // Checks if the transaction contains a purchase of diesel
-        if(dieselCheck == "true"){
+        if(dieselCheck == "on"){
             var dieselQuantity = req.body.diesel_quantity;
             var dieselSellingPrice = req.body.diesel_selling_price;
             var dieselAmount = dieselQuantity * dieselSellingPrice;
             dieselAmount = dieselAmount.toFixed(2)
-            var dieselObject = {
+            dieselObject = {
                 product: "Diesel",
                 quantity: dieselQuantity,
                 sellingPrice: dieselSellingPrice,
@@ -173,12 +178,11 @@ const transactionsController = {
         }
 
         // Checks if the transaction contains a purchase of gasoline
-        if(gasolineCheck == "true"){
+        if(gasolineCheck == "on"){
             var gasolineQuantity = req.body.gasoline_quantity;
             var gasolineSellingPrice = req.body.gasoline_selling_price;
             var gasolineAmount = gasolineQuantity * gasolineSellingPrice;
-            gasolineAmount = gasolineAmount.toFixed(2);
-            var gasolineObject = {
+            gasolineObject = {
                 product: "Gasoline",
                 quantity: gasolineQuantity,
                 sellingPrice: gasolineSellingPrice,
@@ -189,12 +193,11 @@ const transactionsController = {
         }
 
         // Checks if the transaction contains a purchase of premium 95
-        if(premium95Check == "true"){
+        if(premium95Check == "on"){
             var premium95Quantity = req.body.premium95_quantity;
             var premium95SellingPrice = req.body.premium95_selling_price;
             var premium95Amount = premium95Quantity * premium95SellingPrice;
-            premium95Amount = premium95Amount.toFixed(2);
-            var premium95Object = {
+            premium95Object = {
                 product: "Premium 95 Gasoline",
                 quantity: premium95Quantity,
                 sellingPrice: premium95SellingPrice,
@@ -205,12 +208,11 @@ const transactionsController = {
         }
 
         // Checks if the transaction contains a purchase of premium 97
-        if(premium97Check == "true"){
+        if(premium97Check == "on"){
             var premium97Quantity = req.body.premium97_quantity;
             var premium97SellingPrice = req.body.premium97_selling_price;
             var premium97Amount = premium97Quantity * premium97SellingPrice;
-            premium97Amount = premium97Amount.toFixed(2);
-            var premium97Object = {
+            premium97Object = {
                 product: "Premium 97 Gasoline",
                 quantity: premium97Quantity,
                 sellingPrice: premium97SellingPrice,
@@ -221,12 +223,11 @@ const transactionsController = {
         }
 
         // Checks if the transaction contains a purchase of kerosene
-        if(keroseneCheck == "true"){
+        if(keroseneCheck == "on"){
             var keroseneQuantity = req.body.kerosene_quantity;
             var keroseneSellingPrice = req.body.kerosene_selling_price;
             var keroseneAmount = keroseneQuantity * keroseneSellingPrice;
-            keroseneAmount = keroseneAmount.toFixed(2);
-            var keroseneObject = {
+            keroseneObject = {
                 product: "Kerosene",
                 quantity: keroseneQuantity,
                 sellingPrice: keroseneSellingPrice,

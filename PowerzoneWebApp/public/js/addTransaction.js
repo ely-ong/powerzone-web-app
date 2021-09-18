@@ -81,4 +81,34 @@ $(document).ready(function() {
         console.log(qty);
         $('#input_addTransactSellingPriceKerosene').val(parseFloat(qty).toFixed(2));
     })
+
+    // Front-End Validation
+
+    // checks if at least one product was selected in the transaction
+    $('#add_checkbox_diesel, #add_checkbox_gasoline, #add_checkbox_premium95, #add_checkbox_premium97, #add_checkbox_kerosene').change(function(){
+
+        var checkboxDiesel = $('#add_checkbox_diesel').is(":checked");
+        var checkboxGasoline = $('#add_checkbox_gasoline').is(":checked");
+        var checkboxPremium95 = $('#add_checkbox_premium95').is(":checked");
+        var checkboxPremium97 = $('#add_checkbox_premium97').is(":checked");
+        var checkboxKerosene = $('#add_checkbox_kerosene').is(":checked");
+
+        if(!checkboxDiesel && !checkboxGasoline && !checkboxPremium95 && !checkboxPremium97 && !checkboxKerosene){
+            $('#btn_addTransact').prop('disabled', true);
+            $('#errorBottom').text('Select at least one product to purchase.');
+            $('#errorBottom').css('color', '#ab4642');
+        }
+        else{
+            $('#btn_addTransact').prop('disabled', false);
+            $('#errorBottom').text('');
+        }
+    })
+
+    // checks if product fields were inputted
+    // $('#btn_addTransact').click(function(){
+
+    //     if(checkboxDiesel){
+
+    //     }
+    // })
 })
