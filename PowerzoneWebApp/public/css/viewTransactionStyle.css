@@ -21,12 +21,25 @@ body{
     justify-content: center;
 }
 
+/* handles style of "Transaction Details" label */
+#label_transactDetails{
+    display: block;
+    font-weight: 900;
+    color: white;
+    font-size: 36px;
+    text-align: center;
+    margin-left: 3%;
+    margin-bottom: 3%;
+}
+
+/* handles style of back button */
 .back_btn{
     margin-left: 3%;
     margin-top: 6%;
     border: none;
-    background-color: #F3F3F3;;
-    color: black;
+    background-color: var(--lightBlue);
+    color: var(--darkBlue);
+    font-family: 'Lato', sans-serif;
     font-weight: bold;
     font-size: 16px;
     border-radius: 2px;
@@ -34,7 +47,21 @@ body{
     padding: 10px;
 }
 
+.back_btn:hover{
+    opacity: .8;
+}
 
+.back_btn:active{
+    background-color: steelblue;
+    box-shadow: 0 0 0 2px white;
+}
+
+/* handles style of arrow symbol on back button */
+i{
+    color: var(--darkBlue);
+}
+
+/* handles style of div containing main contents */
 #main_box{
     margin-left: auto;
     margin-right: auto;
@@ -48,21 +75,23 @@ body{
     background-color: #002b53;
 }
 
+/* handles style of transaction detail inputs */
 .main_text{
     margin-left: auto;
     margin-right: auto;
     justify-content: center;
     border-bottom-style: solid;
-    border-color: rgba(236, 233, 233, 0.863);
+    border-color: #ece9e9dc;
     margin-top: 5px;
     margin-bottom: 25px;
     padding-bottom: 3px;
-    color: rgba(236, 233, 233, 0.863);
+    color: #ece9e9dc;
     height: 18px;
     width: 100%;
     font-size: 14px;
 }
 
+/* handles style of transaction detail labels */
 .label{
     margin-left: auto;
     margin-right: auto;
@@ -73,6 +102,7 @@ body{
     color: white;
 }
 
+/* handles style of product table */
 #productTable{
     margin-left: auto;
     margin-right: auto;
@@ -89,7 +119,7 @@ body{
     letter-spacing: .5px;
     position: -webkit-sticky; /* for Safari */
     position: sticky;
-    background: var(--logoBlue);
+    background: #4481bb;
     padding: 10px;
 }
 
@@ -101,13 +131,26 @@ body{
     padding-right: 10px;
 }
 
-#producthead_qty, #producthead_unitPrice, #producthead_amount, #product_qty, #product_unitPrice, #product_amount, #productTotal_amount{
+/* #producthead_qty, 
+#producthead_unitPrice, 
+#producthead_amount, 
+#product_qty, 
+#product_unitPrice, 
+#product_amount, 
+#productTotal_amount */
+
+/* aligns numerical table values to the right */
+.numbers{
     text-align: right;
 }
-#productTotal_amount, #productTotal_label{
+
+/* sets text on row of total amount to bold */
+#productTotal_amount, 
+#productTotal_label{
     font-weight: bold;
 }
 
+/* handles style of div containing 2 divs of main transaction details */
 .maindivision_box{
     margin-left: auto;
     margin-right: auto;
@@ -116,6 +159,7 @@ body{
     width: 70%;
 }
 
+/* handles style of divs containing main transaction details */
 .division_box{
     width: 100%;
     padding-left: 30px;
