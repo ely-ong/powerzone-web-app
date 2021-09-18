@@ -144,7 +144,7 @@ const database = {
      * @param filter the object containing the searching criteria for the documents to be found
      * @param update the object containing the properties and values to be changed in the retrieved documents
      */
-    updateMany: function(model, filter, update) {
+    updateMany: function(model, filter, update, callback) {
         model.updateMany(filter, update, function(error, result) {
             if(error) 
                 return callback(false);

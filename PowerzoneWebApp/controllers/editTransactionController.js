@@ -4,6 +4,9 @@ const db = require('../models/db.js');
 // import module `Product` from `../models/ProductModel.js`
 const Transaction = require('../models/TransactionModel.js');
 
+// import module `Product` from `../models/ProductModel.js`
+const Product = require('../models/ProductModel.js');
+
 // import module mongoose
 const mongoose = require('mongoose');
 
@@ -238,14 +241,164 @@ const editTransactionController = {
             isDelivered: isDelivered
         }
 
-        // console.log(editedTransaction);
+        console.log("-----------------------------------------------------------------------------------------------------");
 
-        // Adds the transaction and all indicated details to the database and redirects to the transactions page on success
+        // Updates the transaction and all indicated details to the database and redirects to the transactions page on success
         db.updateOne(Transaction, {transactionId: transactionId}, editedTransaction, function(result) {
-            console.log(editedTransaction);
+
+            // performs necessary amount deductions on the products database once the product is delivered completely
             if(isDelivered){
-                console.log("hlelo");
+                if(dieselCheck == "on"){
+                    db.findManyAndSort(Product, {product: "Diesel"}, {date: 'asc'}, function (result) {
+                        if(result) {
+                            var tempQuantity = dieselObject.quantity;
+                            var isEnd = false;
+
+                            while(tempQuantity != 0){
+                                for(var i = 0; i < result.length; i++){
+                                    if(result[i].quantity > 0){
+                                        console.log("BEFORE: " + result[i]);
+                                        if(result[i].quantity >= tempQuantity){
+                                            result[i].quantity = result[i].quantity - tempQuantity;
+                                            tempQuantity = 0;
+                                            isEnd = true;
+                                        }
+                                        else{
+                                            tempQuantity = tempQuantity - result[i].quantity;
+                                            result[i].quantity = 0;
+                                        }
+                                    }
+                                    console.log("AFTER: " + result[i]);
+                                    db.updateOne(Product, {productId: result[i].productId}, result[i], function(res){});
+                                    if(isEnd)
+                                        break;
+                                }
+                            }
+                        }
+                    });
+                }
+
+                if(gasolineCheck == "on"){
+                    db.findManyAndSort(Product, {product: "Gasoline"}, {date: 'asc'}, function (result) {
+                        if(result) {
+                            var tempQuantity = gasolineObject.quantity;
+                            var isEnd = false;
+
+                            while(tempQuantity != 0){
+                                for(var i = 0; i < result.length; i++){
+                                    if(result[i].quantity > 0){
+                                        console.log("BEFORE: " + result[i]);
+                                        if(result[i].quantity >= tempQuantity){
+                                            result[i].quantity = result[i].quantity - tempQuantity;
+                                            tempQuantity = 0;
+                                            isEnd = true;
+                                        }
+                                        else{
+                                            tempQuantity = tempQuantity - result[i].quantity;
+                                            result[i].quantity = 0;
+                                        }
+                                    }
+                                    console.log("AFTER: " + result[i]);
+                                    db.updateOne(Product, {productId: result[i].productId}, result[i], function(res){});
+                                    if(isEnd)
+                                        break;
+                                }
+                            }
+                        }
+                    });
+                }
+
+                if(premium95Check == "on"){
+                    db.findManyAndSort(Product, {product: "Premium Gasoline 95"}, {date: 'asc'}, function (result) {
+                        if(result) {
+                            var tempQuantity = premium95Object.quantity;
+                            var isEnd = false;
+
+                            while(tempQuantity != 0){
+                                for(var i = 0; i < result.length; i++){
+                                    if(result[i].quantity > 0){
+                                        console.log("BEFORE: " + result[i]);
+                                        if(result[i].quantity >= tempQuantity){
+                                            result[i].quantity = result[i].quantity - tempQuantity;
+                                            tempQuantity = 0;
+                                            isEnd = true;
+                                        }
+                                        else{
+                                            tempQuantity = tempQuantity - result[i].quantity;
+                                            result[i].quantity = 0;
+                                        }
+                                    }
+                                    console.log("AFTER: " + result[i]);
+                                    db.updateOne(Product, {productId: result[i].productId}, result[i], function(res){});
+                                    if(isEnd)
+                                        break;
+                                }
+                            }
+                        }
+                    });
+                }
+
+                if(premium97Check == "on"){
+                    db.findManyAndSort(Product, {product: "Premium Gasoline 97"}, {date: 'asc'}, function (result) {
+                        if(result) {
+                            var tempQuantity = premium97Object.quantity;
+                            var isEnd = false;
+
+                            while(tempQuantity != 0){
+                                for(var i = 0; i < result.length; i++){
+                                    if(result[i].quantity > 0){
+                                        console.log("BEFORE: " + result[i]);
+                                        if(result[i].quantity >= tempQuantity){
+                                            result[i].quantity = result[i].quantity - tempQuantity;
+                                            tempQuantity = 0;
+                                            isEnd = true;
+                                        }
+                                        else{
+                                            tempQuantity = tempQuantity - result[i].quantity;
+                                            result[i].quantity = 0;
+                                        }
+                                    }
+                                    console.log("AFTER: " + result[i]);
+                                    db.updateOne(Product, {productId: result[i].productId}, result[i], function(res){});
+                                    if(isEnd)
+                                        break;
+                                }
+                            }
+                        }
+                    });
+                }
+
+                if(keroseneCheck == "on"){
+                    db.findManyAndSort(Product, {product: "Kerosene"}, {date: 'asc'}, function (result) {
+                        if(result) {
+                            var tempQuantity = keroseneObject.quantity;
+                            var isEnd = false;
+
+                            while(tempQuantity != 0){
+                                for(var i = 0; i < result.length; i++){
+                                    if(result[i].quantity > 0){
+                                        console.log("BEFORE: " + result[i]);
+                                        if(result[i].quantity >= tempQuantity){
+                                            result[i].quantity = result[i].quantity - tempQuantity;
+                                            tempQuantity = 0;
+                                            isEnd = true;
+                                        }
+                                        else{
+                                            tempQuantity = tempQuantity - result[i].quantity;
+                                            result[i].quantity = 0;
+                                        }
+                                    }
+                                    console.log("AFTER: " + result[i]);
+                                    db.updateOne(Product, {productId: result[i].productId}, result[i], function(res){});
+                                    if(isEnd)
+                                        break;
+                                }
+                            }
+                        }
+                    });
+                }
             }
+
             res.redirect('/transactions');
         });
     }
