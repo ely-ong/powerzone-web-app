@@ -16,16 +16,17 @@
 <body>
     {{> navBar}}
 
-    <button class="back_btn"> <i class="fa fa-arrow-left"> Go Back</i> </button>
+    <button class="back_btn"> <i class="fa fa-arrow-left"></i> Go Back</button>
         
     <div id="main_box">
+        <h1 id="label_transactDetails">Transaction Details</h1>
         <table id="productTable">
             <thead>
                 <tr id="productTable_header">
                     <th class="productTable_head" id="producthead_name">Product</th>
-                    <th class="productTable_head" id="producthead_qty">Quantity</th>
-                    <th class="productTable_head" id="producthead_unitPrice">Unit Price</th>
-                    <th class="productTable_head" id="producthead_amount">Amount</th>
+                    <th class="productTable_head numbers" id="producthead_qty">Quantity</th>
+                    <th class="productTable_head numbers" id="producthead_unitPrice">Unit Price</th>
+                    <th class="productTable_head numbers" id="producthead_amount">Amount</th>
                 </tr>
             </thead>
             
@@ -33,48 +34,48 @@
                     {{#if transaction.hasProductObject.hasDiesel}}
                     <tr class="productTable_rows">
                         <td class="productTable_data" id="product_name">{{transaction.dieselObject.product}}</td>
-                        <td class="productTable_data" id="product_qty">{{transaction.dieselObject.quantity}} L</td>
-                        <td class="productTable_data" id="product_unitPrice">P {{transaction.dieselObject.sellingPrice}}</td>
-                        <td class="productTable_data" id="product_amount">P {{transaction.dieselObject.totalPrice}}</td>
+                        <td class="productTable_data numbers" id="product_qty">{{transaction.dieselObject.quantity}} L</td>
+                        <td class="productTable_data numbers" id="product_unitPrice">P {{transaction.dieselObject.sellingPrice}}</td>
+                        <td class="productTable_data numbers" id="product_amount">P {{transaction.dieselObject.totalPrice}}</td>
                     </tr>
                     {{/if}}
                     {{#if transaction.hasProductObject.hasGasoline}}
                     <tr class="productTable_rows">
                         <td class="productTable_data" id="product_name">{{transaction.gasolineObject.product}}</td>
-                        <td class="productTable_data" id="product_qty">{{transaction.gasolineObject.quantity}} L</td>
-                        <td class="productTable_data" id="product_unitPrice">P {{transaction.gasolineObject.sellingPrice}}</td>
-                        <td class="productTable_data" id="product_amount">P {{transaction.gasolineObject.totalPrice}}</td>
+                        <td class="productTable_data numbers" id="product_qty">{{transaction.gasolineObject.quantity}} L</td>
+                        <td class="productTable_data numbers" id="product_unitPrice">P {{transaction.gasolineObject.sellingPrice}}</td>
+                        <td class="productTable_data numbers" id="product_amount">P {{transaction.gasolineObject.totalPrice}}</td>
                     </tr>
                     {{/if}}
                     {{#if transaction.hasProductObject.hasPremium95}}
                     <tr class="productTable_rows">
                         <td class="productTable_data" id="product_name">{{transaction.premium95Object.product}}</td>
-                        <td class="productTable_data" id="product_qty">{{transaction.premium95Object.quantity}} L</td>
-                        <td class="productTable_data" id="product_unitPrice">P {{transaction.premium95Object.sellingPrice}}</td>
-                        <td class="productTable_data" id="product_amount">P {{transaction.premium95Object.totalPrice}}</td>
+                        <td class="productTable_data numbers" id="product_qty">{{transaction.premium95Object.quantity}} L</td>
+                        <td class="productTable_data numbers" id="product_unitPrice">P {{transaction.premium95Object.sellingPrice}}</td>
+                        <td class="productTable_data numbers" id="product_amount">P {{transaction.premium95Object.totalPrice}}</td>
                     </tr>
                     {{/if}}
                     {{#if transaction.hasProductObject.hasPremium97}}
                     <tr class="productTable_rows">
                         <td class="productTable_data" id="product_name">{{transaction.premium97Object.product}}</td>
-                        <td class="productTable_data" id="product_qty">{{transaction.premium97Object.quantity}} L</td>
-                        <td class="productTable_data" id="product_unitPrice">P {{transaction.premium97Object.sellingPrice}}</td>
-                        <td class="productTable_data" id="product_amount">P {{transaction.premium97Object.totalPrice}}</td>
+                        <td class="productTable_data numbers" id="product_qty">{{transaction.premium97Object.quantity}} L</td>
+                        <td class="productTable_data numbers" id="product_unitPrice">P {{transaction.premium97Object.sellingPrice}}</td>
+                        <td class="productTable_data numbers" id="product_amount">P {{transaction.premium97Object.totalPrice}}</td>
                     </tr>
                     {{/if}}
                     {{#if transaction.hasProductObject.hasKerosene}}
                     <tr class="productTable_rows">
                         <td class="productTable_data" id="product_name">{{transaction.keroseneObject.product}}</td>
-                        <td class="productTable_data" id="product_qty">{{transaction.keroseneObject.quantity}} L</td>
-                        <td class="productTable_data" id="product_unitPrice">P {{transaction.keroseneObject.sellingPrice}}</td>
-                        <td class="productTable_data" id="product_amount">P {{transaction.keroseneObject.totalPrice}}</td>
+                        <td class="productTable_data numbers" id="product_qty">{{transaction.keroseneObject.quantity}} L</td>
+                        <td class="productTable_data numbers" id="product_unitPrice">P {{transaction.keroseneObject.sellingPrice}}</td>
+                        <td class="productTable_data numbers" id="product_amount">P {{transaction.keroseneObject.totalPrice}}</td>
                     </tr>
                     {{/if}}
                     <tr class="productTable_rows">
                         <td class="productTable_data" id="productTotal_label">Total Amount</td>
                         <td class="productTable_data"></td>
                         <td class="productTable_data"></td>
-                        <td class="productTable_data" id="productTotal_amount">P {{transaction.totalAmount}}</td>
+                        <td class="productTable_data numbers" id="productTotal_amount">P {{transaction.totalAmount}}</td>
                     </tr>
                 </tbody>
             
