@@ -21,25 +21,30 @@ body{
     justify-content: center;
 }
 
-
-#label_transaction{
-    display: block;
-    font-weight: 900;
-    color: white;
-    font-size: 36px;
-    text-align: center;
-    margin-top: 3%;
-    margin-bottom: 3%;
+.back_btn{
+    margin-left: 3%;
+    margin-top: 6%;
+    border: none;
+    background-color: #F3F3F3;;
+    color: black;
+    font-weight: bold;
+    font-size: 16px;
+    border-radius: 2px;
+    cursor: pointer;
+    padding: 10px;
 }
+
 
 #main_box{
     margin-left: auto;
     margin-right: auto;
+    margin-top: -3%;
+    justify-content: center;
     margin-bottom: 10%;
-    width: 50%;
+    width: 60%;
     height: fit-content;
-    padding-top: 5%;
-    padding-bottom: 5%;
+    padding-top: 3%;
+    padding-bottom: 3%;
     background-color: #002b53;
 }
 
@@ -47,12 +52,14 @@ body{
     margin-left: auto;
     margin-right: auto;
     justify-content: center;
+    border-bottom-style: solid;
+    border-color: rgba(236, 233, 233, 0.863);
     margin-top: 5px;
-    margin-bottom: 15px;
-    background-color: white;
-    width: 490px;
+    margin-bottom: 25px;
+    padding-bottom: 3px;
+    color: rgba(236, 233, 233, 0.863);
     height: 18px;
-    padding: 5px;
+    width: 100%;
     font-size: 14px;
 }
 
@@ -60,12 +67,10 @@ body{
     margin-left: auto;
     margin-right: auto;
     justify-content: center;
+    margin-bottom: 8px;
     font-size: 16px;
     letter-spacing: .5px;
-    margin-bottom: 1px;
     color: white;
-    width: 500px;
-    padding: 5px;
 }
 
 #productTable{
@@ -73,8 +78,8 @@ body{
     margin-right: auto;
     background-color: #F3F3F3;
     border-collapse: collapse;
-    margin-bottom: 15px;
-    width: 500px;
+    margin-bottom: 40px;
+    width: 70%;
 }
 
 .productTable_head{
@@ -96,6 +101,23 @@ body{
     padding-right: 10px;
 }
 
+#producthead_qty, #producthead_unitPrice, #producthead_amount, #product_qty, #product_unitPrice, #product_amount, #productTotal_amount{
+    text-align: right;
+}
 #productTotal_amount, #productTotal_label{
     font-weight: bold;
+}
+
+.maindivision_box{
+    margin-left: auto;
+    margin-right: auto;
+    justify-content: center;
+    display: flex;
+    width: 70%;
+}
+
+.division_box{
+    width: 100%;
+    padding-left: 30px;
+    padding-right: 30px;
 }

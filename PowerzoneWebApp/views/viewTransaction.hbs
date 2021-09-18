@@ -7,6 +7,7 @@
     <title>View Transaction</title>
     <link href="../css/navBarStyle.css" rel="stylesheet" type="text/css" >
     <link href="../css/viewTransactionStyle.css" rel="stylesheet" type="text/css" >
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js" type="text/javascript"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
@@ -14,17 +15,17 @@
 </head>
 <body>
     {{> navBar}}
-    
-    <h1 id="label_transaction">Transaction</h1>
+
+    <button class="back_btn"> <i class="fa fa-arrow-left"> Go Back</i> </button>
         
     <div id="main_box">
         <table id="productTable">
             <thead>
                 <tr id="productTable_header">
-                    <th class="productTable_head">Product</th>
-                    <th class="productTable_head">Quantity</th>
-                    <th class="productTable_head">Unit Price</th>
-                    <th class="productTable_head">Amount</th>
+                    <th class="productTable_head" id="producthead_name">Product</th>
+                    <th class="productTable_head" id="producthead_qty">Quantity</th>
+                    <th class="productTable_head" id="producthead_unitPrice">Unit Price</th>
+                    <th class="productTable_head" id="producthead_amount">Amount</th>
                 </tr>
             </thead>
             
@@ -33,130 +34,136 @@
                     <tr class="productTable_rows">
                         <td class="productTable_data" id="product_name">{{transaction.dieselObject.product}}</td>
                         <td class="productTable_data" id="product_qty">{{transaction.dieselObject.quantity}} L</td>
-                        <td class="productTable_data" id="product_unitPrice">Php {{transaction.dieselObject.sellingPrice}}</td>
-                        <td class="productTable_data" id="product_amount">Php {{transaction.dieselObject.totalPrice}}</td>
+                        <td class="productTable_data" id="product_unitPrice">P {{transaction.dieselObject.sellingPrice}}</td>
+                        <td class="productTable_data" id="product_amount">P {{transaction.dieselObject.totalPrice}}</td>
                     </tr>
                     {{/if}}
                     {{#if transaction.hasProductObject.hasGasoline}}
                     <tr class="productTable_rows">
                         <td class="productTable_data" id="product_name">{{transaction.gasolineObject.product}}</td>
                         <td class="productTable_data" id="product_qty">{{transaction.gasolineObject.quantity}} L</td>
-                        <td class="productTable_data" id="product_unitPrice">Php {{transaction.gasolineObject.sellingPrice}}</td>
-                        <td class="productTable_data" id="product_amount">Php {{transaction.gasolineObject.totalPrice}}</td>
+                        <td class="productTable_data" id="product_unitPrice">P {{transaction.gasolineObject.sellingPrice}}</td>
+                        <td class="productTable_data" id="product_amount">P {{transaction.gasolineObject.totalPrice}}</td>
                     </tr>
                     {{/if}}
                     {{#if transaction.hasProductObject.hasPremium95}}
                     <tr class="productTable_rows">
                         <td class="productTable_data" id="product_name">{{transaction.premium95Object.product}}</td>
                         <td class="productTable_data" id="product_qty">{{transaction.premium95Object.quantity}} L</td>
-                        <td class="productTable_data" id="product_unitPrice">Php {{transaction.premium95Object.sellingPrice}}</td>
-                        <td class="productTable_data" id="product_amount">Php {{transaction.premium95Object.totalPrice}}</td>
+                        <td class="productTable_data" id="product_unitPrice">P {{transaction.premium95Object.sellingPrice}}</td>
+                        <td class="productTable_data" id="product_amount">P {{transaction.premium95Object.totalPrice}}</td>
                     </tr>
                     {{/if}}
                     {{#if transaction.hasProductObject.hasPremium97}}
                     <tr class="productTable_rows">
                         <td class="productTable_data" id="product_name">{{transaction.premium97Object.product}}</td>
                         <td class="productTable_data" id="product_qty">{{transaction.premium97Object.quantity}} L</td>
-                        <td class="productTable_data" id="product_unitPrice">Php {{transaction.premium97Object.sellingPrice}}</td>
-                        <td class="productTable_data" id="product_amount">Php {{transaction.premium97Object.totalPrice}}</td>
+                        <td class="productTable_data" id="product_unitPrice">P {{transaction.premium97Object.sellingPrice}}</td>
+                        <td class="productTable_data" id="product_amount">P {{transaction.premium97Object.totalPrice}}</td>
                     </tr>
                     {{/if}}
                     {{#if transaction.hasProductObject.hasKerosene}}
                     <tr class="productTable_rows">
                         <td class="productTable_data" id="product_name">{{transaction.keroseneObject.product}}</td>
                         <td class="productTable_data" id="product_qty">{{transaction.keroseneObject.quantity}} L</td>
-                        <td class="productTable_data" id="product_unitPrice">Php {{transaction.keroseneObject.sellingPrice}}</td>
-                        <td class="productTable_data" id="product_amount">Php {{transaction.keroseneObject.totalPrice}}</td>
+                        <td class="productTable_data" id="product_unitPrice">P {{transaction.keroseneObject.sellingPrice}}</td>
+                        <td class="productTable_data" id="product_amount">P {{transaction.keroseneObject.totalPrice}}</td>
                     </tr>
                     {{/if}}
                     <tr class="productTable_rows">
                         <td class="productTable_data" id="productTotal_label">Total Amount</td>
                         <td class="productTable_data"></td>
                         <td class="productTable_data"></td>
-                        <td class="productTable_data" id="productTotal_amount">Php {{transaction.totalAmount}}</td>
+                        <td class="productTable_data" id="productTotal_amount">P {{transaction.totalAmount}}</td>
                     </tr>
                 </tbody>
             
         </table>
 
-        <div class="attribute_box">
-            <h5 class="label">Status</h5>
-            <p class="main_text">{{transaction.status}}</p>
-        </div> 
+        <div class="maindivision_box">
+            <div class="division_box">
+                <div class="attribute_box">
+                    <h5 class="label">Status</h5>
+                    <p class="main_text">{{transaction.status}}</p>
+                </div> 
 
-        <div class="attribute_box">
-            <h5 class="label">Date</h5>
-            <p class="main_text">{{transaction.dateString}}</p>
-        </div> 
+                <div class="attribute_box">
+                    <h5 class="label">Date</h5>
+                    <p class="main_text">{{transaction.dateString}}</p>
+                </div> 
 
-        <div class="attribute_box">
-            <h5 class="label">Delivery Receipt Number</h5>
-            <p class="main_text">{{transaction.deliveryNumber}}</p>
-        </div> 
+                <div class="attribute_box">
+                    <h5 class="label">Delivery Receipt No.</h5>
+                    <p class="main_text">{{transaction.deliveryNumber}}</p>
+                </div> 
 
-        <div class="attribute_box">
-            <h5 class="label">Sales Invoice Number</h5>
-            <p class="main_text">{{transaction.invoiceNumber}}</p>
-        </div> 
+                <div class="attribute_box">
+                    <h5 class="label">Sales Invoice No.</h5>
+                    <p class="main_text">{{transaction.invoiceNumber}}</p>
+                </div> 
 
-        <div class="attribute_box">
-            <h5 class="label">Truck's Plate Number</h5>
-            <p class="main_text">{{transaction.truckPlateNumber}}</p>
-        </div> 
+                <div class="attribute_box">
+                    <h5 class="label">Truck Plate No.</h5>
+                    <p class="main_text">{{transaction.truckPlateNumber}}</p>
+                </div> 
 
-        <div class="attribute_box">
-            <h5 class="label">Customer's Name</h5>
-            <p class="main_text">{{transaction.customerName}}</p>
-        </div> 
+                <div class="attribute_box">
+                    <h5 class="label">Customer Name</h5>
+                    <p class="main_text">{{transaction.customerName}}</p>
+                </div> 
 
-        <div class="attribute_box">
-            <h5 class="label">Address</h5>
-            <p class="main_text">{{transaction.address}}</p>
-        </div>
+                <div class="attribute_box">
+                    <h5 class="label">Address</h5>
+                    <p class="main_text">{{transaction.address}}</p>
+                </div>
 
-        <div class="attribute_box">
-            <h5 class="label">Tin Number</h5>
-            <p class="main_text">{{transaction.tinNumber}}</p>
-        </div> 
+                <div class="attribute_box">
+                    <h5 class="label">TIN No.</h5>
+                    <p class="main_text">{{transaction.tinNumber}}</p>
+                </div> 
+            </div>
 
-        <div class="attribute_box">
-            <h5 class="label">Prepared By</h5>
-            <p class="main_text">{{transaction.signatories.prepared}}</p>
-        </div> 
+            <div class="division_box">
+                <div class="attribute_box">
+                    <h5 class="label">Prepared By</h5>
+                    <p class="main_text">{{transaction.signatories.prepared}}</p>
+                </div> 
 
-        <div class="attribute_box">
-            <h5 class="label">Loaded By</h5>
-            <p class="main_text">{{transaction.signatories.loaded}}</p>
-        </div> 
+                <div class="attribute_box">
+                    <h5 class="label">Loaded By</h5>
+                    <p class="main_text">{{transaction.signatories.loaded}}</p>
+                </div> 
 
-        <div class="attribute_box">
-            <h5 class="label">Driver</h5>
-            <p class="main_text">{{transaction.signatories.driver}}</p>
-        </div> 
+                <div class="attribute_box">
+                    <h5 class="label">Driver</h5>
+                    <p class="main_text">{{transaction.signatories.driver}}</p>
+                </div> 
 
-        <div class="attribute_box">
-            <h5 class="label">Guard</h5>
-            <p class="main_text">{{transaction.signatories.guard}}</p>
-        </div> 
+                <div class="attribute_box">
+                    <h5 class="label">Guard</h5>
+                    <p class="main_text">{{transaction.signatories.guard}}</p>
+                </div> 
 
-        <div class="attribute_box">
-            <h5 class="label">Customer Representative</h5>
-            <p class="main_text">{{transaction.signatories.customerRep}}</p>
-        </div> 
+                <div class="attribute_box">
+                    <h5 class="label">Customer Representative</h5>
+                    <p class="main_text">{{transaction.signatories.customerRep}}</p>
+                </div> 
 
-        <div class="attribute_box">
-            <h5 class="label">Delivery Approved By</h5>
-            <p class="main_text">{{transaction.signatories.deliveryApproved}}</p>
-        </div> 
+                <div class="attribute_box">
+                    <h5 class="label">Delivery Approved By</h5>
+                    <p class="main_text">{{transaction.signatories.deliveryApproved}}</p>
+                </div> 
 
-        <div class="attribute_box">
-            <h5 class="label">Delivery Checked By</h5>
-            <p class="main_text">{{transaction.signatories.deliveryChecked}}</p>
-        </div> 
+                <div class="attribute_box">
+                    <h5 class="label">Delivery Checked By</h5>
+                    <p class="main_text">{{transaction.signatories.deliveryChecked}}</p>
+                </div> 
 
-        <div class="attribute_box">
-            <h5 class="label">Remarks</h5>
-            <p class="main_text">{{transaction.remarks}}</p>
+                <div class="attribute_box">
+                    <h5 class="label">Remarks</h5>
+                    <p class="main_text">{{transaction.remarks}}</p>
+                </div>
+            </div>
         </div>
     </div>
 </body>
