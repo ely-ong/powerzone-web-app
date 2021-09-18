@@ -81,6 +81,10 @@ var TransactionSchema = new mongoose.Schema({
     remarks: {
         type: String,
         required: false
+    },
+    isDelivered: {
+        type: Boolean,
+        required: true
     }
 });
 

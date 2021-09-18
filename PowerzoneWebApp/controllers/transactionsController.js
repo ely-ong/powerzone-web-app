@@ -256,7 +256,8 @@ const transactionsController = {
             signatories: signatories,
             hasProductObject: hasProductObject,
             totalAmount: totalAmount,
-            remarks: remarks
+            remarks: remarks,
+            isDelivered: false
         }
 
         console.log(newTransaction);

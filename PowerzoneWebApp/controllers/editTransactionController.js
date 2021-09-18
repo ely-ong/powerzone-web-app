@@ -88,6 +88,15 @@ const editTransactionController = {
 
         // Initialize variables from page
         var status = req.body.status;
+        var isDelivered = false;
+
+        if(status == undefined){
+            status = "Delivered Completely";
+            isDelivered = true;
+        }
+        if(status == "Delivered Completely")
+            isDelivered = true;
+
         var date = req.body.date;
         var deliveryNumber = req.body.delivery_receipt_no;
         var invoiceNumber = req.body.sales_invoice_no;
@@ -225,13 +234,18 @@ const editTransactionController = {
             signatories: signatories,
             hasProductObject: hasProductObject,
             totalAmount: totalAmount,
-            remarks: remarks
+            remarks: remarks,
+            isDelivered: isDelivered
         }
 
-        console.log(editedTransaction);
+        // console.log(editedTransaction);
 
         // Adds the transaction and all indicated details to the database and redirects to the transactions page on success
         db.updateOne(Transaction, {transactionId: transactionId}, editedTransaction, function(result) {
+            console.log(editedTransaction);
+            if(isDelivered){
+                console.log("hlelo");
+            }
             res.redirect('/transactions');
         });
     }
