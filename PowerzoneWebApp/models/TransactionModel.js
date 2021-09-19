@@ -19,11 +19,11 @@ var TransactionSchema = new mongoose.Schema({
         required: true
     },
     deliveryNumber: {
-        type: Number,
+        type: String,
         required: true
     },
     invoiceNumber: {
-        type: Number,
+        type: String,
         required: true
     },
     truckPlateNumber: {
