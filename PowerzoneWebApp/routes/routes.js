@@ -54,6 +54,8 @@ app.get('/sortByLocation', productsController.sortByLocation);
 
 // routes for deliveries controller functions
 app.get('/deliveries', deliveriesController.getDeliveries);
+app.get('/sortDeliveriesByDate', deliveriesController.sortByDate);
+app.get('/sortDeliveriesByStatus', deliveriesController.sortByStatus);
 
 // routes for home controller functions
 app.get('/home', homeController.getHome);
