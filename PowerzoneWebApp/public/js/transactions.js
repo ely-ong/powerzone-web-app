@@ -14,6 +14,25 @@ $(document).ready(function() {
         });
     });
 
+    
+
+    $('#link_addTransact').click(function(){
+
+        // checks if currently logged in user is authorized to add new products
+        $.get('/getAccountRole', function(result) {
+            console.log(result);
+            if(result == "Administrator" || result == "Depot General Manager" || result == "Depot Supervisor") {
+                window.open("/addTransaction", "_self");
+            }
+            else if (result == null){
+                alert('Error with session kindly log in once again.');
+            }
+            else{
+                alert(`Account is unauthorized to perform this action.`);
+            }
+        })
+    });
+
     // opens add product page upon clicking add product button
     $('#edit_button').click(function(){
 

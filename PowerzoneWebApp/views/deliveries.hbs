@@ -79,19 +79,19 @@
                     </td>
                     <td class="delivery_item numbers">
                         {{#if this.hasProductObject.hasDiesel}}
-                            {{this.dieselObject.totalPrice}}
+                            {{this.dieselObject.quantity}}
                         {{/if}}
                         {{#if this.hasProductObject.hasGasoline}}
-                            <br>{{this.gasolineObject.totalPrice}}
+                            <br>{{this.gasolineObject.quantity}}
                         {{/if}}
                         {{#if this.hasProductObject.hasPremium95}}
-                            <br>{{this.premium95Object.totalPrice}}
+                            <br>{{this.premium95Object.quantity}}
                         {{/if}}
                         {{#if this.hasProductObject.hasPremium97}}
-                            <br>{{this.premium97Object.totalPrice}}
+                            <br>{{this.premium97Object.quantity}}
                         {{/if}}
                         {{#if this.hasProductObject.hasKerosene}}
-                            <br>{{this.keroseneObject.totalPrice}}
+                            <br>{{this.keroseneObject.quantity}}
                         {{/if}}
                     </td>
                     <td class="delivery_item">{{this.remarks}}</td>
