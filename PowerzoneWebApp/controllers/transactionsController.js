@@ -13,6 +13,45 @@ const mongoose = require('mongoose');
 // import module uniqid
 const uniqid = require('uniqid');
 
+/**
+ * This a helper function that displays the products page sorted based on the get request acquired from a user
+ *
+ * @param res the object to send back the appropriate HTTP response to load the sorted products page
+ * @param sortCriteria the object containing the search query to be used on the database
+ * @param statusSort the object holding the sort status of the date column
+ * @param dateSort the object holding the sort status of the supplier column
+ * @param receiptNoSort the object holding the sort status of the quantity column
+ * @param salesInvoiceSort the object holding the sort status of the product column
+ * @param customerSort the object holding the sort status of the buying price column
+ */
+function displaySorted(res, sortCriteria, statusSort, dateSort, receiptNoSort, salesInvoiceSort, customerSort) {
+    
+    // Initialize the object containing all the transactions
+    var transactionsArray = [];
+
+    // Submits a query to the database to return the list of all recorded transactions sorted by the given criteria
+    db.findManyAndSort(Transaction, {}, sortCriteria, function (result) {
+        if(result) {
+            transactionsArray = result;
+
+            // Creates an object for the sort status of each column reflected in the back-end of the products page
+            var sortCriteria = {
+                statusSort: statusSort,
+                dateSort: dateSort,
+                receiptNoSort: receiptNoSort,
+                salesInvoiceSort: salesInvoiceSort,
+                customerSort: customerSort
+            }
+
+            // Loads the product page with the sorted list of transactions in accordance with the sorting criteria
+            res.render('transactions', {u: {
+                transactionsArray: transactionsArray,
+                sortCriteria: sortCriteria
+            }});
+    }
+    });
+}
+
 const transactionsController = {
 
     /**
@@ -129,9 +168,18 @@ const transactionsController = {
 		    if(result) {
 		    	transactionsArray = result;
 
+                var sortCriteria = {
+                    statusSort: 'ascending',
+                    dateSort: 'ascending',
+                    receiptNoSort: 'ascending',
+                    salesInvoiceSort: 'ascending',
+                    customerSort: 'ascending'
+                }
+
                 // Loads the product page with the sorted list of products in accordance with the sorting criteria
 		        res.render('transactions', {u: {
-		        	transactionsArray: transactionsArray
+		        	transactionsArray: transactionsArray,
+                    sortCriteria: sortCriteria
 		        }});
 		    }
 		});
@@ -360,6 +408,146 @@ const transactionsController = {
 
             res.send(result);
         });
+    },
+
+    /**
+     * This function sorts the product list by status in either ascending or descending order following a get request from a user.
+     *
+     * @param req the object containing the HTTP request to sort the product list by status
+     * @param res the object to send back the appropriate HTTP response to load the products page sorted by status
+     */
+    sortByStatus: function(req, res) {
+
+        // Obtain the sorting criteria from the get request and initialize the variable for the resulting sort status
+        var sortCriteria = req.query.filter_status;
+        var sortStatus;
+        
+        // Sorts in 'ascending' order if the sorting criteria is ascending
+        if(sortCriteria == "ascending" || sortCriteria == "ascending_") {
+            sortCriteria = {status: 'desc'};
+            sortStatus = "descending"
+        }
+
+        // Sorts in 'descending' order if the sorting criteria is descending
+        else if(sortCriteria == "descending") {
+            sortCriteria = {status: 'asc'};
+            sortStatus = "ascending_"
+        }
+
+        // Calls the helper function above to sort the products by status following either the ascending/descending sorting criteria
+        displaySorted(res, sortCriteria, sortStatus, "ascending", "ascending", "ascending", "ascending");
+    },
+
+    /**
+     * This function sorts the product list by status in either ascending or descending order following a get request from a user.
+     *
+     * @param req the object containing the HTTP request to sort the product list by status
+     * @param res the object to send back the appropriate HTTP response to load the products page sorted by status
+     */
+    sortByDate: function(req, res) {
+
+        // Obtain the sorting criteria from the get request and initialize the variable for the resulting sort status
+        var sortCriteria = req.query.filter_date;
+        var sortStatus;
+        
+        // Sorts in 'ascending' order if the sorting criteria is ascending
+        if(sortCriteria == "ascending" || sortCriteria == "ascending_") {
+            sortCriteria = {date: 'desc'};
+            sortStatus = "descending"
+        }
+
+        // Sorts in 'descending' order if the sorting criteria is descending
+        else if(sortCriteria == "descending") {
+            sortCriteria = {date: 'asc'};
+            sortStatus = "ascending_"
+        }
+
+        // Calls the helper function above to sort the products by status following either the ascending/descending sorting criteria
+        displaySorted(res, sortCriteria, "ascending", sortStatus, "ascending", "ascending", "ascending");
+    },
+
+    /**
+     * This function sorts the product list by status in either ascending or descending order following a get request from a user.
+     *
+     * @param req the object containing the HTTP request to sort the product list by status
+     * @param res the object to send back the appropriate HTTP response to load the products page sorted by status
+     */
+    sortByReceiptNo: function(req, res) {
+
+        // Obtain the sorting criteria from the get request and initialize the variable for the resulting sort status
+        var sortCriteria = req.query.filter_deliveryNo;
+        var sortStatus;
+        
+        // Sorts in 'ascending' order if the sorting criteria is ascending
+        if(sortCriteria == "ascending" || sortCriteria == "ascending_") {
+            sortCriteria = {deliveryNumber: 'desc'};
+            sortStatus = "descending"
+        }
+
+        // Sorts in 'descending' order if the sorting criteria is descending
+        else if(sortCriteria == "descending") {
+            sortCriteria = {deliveryNumber: 'asc'};
+            sortStatus = "ascending_"
+        }
+
+        // Calls the helper function above to sort the products by status following either the ascending/descending sorting criteria
+        displaySorted(res, sortCriteria, "ascending", "ascending", sortStatus, "ascending", "ascending");
+    },
+
+    /**
+     * This function sorts the product list by status in either ascending or descending order following a get request from a user.
+     *
+     * @param req the object containing the HTTP request to sort the product list by status
+     * @param res the object to send back the appropriate HTTP response to load the products page sorted by status
+     */
+    sortBySalesInvoice: function(req, res) {
+
+        // Obtain the sorting criteria from the get request and initialize the variable for the resulting sort status
+        var sortCriteria = req.query.filter_salesNo;
+        var sortStatus;
+        
+        // Sorts in 'ascending' order if the sorting criteria is ascending
+        if(sortCriteria == "ascending" || sortCriteria == "ascending_") {
+            sortCriteria = {invoiceNumber: 'desc'};
+            sortStatus = "descending"
+        }
+
+        // Sorts in 'descending' order if the sorting criteria is descending
+        else if(sortCriteria == "descending") {
+            sortCriteria = {invoiceNumber: 'asc'};
+            sortStatus = "ascending_"
+        }
+
+        // Calls the helper function above to sort the products by status following either the ascending/descending sorting criteria
+        displaySorted(res, sortCriteria, "ascending", "ascending", "ascending", sortStatus, "ascending");
+    },
+
+    /**
+     * This function sorts the product list by status in either ascending or descending order following a get request from a user.
+     *
+     * @param req the object containing the HTTP request to sort the product list by status
+     * @param res the object to send back the appropriate HTTP response to load the products page sorted by status
+     */
+    sortByCustomer: function(req, res) {
+
+        // Obtain the sorting criteria from the get request and initialize the variable for the resulting sort status
+        var sortCriteria = req.query.filter_customerName;
+        var sortStatus;
+        
+        // Sorts in 'ascending' order if the sorting criteria is ascending
+        if(sortCriteria == "ascending" || sortCriteria == "ascending_") {
+            sortCriteria = {customerName: 'desc'};
+            sortStatus = "descending"
+        }
+
+        // Sorts in 'descending' order if the sorting criteria is descending
+        else if(sortCriteria == "descending") {
+            sortCriteria = {customerName: 'asc'};
+            sortStatus = "ascending_"
+        }
+
+        // Calls the helper function above to sort the products by status following either the ascending/descending sorting criteria
+        displaySorted(res, sortCriteria, "ascending", "ascending", "ascending", "ascending", sortStatus);
     }
 }
 

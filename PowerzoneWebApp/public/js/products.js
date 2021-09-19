@@ -81,46 +81,46 @@ $(document).ready(function() {
     if(dateFilter != "ascending" || supplierFilter != "ascending" || quantityFilter != "ascending" || productFilter != "ascending" ||
             buyPriceFilter != "ascending" || amountFilter != "ascending" || locationFilter != "ascending"){
         if(dateFilter == "descending"){
-            $('#filter_date').addClass('up_arrow');
-        }
-        else if(dateFilter == "ascending_"){
             $('#filter_date').addClass('down_arrow');
         }
-        else if(supplierFilter == "descending"){
-            $('#filter_supplier').addClass('up_arrow');
+        else if(dateFilter == "ascending_"){
+            $('#filter_date').addClass('up_arrow');
         }
-        else if(supplierFilter == "ascending_"){
+        else if(supplierFilter == "descending"){
             $('#filter_supplier').addClass('down_arrow');
         }
-        else if(quantityFilter == "descending"){
-            $('#filter_quantity').addClass('up_arrow');
+        else if(supplierFilter == "ascending_"){
+            $('#filter_supplier').addClass('up_arrow');
         }
-        else if(quantityFilter == "ascending_"){
+        else if(quantityFilter == "descending"){
             $('#filter_quantity').addClass('down_arrow');
         }
-        else if(productFilter == "descending"){
-            $('#filter_product').addClass('up_arrow');
+        else if(quantityFilter == "ascending_"){
+            $('#filter_quantity').addClass('up_arrow');
         }
-        else if(productFilter == "ascending_"){
+        else if(productFilter == "descending"){
             $('#filter_product').addClass('down_arrow');
         }
-        else if(buyPriceFilter == "descending"){
-            $('#filter_price').addClass('up_arrow');
+        else if(productFilter == "ascending_"){
+            $('#filter_product').addClass('up_arrow');
         }
-        else if(buyPriceFilter == "ascending_"){
+        else if(buyPriceFilter == "descending"){
             $('#filter_price').addClass('down_arrow');
         }
-        else if(amountFilter == "descending"){
-            $('#filter_amount').addClass('up_arrow');
+        else if(buyPriceFilter == "ascending_"){
+            $('#filter_price').addClass('up_arrow');
         }
-        else if(amountFilter == "ascending_"){
+        else if(amountFilter == "descending"){
             $('#filter_amount').addClass('down_arrow');
         }
+        else if(amountFilter == "ascending_"){
+            $('#filter_amount').addClass('up_arrow');
+        }
         else if(locationFilter == "descending"){
-            $('#filter_location').addClass('up_arrow');
+            $('#filter_location').addClass('down_arrow');
         }
         else if(locationFilter == "ascending_"){
-            $('#filter_location').addClass('down_arrow');
+            $('#filter_location').addClass('up_arrow');
         }
     }
       

@@ -99,6 +99,11 @@ app.get('/addTransaction', transactionsController.addTransaction);
 app.post('/postTransaction', transactionsController.postTransaction);
 app.get('/getTotalInventory', transactionsController.getTotalInventory);
 app.get('/cancelTransaction', transactionsController.cancelTransaction);
+app.get('/sortTransactionByStatus', transactionsController.sortByStatus);
+app.get('/sortTransactionByDate', transactionsController.sortByDate);
+app.get('/sortTransactionByDeliveryNo', transactionsController.sortByReceiptNo);
+app.get('/sortTransactionBySalesInvoice', transactionsController.sortBySalesInvoice);
+app.get('/sortTransactionByCustomer', transactionsController.sortByCustomer);
 
 // routes for edit transaction controller functions
 app.get('/editTransaction', editTransactionController.editTransaction);

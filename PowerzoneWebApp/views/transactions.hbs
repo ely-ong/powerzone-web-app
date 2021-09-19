@@ -34,28 +34,28 @@
             <thead>
                 <tr id="transactTable_header">
                     <th class="transactTable_head sortable">
-                        <form method="get" action="/sortBy">
-                            <button class="filter_button" type="submit" value="" name="filter_status" id="filter_status">Status</button>
+                        <form method="get" action="/sortTransactionByStatus">
+                            <button class="filter_button" type="submit" value="{{u.sortCriteria.statusSort}}" name="filter_status" id="filter_status">Status</button>
                         </form>
                     </th>
                     <th class="transactTable_head sortable">
-                        <form method="get" action="/sortBy">
-                            <button class="filter_button" type="submit" value="" name="filter_date" id="filter_date">Date<br>(MM-DD-YYYY)</button>
+                        <form method="get" action="/sortTransactionByDate">
+                            <button class="filter_button" type="submit" value="{{u.sortCriteria.dateSort}}" name="filter_date" id="filter_date">Date<br>(MM-DD-YYYY)</button>
                         </form>
                     </th>
                     <th class="transactTable_head sortable">
-                        <form method="get" action="/sortBy">
-                            <button class="filter_button" type="submit" value="" name="filter_deliveryNo" id="filter_deliveryNo">Delivery Receipt No.</button>
+                        <form method="get" action="/sortTransactionByDeliveryNo">
+                            <button class="filter_button" type="submit" value="{{u.sortCriteria.receiptNoSort}}" name="filter_deliveryNo" id="filter_deliveryNo">Delivery Receipt No.</button>
                         </form>
                     </th>
                     <th class="transactTable_head sortable">
-                        <form method="get" action="/sortBy">
-                            <button class="filter_button" type="submit" value="" name="filter_salesNo" id="filter_salesNo">Sales Invoice No.</button>
+                        <form method="get" action="/sortTransactionBySalesInvoice">
+                            <button class="filter_button" type="submit" value="{{u.sortCriteria.salesInvoiceSort}}" name="filter_salesNo" id="filter_salesNo">Sales Invoice No.</button>
                         </form>
                     </th>
                     <th class="transactTable_head sortable">
-                        <form method="get" action="/sortBy">
-                            <button class="filter_button" type="submit" value="" name="filter_customerName" id="filter_customerName">Customer Name</button>
+                        <form method="get" action="/sortTransactionByCustomer">
+                            <button class="filter_button" type="submit" value="{{u.sortCriteria.customerSort}}" name="filter_customerName" id="filter_customerName">Customer Name</button>
                         </form>
                     </th>
 

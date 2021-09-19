@@ -199,13 +199,13 @@ const productsController = {
     	
         // Sorts in 'ascending' order if the sorting criteria is ascending
     	if(sortCriteria == "ascending" || sortCriteria == "ascending_") {
-    		sortCriteria = {date: 'asc'};
+    		sortCriteria = {date: 'desc'};
     		sortStatus = "descending"
     	}
 
         // Sorts in 'descending' order if the sorting criteria is descending
     	else if(sortCriteria == "descending") {
-    		sortCriteria = {date: 'desc'};
+    		sortCriteria = {date: 'asc'};
     		sortStatus = "ascending_"
     	}
 
@@ -227,13 +227,13 @@ const productsController = {
     	
         // Sorts in 'ascending' order if the sorting criteria is ascending
     	if(sortCriteria == "ascending" || sortCriteria == "ascending_") {
-    		sortCriteria = {supplier: 'asc'};
+    		sortCriteria = {supplier: 'desc'};
     		sortStatus = "descending"
     	}
 
         // Sorts in 'descending' order if the sorting criteria is descending
     	else if(sortCriteria == "descending") {
-    		sortCriteria = {supplier: 'desc'};
+    		sortCriteria = {supplier: 'asc'};
     		sortStatus = "ascending_"
     	}
 
@@ -255,13 +255,13 @@ const productsController = {
     	
         // Sorts in 'ascending' order if the sorting criteria is ascending
     	if(sortCriteria == "ascending" || sortCriteria == "ascending_") {
-    		sortCriteria = {quantity: 'asc'};
+    		sortCriteria = {quantity: 'desc'};
     		sortStatus = "descending"
     	}
 
         // Sorts in 'descending' order if the sorting criteria is descending
     	else if(sortCriteria == "descending") {
-    		sortCriteria = {quantity: 'desc'};
+    		sortCriteria = {quantity: 'asc'};
     		sortStatus = "ascending_"
     	}
 
@@ -283,13 +283,13 @@ const productsController = {
     	
         // Sorts in 'ascending' order if the sorting criteria is ascending
     	if(sortCriteria == "ascending" || sortCriteria == "ascending_") {
-    		sortCriteria = {product: 'asc'};
+    		sortCriteria = {product: 'desc'};
     		sortStatus = "descending"
     	}
 
         // Sorts in 'descending' order if the sorting criteria is descending
     	else if(sortCriteria == "descending") {
-    		sortCriteria = {product: 'desc'};
+    		sortCriteria = {product: 'asc'};
     		sortStatus = "ascending_"
     	}
 
@@ -311,13 +311,13 @@ const productsController = {
     	
         // Sorts in 'ascending' order if the sorting criteria is ascending
     	if(sortCriteria == "ascending" || sortCriteria == "ascending_") {
-    		sortCriteria = {price: 'asc'};
+    		sortCriteria = {price: 'desc'};
     		sortStatus = "descending"
     	}
 
         // Sorts in 'descending' order if the sorting criteria is descending
     	else if(sortCriteria == "descending") {
-    		sortCriteria = {price: 'desc'};
+    		sortCriteria = {price: 'asc'};
     		sortStatus = "ascending_"
     	}
 
@@ -339,13 +339,13 @@ const productsController = {
     	
         // Sorts in 'ascending' order if the sorting criteria is ascending
     	if(sortCriteria == "ascending" || sortCriteria == "ascending_") {
-    		sortCriteria = {withdrawalAmount: 'asc'};
+    		sortCriteria = {withdrawalAmount: 'desc'};
     		sortStatus = "descending"
     	}
 
         // Sorts in 'descending' order if the sorting criteria is descending
     	else if(sortCriteria == "descending") {
-    		sortCriteria = {withdrawalAmount: 'desc'};
+    		sortCriteria = {withdrawalAmount: 'asc'};
     		sortStatus = "ascending_"
     	}
 
@@ -367,13 +367,13 @@ const productsController = {
     	
         // Sorts in 'ascending' order if the sorting criteria is ascending
     	if(sortCriteria == "ascending" || sortCriteria == "ascending_") {
-    		sortCriteria = {location: 'asc'};
+    		sortCriteria = {location: 'desc'};
     		sortStatus = "descending"
     	}
 
         // Sorts in 'descending' order if the sorting criteria is descending
     	else if(sortCriteria == "descending") {
-    		sortCriteria = {location: 'desc'};
+    		sortCriteria = {location: 'asc'};
     		sortStatus = "ascending_"
     	}
 
