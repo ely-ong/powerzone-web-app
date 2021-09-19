@@ -214,6 +214,11 @@ td{
     padding: 10px 40px 10px 40px;
 }
 
+/* prevents date format label from wrapping */
+#filter_date{
+    min-width: 195px;
+}
+
 /* sets fixed minimum width and no wrapping for quantity and amount columns */
 .wide_column{
     min-width: 100px;
