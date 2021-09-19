@@ -30,60 +30,28 @@
             <thead>
                 <tr id="deliveryTable_header">
                     <th class="deliveryTable_head sortable">
-                        <form method="get" action="/sortBy">
-                            <button class="filter_button" type="submit" value="" name="filter_date" id="filter_date">Date<br>(MM-DD-YYYY)</button>
+                        <form method="get" action="/sortDeliveriesByDate">
+                            <button class="filter_button" type="submit" value="{{u.sortCriteria.dateSort}}" name="filter_date" id="filter_date">Date<br>(MM-DD-YYYY)</button>
                         </form>
                     </th>
                     <th class="deliveryTable_head sortable">
-                        <form method="get" action="/sortBy">
-                            <button class="filter_button" type="submit" value="" name="filter_status" id="filter_status">Status</button>
+                        <form method="get" action="/sortDeliveriesByStatus">
+                            <button class="filter_button" type="submit" value="{{u.sortCriteria.statusSort}}" name="filter_status" id="filter_status">Status</button>
                         </form>
                     </th>
-                    <th class="deliveryTable_head sortable">
-                        <form method="get" action="/sortBy">
-                            <button class="filter_button" type="submit" value="" name="filter_deliveryNo" id="filter_deliveryNo">Delivery Receipt No.</button>
-                        </form>
-                    </th>
-                    <th class="deliveryTable_head sortable">
-                        <form method="get" action="/sortBy">
-                            <button class="filter_button" type="submit" value="" name="filter_truckPlateNo" id="filter_truckPlateNo">Truck Plate No.</button>
-                        </form>
-                    </th>
-                    <th class="deliveryTable_head sortable">
-                        <form method="get" action="/sortBy">
-                            <button class="filter_button" type="submit" value="" name="filter_truckDriverName" id="filter_truckDriverName">Truck Driver Name</button>
-                        </form>
-                    </th>
-                    <th class="deliveryTable_head sortable">
-                        <form method="get" action="/sortBy">
-                            <button class="filter_button" type="submit" value="" name="filter_customerName" id="filter_customerName">Customer Name</button>
-                        </form>
-                    </th>
-                    <th class="deliveryTable_head sortable">
-                        <form method="get" action="/sortBy">
-                            <button class="filter_button" type="submit" value="" name="filter_address" id="filter_address">Address</button>
-                        </form>
-                    </th>
-                    <th class="deliveryTable_head sortable">
-                        <form method="get" action="/sortBy">
-                            <button class="filter_button" type="submit" value="" name="filter_product" id="filter_product">Product</button>
-                        </form>
-                    </th>
-                    <th class="deliveryTable_head numbers sortable">
-                        <form method="get" action="/sortBy">
-                            <button class="filter_button numbers" type="submit" value="" name="filter_qtyLiters" id="filter_qtyLiters">Quantity</button>
-                        </form>
-                    </th>
-                    <th class="deliveryTable_head sortable">
-                        <form method="get" action="/sortBy">
-                            <button class="filter_button" type="submit" value="" name="filter_remarks" id="filter_remarks">Remarks</button>
-                        </form>
-                    </th>
+                    <th class="deliveryTable_head non_sortable">Delivery Receipt No.</th>
+                    <th class="deliveryTable_head non_sortable">Truck Plate No</th>
+                    <th class="deliveryTable_head non_sortable">Truck Driver Name</th>
+                    <th class="deliveryTable_head non_sortable">Customer Name</th>
+                    <th class="deliveryTable_head non_sortable">Address</th>
+                    <th class="deliveryTable_head non_sortable">Product</th>
+                    <th class="deliveryTable_head non_sortable">Quantity</th>
+                    <th class="deliveryTable_head non_sortable">Remarks</th>
                 </tr>
             </thead>
             
             <tbody>
-                {{#each (reverseArray transactions)}}
+                {{#each (reverseArray u.transactions)}}
                 <tr class="deliveryTable_rows">
                     <td class="delivery_item">{{this.dateString}}</td>
                     <td class="delivery_item">{{this.status}}</td>
