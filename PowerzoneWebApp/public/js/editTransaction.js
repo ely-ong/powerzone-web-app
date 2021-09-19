@@ -1,5 +1,7 @@
 $(document).ready(function() {
 
+    checkProductInformation();
+
     if($('#select_editTransactStatus').val() == "Delivered Completely"){
         $('#select_editTransactStatus').prop('disabled', true);
     }
@@ -227,10 +229,15 @@ $(document).ready(function() {
         }
     })
 
+    // checks if each input for product is complete, disables button and displays error if incomplete.
     $('#input_editTransactQuantityDiesel, #input_editTransactSellingPriceDiesel, #input_editTransactQuantityGasoline, #input_editTransactSellingPriceGasoline,' + 
       '#input_editTransactQuantityPremium95, #input_editTransactSellingPricePremium95, #input_editTransactQuantityPremium97, #input_editTransactSellingPricePremium97,' +
       '#input_editTransactQuantityKerosene, #input_editTransactSellingPriceKerosene').keyup(function(){
 
+        checkProductInformation();
+    });
+
+    function checkProductInformation() {
         var checkboxDiesel = $('#edit_checkbox_diesel').is(":checked");
         var checkboxGasoline = $('#edit_checkbox_gasoline').is(":checked");
         var checkboxPremium95 = $('#edit_checkbox_premium95').is(":checked");
@@ -239,56 +246,159 @@ $(document).ready(function() {
         var isComplete = true;
 
         if(checkboxDiesel){
-            var quantityDiesel = $('#input_editTransactQuantityDiesel').val();
-            var priceDiesel = $('#input_editTransactSellingPriceDiesel').val();
+            var quantityDiesel = $('#input_addTransactQuantityDiesel').val();
+            var priceDiesel = $('#input_addTransactSellingPriceDiesel').val();
 
-            if(quantityDiesel == '' || priceDiesel == ''){
-                isComplete = false;
-            }
+            // checks if diesel quantity is more than the available diesel in inventory
+            $.get('/getTotalInventory', {quantity: quantityDiesel, product: 'Diesel'}, function (result) {
+
+                if(result){
+                    var isExceeding = true;
+                    $('#errorEditTransactQuantityDiesel').text('Inputted amount exceeds total inventory amount!');
+                    $('#errorEditTransactQuantityDiesel').css('color', '#ab4642');
+                }   
+                else{
+                    $('#errorEditTransactQuantityDiesel').text('');
+                    $('#errorEditTransactQuantityDiesel').css('color', 'transparent');
+                }
+                  
+                // checks if all info is complete and valid            
+                if(quantityDiesel == '' || priceDiesel == '' || isExceeding){
+                    isComplete = false;
+                }    
+
+                if(isComplete){
+                    enableSubmit();
+                }
+                else{
+                    disableSubmit('Incomplete product details above.');
+                }
+            });  
         }
 
         if(checkboxGasoline){
             var quantityGasoline = $('#input_editTransactQuantityGasoline').val();
             var priceGasoline = $('#input_editTransactSellingPriceGasoline').val();
 
-            if(quantityGasoline == '' || priceGasoline == ''){
-                isComplete = false;
-            }
+            // checks if gasoline quantity is more than the available gasoline in inventory
+            $.get('/getTotalInventory', {quantity: quantityGasoline, product: 'Gasoline'}, function (result) {
+
+                if(result){
+                    var isExceeding = true;
+                    $('#errorEditTransactQuantityGasoline').text('Inputted amount exceeds total inventory amount!');
+                    $('#errorEditTransactQuantityGasoline').css('color', '#ab4642');
+                }   
+                else{
+                    $('#errorEditTransactQuantityGasoline').text('');
+                    $('#errorEditTransactQuantityGasoline').css('color', 'transparent');
+                }
+                
+                // checks if all info is complete and valid      
+                if(quantityGasoline == '' || priceGasoline == '' || isExceeding){
+                    isComplete = false;
+                }    
+
+                if(isComplete){
+                    enableSubmit();
+                }
+                else{
+                    disableSubmit('Incomplete product details above.');
+                }
+            });
         }
 
         if(checkboxPremium95){
             var quantityPremium95 = $('#input_editTransactQuantityPremium95').val();
             var pricePremium95 = $('#input_editTransactSellingPricePremium95').val();
 
-            if(quantityPremium95 == '' || pricePremium95 == ''){
-                isComplete = false;
-            }
+            // checks if premium 95 gasoline quantity is more than the available premium 95 gasoline in inventory
+            $.get('/getTotalInventory', {quantity: quantityPremium95, product: 'Premium Gasoline 95'}, function (result) {
+
+                if(result){
+                    var isExceeding = true;
+                    $('#errorEditTransactQuantityPremium95').text('Inputted amount exceeds total inventory amount!');
+                    $('#errorEditTransactQuantityPremium95').css('color', '#ab4642');
+                }   
+                else{
+                    $('#errorEditTransactQuantityPremium95').text('');
+                    $('#errorEditTransactQuantityPremium95').css('color', 'transparent');
+                }
+                
+                // checks if all info is complete and valid            
+                if(quantityPremium95 == '' || pricePremium95 == '' || isExceeding){
+                    isComplete = false;
+                }    
+
+                if(isComplete){
+                    enableSubmit();
+                }
+                else{
+                    disableSubmit('Incomplete product details above.');
+                }
+            });
         }
 
         if(checkboxPremium97){
             var quantityPremium97 = $('#input_editTransactQuantityPremium97').val();
             var pricePremium97 = $('#input_editTransactSellingPricePremium97').val();
 
-            if(quantityPremium97 == '' || pricePremium97 == ''){
-                isComplete = false;
-            }
+            // checks if premium gasoline 97 quantity is more than the available premium gasoline 97 in inventory
+            $.get('/getTotalInventory', {quantity: quantityPremium97, product: 'Premium Gasoline 97'}, function (result) {
+
+                if(result){
+                    var isExceeding = true;
+                    $('#errorEditTransactQuantityPremium97').text('Inputted amount exceeds total inventory amount!');
+                    $('#errorEditTransactQuantityPremium97').css('color', '#ab4642');
+                }   
+                else{
+                    $('#errorEditTransactQuantityPremium97').text('');
+                    $('#errorEditTransactQuantityPremium97').css('color', 'transparent');
+                }
+                
+                // checks if all info is complete and valid            
+                if(quantityPremium97 == '' || pricePremium97 == '' || isExceeding){
+                    isComplete = false;
+                }    
+
+                if(isComplete){
+                    enableSubmit();
+                }
+                else{
+                    disableSubmit('Incomplete product details above.');
+                }
+            });
         }
 
         if(checkboxKerosene){
             var quantityKerosene = $('#input_editTransactQuantityKerosene').val();
             var priceKerosene = $('#input_editTransactSellingPriceKerosene').val();
 
-            if(quantityKerosene == '' || priceKerosene == ''){
-                isComplete = false;
-            }
-        }
+            // checks if kerosene quantity is more than the available kerosene in inventory
+            $.get('/getTotalInventory', {quantity: quantityKerosene, product: 'Kerosene'}, function (result) {
 
-        if(isComplete){
-            enableSubmit();
+                if(result){
+                    var isExceeding = true;
+                    $('#errorEditTransactQuantityKerosene').text('Inputted amount exceeds total inventory amount!');
+                    $('#errorEditTransactQuantityKerosene').css('color', '#ab4642');
+                }   
+                else{
+                    $('#errorEditTransactQuantityKerosene').text('');
+                    $('#errorEditTransactQuantityKerosene').css('color', 'transparent');
+                }
+                
+                // checks if all info is complete and valid            
+                if(quantityKerosene == '' || priceKerosene == '' || isExceeding){
+                    isComplete = false;
+                }    
+
+                if(isComplete){
+                    enableSubmit();
+                }
+                else{
+                    disableSubmit('Incomplete product details above.');
+                }
+            });
         }
-        else{
-            disableSubmit('Incomplete product details above.');
-        }
-    });
+    }
 
 })
