@@ -3,6 +3,8 @@ $(document).ready(function() {
     // gets the role of current user
     var accountRole = $('#label_editTransact').attr('value');
     var originalStatus = $('#select_editTransactStatus').val();
+    var originalDeliveryNo = $('#input_editTransactDeliveryNo').val();
+    var originalSalesNo = $('#input_editTransactSalesNo').val();
     console.log("ORIGINAL STATUS: " + originalStatus);
 
     // function to check if previously inputted values for product amounts can still be accommodated by inventory balance
@@ -226,6 +228,56 @@ $(document).ready(function() {
                 $('#input_editTransactSellingPriceKerosene').css('background-color', '#808080');
 
                 if($('#input_editTransactQuantityKerosene').val() == '')
+                    isComplete == false;
+
+                if($('#input_editTransactSellingPriceKerosene').val() == '')
+                    enableStatusChange = false;
+            }
+
+            if(!enableStatusChange)
+                $('#select_editTransactStatus').prop('disabled', true);
+
+            if(isComplete)
+                enableSubmit();
+            else
+                disableSubmit('Incomplete product details above.');
+        }
+        else{
+            if(checkboxDiesel){
+                if($('#input_editTransactQuantityDiesel').val() == '' || $('#input_editTransactSellingPriceDiesel').val() == '')
+                    isComplete == false;
+
+                if($('#input_editTransactSellingPriceDiesel').val() == '')
+                    enableStatusChange = false;
+
+            }
+
+            if(checkboxGasoline){
+                if($('#input_editTransactQuantityGasoline').val() == '' || $('#input_editTransactSellingPriceGasoline').val() == '')
+                    isComplete == false;
+
+                if($('#input_editTransactSellingPriceGasoline').val() == '')
+                    enableStatusChange = false;
+            }
+
+            if(checkboxPremium95){
+                if($('#input_editTransactQuantityPremium95').val() == '' || $('#input_editTransactSellingPricePremium95').val() == '')
+                    isComplete == false;
+
+                if($('#input_editTransactSellingPricePremium95').val() == '')
+                    enableStatusChange = false;
+            }
+
+            if(checkboxPremium97){
+                if($('#input_editTransactQuantityPremium97').val() == '' || $('#input_editTransactSellingPricePremium97').val() == '')
+                    isComplete == false;
+
+                if($('#input_editTransactSellingPricePremium97').val() == '')
+                    enableStatusChange = false;
+            }
+
+            if(checkboxKerosene){
+                if($('#input_editTransactQuantityKerosene').val() == '' || $('#input_editTransactSellingPriceKerosene').val() == '')
                     isComplete == false;
 
                 if($('#input_editTransactSellingPriceKerosene').val() == '')
@@ -598,6 +650,84 @@ $(document).ready(function() {
                     disableSubmit('Incomplete product details above.');
                 }
             });
+        }
+    }
+
+    // keyup function on delivery receipt number field to check if current text in the field is valid or invalid
+    $('#input_editTransactDeliveryNo').keyup(function () {
+        var deliveryNumber = $('#input_editTransactDeliveryNo').val();
+        var invoiceNumber = $('#input_editTransactSalesNo').val();
+        
+        // checks if username exists in the database already
+        $.get('/checkTransactDeliveryNo', {deliveryNumber: deliveryNumber}, function (result) {
+            if(result.deliveryNumber == deliveryNumber && result.deliveryNumber != originalDeliveryNo){
+                $('#errorEditTransactDeliveryNo').text('Inputted delivery number is already taken');
+                $('#errorEditTransactDeliveryNo').css('color', '#ab4642');
+                disableSubmit('Delivery number already exists');
+            }
+            else{
+                enableSubmit();
+                $('#errorEditTransactDeliveryNo').css('color', 'transparent');
+                $.get('/checkTransactSalesNo', {invoiceNumber: invoiceNumber}, function (result) {
+                    if(result.invoiceNumber == invoiceNumber && result.invoiceNumber != originalSalesNo){
+                        $('#errorEditTransactSalesNo').text('Inputted invoice number is already taken');
+                        $('#errorEditTransactSalesNo').css('color', '#ab4642');
+                        disableSubmit('Invoice number already exists');
+                    }
+                    else{
+                        enableSubmit();
+                        $('#errorEditTransactSalesNo').css('color', 'transparent');
+                        checkBoxes();
+                    }
+                }); 
+            }
+        });         
+        
+    });
+
+    // keyup function on invoice sales number field to check if current text in the field is valid or invalid
+    $('#input_editTransactSalesNo').keyup(function () {
+        var invoiceNumber = $('#input_editTransactSalesNo').val();
+        var deliveryNumber = $('#input_editTransactDeliveryNo').val();
+        
+        // checks if username exists in the database already
+        $.get('/checkTransactSalesNo', {invoiceNumber: invoiceNumber}, function (result) {
+            if(result.invoiceNumber == invoiceNumber && result.invoiceNumber != originalSalesNo){
+                $('#errorEditTransactSalesNo').text('Inputted invoice number is already taken');
+                $('#errorEditTransactSalesNo').css('color', '#ab4642');
+                disableSubmit('Invoice number already exists');
+            }
+            else{
+                enableSubmit();
+                $('#errorEditTransactSalesNo').css('color', 'transparent');
+                $.get('/checkTransactDeliveryNo', {deliveryNumber: deliveryNumber}, function (result) {
+                    if(result.deliveryNumber == deliveryNumber && result.deliveryNumber != originalDeliveryNo){
+                        $('#errorEditTransactDeliveryNo').text('Inputted delivery number is already taken');
+                        $('#errorEditTransactDeliveryNo').css('color', '#ab4642');
+                        disableSubmit('Delivery number already exists');
+                    }
+                    else{
+                        enableSubmit();
+                        $('#errorEditTransactDeliveryNo').css('color', 'transparent');
+                        checkBoxes();
+                    }
+                });
+            }
+        });         
+        
+    });
+
+    function checkBoxes(){
+        var checkboxDiesel = $('#edit_checkbox_diesel').is(":checked");
+        var checkboxGasoline = $('#edit_checkbox_gasoline').is(":checked");
+        var checkboxPremium95 = $('#edit_checkbox_premium95').is(":checked");
+        var checkboxPremium97 = $('#edit_checkbox_premium97').is(":checked");
+        var checkboxKerosene = $('#edit_checkbox_kerosene').is(":checked");
+
+        if(!checkboxDiesel && !checkboxGasoline && !checkboxPremium95 && !checkboxPremium97 && !checkboxKerosene){
+            disableSubmit('Select at least one product to purchase.');
+            $('#select_editTransactStatus').val(originalStatus);
+            $('#select_editTransactStatus').prop('disabled', true);
         }
     }
 

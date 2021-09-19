@@ -87,7 +87,7 @@
                         
                         <td id="transact_edit">
                             {{#unless this.isDelivered}}
-                            <form method="get" id="form_edit">
+                            <form method="get" id="form_edit" action="/editTransaction">
                                 <button style = "border: 0px; background-color: transparent;" type="submit" value = "{{this.transactionId}}" name = "edit_button" class = "edit_transact" id="edit_button">
                                     <img src="../images/edit.png"  class="link_icons" id="edit_icon" value = "{{this.transactionId}}">
                                 </button>

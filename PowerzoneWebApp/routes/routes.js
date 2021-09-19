@@ -101,6 +101,8 @@ app.get('/addTransaction', transactionsController.addTransaction);
 app.post('/postTransaction', transactionsController.postTransaction);
 app.get('/getTotalInventory', transactionsController.getTotalInventory);
 app.get('/cancelTransaction', transactionsController.cancelTransaction);
+app.get('/checkTransactDeliveryNo', transactionsController.checkTransactDeliveryNo);
+app.get('/checkTransactSalesNo', transactionsController.checkTransactSalesNo);
 app.get('/sortTransactionByStatus', transactionsController.sortByStatus);
 app.get('/sortTransactionByDate', transactionsController.sortByDate);
 app.get('/sortTransactionByDeliveryNo', transactionsController.sortByReceiptNo);

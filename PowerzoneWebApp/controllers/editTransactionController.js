@@ -60,8 +60,6 @@ const editTransactionController = {
 
                     // Loads the edit transaction page with the specific product chosen from the transactions page
                     res.render('editTransaction', {transaction: result});
-
-                    res.send(result);
                 }
             });
         // }

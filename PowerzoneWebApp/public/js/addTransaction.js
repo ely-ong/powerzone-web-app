@@ -338,4 +338,83 @@ $(document).ready(function() {
             });
         }
     });
+
+    // keyup function on delivery receipt number field to check if current text in the field is valid or invalid
+    $('#input_addTransactDeliveryNo').keyup(function () {
+        var deliveryNumber = $('#input_addTransactDeliveryNo').val();
+        var invoiceNumber = $('#input_addTransactSalesNo').val();
+        
+        // checks if username exists in the database already
+        $.get('/checkTransactDeliveryNo', {deliveryNumber: deliveryNumber}, function (result) {
+            if(result.deliveryNumber == deliveryNumber){
+                $('#errorAddTransactDeliveryNo').text('Inputted delivery number is already taken');
+                $('#errorAddTransactDeliveryNo').css('color', '#ab4642');
+                disableSubmit('Delivery number already exists');
+            }
+            else{
+                enableSubmit();
+                $('#errorAddTransactDeliveryNo').css('color', 'transparent');
+                $.get('/checkTransactSalesNo', {invoiceNumber: invoiceNumber}, function (result) {
+                    if(result.invoiceNumber == invoiceNumber){
+                        $('#errorAddTransactSalesNo').text('Inputted invoice number is already taken');
+                        $('#errorAddTransactSalesNo').css('color', '#ab4642');
+                        disableSubmit('Invoice number already exists');
+                    }
+                    else{
+                        enableSubmit();
+                        $('#errorAddTransactSalesNo').css('color', 'transparent');
+                        checkBoxes();
+                    }
+                }); 
+            }
+        });         
+        
+    });
+
+    // keyup function on invoice sales number field to check if current text in the field is valid or invalid
+    $('#input_addTransactSalesNo').keyup(function () {
+        var invoiceNumber = $('#input_addTransactSalesNo').val();
+        var deliveryNumber = $('#input_addTransactDeliveryNo').val();
+        
+        // checks if username exists in the database already
+        $.get('/checkTransactSalesNo', {invoiceNumber: invoiceNumber}, function (result) {
+            if(result.invoiceNumber == invoiceNumber){
+                $('#errorAddTransactSalesNo').text('Inputted invoice number is already taken');
+                $('#errorAddTransactSalesNo').css('color', '#ab4642');
+                disableSubmit('Invoice number already exists');
+            }
+            else{
+                enableSubmit();
+                $('#errorAddTransactSalesNo').css('color', 'transparent');
+                $.get('/checkTransactDeliveryNo', {deliveryNumber: deliveryNumber}, function (result) {
+                    if(result.deliveryNumber == deliveryNumber){
+                        $('#errorAddTransactDeliveryNo').text('Inputted delivery number is already taken');
+                        $('#errorAddTransactDeliveryNo').css('color', '#ab4642');
+                        disableSubmit('Delivery number already exists');
+                    }
+                    else{
+                        enableSubmit();
+                        $('#errorAddTransactDeliveryNo').css('color', 'transparent');
+                        checkBoxes();
+                    }
+                });
+            }
+        });         
+        
+    });
+
+    function checkBoxes(){
+        var checkboxDiesel = $('#edit_checkbox_diesel').is(":checked");
+        var checkboxGasoline = $('#edit_checkbox_gasoline').is(":checked");
+        var checkboxPremium95 = $('#edit_checkbox_premium95').is(":checked");
+        var checkboxPremium97 = $('#edit_checkbox_premium97').is(":checked");
+        var checkboxKerosene = $('#edit_checkbox_kerosene').is(":checked");
+
+        if(!checkboxDiesel && !checkboxGasoline && !checkboxPremium95 && !checkboxPremium97 && !checkboxKerosene){
+            disableSubmit('Select at least one product to purchase.');
+            $('#select_editTransactStatus').val(originalStatus);
+            $('#select_editTransactStatus').prop('disabled', true);
+        }
+    }
+
 })

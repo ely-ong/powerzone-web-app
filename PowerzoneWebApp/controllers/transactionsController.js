@@ -424,6 +424,37 @@ const transactionsController = {
     },
 
     /**
+     * This helper function checks if the invoice number already exists in the database
+     *
+     * @param req the object containing the HTTP request to access the products page
+     * @param res the object to send back the appropriate HTTP response to either allow or reject user access to the products page
+     */
+    checkTransactDeliveryNo: function (req, res) {
+        var deliveryNumber = req.query.deliveryNumber;
+        console.log(deliveryNumber);
+
+        db.findOne(Transaction, {deliveryNumber: deliveryNumber}, '', function(result) {
+            res.send(result);
+        });
+    },
+
+    /**
+     * This helper function checks if the invoice number already exists in the database
+     *
+     * @param req the object containing the HTTP request to access the products page
+     * @param res the object to send back the appropriate HTTP response to either allow or reject user access to the products page
+     */
+    checkTransactSalesNo: function (req, res) {
+
+        var invoiceNumber = req.query.invoiceNumber;
+        console.log(invoiceNumber);
+
+        db.findOne(Transaction, {invoiceNumber: invoiceNumber}, '', function(result) {
+            res.send(result);
+        });
+    },
+
+    /**
      * This function sorts the product list by status in either ascending or descending order following a get request from a user.
      *
      * @param req the object containing the HTTP request to sort the product list by status
