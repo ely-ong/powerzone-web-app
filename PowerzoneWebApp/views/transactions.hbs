@@ -68,7 +68,7 @@
             {{#each (reverseArray u.transactionsArray)}}
             <tbody>
                 <tr class="transactTable_rows">
-                    <td class="transact_item">{{this.status}}</td>
+                    <td class="transact_item" id="transStatus">{{this.status}}</td>
                     <td class="transact_item">{{this.dateString}}</td>
                     <td class="transact_item">{{this.deliveryNumber}}</td>
                     <td class="transact_item">{{this.invoiceNumber}}</td>
@@ -81,9 +81,9 @@
                             </button>
                         </form>
                     </td>
-                    <td>
+                    <td id="transact_edit">
                         {{#unless this.isDelivered}}
-                        <form method="get" action="/editTransaction">
+                        <form method="get" action="/editTransaction" id="form_edit">
                             <button style = "border: 0px; background-color: transparent;" type="submit" value = "{{this.transactionId}}" name = "edit_button" class = "edit_transact">
                                 <img src="../images/edit.png"  class="link_icons" id="edit_icon" value = "{{this.transactionId}}">
                             </button>
@@ -92,7 +92,7 @@
                     </td>
                     <td>
                         {{#unless this.isDelivered}}
-                        <button style = "border: 0px; background-color: transparent;" type="submit" value = "{{this.transactionId}}" name = "cancel_button" class = "cancel_transact">
+                        <button style = "border: 0px; background-color: transparent;" type="submit" value = "{{this.transactionId}}" name = "cancel_button" class = "cancel_transact" id = "cancel_button">
                             <img src="../images/delete.png"  class="link_icons" id="cancel_icon" value = "{{this.transactionId}}">
                         </button>
                         {{/unless}}

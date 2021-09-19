@@ -1,8 +1,8 @@
 // import module `database` from `../models/db.js`
 const db = require('../models/db.js');
 
-// import module `User` from `../models/PersonnelModel.js`
-const User = require('../models/PersonnelModel.js');
+// import module `Product` from `../models/ProductModel.js`
+const Transaction = require('../models/TransactionModel.js');
 
 const deliveriesController = {
 
@@ -26,8 +26,21 @@ const deliveriesController = {
             res.render('login', details);
         }
         // Loads the deliveries page if the logged-in account is authorized
-        else
-        	res.render('deliveries');
+        else{
+
+            // Initialize the variables
+            var transactionsArray = [];
+
+            // Submits a query to the database to return the list of all recorded transactions
+            db.findMany(Transaction, {}, '', function (result) {
+                if(result) {
+                    transactionsArray = result;
+
+                    // Loads the product page with the sorted list of products in accordance with the sorting criteria
+                    res.render('deliveries', {transactions: result});
+                }
+            });
+        }
     },
 }
 

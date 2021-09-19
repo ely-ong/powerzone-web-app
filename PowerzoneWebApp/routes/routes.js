@@ -98,6 +98,7 @@ app.get('/viewTransaction', transactionsController.viewTransaction);
 app.get('/addTransaction', transactionsController.addTransaction);
 app.post('/postTransaction', transactionsController.postTransaction);
 app.get('/getTotalInventory', transactionsController.getTotalInventory);
+app.get('/cancelTransaction', transactionsController.cancelTransaction);
 
 // routes for edit transaction controller functions
 app.get('/editTransaction', editTransactionController.editTransaction);

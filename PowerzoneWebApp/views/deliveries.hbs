@@ -31,72 +31,105 @@
                 <tr id="deliveryTable_header">
                     <th class="deliveryTable_head sortable">
                         <form method="get" action="/sortBy">
-                            <button class="filter_button" type="submit" value="{{u.sortCriteria.}}" name="filter_date" id="filter_date">Date<br>(MM-DD-YYYY)</button>
+                            <button class="filter_button" type="submit" value="" name="filter_date" id="filter_date">Date<br>(MM-DD-YYYY)</button>
                         </form>
                     </th>
                     <th class="deliveryTable_head sortable">
                         <form method="get" action="/sortBy">
-                            <button class="filter_button" type="submit" value="{{u.sortCriteria.}}" name="filter_status" id="filter_status">Status</button>
+                            <button class="filter_button" type="submit" value="" name="filter_status" id="filter_status">Status</button>
                         </form>
                     </th>
                     <th class="deliveryTable_head sortable">
                         <form method="get" action="/sortBy">
-                            <button class="filter_button" type="submit" value="{{u.sortCriteria.}}" name="filter_deliveryNo" id="filter_deliveryNo">Delivery Receipt No.</button>
+                            <button class="filter_button" type="submit" value="" name="filter_deliveryNo" id="filter_deliveryNo">Delivery Receipt No.</button>
                         </form>
                     </th>
                     <th class="deliveryTable_head sortable">
                         <form method="get" action="/sortBy">
-                            <button class="filter_button" type="submit" value="{{u.sortCriteria.}}" name="filter_truckPlateNo" id="filter_truckPlateNo">Truck Plate No.</button>
+                            <button class="filter_button" type="submit" value="" name="filter_truckPlateNo" id="filter_truckPlateNo">Truck Plate No.</button>
                         </form>
                     </th>
                     <th class="deliveryTable_head sortable">
                         <form method="get" action="/sortBy">
-                            <button class="filter_button" type="submit" value="{{u.sortCriteria.}}" name="filter_truckDriverName" id="filter_truckDriverName">Truck Driver Name</button>
+                            <button class="filter_button" type="submit" value="" name="filter_truckDriverName" id="filter_truckDriverName">Truck Driver Name</button>
                         </form>
                     </th>
                     <th class="deliveryTable_head sortable">
                         <form method="get" action="/sortBy">
-                            <button class="filter_button" type="submit" value="{{u.sortCriteria.}}" name="filter_customerName" id="filter_customerName">Customer Name</button>
+                            <button class="filter_button" type="submit" value="" name="filter_customerName" id="filter_customerName">Customer Name</button>
                         </form>
                     </th>
                     <th class="deliveryTable_head sortable">
                         <form method="get" action="/sortBy">
-                            <button class="filter_button" type="submit" value="{{u.sortCriteria.}}" name="filter_address" id="filter_address">Address</button>
+                            <button class="filter_button" type="submit" value="" name="filter_address" id="filter_address">Address</button>
                         </form>
                     </th>
                     <th class="deliveryTable_head sortable">
                         <form method="get" action="/sortBy">
-                            <button class="filter_button" type="submit" value="{{u.sortCriteria.}}" name="filter_product" id="filter_product">Product</button>
+                            <button class="filter_button" type="submit" value="" name="filter_product" id="filter_product">Product</button>
                         </form>
                     </th>
                     <th class="deliveryTable_head numbers sortable">
                         <form method="get" action="/sortBy">
-                            <button class="filter_button numbers" type="submit" value="{{u.sortCriteria.}}" name="filter_qtyLiters" id="filter_qtyLiters">Quantity of Product<br>in Liters</button>
+                            <button class="filter_button numbers" type="submit" value="" name="filter_qtyLiters" id="filter_qtyLiters">Quantity of Product<br>in Liters</button>
                         </form>
                     </th>
                     <th class="deliveryTable_head sortable">
                         <form method="get" action="/sortBy">
-                            <button class="filter_button" type="submit" value="{{u.sortCriteria.}}" name="filter_remarks" id="filter_remarks">Remarks</button>
+                            <button class="filter_button" type="submit" value="" name="filter_remarks" id="filter_remarks">Remarks</button>
                         </form>
                     </th>
                 </tr>
             </thead>
-            {{#each (reverseArray u.)}}
+            
             <tbody>
+                {{#each (reverseArray transactions)}}
                 <tr class="deliveryTable_rows">
-                    <td class="delivery_item">{{this.}}</td>
-                    <td class="delivery_item">{{this.}}</td>
-                    <td class="delivery_item">{{this.}}</td>
-                    <td class="delivery_item">{{this.}}</td>
-                    <td class="delivery_item">{{this.}}</td>
-                    <td class="delivery_item">{{this.}}</td>
-                    <td class="delivery_item">{{this.}}</td>
-                    <td class="delivery_item">{{this.}}</td>
-                    <td class="delivery_item numbers">{{this.}}</td>
-                    <td class="delivery_item">{{this.}}</td>
+                    <td class="delivery_item">{{this.dateString}}</td>
+                    <td class="delivery_item">{{this.status}}</td>
+                    <td class="delivery_item">{{this.deliveryNumber}}</td>
+                    <td class="delivery_item">{{this.truckPlateNumber}}</td>
+                    <td class="delivery_item">{{this.signatories.driver}}</td>
+                    <td class="delivery_item">{{this.customerName}}</td>
+                    <td class="delivery_item">{{this.address}}</td>
+                    <td class="delivery_item">
+                        {{#if this.hasProductObject.hasDiesel}}
+                            Diesel
+                        {{/if}}
+                        {{#if this.hasProductObject.hasGasoline}}
+                            <br>Gasoline
+                        {{/if}}
+                        {{#if this.hasProductObject.hasPremium95}}
+                            <br>Premium Gasoline 95
+                        {{/if}}
+                        {{#if this.hasProductObject.hasPremium97}}
+                            <br>Premium Gasoline 97
+                        {{/if}}
+                        {{#if this.hasProductObject.hasKerosene}}
+                            <br>Kerosene
+                        {{/if}}
+                    </td>
+                    <td class="delivery_item numbers">
+                        {{#if this.hasProductObject.hasDiesel}}
+                            {{this.dieselObject.totalPrice}}
+                        {{/if}}
+                        {{#if this.hasProductObject.hasGasoline}}
+                            <br>{{this.gasolineObject.totalPrice}}
+                        {{/if}}
+                        {{#if this.hasProductObject.hasPremium95}}
+                            <br>{{this.premium95Object.totalPrice}}
+                        {{/if}}
+                        {{#if this.hasProductObject.hasPremium97}}
+                            <br>{{this.premium97Object.totalPrice}}
+                        {{/if}}
+                        {{#if this.hasProductObject.hasKerosene}}
+                            <br>{{this.keroseneObject.totalPrice}}
+                        {{/if}}
+                    </td>
+                    <td class="delivery_item">{{this.remarks}}</td>
                 </tr>
+                {{/each}}
             </tbody>
-            {{/each}}
         </table>
     </div>
 </div>

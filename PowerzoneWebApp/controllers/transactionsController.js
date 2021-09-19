@@ -344,6 +344,22 @@ const transactionsController = {
             else
                 console.log('Error adding product to database.');
         });
+    },
+
+    /**
+     * This function cancels a transaction upon a get request from the user.
+     *
+     * @param req the object containing the HTTP request to access the products page
+     * @param res the object to send back the appropriate HTTP response to either allow or reject user access to the products page
+     */
+    cancelTransaction: function (req, res) {
+
+        var transactionId = req.query.transactionId;
+
+        db.updateOne(Transaction, {transactionId: transactionId}, {$set: {status: 'Canceled', isDelivered: true}}, function(result) {
+
+            res.send(result);
+        });
     }
 }
 
