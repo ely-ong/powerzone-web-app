@@ -14,6 +14,26 @@ $(document).ready(function() {
         });
     });
 
+    // opens add product page upon clicking add product button
+    $('#edit_button').click(function(){
+
+        var id = $('#edit_button').val();
+
+        // checks if currently logged in user is authorized to add new products
+        $.get('/getAccountRole', function(result) {
+            console.log(result);
+            if(result == "Administrator" || result == "Depot General Manager" || result == "Depot Supervisor") {
+                $.get('/editTransaction', {edit_button: id}, function(result){})
+            }
+            else if (result == null){
+                alert('Error with session kindly log in once again.');
+            }
+            else{
+                alert(`Account is unauthorized to perform this action.`);
+            }
+        })
+    });
+
     // variable instantiation
     var statusFilter = $('#filter_status').val();
     var dateFilter = $('#filter_date').val();

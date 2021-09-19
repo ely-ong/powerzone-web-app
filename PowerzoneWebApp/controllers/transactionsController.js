@@ -176,10 +176,17 @@ const transactionsController = {
                     customerSort: 'ascending'
                 }
 
+                var isAuthorized = false;
+
+                if(req.session.role == 'Administrator' || req.session.role == 'Depot General Manager' || req.session.role == 'Depot Supervisor'){
+                    isAuthorized = true;
+                }
+
                 // Loads the product page with the sorted list of products in accordance with the sorting criteria
 		        res.render('transactions', {u: {
 		        	transactionsArray: transactionsArray,
-                    sortCriteria: sortCriteria
+                    sortCriteria: sortCriteria,
+                    isAuthorized: isAuthorized
 		        }});
 		    }
 		});
@@ -218,7 +225,13 @@ const transactionsController = {
      */
     addTransaction: function (req, res) {
 
-        res.render('addTransaction');
+        var isSupervisor = false;
+
+        if(req.session.role == 'Depot Supervisor'){
+            var isSupervisor = true;
+        }
+
+        res.render('addTransaction', {isSupervisor: isSupervisor});
     },
 
     /**
