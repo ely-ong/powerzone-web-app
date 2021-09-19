@@ -1,6 +1,13 @@
 $(document).ready(function() {
 
+    // gets the role of current user
+    var accountRole = $('#label_editTransact').attr('value');
+    var originalStatus = $('#select_editTransactStatus').val();
+    console.log("ORIGINAL STATUS: " + originalStatus);
+
+    // function to check if previously inputted values for product amounts can still be accommodated by inventory balance
     checkProductInformation();
+    disableExistingUnitPrice();
 
     if($('#select_editTransactStatus').val() == "Delivered Completely"){
         $('#select_editTransactStatus').prop('disabled', true);
@@ -158,6 +165,83 @@ $(document).ready(function() {
         $('#errorBottom').css('color', 'transparent');
     }
 
+    function disableExistingUnitPrice(){
+        var checkboxDiesel = $('#edit_checkbox_diesel').is(":checked");
+        var checkboxGasoline = $('#edit_checkbox_gasoline').is(":checked");
+        var checkboxPremium95 = $('#edit_checkbox_premium95').is(":checked");
+        var checkboxPremium97 = $('#edit_checkbox_premium97').is(":checked");
+        var checkboxKerosene = $('#edit_checkbox_kerosene').is(":checked");
+
+        var enableStatusChange = true;
+        var isComplete = true;
+
+        if(accountRole == "Depot Supervisor"){
+            if(checkboxDiesel){
+                $('#input_editTransactSellingPriceDiesel').prop('readonly', true);
+                $('#input_editTransactSellingPriceDiesel').css('background-color', '#808080');
+                
+                if($('#input_editTransactQuantityDiesel').val() == '')
+                    isComplete == false;
+
+                if($('#input_editTransactSellingPriceDiesel').val() == '')
+                    enableStatusChange = false;
+
+            }
+
+            if(checkboxGasoline){
+                $('#input_editTransactSellingPriceGasoline').prop('readonly', true);
+                $('#input_editTransactSellingPriceGasoline').css('background-color', '#808080');
+
+                if($('#input_editTransactQuantityGasoline').val() == '')
+                    isComplete == false;
+
+                if($('#input_editTransactSellingPriceGasoline').val() == '')
+                    enableStatusChange = false;
+            }
+
+            if(checkboxPremium95){
+                $('#input_editTransactSellingPricePremium95').prop('readonly', true);
+                $('#input_editTransactSellingPricePremium95').css('background-color', '#808080');
+
+                if($('#input_editTransactQuantityPremium95').val() == '')
+                    isComplete == false;
+
+                if($('#input_editTransactSellingPricePremium95').val() == '')
+                    enableStatusChange = false;
+            }
+
+            if(checkboxPremium97){
+                $('#input_editTransactSellingPricePremium97').prop('readonly', true);
+                $('#input_editTransactSellingPricePremium97').css('background-color', '#808080');
+
+                if($('#input_editTransactQuantityPremium97').val() == '')
+                    isComplete == false;
+
+                if($('#input_editTransactSellingPricePremium97').val() == '')
+                    enableStatusChange = false;
+            }
+
+            if(checkboxKerosene){
+                $('#input_editTransactSellingPriceKerosene').prop('readonly', true);
+                $('#input_editTransactSellingPriceKerosene').css('background-color', '#808080');
+
+                if($('#input_editTransactQuantityKerosene').val() == '')
+                    isComplete == false;
+
+                if($('#input_editTransactSellingPriceKerosene').val() == '')
+                    enableStatusChange = false;
+            }
+
+            if(!enableStatusChange)
+                $('#select_editTransactStatus').prop('disabled', true);
+
+            if(isComplete)
+                enableSubmit();
+            else
+                disableSubmit('Incomplete product details above.');
+        }
+    }
+
     // Front-End Validation
 
     // checks if at least one product was selected in the transaction
@@ -169,54 +253,121 @@ $(document).ready(function() {
         var checkboxPremium97 = $('#edit_checkbox_premium97').is(":checked");
         var checkboxKerosene = $('#edit_checkbox_kerosene').is(":checked");
 
+        var allowStatusChange = true;
         if(!checkboxDiesel && !checkboxGasoline && !checkboxPremium95 && !checkboxPremium97 && !checkboxKerosene){
             disableSubmit('Select at least one product to purchase.');
+            allowStatusChange = false;
         }
         else{
             var isComplete = true;
-
+            console.log(accountRole);
             if(checkboxDiesel){
-                var quantityDiesel = $('#input_editTransactQuantityDiesel').val();
-                var priceDiesel = $('#input_editTransactSellingPriceDiesel').val();
+                if(accountRole == "Depot General Manager" || accountRole == "Administrator"){
+                    var quantityDiesel = $('#input_editTransactQuantityDiesel').val();
+                    var priceDiesel = $('#input_editTransactSellingPriceDiesel').val();
 
-                if(quantityDiesel == '' || priceDiesel == ''){
-                    isComplete = false;
+                    if(quantityDiesel == '' || priceDiesel == '')
+                        isComplete = false;
+                }
+                else if(accountRole == "Depot Supervisor"){
+                    var quantityDiesel = $('#input_editTransactQuantityDiesel').val();
+                    var priceDiesel = $('#input_editTransactSellingPriceDiesel').val();
+                    $('#input_editTransactSellingPriceDiesel').prop('readonly', true);
+                    $('#input_editTransactSellingPriceDiesel').css('background-color', '#808080');
+
+                    if(quantityDiesel == '')
+                        isComplete = false;
+
+                    if(priceDiesel == '')
+                        allowStatusChange = false;
                 }
             }
 
             if(checkboxGasoline){
-                var quantityGasoline = $('#input_editTransactQuantityGasoline').val();
-                var priceGasoline = $('#input_editTransactSellingPriceGasoline').val();
+                if(accountRole == "Depot General Manager" || accountRole == "Administrator"){
+                    var quantityGasoline = $('#input_editTransactQuantityGasoline').val();
+                    var priceGasoline = $('#input_editTransactSellingPriceGasoline').val();
 
-                if(quantityGasoline == '' || priceGasoline == ''){
-                    isComplete = false;
+                    if(quantityGasoline == '' || priceGasoline == '')
+                        isComplete = false;
+                }
+                else if(accountRole == "Depot Supervisor"){
+                    var quantityGasoline = $('#input_editTransactQuantityGasoline').val();
+                    var priceGasoline = $('#input_editTransactQuantityGasoline').val();
+                    $('#input_editTransactSellingPriceGasoline').prop('readonly', true);
+                    $('#input_editTransactSellingPriceGasoline').css('background-color', '#808080');
+
+                    if(quantityGasoline == '')
+                        isComplete = false;
+
+                    if(priceGasoline == '')
+                        allowStatusChange = false;
                 }
             }
 
             if(checkboxPremium95){
-                var quantityPremium95 = $('#input_editTransactQuantityPremium95').val();
-                var pricePremium95 = $('#input_editTransactSellingPricePremium95').val();
+                if(accountRole == "Depot General Manager" || accountRole == "Administrator"){
+                    var quantityPremium95 = $('#input_editTransactQuantityPremium95').val();
+                    var pricePremium95 = $('#input_editTransactSellingPricePremium95').val();
 
-                if(quantityPremium95 == '' || pricePremium95 == ''){
-                    isComplete = false;
+                    if(quantityPremium95 == '' || pricePremium95 == '')
+                        isComplete = false;
+                }
+                else if(accountRole == "Depot Supervisor"){
+                    var quantityPremium95 = $('#input_editTransactQuantityPremium95').val();
+                    var pricePremium95 = $('#input_editTransactSellingPricePremium95').val();
+                    $('#input_editTransactSellingPricePremium95').prop('readonly', true);
+                    $('#input_editTransactSellingPricePremium95').css('background-color', '#808080');
+
+                    if(quantityPremium95 == '')
+                        isComplete = false;
+
+                    if(pricePremium95 == '')
+                        allowStatusChange = false;
                 }
             }
 
             if(checkboxPremium97){
-                var quantityPremium97 = $('#input_editTransactQuantityPremium97').val();
-                var pricePremium97 = $('#input_editTransactSellingPricePremium97').val();
+                if(accountRole == "Depot General Manager" || accountRole == "Administrator"){
+                    var quantityPremium97 = $('#input_editTransactQuantityPremium97').val();
+                    var pricePremium97 = $('#input_editTransactSellingPricePremium97').val();
 
-                if(quantityPremium97 == '' || pricePremium97 == ''){
-                    isComplete = false;
+                    if(quantityPremium97 == '' || pricePremium97 == '')
+                        isComplete = false;
+                }
+                else if(accountRole == "Depot Supervisor"){
+                    var quantityPremium97 = $('#input_editTransactQuantityPremium97').val();
+                    var pricePremium97 = $('#input_editTransactSellingPricePremium97').val();
+                    $('#input_editTransactSellingPricePremium97').prop('readonly', true);
+                    $('#input_editTransactSellingPricePremium97').css('background-color', '#808080');
+
+                    if(quantityPremium97 == '')
+                        isComplete = false;
+
+                    if(pricePremium97 == '')
+                        allowStatusChange = false;
                 }
             }
 
             if(checkboxKerosene){
-                var quantityKerosene = $('#input_editTransactQuantityKerosene').val();
-                var priceKerosene = $('#input_editTransactSellingPriceKerosene').val();
+                if(accountRole == "Depot General Manager" || accountRole == "Administrator"){
+                    var quantityKerosene = $('#input_editTransactQuantityKerosene').val();
+                    var priceKerosene = $('#input_editTransactSellingPriceKerosene').val();
 
-                if(quantityKerosene == '' || priceKerosene == ''){
-                    isComplete = false;
+                    if(quantityKerosene == '' || priceKerosene == '')
+                        isComplete = false;
+                }
+                else if(accountRole == "Depot Supervisor"){
+                    var quantityKerosene = $('#input_editTransactQuantityKerosene').val();
+                    var priceKerosene = $('#input_editTransactSellingPriceKerosene').val();
+                    $('#input_editTransactSellingPriceKerosene').prop('readonly', true);
+                    $('#input_editTransactSellingPriceKerosene').css('background-color', '#808080');
+
+                    if(quantityKerosene == '')
+                        isComplete = false;
+
+                    if(priceKerosene == '')
+                        allowStatusChange = false;
                 }
             }
 
@@ -226,6 +377,15 @@ $(document).ready(function() {
             else{
                 disableSubmit('Incomplete product details above.');
             }
+        }
+
+        if(allowStatusChange){
+            $('#select_editTransactStatus').val(originalStatus);
+            $('#select_editTransactStatus').prop('disabled', false);
+        }
+        else{
+            $('#select_editTransactStatus').val(originalStatus);
+            $('#select_editTransactStatus').prop('disabled', true);
         }
     })
 
@@ -246,8 +406,8 @@ $(document).ready(function() {
         var isComplete = true;
 
         if(checkboxDiesel){
-            var quantityDiesel = $('#input_addTransactQuantityDiesel').val();
-            var priceDiesel = $('#input_addTransactSellingPriceDiesel').val();
+            var quantityDiesel = $('#input_editTransactQuantityDiesel').val();
+            var priceDiesel = $('#input_editTransactSellingPriceDiesel').val();
 
             // checks if diesel quantity is more than the available diesel in inventory
             $.get('/getTotalInventory', {quantity: quantityDiesel, product: 'Diesel'}, function (result) {
@@ -262,10 +422,18 @@ $(document).ready(function() {
                     $('#errorEditTransactQuantityDiesel').css('color', 'transparent');
                 }
                   
-                // checks if all info is complete and valid            
-                if(quantityDiesel == '' || priceDiesel == '' || isExceeding){
-                    isComplete = false;
-                }    
+                // checks if all info is complete and valid
+                if(accountRole == "Depot General Manager" || accountRole == "Administrator"){
+                   if(quantityDiesel == '' || priceDiesel == '' || isExceeding){
+                        isComplete = false;
+                    }  
+                }
+                else if(accountRole == "Depot Supervisor"){
+                    if(quantityDiesel == '' || isExceeding){
+                        isComplete = false;
+                    }  
+                }         
+                   
 
                 if(isComplete){
                     enableSubmit();
@@ -294,9 +462,17 @@ $(document).ready(function() {
                 }
                 
                 // checks if all info is complete and valid      
-                if(quantityGasoline == '' || priceGasoline == '' || isExceeding){
-                    isComplete = false;
-                }    
+                if(accountRole == "Depot General Manager" || accountRole == "Administrator"){
+                   if(quantityGasoline == '' || priceGasoline == '' || isExceeding){
+                        isComplete = false;
+                    }  
+                }
+                else if(accountRole == "Depot Supervisor"){
+                    if(quantityGasoline == '' || isExceeding){
+                        isComplete = false;
+                    }  
+                }         
+                   
 
                 if(isComplete){
                     enableSubmit();
@@ -325,9 +501,17 @@ $(document).ready(function() {
                 }
                 
                 // checks if all info is complete and valid            
-                if(quantityPremium95 == '' || pricePremium95 == '' || isExceeding){
-                    isComplete = false;
-                }    
+                if(accountRole == "Depot General Manager" || accountRole == "Administrator"){
+                   if(quantityPremium95 == '' || pricePremium95 == '' || isExceeding){
+                        isComplete = false;
+                    }  
+                }
+                else if(accountRole == "Depot Supervisor"){
+                    if(quantityPremium95 == '' || isExceeding){
+                        isComplete = false;
+                    }  
+                }         
+                      
 
                 if(isComplete){
                     enableSubmit();
@@ -356,9 +540,17 @@ $(document).ready(function() {
                 }
                 
                 // checks if all info is complete and valid            
-                if(quantityPremium97 == '' || pricePremium97 == '' || isExceeding){
-                    isComplete = false;
-                }    
+                if(accountRole == "Depot General Manager" || accountRole == "Administrator"){
+                   if(quantityPremium97 == '' || pricePremium97 == '' || isExceeding){
+                        isComplete = false;
+                    }  
+                }
+                else if(accountRole == "Depot Supervisor"){
+                    if(quantityPremium97 == '' || isExceeding){
+                        isComplete = false;
+                    }  
+                }         
+                     
 
                 if(isComplete){
                     enableSubmit();
@@ -387,9 +579,17 @@ $(document).ready(function() {
                 }
                 
                 // checks if all info is complete and valid            
-                if(quantityKerosene == '' || priceKerosene == '' || isExceeding){
-                    isComplete = false;
-                }    
+                if(accountRole == "Depot General Manager" || accountRole == "Administrator"){
+                   if(quantityKerosene == '' || priceKerosene == '' || isExceeding){
+                        isComplete = false;
+                    }  
+                }
+                else if(accountRole == "Depot Supervisor"){
+                    if(quantityKerosene == '' || isExceeding){
+                        isComplete = false;
+                    }  
+                }         
+                   
 
                 if(isComplete){
                     enableSubmit();

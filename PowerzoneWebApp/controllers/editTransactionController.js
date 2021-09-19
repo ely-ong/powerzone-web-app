@@ -13,72 +13,57 @@ const mongoose = require('mongoose');
 const editTransactionController = {
 
     /**
-     * This is a helper function to load the a transaction's details from the database as values for the fields in the 
-     * view transaction page.
-     *
-     * @param req the object containing the HTTP request to find the product being edited and all its details from the database
-     * @param res the object to send back the appropriate HTTP response containing the details of the product being edited
-     */
-    findTransaction: function (req, res) {
-
-        // Obtains the unique id of the product from the get request
-        var uniqueId = req.query.transactionId;
-
-        // Finds the product from the database using the unique id
-        db.findOne(Transaction, {transactionId: transactionId}, '', function (result) {
-            if(result) {
-                res.send(result);
-            }
-            // Loads the error page if the product cannot be found in the database
-            else
-                res.render('error');
-        });
-    },
-
-    /**
-     * This function displays more info on specific transaction following a get request from a user. 
-     *
-     * @param req the object containing the HTTP request to access the products page
-     * @param res the object to send back the appropriate HTTP response to either allow or reject user access to the products page
-     */
-    viewTransaction: function (req, res) {
-
-        // Initialize the variables
-        var transactionId = req.query.redirect_button;
-
-        // // Submits a query to the database to return the list of all recorded transactions
-        db.findOne(Transaction, {transactionId: transactionId}, '', function (result) {
-            if(result) {
-
-                console.log(result);
-
-                // Loads the product page with the sorted list of products in accordance with the sorting criteria
-                res.render('viewTransaction', {transaction: result});
-            }
-        });
-    },
-
-    /**
      * This function displays the edit transaction page of a certain transaction following a get request from a user. 
      *
      * @param req the object containing the HTTP request to access the edit page of a specific transaction
      * @param res the object to send back the appropriate HTTP response to allow the user access to the edit transaction page
      */
     editTransaction: function (req, res) {
-        var transactionId = req.query.edit_button;
-        console.log("transaction id: " + transactionId);
+        // This conditional statement checks if the user is not an Administrator nor a Depot General Manager (i.e., unauthorized account)
+        if(req.session.role != "Administrator" && req.session.role != "Depot General Manager" && req.session.role != "Depot Supervisor") {
 
-        db.findOne(Transaction, {transactionId: transactionId}, '', function (result) {
-            if(result) {
-                var dateArray = result.dateString.split('/');
-                var dateString = dateArray[2] + '-' + dateArray[0] + '-' + dateArray[1];
-                result.inputFieldDateString = dateString;
-                console.log(result);
+            /** 
+             * This conditional statement checks if the user is logged in and does not have the authorized role to access the page.
+             * In the event of unauthorized access, user will be logged out of the session and will be asked to log in with an
+             * authorized account instead.
+             */
+            if(req.session.role == "Depot Cashier" || req.session.role == "Regular User") {
 
-                // Loads the edit transaction page with the specific product chosen from the transactions page
-                res.render('editTransaction', {transaction: result});
+                var details = {error: `User is unauthorized to access the page. Please log in with an authorized account.`}
+                req.session.destroy(function(err) {
+                    if(err) 
+                        throw err;
+                    else 
+                        console.log('Logout Successful.');
+
+                });
             }
-        });
+            // Loads an error message to ask the user to log in before trying to access any page of the website
+            else
+                var details = {error: `User is not logged in. Please log in first.`}
+
+            // Re-loads the login page with the appropriate error message
+            res.render('login', details);
+        }
+        // Displays the edit product page if the logged-in account is authorized
+        else{
+            var transactionId = req.query.edit_button;
+            console.log("transaction id: " + transactionId);
+
+            db.findOne(Transaction, {transactionId: transactionId}, '', function (result) {
+                if(result) {
+                    var dateArray = result.dateString.split('/');
+                    var dateString = dateArray[2] + '-' + dateArray[0] + '-' + dateArray[1];
+                    result.inputFieldDateString = dateString;
+                    result.transactionEditorRole = req.session.role;
+                    console.log(result);
+
+                    // Loads the edit transaction page with the specific product chosen from the transactions page
+                    res.render('editTransaction', {transaction: result});
+                }
+            });
+        }
+
     },
 
     /**
@@ -91,11 +76,12 @@ const editTransactionController = {
 
         // Initialize variables from page
         var status = req.body.status;
+        var statusOther = req.body.status_dropdown;
+        console.log("OTHER STATUS:" + statusOther);
         var isDelivered = false;
 
         if(status == undefined){
-            status = "Delivered Completely";
-            isDelivered = true;
+            status = statusOther;
         }
         if(status == "Delivered Completely")
             isDelivered = true;

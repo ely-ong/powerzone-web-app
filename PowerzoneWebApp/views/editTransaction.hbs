@@ -17,7 +17,7 @@
     {{> navBar}}
 
     <div id="editTransact_box">
-        <h1 id="label_editTransact">Edit Transaction</h1>
+        <h1 id="label_editTransact" value="{{transaction.transactionEditorRole}}">Edit Transaction</h1>
         <div id="editTransactForm_box">
             <form id="form_editTransact" method="post" action="/postSubmitEditTransaction">
                 <div class="editTransactDetail_box" id="editTransactStatus_box">
@@ -29,6 +29,7 @@
                         <option id="editTransact_option_pending">Pending</option> 
                         <!-- <option id="editTransact_option_cancelled">Cancelled</option>  -->
                     </select>
+                    <input type="hidden" name="status_dropdown" id="status_dropdown" value="{{transaction.status}}">
                     <p class="error" id="errorEditTransactStatus">{{error}}</p>
                 </div>
                 <div class="editTransactDetail_box" id="editTransactDate_box">
