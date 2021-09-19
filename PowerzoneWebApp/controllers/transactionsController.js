@@ -4,6 +4,9 @@ const db = require('../models/db.js');
 // import module `Product` from `../models/ProductModel.js`
 const Transaction = require('../models/TransactionModel.js');
 
+// import module `Product` from `../models/ProductModel.js`
+const Product = require('../models/ProductModel.js');
+
 // import module mongoose
 const mongoose = require('mongoose');
 
@@ -32,6 +35,71 @@ const transactionsController = {
             // Loads the error page if the product cannot be found in the database
             else
                 res.render('error');
+        });
+    },
+
+    /**
+     * This is a helper function to check for all the total inventory of each product for sale.
+     *
+     * @param req the object containing the HTTP request to find the product being edited and all its details from the database
+     * @param res the object to send back the appropriate HTTP response containing the details of the product being edited
+     */
+    getTotalInventory: function (req, res) {
+
+        // Obtain transaction values from input field
+        var quantity = req.query.quantity;
+        var product = req.query.product; 
+
+         // Submits a query to the database to return the list of all recorded products
+        db.findMany(Product, {}, '', function (result) {
+            if(result) {
+
+                // Variable Instantiation
+                var productsArray = result;
+                var dieselTotal = 0;
+                var gasolineTotal = 0;
+                var premium95Total = 0;
+                var premium97Total = 0;
+                var keroseneTotal = 0;
+                var isExceeded = false;
+
+                // Performs necessary data manipulation
+                for(var i = 0; i < productsArray.length; i++) {
+
+                    if(productsArray[i].product == 'Diesel')
+                        dieselTotal += parseFloat(result[i].quantity);
+                    
+                    else if(productsArray[i].product == 'Gasoline')
+                        gasolineTotal += parseFloat(result[i].quantity);
+                    
+                    else if(productsArray[i].product == 'Premium Gasoline 95')
+                        premium95Total += parseFloat(result[i].quantity);
+                    
+                    else if(productsArray[i].product == 'Premium Gasoline 97')
+                        premium97Total += parseFloat(result[i].quantity);
+                    
+                    else if(productsArray[i].product == 'Kerosene')
+                        keroseneTotal += parseFloat(result[i].quantity); 
+                }
+
+                if(product == 'Diesel' && quantity > dieselTotal){
+                    isExceeded = true;
+                }
+                else if(product == 'Gasoline' && quantity > gasolineTotal){
+                    isExceeded = true;
+                }
+                else if(product == 'Premium Gasoline 95' && quantity > premium95Total){
+                    isExceeded = true;
+                }
+                else if(product == 'Premium Gasoline 97' && quantity > premium97Total){
+                    isExceeded = true;
+                }
+                else if(product == 'Kerosene' && quantity > keroseneTotal){
+                    isExceeded = true;
+                }
+
+                res.send(isExceeded);
+            }
         });
     },
 
@@ -85,6 +153,8 @@ const transactionsController = {
             if(result) {
 
                 console.log(result);
+                var totalAmountFixed = result.totalAmount.toFixed(2);
+                result.totalAmount = totalAmountFixed;
 
                 // Loads the product page with the sorted list of products in accordance with the sorting criteria
                 res.render('viewTransaction', {transaction: result});
@@ -166,15 +236,15 @@ const transactionsController = {
             var dieselQuantity = req.body.diesel_quantity;
             var dieselSellingPrice = req.body.diesel_selling_price;
             var dieselAmount = dieselQuantity * dieselSellingPrice;
-            dieselAmount = dieselAmount.toFixed(2)
+            totalAmount += dieselAmount;
+            var totalDiesel = dieselAmount.toFixed(2);
             dieselObject = {
                 product: "Diesel",
                 quantity: dieselQuantity,
                 sellingPrice: dieselSellingPrice,
-                totalPrice: dieselAmount
+                totalPrice: totalDiesel
             }
             hasProductObject.hasDiesel = true;
-            totalAmount += dieselAmount;
         }
 
         // Checks if the transaction contains a purchase of gasoline
@@ -182,14 +252,15 @@ const transactionsController = {
             var gasolineQuantity = req.body.gasoline_quantity;
             var gasolineSellingPrice = req.body.gasoline_selling_price;
             var gasolineAmount = gasolineQuantity * gasolineSellingPrice;
+            totalAmount += gasolineAmount;
+            var totalGasoline = gasolineAmount.toFixed(2);
             gasolineObject = {
                 product: "Gasoline",
                 quantity: gasolineQuantity,
                 sellingPrice: gasolineSellingPrice,
-                totalPrice: gasolineAmount
+                totalPrice: totalGasoline
             }
             hasProductObject.hasGasoline = true
-            totalAmount += gasolineAmount;
         }
 
         // Checks if the transaction contains a purchase of premium 95
@@ -197,14 +268,15 @@ const transactionsController = {
             var premium95Quantity = req.body.premium95_quantity;
             var premium95SellingPrice = req.body.premium95_selling_price;
             var premium95Amount = premium95Quantity * premium95SellingPrice;
+            totalAmount += premium95Amount;
+            var totalPremium95 = premium95Amount.toFixed(2);
             premium95Object = {
                 product: "Premium 95 Gasoline",
                 quantity: premium95Quantity,
                 sellingPrice: premium95SellingPrice,
-                totalPrice: premium95Amount
+                totalPrice: totalPremium95
             }
             hasProductObject.hasPremium95 = true;
-            totalAmount += premium95Amount;
         }
 
         // Checks if the transaction contains a purchase of premium 97
@@ -212,14 +284,16 @@ const transactionsController = {
             var premium97Quantity = req.body.premium97_quantity;
             var premium97SellingPrice = req.body.premium97_selling_price;
             var premium97Amount = premium97Quantity * premium97SellingPrice;
+            totalAmount += premium97Amount;
+            var totalPremium97 = premium97Amount.toFixed(2);
             premium97Object = {
                 product: "Premium 97 Gasoline",
                 quantity: premium97Quantity,
                 sellingPrice: premium97SellingPrice,
-                totalPrice: premium97Amount
+                totalPrice: totalPremium97
             }
             hasProductObject.hasPremium97 = true;
-            totalAmount += premium97Amount;
+            
         }
 
         // Checks if the transaction contains a purchase of kerosene
@@ -227,14 +301,15 @@ const transactionsController = {
             var keroseneQuantity = req.body.kerosene_quantity;
             var keroseneSellingPrice = req.body.kerosene_selling_price;
             var keroseneAmount = keroseneQuantity * keroseneSellingPrice;
+            totalAmount += keroseneAmount;
+            var totalKerosene = keroseneAmount.toFixed(2);
             keroseneObject = {
                 product: "Kerosene",
                 quantity: keroseneQuantity,
                 sellingPrice: keroseneSellingPrice,
-                totalPrice: keroseneAmount
+                totalPrice: totalKerosene
             }
             hasProductObject.hasKerosene = true;
-            totalAmount += keroseneAmount;
         }
 
         var newTransaction = {
