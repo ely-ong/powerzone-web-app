@@ -80,13 +80,10 @@ i{
     margin-left: auto;
     margin-right: auto;
     justify-content: center;
-    border-bottom-style: solid;
-    border-color: #ece9e9dc;
     margin-top: 5px;
-    margin-bottom: 25px;
     padding-bottom: 3px;
     color: #ece9e9dc;
-    height: 18px;
+    height: fit-content;
     width: 100%;
     font-size: 14px;
 }
@@ -131,13 +128,6 @@ i{
     padding-right: 10px;
 }
 
-/* #producthead_qty, 
-#producthead_unitPrice, 
-#producthead_amount, 
-#product_qty, 
-#product_unitPrice, 
-#product_amount, 
-#productTotal_amount */
 
 /* aligns numerical table values to the right */
 .numbers{
@@ -155,13 +145,26 @@ i{
     margin-left: auto;
     margin-right: auto;
     justify-content: center;
-    display: flex;
     width: 70%;
 }
 
-/* handles style of divs containing main transaction details */
-.division_box{
-    width: 100%;
-    padding-left: 30px;
-    padding-right: 30px;
+.attribute_box{
+    display: flex;
+    margin-bottom: 25px;
 }
+
+.division_box{
+    margin-left: 5%;
+    margin-right: 5%;;
+    width: 70%;
+    border-bottom-style: solid;
+    border-color: #ece9e9dc;
+}
+
+/* Removes the border-bottom for address and remarks since they're prone to long text*/
+.address_remarks_box{
+    margin-left: 5%;
+    margin-right: 5%;;
+    width: 70%;
+}
+

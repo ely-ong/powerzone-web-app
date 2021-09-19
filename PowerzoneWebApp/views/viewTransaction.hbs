@@ -82,89 +82,103 @@
         </table>
 
         <div class="maindivision_box">
-            <div class="division_box">
-                <div class="attribute_box">
+            <div class="attribute_box">
+                <div class="division_box">
                     <h5 class="label">Status</h5>
                     <p class="main_text">{{transaction.status}}</p>
-                </div> 
+                </div>
+                
+                <div class="division_box">
+                    <h5 class="label">Prepared By</h5>
+                    <p class="main_text">{{transaction.signatories.prepared}}</p>
+                </div>
+            </div> 
 
-                <div class="attribute_box">
+            <div class="attribute_box">
+                <div class="division_box">
                     <h5 class="label">Date</h5>
                     <p class="main_text">{{transaction.dateString}}</p>
-                </div> 
+                </div>
 
-                <div class="attribute_box">
+                <div class="division_box">
+                    <h5 class="label">Loaded By</h5>
+                    <p class="main_text">{{transaction.signatories.loaded}}</p>
+                </div>
+            </div> 
+
+            <div class="attribute_box">
+                <div class="division_box">
                     <h5 class="label">Delivery Receipt No.</h5>
                     <p class="main_text">{{transaction.deliveryNumber}}</p>
-                </div> 
+                </div>
 
-                <div class="attribute_box">
+                <div class="division_box">    
+                    <h5 class="label">Driver</h5>
+                    <p class="main_text">{{transaction.signatories.driver}}</p>
+                </div>
+            </div> 
+
+            <!---->
+            <div class="attribute_box">
+                <div class="division_box">
                     <h5 class="label">Sales Invoice No.</h5>
                     <p class="main_text">{{transaction.invoiceNumber}}</p>
-                </div> 
+                </div>
 
-                <div class="attribute_box">
+                <div class="division_box">
+                    <h5 class="label">Guard</h5>
+                    <p class="main_text">{{transaction.signatories.guard}}</p>
+                </div>
+            </div> 
+            
+            <div class="attribute_box">
+                <div class="division_box">
                     <h5 class="label">Truck Plate No.</h5>
                     <p class="main_text">{{transaction.truckPlateNumber}}</p>
-                </div> 
+                </div>
 
-                <div class="attribute_box">
+                <div class="division_box">
+                    <h5 class="label">Customer Representative</h5>
+                    <p class="main_text">{{transaction.signatories.customerRep}}</p>
+                </div>
+            </div> 
+
+            <div class="attribute_box">
+                <div class="division_box">
                     <h5 class="label">Customer Name</h5>
                     <p class="main_text">{{transaction.customerName}}</p>
-                </div> 
+                </div>
 
-                <div class="attribute_box">
+                <div class="division_box">
+                    <h5 class="label">Delivery Approved By</h5>
+                    <p class="main_text">{{transaction.signatories.deliveryApproved}}</p>
+                </div>
+            </div> 
+
+            <div class="attribute_box">
+                <div class="division_box">
+                    <h5 class="label">TIN No.</h5>
+                    <p class="main_text">{{transaction.tinNumber}}</p>
+                </div>
+
+                <div class="division_box">
+                    <h5 class="label">Delivery Checked By</h5>
+                    <p class="main_text">{{transaction.signatories.deliveryChecked}}</p>
+                </div>
+            </div> 
+
+            <div class="attribute_box">
+                <div class="address_remarks_box">
                     <h5 class="label">Address</h5>
                     <p class="main_text">{{transaction.address}}</p>
                 </div>
 
-                <div class="attribute_box">
-                    <h5 class="label">TIN No.</h5>
-                    <p class="main_text">{{transaction.tinNumber}}</p>
-                </div> 
-            </div>
-
-            <div class="division_box">
-                <div class="attribute_box">
-                    <h5 class="label">Prepared By</h5>
-                    <p class="main_text">{{transaction.signatories.prepared}}</p>
-                </div> 
-
-                <div class="attribute_box">
-                    <h5 class="label">Loaded By</h5>
-                    <p class="main_text">{{transaction.signatories.loaded}}</p>
-                </div> 
-
-                <div class="attribute_box">
-                    <h5 class="label">Driver</h5>
-                    <p class="main_text">{{transaction.signatories.driver}}</p>
-                </div> 
-
-                <div class="attribute_box">
-                    <h5 class="label">Guard</h5>
-                    <p class="main_text">{{transaction.signatories.guard}}</p>
-                </div> 
-
-                <div class="attribute_box">
-                    <h5 class="label">Customer Representative</h5>
-                    <p class="main_text">{{transaction.signatories.customerRep}}</p>
-                </div> 
-
-                <div class="attribute_box">
-                    <h5 class="label">Delivery Approved By</h5>
-                    <p class="main_text">{{transaction.signatories.deliveryApproved}}</p>
-                </div> 
-
-                <div class="attribute_box">
-                    <h5 class="label">Delivery Checked By</h5>
-                    <p class="main_text">{{transaction.signatories.deliveryChecked}}</p>
-                </div> 
-
-                <div class="attribute_box">
+                <div class="address_remarks_box">
                     <h5 class="label">Remarks</h5>
                     <p class="main_text">{{transaction.remarks}}</p>
                 </div>
-            </div>
+            </div> 
+            
         </div>
     </div>
 </body>
