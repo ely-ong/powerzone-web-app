@@ -35,7 +35,6 @@ body{
     margin-left: auto;
     margin-right: auto;
     padding-bottom: 50px;
-
 }
 
 #delivery_box > div{
@@ -201,7 +200,7 @@ body{
 
 /* handles style of table rows content*/
 .deliveryTable_head, 
-.non_sortable, 
+.unsortable, 
 .filter_button, 
 td{
     font-size: 16px;
@@ -209,7 +208,7 @@ td{
 }
 
 .filter_button, 
-.non_sortable, 
+.unsortable, 
 td{
     padding: 10px 40px 10px 40px;
 }
@@ -231,14 +230,15 @@ td{
     white-space: nowrap;
 }
 
-/* sets fixed width for delivery column */
-.delivery_fixed_width{
-    width: 150px;
+/* sets fixed width for product column; also prevents wrapping */
+.products{
+    min-width: 150px;
 }
 
-/* aligns numerical values to the right*/
+/* aligns numerical values to the right; also prevents wrapping */
 .numbers{
     text-align: right;
+    min-width: 71px;
 }
 
 /* handles style of icons td */
