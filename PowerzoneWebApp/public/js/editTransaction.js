@@ -1,20 +1,23 @@
 $(document).ready(function() {
 
-    // gets the role of current user
+    // initialize the variables holding the account role, original status, original delivery number, and original sales number
     var accountRole = $('#label_editTransact').attr('value');
     var originalStatus = $('#select_editTransactStatus').val();
     var originalDeliveryNo = $('#input_editTransactDeliveryNo').val();
     var originalSalesNo = $('#input_editTransactSalesNo').val();
-    console.log("ORIGINAL STATUS: " + originalStatus);
 
     // function to check if previously inputted values for product amounts can still be accommodated by inventory balance
     checkProductInformation();
+
+    // function to disable unit price fields based on the role of the user
     disableExistingUnitPrice();
 
+    // disables the input for the transaction status if current transaction has already been delivered completely
     if($('#select_editTransactStatus').val() == "Delivered Completely"){
         $('#select_editTransactStatus').prop('disabled', true);
     }
 
+    // toggles the input fields if a certain checkbox is checked
     if($('#edit_checkbox_diesel').is(":checked")){
         $('#editDieselDetails_box').toggle();
     }
@@ -35,7 +38,7 @@ $(document).ready(function() {
         $('#editKeroseneDetails_box').toggle();
     }
     
-    /**hides or shows detail fields based on checked product */
+    // hides or shows detail fields based on checked product
     $('#edit_checkbox_diesel').click(function(){
         $('#editDieselDetails_box').toggle();
 
@@ -82,6 +85,7 @@ $(document).ready(function() {
             $('#edit_checkbox_kerosene').attr('checked', 'checked');
     })
 
+    // shows an alert box when the status is changed to 'Delivered Completely'
     $('#select_editTransactStatus').change(function(){
         console.log($('#select_editTransactStatus').val());
         if($('#select_editTransactStatus').val() == "Delivered Completely"){
@@ -167,6 +171,7 @@ $(document).ready(function() {
         $('#errorBottom').css('color', 'transparent');
     }
 
+    // helper function that disables the unit price fields if the user is a Depot Supervisor only
     function disableExistingUnitPrice(){
         var checkboxDiesel = $('#edit_checkbox_diesel').is(":checked");
         var checkboxGasoline = $('#edit_checkbox_gasoline').is(":checked");
@@ -312,7 +317,8 @@ $(document).ready(function() {
         }
         else{
             var isComplete = true;
-            console.log(accountRole);
+            
+            // if checkboxes are selected, checks the values of each input field and ensures they are not empty; displays necessery error messages
             if(checkboxDiesel){
                 if(accountRole == "Depot General Manager" || accountRole == "Administrator"){
                     var quantityDiesel = $('#input_editTransactQuantityDiesel').val();
@@ -431,6 +437,7 @@ $(document).ready(function() {
             }
         }
 
+        // disables changing of status input field if true
         if(allowStatusChange){
             $('#select_editTransactStatus').val(originalStatus);
             $('#select_editTransactStatus').prop('disabled', false);
@@ -449,6 +456,7 @@ $(document).ready(function() {
         checkProductInformation();
     });
 
+    // helper function that checks if each input field is complete
     function checkProductInformation() {
         var checkboxDiesel = $('#edit_checkbox_diesel').is(":checked");
         var checkboxGasoline = $('#edit_checkbox_gasoline').is(":checked");
@@ -717,6 +725,7 @@ $(document).ready(function() {
         
     });
 
+    // helper function that checks if at least one checkbox is checked; status input field will be disabled if not
     function checkBoxes(){
         var checkboxDiesel = $('#edit_checkbox_diesel').is(":checked");
         var checkboxGasoline = $('#edit_checkbox_gasoline').is(":checked");

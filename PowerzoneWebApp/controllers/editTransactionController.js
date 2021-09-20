@@ -19,75 +19,45 @@ const editTransactionController = {
      * @param res the object to send back the appropriate HTTP response to allow the user access to the edit transaction page
      */
     editTransaction: function (req, res) {
-        // // This conditional statement checks if the user is not an Administrator nor a Depot General Manager (i.e., unauthorized account)
-        // if(req.session.role != "Administrator" && req.session.role != "Depot General Manager" && req.session.role != "Depot Supervisor") {
+        var transactionId = req.query.edit_button;
 
-        //     /** 
-        //      * This conditional statement checks if the user is logged in and does not have the authorized role to access the page.
-        //      * In the event of unauthorized access, user will be logged out of the session and will be asked to log in with an
-        //      * authorized account instead.
-        //      */
-        //     if(req.session.role == "Depot Cashier" || req.session.role == "Regular User") {
+        db.findOne(Transaction, {transactionId: transactionId}, '', function (result) {
+            if(result) {
+                var dateArray = result.dateString.split('/');
+                var dateString = dateArray[2] + '-' + dateArray[0] + '-' + dateArray[1];
+                result.inputFieldDateString = dateString;
+                result.transactionEditorRole = req.session.role;
 
-        //         var details = {error: `User is unauthorized to access the page. Please log in with an authorized account.`}
-        //         req.session.destroy(function(err) {
-        //             if(err) 
-        //                 throw err;
-        //             else 
-        //                 console.log('Logout Successful.');
-
-        //         });
-        //     }
-        //     // Loads an error message to ask the user to log in before trying to access any page of the website
-        //     else
-        //         var details = {error: `User is not logged in. Please log in first.`}
-
-        //     // Re-loads the login page with the appropriate error message
-        //     res.render('login', details);
-        // }
-        // // Displays the edit product page if the logged-in account is authorized
-        // else{
-            var transactionId = req.query.edit_button;
-            console.log("transaction id: " + transactionId);
-
-            db.findOne(Transaction, {transactionId: transactionId}, '', function (result) {
-                if(result) {
-                    var dateArray = result.dateString.split('/');
-                    var dateString = dateArray[2] + '-' + dateArray[0] + '-' + dateArray[1];
-                    result.inputFieldDateString = dateString;
-                    result.transactionEditorRole = req.session.role;
-                    console.log(result);
-
-                    if(result.hasProductObject.hasDiesel){
-                        var totalDiesel = parseFloat(result.dieselObject.totalPrice);
-                        result.dieselObject.totalPrice = totalDiesel;
-                    }
-
-                    if(result.hasProductObject.hasGasoline){
-                        var totalGasoline = parseFloat(result.gasolineObject.totalPrice);
-                        result.gasolineObject.totalPrice = totalGasoline;
-                    }
-
-                    if(result.hasProductObject.hasPremium95){
-                        var totalPremium95 = parseFloat(result.premium95Object.totalPrice);
-                        result.premium95Object.totalPrice = totalPremium95;
-                    }
-
-                    if(result.hasProductObject.hasPremium97){
-                        var totalPremium97 = parseFloat(result.premium97Object.totalPrice);
-                        result.premium97Object.totalPrice = totalPremium97;
-                    }
-
-                    if(result.hasProductObject.hasKerosene){
-                        var totalKerosene = parseFloat(result.keroseneObject.totalPrice);
-                        result.keroseneObject.totalPrice = totalKerosene;
-                    }
-
-                    // Loads the edit transaction page with the specific product chosen from the transactions page
-                    res.render('editTransaction', {transaction: result});
+                if(result.hasProductObject.hasDiesel){
+                    var totalDiesel = parseFloat(result.dieselObject.totalPrice);
+                    result.dieselObject.totalPrice = totalDiesel;
                 }
-            });
-        // }
+
+                if(result.hasProductObject.hasGasoline){
+                    var totalGasoline = parseFloat(result.gasolineObject.totalPrice);
+                    result.gasolineObject.totalPrice = totalGasoline;
+                }
+
+                if(result.hasProductObject.hasPremium95){
+                    var totalPremium95 = parseFloat(result.premium95Object.totalPrice);
+                    result.premium95Object.totalPrice = totalPremium95;
+                }
+
+                if(result.hasProductObject.hasPremium97){
+                    var totalPremium97 = parseFloat(result.premium97Object.totalPrice);
+                    result.premium97Object.totalPrice = totalPremium97;
+                }
+
+                if(result.hasProductObject.hasKerosene){
+                    var totalKerosene = parseFloat(result.keroseneObject.totalPrice);
+                    result.keroseneObject.totalPrice = totalKerosene;
+                }
+
+                // Loads the edit transaction page with the specific product chosen from the transactions page
+                res.render('editTransaction', {transaction: result});
+            }
+        });
+
 
     },
 
@@ -102,7 +72,6 @@ const editTransactionController = {
         // Initialize variables from page
         var status = req.body.status;
         var statusOther = req.body.status_dropdown;
-        console.log("OTHER STATUS:" + statusOther);
         var isDelivered = false;
 
         if(status == undefined){
@@ -142,17 +111,10 @@ const editTransactionController = {
         };
         var remarks = req.body.remarks;
         var transactionId = req.body.submit_button;
-        console.log("transacId: " + transactionId);
 
         // Date Manipulation
         var dateArray = date.split('-');
         var dateString = dateArray[1] + '/' + dateArray[2] + '/' + dateArray[0];
-
-        console.log("DIESEL CHECK: " + dieselCheck);
-        console.log("GAS CHECK: " + gasolineCheck);
-        console.log("95 CHECK: " + premium95Check);
-        console.log("97 CHECK: " + premium97Check);
-        console.log("KEROSENE CHECK: " + keroseneCheck);
 
         // Checks if the transaction contains a purchase of diesel
         if(dieselCheck == "on"){
@@ -260,19 +222,21 @@ const editTransactionController = {
             isDelivered: isDelivered
         }
 
-        console.log("-----------------------------------------------------------------------------------------------------");
-
         // Updates the transaction and all indicated details to the database and redirects to the transactions page on success
         db.updateOne(Transaction, {transactionId: transactionId}, editedTransaction, function(result) {
 
-            // performs necessary amount deductions on the products database once the product is delivered completely
+            // Performs necessary amount deductions on the products database once the product is delivered completely
             if(isDelivered){
+
+
+                // Checks if the transaction contains a purchase of diesel
                 if(dieselCheck == "on"){
                     db.findManyAndSort(Product, {product: "Diesel"}, {date: 'asc'}, function (result) {
                         if(result) {
                             var tempQuantity = dieselObject.quantity;
                             var isEnd = false;
 
+                            // Deducts from diesel products until the quantity indicated in the transaction is 0
                             while(tempQuantity != 0){
                                 for(var i = 0; i < result.length; i++){
                                     if(result[i].quantity > 0){
@@ -297,12 +261,14 @@ const editTransactionController = {
                     });
                 }
 
+                // Checks if the transaction contains a purchase of gasoline
                 if(gasolineCheck == "on"){
                     db.findManyAndSort(Product, {product: "Gasoline"}, {date: 'asc'}, function (result) {
                         if(result) {
                             var tempQuantity = gasolineObject.quantity;
                             var isEnd = false;
 
+                            // Deducts from gasoline products until the quantity indicated in the transaction is 0
                             while(tempQuantity != 0){
                                 for(var i = 0; i < result.length; i++){
                                     if(result[i].quantity > 0){
@@ -327,12 +293,14 @@ const editTransactionController = {
                     });
                 }
 
+                // Checks if the transaction contains a purchase of premium gasoline 95
                 if(premium95Check == "on"){
                     db.findManyAndSort(Product, {product: "Premium Gasoline 95"}, {date: 'asc'}, function (result) {
                         if(result) {
                             var tempQuantity = premium95Object.quantity;
                             var isEnd = false;
 
+                            // Deducts from premium gasoline 95 products until the quantity indicated in the transaction is 0
                             while(tempQuantity != 0){
                                 for(var i = 0; i < result.length; i++){
                                     if(result[i].quantity > 0){
@@ -357,12 +325,14 @@ const editTransactionController = {
                     });
                 }
 
+                // Checks if the transaction contains a purchase of premium gasoline 97
                 if(premium97Check == "on"){
                     db.findManyAndSort(Product, {product: "Premium Gasoline 97"}, {date: 'asc'}, function (result) {
                         if(result) {
                             var tempQuantity = premium97Object.quantity;
                             var isEnd = false;
 
+                            // Deducts from premium gasoline 97 products until the quantity indicated in the transaction is 0
                             while(tempQuantity != 0){
                                 for(var i = 0; i < result.length; i++){
                                     if(result[i].quantity > 0){
@@ -387,12 +357,14 @@ const editTransactionController = {
                     });
                 }
 
+                // Checks if the transaction contains a purchase of kerosene
                 if(keroseneCheck == "on"){
                     db.findManyAndSort(Product, {product: "Kerosene"}, {date: 'asc'}, function (result) {
                         if(result) {
                             var tempQuantity = keroseneObject.quantity;
                             var isEnd = false;
 
+                            // Deducts from kerosene products until the quantity indicated in the transaction is 0
                             while(tempQuantity != 0){
                                 for(var i = 0; i < result.length; i++){
                                     if(result[i].quantity > 0){

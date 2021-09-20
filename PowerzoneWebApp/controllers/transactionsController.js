@@ -18,11 +18,11 @@ const uniqid = require('uniqid');
  *
  * @param res the object to send back the appropriate HTTP response to load the sorted products page
  * @param sortCriteria the object containing the search query to be used on the database
- * @param statusSort the object holding the sort status of the date column
- * @param dateSort the object holding the sort status of the supplier column
- * @param receiptNoSort the object holding the sort status of the quantity column
- * @param salesInvoiceSort the object holding the sort status of the product column
- * @param customerSort the object holding the sort status of the buying price column
+ * @param statusSort the object holding the sort status of the status column
+ * @param dateSort the object holding the sort status of the date column
+ * @param receiptNoSort the object holding the sort status of the receipt number column
+ * @param salesInvoiceSort the object holding the sort status of the sales invoice number column
+ * @param customerSort the object holding the sort status of the customer name column
  */
 function displaySorted(res, sortCriteria, statusSort, dateSort, receiptNoSort, salesInvoiceSort, customerSort) {
     
@@ -143,7 +143,7 @@ const transactionsController = {
     },
 
     /**
-     * This function displays the transactions page from latest transaction to first transaction  following a get request from a user. 
+     * This function displays the transactions page from latest transaction to first transaction following a get request from a user. 
      * This function also checks if the user is currently logged in and directs them to the home page once verified. 
      *
      * @param req the object containing the HTTP request to access the products page
@@ -425,10 +425,10 @@ const transactionsController = {
     },
 
     /**
-     * This helper function checks if the invoice number already exists in the database
+     * This helper function checks if the delivery number already exists in the database
      *
-     * @param req the object containing the HTTP request to access the products page
-     * @param res the object to send back the appropriate HTTP response to either allow or reject user access to the products page
+     * @param req the object containing the HTTP request to check the database for an existing entry matching the delivery number
+     * @param res the object to send back the appropriate HTTP response in the form of an object cotaining a matching database entry
      */
     checkTransactDeliveryNo: function (req, res) {
         var deliveryNumber = req.query.deliveryNumber;
@@ -442,8 +442,8 @@ const transactionsController = {
     /**
      * This helper function checks if the invoice number already exists in the database
      *
-     * @param req the object containing the HTTP request to access the products page
-     * @param res the object to send back the appropriate HTTP response to either allow or reject user access to the products page
+     * @param req the object containing the HTTP request to check the database for an existing entry matching the invoice number
+     * @param res the object to send back the appropriate HTTP response in the form of an object cotaining a matching database entry
      */
     checkTransactSalesNo: function (req, res) {
 
@@ -484,14 +484,14 @@ const transactionsController = {
     },
 
     /**
-     * This function sorts the product list by status in either ascending or descending order following a get request from a user.
+     * This function sorts the product list by date in either ascending or descending order following a get request from a user.
      *
-     * @param req the object containing the HTTP request to sort the product list by status
-     * @param res the object to send back the appropriate HTTP response to load the products page sorted by status
+     * @param req the object containing the HTTP request to sort the product list by date
+     * @param res the object to send back the appropriate HTTP response to load the products page sorted by date
      */
     sortByDate: function(req, res) {
 
-        // Obtain the sorting criteria from the get request and initialize the variable for the resulting sort status
+        // Obtain the sorting criteria from the get request and initialize the variable for the resulting sort date
         var sortCriteria = req.query.filter_date;
         var sortStatus;
         
@@ -507,19 +507,20 @@ const transactionsController = {
             sortStatus = "ascending_"
         }
 
-        // Calls the helper function above to sort the products by status following either the ascending/descending sorting criteria
+        // Calls the helper function above to sort the products by date following either the ascending/descending sorting criteria
         displaySorted(res, sortCriteria, "ascending", sortStatus, "ascending", "ascending", "ascending");
     },
 
     /**
-     * This function sorts the product list by status in either ascending or descending order following a get request from a user.
+     * This function sorts the product list by receipt number in either ascending or descending order following a get request from '
+     * a user.
      *
-     * @param req the object containing the HTTP request to sort the product list by status
-     * @param res the object to send back the appropriate HTTP response to load the products page sorted by status
+     * @param req the object containing the HTTP request to sort the product list by receipt number
+     * @param res the object to send back the appropriate HTTP response to load the products page sorted by receipt number
      */
     sortByReceiptNo: function(req, res) {
 
-        // Obtain the sorting criteria from the get request and initialize the variable for the resulting sort status
+        // Obtain the sorting criteria from the get request and initialize the variable for the resulting sort receipt number
         var sortCriteria = req.query.filter_deliveryNo;
         var sortStatus;
         
@@ -535,19 +536,20 @@ const transactionsController = {
             sortStatus = "ascending_"
         }
 
-        // Calls the helper function above to sort the products by status following either the ascending/descending sorting criteria
+        // Calls the helper function above to sort the products by receipt number following either the ascending/descending sorting criteria
         displaySorted(res, sortCriteria, "ascending", "ascending", sortStatus, "ascending", "ascending");
     },
 
     /**
-     * This function sorts the product list by status in either ascending or descending order following a get request from a user.
+     * This function sorts the product list by invoice number in either ascending or descending order following a get request from 
+     * a user.
      *
-     * @param req the object containing the HTTP request to sort the product list by status
-     * @param res the object to send back the appropriate HTTP response to load the products page sorted by status
+     * @param req the object containing the HTTP request to sort the product list by invoice number
+     * @param res the object to send back the appropriate HTTP response to load the products page sorted by invoice number
      */
     sortBySalesInvoice: function(req, res) {
 
-        // Obtain the sorting criteria from the get request and initialize the variable for the resulting sort status
+        // Obtain the sorting criteria from the get request and initialize the variable for the resulting sort invoice number
         var sortCriteria = req.query.filter_salesNo;
         var sortStatus;
         
@@ -563,19 +565,19 @@ const transactionsController = {
             sortStatus = "ascending_"
         }
 
-        // Calls the helper function above to sort the products by status following either the ascending/descending sorting criteria
+        // Calls the helper function above to sort the products by invoice number following either the ascending/descending sorting criteria
         displaySorted(res, sortCriteria, "ascending", "ascending", "ascending", sortStatus, "ascending");
     },
 
     /**
-     * This function sorts the product list by status in either ascending or descending order following a get request from a user.
+     * This function sorts the product list by customer name in either ascending or descending order following a get request from a user.
      *
-     * @param req the object containing the HTTP request to sort the product list by status
-     * @param res the object to send back the appropriate HTTP response to load the products page sorted by status
+     * @param req the object containing the HTTP request to sort the product list by customer name
+     * @param res the object to send back the appropriate HTTP response to load the products page sorted by customer name
      */
     sortByCustomer: function(req, res) {
 
-        // Obtain the sorting criteria from the get request and initialize the variable for the resulting sort status
+        // Obtain the sorting criteria from the get request and initialize the variable for the resulting sort customer name
         var sortCriteria = req.query.filter_customerName;
         var sortStatus;
         
@@ -591,7 +593,7 @@ const transactionsController = {
             sortStatus = "ascending_"
         }
 
-        // Calls the helper function above to sort the products by status following either the ascending/descending sorting criteria
+        // Calls the helper function above to sort the products by customer name following either the ascending/descending sorting criteria
         displaySorted(res, sortCriteria, "ascending", "ascending", "ascending", "ascending", sortStatus);
     }
 }
