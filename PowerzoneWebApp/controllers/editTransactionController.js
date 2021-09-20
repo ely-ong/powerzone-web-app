@@ -243,12 +243,14 @@ const editTransactionController = {
                                         console.log("BEFORE: " + result[i]);
                                         if(result[i].quantity >= tempQuantity){
                                             result[i].quantity = result[i].quantity - tempQuantity;
+                                            result[i].withdrawalAmount = result[i].quantity * result[i].price;
                                             tempQuantity = 0;
                                             isEnd = true;
                                         }
                                         else{
                                             tempQuantity = tempQuantity - result[i].quantity;
                                             result[i].quantity = 0;
+                                            result[i].withdrawalAmount = 0;
                                         }
                                     }
                                     console.log("AFTER: " + result[i]);

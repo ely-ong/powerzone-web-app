@@ -15,29 +15,40 @@ const Transaction = require('../models/TransactionModel.js');
  * @param salesInvoiceSort the object holding the sort status of the product column
  * @param customerSort the object holding the sort status of the buying price column
  */
-function displaySorted(res, sortCriteria, dateSort, statusSort) {
-    
-    // Initialize the object containing all the transactions
-    var transactions = [];
+function displaySorted(req, res, sortCriteria, dateSort, statusSort) {
+    // This conditional statement checks if the user is not logged in to a company account and is unauthorized to view the page
+    if(req.session.role != "Administrator" && req.session.role != "Depot Supervisor" && req.session.role != "Depot Cashier" && 
+        req.session.role != "Regular User" && req.session.role != "Depot General Manager") {
 
-    // Submits a query to the database to return the list of all recorded transactions sorted by the given criteria
-    db.findManyAndSort(Transaction, {}, sortCriteria, function (result) {
-        if(result) {
-            transactions = result;
+        var details = {error: `User is not logged in. Please log in first.`}
 
-            // Creates an object for the sort status of each column reflected in the back-end of the products page
-            var sortCriteria = {
-                dateSort: dateSort,
-                statusSort: statusSort
+        // Re-loads the login page with the appropriate error message
+        res.render('login', details);
+    }
+    // Loads the deliveries page if the logged-in account is authorized
+    else{
+        // Initialize the object containing all the transactions
+        var transactions = [];
+
+        // Submits a query to the database to return the list of all recorded transactions sorted by the given criteria
+        db.findManyAndSort(Transaction, {}, sortCriteria, function (result) {
+            if(result) {
+                transactions = result;
+
+                // Creates an object for the sort status of each column reflected in the back-end of the products page
+                var sortCriteria = {
+                    dateSort: dateSort,
+                    statusSort: statusSort
+                }
+
+                // Loads the product page with the sorted list of transactions in accordance with the sorting criteria
+                res.render('deliveries', {u: {
+                    transactions: transactions,
+                    sortCriteria: sortCriteria
+                }});
             }
-
-            // Loads the product page with the sorted list of transactions in accordance with the sorting criteria
-            res.render('deliveries', {u: {
-                transactions: transactions,
-                sortCriteria: sortCriteria
-            }});
-        }
-    });
+        });
+    }
 }
 
 const deliveriesController = {
@@ -113,7 +124,7 @@ const deliveriesController = {
         }
 
         // Calls the helper function above to sort the products by status following either the ascending/descending sorting criteria
-        displaySorted(res, sortCriteria, sortStatus, "ascending");
+        displaySorted(req, res, sortCriteria, sortStatus, "ascending");
     },
 
     /**
@@ -141,7 +152,7 @@ const deliveriesController = {
         }
 
         // Calls the helper function above to sort the products by status following either the ascending/descending sorting criteria
-        displaySorted(res, sortCriteria, "ascending", sortStatus);
+        displaySorted(req, res, sortCriteria, "ascending", sortStatus);
     },
 
 }

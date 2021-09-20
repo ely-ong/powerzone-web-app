@@ -24,32 +24,49 @@ const uniqid = require('uniqid');
  * @param salesInvoiceSort the object holding the sort status of the sales invoice number column
  * @param customerSort the object holding the sort status of the customer name column
  */
-function displaySorted(res, sortCriteria, statusSort, dateSort, receiptNoSort, salesInvoiceSort, customerSort) {
+function displaySorted(req, res, sortCriteria, statusSort, dateSort, receiptNoSort, salesInvoiceSort, customerSort) {
     
-    // Initialize the object containing all the transactions
-    var transactionsArray = [];
+    // Deny access to the user if they are not logged in to a valid account
+    if(req.session.role != "Administrator" && req.session.role != "Depot Supervisor" && req.session.role != "Depot Cashier" && 
+        req.session.role != "Regular User" && req.session.role != "Depot General Manager") {
 
-    // Submits a query to the database to return the list of all recorded transactions sorted by the given criteria
-    db.findManyAndSort(Transaction, {}, sortCriteria, function (result) {
-        if(result) {
-            transactionsArray = result;
+        var details = {error: `User is not logged in. Please log in first.`}
 
-            // Creates an object for the sort status of each column reflected in the back-end of the products page
-            var sortCriteria = {
-                statusSort: statusSort,
-                dateSort: dateSort,
-                receiptNoSort: receiptNoSort,
-                salesInvoiceSort: salesInvoiceSort,
-                customerSort: customerSort
-            }
-
-            // Loads the product page with the sorted list of transactions in accordance with the sorting criteria
-            res.render('transactions', {u: {
-                transactionsArray: transactionsArray,
-                sortCriteria: sortCriteria
-            }});
+        res.render('login', details);
     }
-    });
+    else{
+        // Initialize the object containing all the transactions
+        var transactionsArray = [];
+
+        // Submits a query to the database to return the list of all recorded transactions sorted by the given criteria
+        db.findManyAndSort(Transaction, {}, sortCriteria, function (result) {
+            if(result) {
+                transactionsArray = result;
+
+                // Creates an object for the sort status of each column reflected in the back-end of the products page
+                var sortCriteria = {
+                    statusSort: statusSort,
+                    dateSort: dateSort,
+                    receiptNoSort: receiptNoSort,
+                    salesInvoiceSort: salesInvoiceSort,
+                    customerSort: customerSort
+                }
+
+                var isAuthorized = false;
+
+                if(req.session.role == 'Administrator' || req.session.role == 'Depot General Manager' || req.session.role == 'Depot Supervisor'){
+                    isAuthorized = true;
+                }
+
+                // Loads the product page with the sorted list of transactions in accordance with the sorting criteria
+                res.render('transactions', {u: {
+                    transactionsArray: transactionsArray,
+                    sortCriteria: sortCriteria,
+                    isAuthorized: isAuthorized
+                }});
+            }
+        });
+    }
 }
 
 const transactionsController = {
@@ -159,37 +176,39 @@ const transactionsController = {
 
             res.render('login', details);
         }
+        else{
+            // Initialize the variables
+        	var transactionsArray = [];
 
-        // Initialize the variables
-    	var transactionsArray = [];
+            // Submits a query to the database to return the list of all recorded transactions
+        	db.findMany(Transaction, {}, '', function (result) {
+    		    if(result) {
+    		    	transactionsArray = result;
 
-        // Submits a query to the database to return the list of all recorded transactions
-    	db.findMany(Transaction, {}, '', function (result) {
-		    if(result) {
-		    	transactionsArray = result;
+                    var sortCriteria = {
+                        statusSort: 'ascending',
+                        dateSort: 'ascending',
+                        receiptNoSort: 'ascending',
+                        salesInvoiceSort: 'ascending',
+                        customerSort: 'ascending'
+                    }
 
-                var sortCriteria = {
-                    statusSort: 'ascending',
-                    dateSort: 'ascending',
-                    receiptNoSort: 'ascending',
-                    salesInvoiceSort: 'ascending',
-                    customerSort: 'ascending'
-                }
+                    var isAuthorized = false;
 
-                var isAuthorized = false;
+                    if(req.session.role == 'Administrator' || req.session.role == 'Depot General Manager' || req.session.role == 'Depot Supervisor'){
+                        isAuthorized = true;
+                    }
 
-                if(req.session.role == 'Administrator' || req.session.role == 'Depot General Manager' || req.session.role == 'Depot Supervisor'){
-                    isAuthorized = true;
-                }
+                    // Loads the product page with the sorted list of products in accordance with the sorting criteria
+    		        res.render('transactions', {u: {
+    		        	transactionsArray: transactionsArray,
+                        sortCriteria: sortCriteria,
+                        isAuthorized: isAuthorized
+    		        }});
+    		    }
+    		});
+        }
 
-                // Loads the product page with the sorted list of products in accordance with the sorting criteria
-		        res.render('transactions', {u: {
-		        	transactionsArray: transactionsArray,
-                    sortCriteria: sortCriteria,
-                    isAuthorized: isAuthorized
-		        }});
-		    }
-		});
     },
 
     /**
@@ -480,7 +499,7 @@ const transactionsController = {
         }
 
         // Calls the helper function above to sort the products by status following either the ascending/descending sorting criteria
-        displaySorted(res, sortCriteria, sortStatus, "ascending", "ascending", "ascending", "ascending");
+        displaySorted(req, res, sortCriteria, sortStatus, "ascending", "ascending", "ascending", "ascending");
     },
 
     /**
@@ -508,7 +527,7 @@ const transactionsController = {
         }
 
         // Calls the helper function above to sort the products by date following either the ascending/descending sorting criteria
-        displaySorted(res, sortCriteria, "ascending", sortStatus, "ascending", "ascending", "ascending");
+        displaySorted(req, res, sortCriteria, "ascending", sortStatus, "ascending", "ascending", "ascending");
     },
 
     /**
@@ -537,7 +556,7 @@ const transactionsController = {
         }
 
         // Calls the helper function above to sort the products by receipt number following either the ascending/descending sorting criteria
-        displaySorted(res, sortCriteria, "ascending", "ascending", sortStatus, "ascending", "ascending");
+        displaySorted(req, res, sortCriteria, "ascending", "ascending", sortStatus, "ascending", "ascending");
     },
 
     /**
@@ -566,7 +585,7 @@ const transactionsController = {
         }
 
         // Calls the helper function above to sort the products by invoice number following either the ascending/descending sorting criteria
-        displaySorted(res, sortCriteria, "ascending", "ascending", "ascending", sortStatus, "ascending");
+        displaySorted(req, res, sortCriteria, "ascending", "ascending", "ascending", sortStatus, "ascending");
     },
 
     /**
@@ -594,7 +613,7 @@ const transactionsController = {
         }
 
         // Calls the helper function above to sort the products by customer name following either the ascending/descending sorting criteria
-        displaySorted(res, sortCriteria, "ascending", "ascending", "ascending", "ascending", sortStatus);
+        displaySorted(req, res, sortCriteria, "ascending", "ascending", "ascending", "ascending", sortStatus);
     }
 }
 

@@ -108,81 +108,83 @@ const productsController = {
 
             res.render('login', details);
         }
+        else{
+            // Initialize the variables
+        	var productsArray;
+        	var tempDate = new Date();
+        	var newDate;
+        	var dieselTotal = 0;
+        	var gasolineTotal = 0;
+        	var premium95Total = 0;
+        	var premium97Total = 0;
+        	var keroseneTotal = 0;
+            var one = 1.0;
 
-        // Initialize the variables
-    	var productsArray;
-    	var tempDate = new Date();
-    	var newDate;
-    	var dieselTotal = 0;
-    	var gasolineTotal = 0;
-    	var premium95Total = 0;
-    	var premium97Total = 0;
-    	var keroseneTotal = 0;
-        var one = 1.0;
+            // Submits a query to the database to return the list of all recorded products
+        	db.findMany(Product, {}, '', function (result) {
+    		    if(result) {
+    		    	productsArray = result;
 
-        // Submits a query to the database to return the list of all recorded products
-    	db.findMany(Product, {}, '', function (result) {
-		    if(result) {
-		    	productsArray = result;
+    		    	// Performs necessary data manipulation
+    		    	for(var i = 0; i < productsArray.length; i++) {
+                        
+    		    		var withdrawalAmount = productsArray[i].quantity * productsArray[i].price * one;
+                        
+                        productsArray[i].formattedQuantity = productsArray[i].quantity.toFixed(2);
+                        productsArray[i].formattedPrice = productsArray[i].price.toFixed(2);
+    		    		productsArray[i].withdrawal = withdrawalAmount.toFixed(2);
 
-		    	// Performs necessary data manipulation
-		    	for(var i = 0; i < productsArray.length; i++) {
-                    
-		    		var withdrawalAmount = productsArray[i].quantity * productsArray[i].price * one;
-                    
-                    productsArray[i].formattedQuantity = productsArray[i].quantity.toFixed(2);
-                    productsArray[i].formattedPrice = productsArray[i].price.toFixed(2);
-		    		productsArray[i].withdrawal = withdrawalAmount.toFixed(2);
+    		    		if(productsArray[i].product == 'Diesel')
+    		    			dieselTotal += parseFloat(result[i].quantity);
+    		    		
+    		    		else if(productsArray[i].product == 'Gasoline')
+    		    			gasolineTotal += parseFloat(result[i].quantity);
+    		    		
+    		    		else if(productsArray[i].product == 'Premium Gasoline 95')
+                            premium95Total += parseFloat(result[i].quantity);
+    		    		
+    		    		else if(productsArray[i].product == 'Premium Gasoline 97')
+    		    			premium97Total += parseFloat(result[i].quantity);
+    		    		
+    		    		else if(productsArray[i].product == 'Kerosene')
+    		    			keroseneTotal += parseFloat(result[i].quantity);
+    		    		
+    		    	}
 
-		    		if(productsArray[i].product == 'Diesel')
-		    			dieselTotal += parseFloat(result[i].quantity);
-		    		
-		    		else if(productsArray[i].product == 'Gasoline')
-		    			gasolineTotal += parseFloat(result[i].quantity);
-		    		
-		    		else if(productsArray[i].product == 'Premium Gasoline 95')
-                        premium95Total += parseFloat(result[i].quantity);
-		    		
-		    		else if(productsArray[i].product == 'Premium Gasoline 97')
-		    			premium97Total += parseFloat(result[i].quantity);
-		    		
-		    		else if(productsArray[i].product == 'Kerosene')
-		    			keroseneTotal += parseFloat(result[i].quantity);
-		    		
-		    	}
+                    // Creates an object for the total quantity of each product type
+    		    	var totals = {
+    		    		dieselTotal: dieselTotal.toFixed(2),
+    		        	gasolineTotal: gasolineTotal.toFixed(2),
+    		        	premium95Total: premium95Total.toFixed(2),
+    		        	premium97Total: premium97Total.toFixed(2),
+    		        	keroseneTotal: keroseneTotal.toFixed(2)
+    		    	}
 
-                // Creates an object for the total quantity of each product type
-		    	var totals = {
-		    		dieselTotal: dieselTotal.toFixed(2),
-		        	gasolineTotal: gasolineTotal.toFixed(2),
-		        	premium95Total: premium95Total.toFixed(2),
-		        	premium97Total: premium97Total.toFixed(2),
-		        	keroseneTotal: keroseneTotal.toFixed(2)
-		    	}
+                    /** 
+                     * Creates an object for the default unsorted status of each column reflected in the back-end of the products page.
+                     * Columns with 'ascending' values mean that clicking on these columns would sort the products by that column 
+                     * header in ascending order.
+                     */
+    		    	var sortCriteria = {
+    		    		dateSort: 'ascending',
+    		    		supplierSort: 'ascending',
+    		    		quantitySort: 'ascending',
+    		    		productSort: 'ascending',
+    		    		buyPriceSort: 'ascending',
+    		    		amountSort: 'ascending',
+    		    		locationSort: 'ascending'
+    		    	}
 
-                /** 
-                 * Creates an object for the default unsorted status of each column reflected in the back-end of the products page.
-                 * Columns with 'ascending' values mean that clicking on these columns would sort the products by that column 
-                 * header in ascending order.
-                 */
-		    	var sortCriteria = {
-		    		dateSort: 'ascending',
-		    		supplierSort: 'ascending',
-		    		quantitySort: 'ascending',
-		    		productSort: 'ascending',
-		    		buyPriceSort: 'ascending',
-		    		amountSort: 'ascending',
-		    		locationSort: 'ascending'
-		    	}
+                    // Loads the product page with the sorted list of products in accordance with the sorting criteria
+    		        res.render('product', {u: {
+    		        	productsArray: productsArray,
+    		        	totals: totals,
+    		        	sortCriteria: sortCriteria
+    		        }});
+    		    }
+    		});
+        }
 
-                // Loads the product page with the sorted list of products in accordance with the sorting criteria
-		        res.render('product', {u: {
-		        	productsArray: productsArray,
-		        	totals: totals,
-		        	sortCriteria: sortCriteria
-		        }});
-		    }
-		});
     },
 
     /**
