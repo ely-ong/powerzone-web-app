@@ -18,13 +18,15 @@
 
 <div id="delivery_box">
     <h1 id="label_delivery" style = "z-index: -1;">Deliveries</h1>
-    {{!-- search elements (low priority)
+    {{!-- 
+    search elements (low priority)
     <div id="searchDelivery_box">
         <form action="#">
             <input id="input_searchDelivery" type="text" placeholder="Filter deliveries by date" name="search_delivery">
             <button id="btn_searchDelivery" type="submit"><img class="search_icon" src="../images/search_black.png"></button>
         </form>
-    </div> --}}
+    </div> 
+    --}}
     <div id="deliveryTable_box">
         <table id="delivery_table">
             <thead>
@@ -39,14 +41,14 @@
                             <button class="filter_button" type="submit" value="{{u.sortCriteria.statusSort}}" name="filter_status" id="filter_status">Status</button>
                         </form>
                     </th>
-                    <th class="deliveryTable_head non_sortable">Delivery Receipt No.</th>
-                    <th class="deliveryTable_head non_sortable">Truck Plate No</th>
-                    <th class="deliveryTable_head non_sortable">Truck Driver Name</th>
-                    <th class="deliveryTable_head non_sortable">Customer Name</th>
-                    <th class="deliveryTable_head non_sortable">Address</th>
-                    <th class="deliveryTable_head non_sortable">Product</th>
-                    <th class="deliveryTable_head non_sortable">Quantity</th>
-                    <th class="deliveryTable_head non_sortable">Remarks</th>
+                    <th class="deliveryTable_head unsortable">Delivery Receipt No.</th>
+                    <th class="deliveryTable_head unsortable">Truck Plate No</th>
+                    <th class="deliveryTable_head unsortable">Truck Driver Name</th>
+                    <th class="deliveryTable_head unsortable">Customer Name</th>
+                    <th class="deliveryTable_head unsortable">Address</th>
+                    <th class="deliveryTable_head unsortable">Product</th>
+                    <th class="deliveryTable_head unsortable">Quantity</th>
+                    <th class="deliveryTable_head unsortable">Remarks</th>
                 </tr>
             </thead>
             
@@ -60,7 +62,7 @@
                     <td class="delivery_item">{{this.signatories.driver}}</td>
                     <td class="delivery_item">{{this.customerName}}</td>
                     <td class="delivery_item">{{this.address}}</td>
-                    <td class="delivery_item">
+                    <td class="delivery_item products">
                         {{#if this.hasProductObject.hasDiesel}}
                             Diesel
                         {{/if}}
@@ -79,19 +81,19 @@
                     </td>
                     <td class="delivery_item numbers">
                         {{#if this.hasProductObject.hasDiesel}}
-                            {{this.dieselObject.quantity}}
+                            {{this.dieselObject.quantity}} L
                         {{/if}}
                         {{#if this.hasProductObject.hasGasoline}}
-                            <br>{{this.gasolineObject.quantity}}
+                            <br>{{this.gasolineObject.quantity}} L
                         {{/if}}
                         {{#if this.hasProductObject.hasPremium95}}
-                            <br>{{this.premium95Object.quantity}}
+                            <br>{{this.premium95Object.quantity}} L
                         {{/if}}
                         {{#if this.hasProductObject.hasPremium97}}
-                            <br>{{this.premium97Object.quantity}}
+                            <br>{{this.premium97Object.quantity}} L
                         {{/if}}
                         {{#if this.hasProductObject.hasKerosene}}
-                            <br>{{this.keroseneObject.quantity}}
+                            <br>{{this.keroseneObject.quantity}} L
                         {{/if}}
                     </td>
                     <td class="delivery_item">{{this.remarks}}</td>
