@@ -75,7 +75,7 @@ var TransactionSchema = new mongoose.Schema({
         required: true
     },
     totalAmount: {
-        type: mongoose.Schema.Types.Double,
+        type: String,
         required: true
     },
     remarks: {

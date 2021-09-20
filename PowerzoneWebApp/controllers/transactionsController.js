@@ -208,8 +208,6 @@ const transactionsController = {
             if(result) {
 
                 console.log(result);
-                var totalAmountFixed = result.totalAmount.toFixed(2);
-                result.totalAmount = totalAmountFixed;
 
                 // Loads the product page with the sorted list of products in accordance with the sorting criteria
                 res.render('viewTransaction', {transaction: result});
@@ -257,7 +255,7 @@ const transactionsController = {
         var premium95Check = req.body.add_checkbox_premium95;
         var premium97Check = req.body.add_checkbox_premium97;
         var keroseneCheck = req.body.add_checkbox_kerosene;
-        var totalAmount = 0;
+        var totalAmount = 0.0;
         var hasProductObject = {
             hasDiesel: false,
             hasGasoline: false,
@@ -373,6 +371,9 @@ const transactionsController = {
             hasProductObject.hasKerosene = true;
         }
 
+        totalAmount = Math.round((totalAmount + Number.EPSILON) * 100) / 100;
+        var total = totalAmount.toFixed(2);
+
         var newTransaction = {
             status: status, 
             deliveryNumber: deliveryNumber,
@@ -391,7 +392,7 @@ const transactionsController = {
             keroseneObject: keroseneObject,
             signatories: signatories,
             hasProductObject: hasProductObject,
-            totalAmount: totalAmount,
+            totalAmount: total,
             remarks: remarks,
             isDelivered: false
         }

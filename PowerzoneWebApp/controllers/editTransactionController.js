@@ -58,6 +58,31 @@ const editTransactionController = {
                     result.transactionEditorRole = req.session.role;
                     console.log(result);
 
+                    if(result.hasProductObject.hasDiesel){
+                        var totalDiesel = parseFloat(result.dieselObject.totalPrice);
+                        result.dieselObject.totalPrice = totalDiesel;
+                    }
+
+                    if(result.hasProductObject.hasGasoline){
+                        var totalGasoline = parseFloat(result.gasolineObject.totalPrice);
+                        result.gasolineObject.totalPrice = totalGasoline;
+                    }
+
+                    if(result.hasProductObject.hasPremium95){
+                        var totalPremium95 = parseFloat(result.premium95Object.totalPrice);
+                        result.premium95Object.totalPrice = totalPremium95;
+                    }
+
+                    if(result.hasProductObject.hasPremium97){
+                        var totalPremium97 = parseFloat(result.premium97Object.totalPrice);
+                        result.premium97Object.totalPrice = totalPremium97;
+                    }
+
+                    if(result.hasProductObject.hasKerosene){
+                        var totalKerosene = parseFloat(result.keroseneObject.totalPrice);
+                        result.keroseneObject.totalPrice = totalKerosene;
+                    }
+
                     // Loads the edit transaction page with the specific product chosen from the transactions page
                     res.render('editTransaction', {transaction: result});
                 }
@@ -134,14 +159,15 @@ const editTransactionController = {
             var dieselQuantity = req.body.diesel_quantity;
             var dieselSellingPrice = req.body.diesel_selling_price;
             var dieselAmount = dieselQuantity * dieselSellingPrice;
+            totalAmount += dieselAmount;
+            var totalDiesel = dieselAmount.toFixed(2);
             var dieselObject = {
                 product: "Diesel",
                 quantity: dieselQuantity,
                 sellingPrice: dieselSellingPrice,
-                totalPrice: dieselAmount
+                totalPrice: totalDiesel
             }
             hasProductObject.hasDiesel = true;
-            totalAmount += dieselAmount;
         }
 
         // Checks if the transaction contains a purchase of gasoline
@@ -149,14 +175,15 @@ const editTransactionController = {
             var gasolineQuantity = req.body.gasoline_quantity;
             var gasolineSellingPrice = req.body.gasoline_selling_price;
             var gasolineAmount = gasolineQuantity * gasolineSellingPrice;
+            totalAmount += gasolineAmount;
+            var totalGasoline = gasolineAmount.toFixed(2);
             var gasolineObject = {
                 product: "Gasoline",
                 quantity: gasolineQuantity,
                 sellingPrice: gasolineSellingPrice,
-                totalPrice: gasolineAmount
+                totalPrice: totalGasoline
             }
             hasProductObject.hasGasoline = true
-            totalAmount += gasolineAmount;
         }
 
         // Checks if the transaction contains a purchase of premium 95
@@ -164,14 +191,15 @@ const editTransactionController = {
             var premium95Quantity = req.body.premium95_quantity;
             var premium95SellingPrice = req.body.premium95_selling_price;
             var premium95Amount = premium95Quantity * premium95SellingPrice;
+            totalAmount += premium95Amount;
+            var totalPremium95 = premium95Amount.toFixed(2);
             var premium95Object = {
                 product: "Premium 95 Gasoline",
                 quantity: premium95Quantity,
                 sellingPrice: premium95SellingPrice,
-                totalPrice: premium95Amount
+                totalPrice: totalPremium95
             }
             hasProductObject.hasPremium95 = true;
-            totalAmount += premium95Amount;
         }
 
         // Checks if the transaction contains a purchase of premium 97
@@ -179,14 +207,15 @@ const editTransactionController = {
             var premium97Quantity = req.body.premium97_quantity;
             var premium97SellingPrice = req.body.premium97_selling_price;
             var premium97Amount = premium97Quantity * premium97SellingPrice;
+            totalAmount += premium97Amount;
+            var totalPremium97 = premium97Amount.toFixed(2);
             var premium97Object = {
                 product: "Premium 97 Gasoline",
                 quantity: premium97Quantity,
                 sellingPrice: premium97SellingPrice,
-                totalPrice: premium97Amount
+                totalPrice: totalPremium97
             }
             hasProductObject.hasPremium97 = true;
-            totalAmount += premium97Amount;
         }
 
         // Checks if the transaction contains a purchase of kerosene
@@ -194,15 +223,19 @@ const editTransactionController = {
             var keroseneQuantity = req.body.kerosene_quantity;
             var keroseneSellingPrice = req.body.kerosene_selling_price;
             var keroseneAmount = keroseneQuantity * keroseneSellingPrice;
+            totalAmount += keroseneAmount;
+            var totalKerosene = keroseneAmount.toFixed(2);
             var keroseneObject = {
                 product: "Kerosene",
                 quantity: keroseneQuantity,
                 sellingPrice: keroseneSellingPrice,
-                totalPrice: keroseneAmount
+                totalPrice: totalKerosene
             }
             hasProductObject.hasKerosene = true;
-            totalAmount += keroseneAmount;
         }
+
+        totalAmount = Math.round((totalAmount + Number.EPSILON) * 100) / 100;
+        var total = totalAmount.toFixed(2);
 
         var editedTransaction = {
             status: status, 
@@ -222,7 +255,7 @@ const editTransactionController = {
             keroseneObject: keroseneObject,
             signatories: signatories,
             hasProductObject: hasProductObject,
-            totalAmount: totalAmount,
+            totalAmount: total,
             remarks: remarks,
             isDelivered: isDelivered
         }
