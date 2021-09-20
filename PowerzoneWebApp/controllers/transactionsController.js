@@ -14,9 +14,10 @@ const mongoose = require('mongoose');
 const uniqid = require('uniqid');
 
 /**
- * This a helper function that displays the products page sorted based on the get request acquired from a user
+ * This a helper function that displays the transactions page sorted based on the get request acquired from a user
  *
- * @param res the object to send back the appropriate HTTP response to load the sorted products page
+ * @param req the object containing the HTTP request to sort the transactions by a specified criteria
+ * @param res the object to send back the appropriate HTTP response to load the sorted transactions page
  * @param sortCriteria the object containing the search query to be used on the database
  * @param statusSort the object holding the sort status of the status column
  * @param dateSort the object holding the sort status of the date column
@@ -43,7 +44,7 @@ function displaySorted(req, res, sortCriteria, statusSort, dateSort, receiptNoSo
             if(result) {
                 transactionsArray = result;
 
-                // Creates an object for the sort status of each column reflected in the back-end of the products page
+                // Creates an object for the sort status of each column reflected in the back-end of the transactions page
                 var sortCriteria = {
                     statusSort: statusSort,
                     dateSort: dateSort,

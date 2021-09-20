@@ -5,9 +5,10 @@ const db = require('../models/db.js');
 const Transaction = require('../models/TransactionModel.js');
 
 /**
- * This a helper function that displays the products page sorted based on the get request acquired from a user
+ * This a helper function that displays the deliveries page sorted based on the get request acquired from a user
  *
- * @param res the object to send back the appropriate HTTP response to load the sorted products page
+ * @param req the object containing the HTTP request to sort the deliveries by a specified criteria
+ * @param res the object to send back the appropriate HTTP response to load the sorted deliveries page
  * @param sortCriteria the object containing the search query to be used on the database
  * @param statusSort the object holding the sort status of the date column
  * @param dateSort the object holding the sort status of the supplier column
@@ -35,7 +36,7 @@ function displaySorted(req, res, sortCriteria, dateSort, statusSort) {
             if(result) {
                 transactions = result;
 
-                // Creates an object for the sort status of each column reflected in the back-end of the products page
+                // Creates an object for the sort status of each column reflected in the back-end of the deliveries page
                 var sortCriteria = {
                     dateSort: dateSort,
                     statusSort: statusSort

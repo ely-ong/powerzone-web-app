@@ -7,6 +7,7 @@ const Product = require('../models/ProductModel.js');
 /**
  * This a helper function that displays the products page sorted based on the get request acquired from a user
  *
+ * @param req the object containing the HTTP request to sort the products by a specified criteria
  * @param res the object to send back the appropriate HTTP response to load the sorted products page
  * @param sortCriteria the object containing the search query to be used on the database
  * @param dateSort the object holding the sort status of the date column
