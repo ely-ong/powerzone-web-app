@@ -1,6 +1,7 @@
 # Powerzone Inventory System
 ![badge-js](https://img.shields.io/badge/Javascript-%23323330.svg?style=flat&logo=javascript&logoColor=%23F7DF1E)
 ![badge-mongoDB](https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=flat&logo=mongodb&logoColor=white)
+![badge-hbs](https://img.shields.io/badge/Handlebars-f0772b?style=flat&logo=handlebarsdotjs&logoColor=white)
 ![badge-CSS3](https://img.shields.io/badge/CSS-%231572B6.svg?style=flat&logo=css3&logoColor=white)
 
 A web-based inventory system built for Powerzone Petroleum Products Corporation.
